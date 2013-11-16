@@ -102,3 +102,8 @@ table th, table td {
   padding: 4px;
   text-align: left;
 }
+
+.notice {
+    color: red;
+    margin: 10px;
+}

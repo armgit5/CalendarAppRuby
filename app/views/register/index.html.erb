@@ -1,5 +1,7 @@
 <h1>Welcome to Calendar Page</h1>
 
+<div class="notice"><%= flash[:notice] %></div>
+
 <%= link_to("Schedule", {:action => 'schedule'}) %>
 
 <table class="list"  summary="Schedule list">
@@ -7,8 +9,8 @@
     <th>Project</th>
     <th>Date</th>
     <th>Customer</th>
-    <th>Action</th>
-    
+    <th>Edit</th>
+    <th>Delete</th>
   </tr>
   <% @schedule.each do |s| %>
   <tr>
@@ -16,6 +18,7 @@
     <td><%= s.date %></td>
     <td><%= s.customer %></td>
     <td><%= link_to("Edit", {:action => 'edit', :id => s.id}) %></td>
+    <td><%= link_to("Delete", {:action => 'delete', :id => s.id}) %></td>
   </tr>
   <% end %>
 </table>

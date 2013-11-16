@@ -24,13 +24,20 @@ class RegisterController < ApplicationController
   def update
     @schedule = Schedule.find(params[:id])
     @schedule.update_attributes!(params[:schedule])
-    flash[:notice] = "#{@schedule.project} was successfully created."
+    flash[:notice] = "#{@schedule.project} was successfully updated."
     redirect_to(:action => "show", :id => @schedule.id)
 #    redirect_to(:action => "index")
   end
   
   def delete
-    
+    @schedule = Schedule.find(params[:id])
+  end
+  
+  def destroy
+    @schedule = Schedule.find(params[:id])
+    @schedule.destroy
+    flash[:notice] = "#{@schedule.project} was successfully deleted."
+    redirect_to(:action => "index")
   end
   
   def create
