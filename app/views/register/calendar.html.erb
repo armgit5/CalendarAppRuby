@@ -1,0 +1,15 @@
+<h1>Welcome to Calendar Page</h1>
+
+<table class="list"  summary="Schedule list">
+  <tr class="header">
+    <th>Project</th>
+    <th>Date</th>
+    <th>Customer</th>
+  </tr>
+  <% @calendar.each do |c| %>
+  <tr>
+    <td><%= c.project %></td>
+    <td><%= c.date %></td>
+    <td><%= c.customer %></td>
+  </tr>
+</table>

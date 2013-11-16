@@ -85,3 +85,20 @@ input[type=submit] {
 .post-content {
     margin-top: 5px;
 }
+
+
+table {
+  margin: 10px;
+  border-collapse: collapse;
+  width: 100%;
+  border-bottom: 2px solid black;
+}
+table th {
+  border: 2px solid white;
+  font-weight: bold;
+  background-color: wheat;
+}
+table th, table td {
+  padding: 4px;
+  text-align: left;
+}

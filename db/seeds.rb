@@ -5,3 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+schedules = [{:project => 'Replacing UV tube', :date => '25-Nov-2013', :customer => 'Thai O PP'},
+              {:project => 'Checking leaks', :date => '12-Dec-2013', :customer => 'Imco'},
+              {:project => 'Calibrating offset', :date => '19-Jan-2014', :customer => 'Salee'},
+  	 ]
+
+schedules.each do |schedule|
+  Schedule.create!(schedule)
+end
