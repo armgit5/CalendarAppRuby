@@ -1,18 +1,21 @@
 <h1>Welcome to Calendar Page</h1>
 
-<%= Link_to("Schedule", {:action => 'index'}) %>
+<%= link_to("Schedule", {:action => 'schedule'}) %>
 
 <table class="list"  summary="Schedule list">
   <tr class="header">
     <th>Project</th>
     <th>Date</th>
     <th>Customer</th>
+    <th>Action</th>
+    
   </tr>
-  <% @calendar.each do |c| %>
+  <% @schedule.each do |s| %>
   <tr>
-    <td><%= c.project %></td>
-    <td><%= c.date %></td>
-    <td><%= c.customer %></td>
+    <td><%= s.project %></td>
+    <td><%= s.date %></td>
+    <td><%= s.customer %></td>
+    <td><%= link_to("Edit", {:action => 'edit', :id => s.id}) %></td>
   </tr>
   <% end %>
 </table>

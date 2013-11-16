@@ -6,26 +6,40 @@ class RegisterController < ApplicationController
 #  end
   
   def schedule
-    @calendar = Schedule.new(:project => "Nilpeter")
+#    @schedule = Schedule.new(:project => "Nilpeter")
   end
   
   def index
-    @calendar = Schedule.all
+    @schedule = Schedule.all
   end
 
-#  def new
-#    @calendar = Schedule.new()
-#  end
+  def show 
+    @schedule = Schedule.find(params[:id])
+  end
 #  
-#  def show 
-#    
-#  end
+  def edit
+    @schedule = Schedule.find(params[:id])
+  end
+  
+  def update
+    @schedule = Schedule.find(params[:id])
+    @schedule.update_attributes!(params[:schedule])
+    flash[:notice] = "#{@schedule.project} was successfully created."
+    redirect_to(:action => "show", :id => @schedule.id)
+#    redirect_to(:action => "index")
+  end
+  
+  def delete
+    
+  end
   
   def create
-    @calendar = Schedule.create!(params[:schedule])
-    flash[:notice] = "#{@calendar.project} was successfully created."
+    @schedule = Schedule.create!(params[:schedule])
+    flash[:notice] = "#{@schedule.project} was successfully created."
     redirect_to(:action => "index")
   end
+  
+  
 
   
 end
