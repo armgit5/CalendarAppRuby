@@ -1,0 +1,15 @@
+<h1>Welcome to Calendar Page</h1>
+
+<%#*https://github.com/watu/table_builder%>
+
+<div id="calendar">
+  <%= calendar_for(@schedule) do |t| %>
+  <%= t.head('mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun') %>
+  <%= t.day(:day_method => :schedule_date) do |day, tasks| %>
+    <%= day.day %>
+    <%# tasks.each do |task| %>
+      <%#= h(task.project) %>
+    <%# end %>
+  <% end %>
+<% end %>
+</div>

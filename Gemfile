@@ -31,3 +31,5 @@ group :test do
   # Pretty printed test output
   gem 'turn', :require => false
 end
+
+gem "watu_table_builder", :require => "table_builder"

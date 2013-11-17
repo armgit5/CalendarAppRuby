@@ -46,6 +46,9 @@ class RegisterController < ApplicationController
     redirect_to(:action => "index")
   end
   
+  def calendar
+    @@schedule = Schedule.all
+  end
   
 
   
