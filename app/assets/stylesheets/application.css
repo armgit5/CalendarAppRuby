@@ -107,3 +107,10 @@ table th, table td {
     color: red;
     margin: 10px;
 }
+
+select {
+    width: 167px;
+    font-size: 20px;
+    padding: 2px;
+    font-family: monospace;
+}

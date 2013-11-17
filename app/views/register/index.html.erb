@@ -15,7 +15,7 @@
   <% @schedule.each do |s| %>
   <tr>
     <td><%= s.project %></td>
-    <td><%= s.date %></td>
+    <td><%= s.date.strftime("%m/%d/%Y") %></td>
     <td><%= s.customer %></td>
     <td><%= link_to("Edit", {:action => 'edit', :id => s.id}) %></td>
     <td><%= link_to("Delete", {:action => 'delete', :id => s.id}) %></td>

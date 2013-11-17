@@ -1,0 +1,23 @@
+<h1>Show Page</h1>
+
+<%= link_to("Index", {:action => 'index'}) %>
+
+<%= form_tag(:action => 'delete', :id => @schedule.id) do %>
+
+ <table class="list"  summary="Schedule list">
+  <tr class="header">
+    <th>Project</th>
+    <th>Date</th>
+    <th>Customer</th>
+    
+  </tr>
+  
+  <tr>
+    <td><%= @schedule.project %></td>
+    <td><%= @schedule.date %></td>
+    <td><%= @schedule.customer %></td>
+  </tr>
+  
+  <%= submit_tag('Delete Schedule') %>
+ 
+</table>
