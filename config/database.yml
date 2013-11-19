@@ -42,19 +42,24 @@
 
 development:
   adapter: postgresql
-  database: my_database_development
+  encoding: unicode
+  database: test
   pool: 5
-  timeout: 5000
-  
+  username: nilpeter
+  password: usermote
   
 test:
   adapter: postgresql
-  database: my_datbase_test
+  encoding: unicode
+  database: test
   pool: 5
-  timeout: 5000
+  username: nilpeter
+  password: usermote
 
 production:
   adapter: postgresql
-  database: my_datbase_production
+  encoding: unicode
+  database: test
   pool: 5
-  timeout: 5000
+  username: nilpeter
+  password: usermote
