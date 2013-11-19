@@ -3,7 +3,9 @@
 <%#*https://github.com/watu/table_builder%>
 
 <div id="calendar">
-  <%= calendar_for(@schedule) do |t| %>
+  
+  <%#=h @schedule.strftime("%B %Y") %>
+  <%= calendar_for(@schedule, :year => 2013) do |t| %>
   <%= t.head('mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun') %>
   <%= t.day(:day_method => :schedule_date) do |day, tasks| %>
     <%= day.day %>
