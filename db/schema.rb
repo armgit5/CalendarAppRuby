@@ -13,6 +13,14 @@
 
 ActiveRecord::Schema.define(:version => 20131115083408) do
 
+  create_table "schedule", :force => true do |t|
+    t.string   "project"
+    t.datetime "date"
+    t.string   "customer"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "schedules", :force => true do |t|
     t.string   "project"
     t.datetime "date"
