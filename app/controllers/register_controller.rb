@@ -47,7 +47,8 @@ class RegisterController < ApplicationController
   end
   
   def calendar
-    @@schedule = Schedule.all
+    @schedule = Schedule.all
+    @front_men = ['David St. Hubbins', 'David Lee Roth']
   end
   
 

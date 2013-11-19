@@ -56,6 +56,7 @@ group :development, :test do
   gem 'factory_girl_rails'
 end
 group :production do
+  gem 'sqlite3'
   gem 'pg'
 end
 
@@ -83,3 +84,7 @@ gem 'jquery-rails'
 
 # To use debugger
 gem 'haml'
+
+gem "watu_table_builder", :require => "table_builder"
+
+gem 'rails_12factor', group: :production

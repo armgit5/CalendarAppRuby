@@ -2,16 +2,29 @@
 
 <%#*https://github.com/watu/table_builder%>
 
-<div id="calendar">
+<%#*<div id="calendar">%>
   
   <%#=h @schedule.strftime("%B %Y") %>
-  <%= calendar_for(@schedule) do |t| %>
-  <%= t.head('mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun') %>
-  <%= t.day(:day_method => :schedule_date) do |day, tasks| %>
-    <%= day.day %>
-    <%# tasks.each do |task| %>
-      <%#= h(task.project) %>
-    <%# end %>
+  <%#= calendar_for(@schedule) do |c| %>
+  <%#= c.head('mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun') %>
+ 
+  <%#= c.day do |day, tasks| %>
+   
+  <%# end %>
+<%# end %>
+
+<%= table_for(@schedule) do |t| %>
+  <%= t.head do %>
+    <%= t.r do %>
+      <%= t.h('Id') %>
+      <%= t.h('Name') %>
+    <% end %>
+  <% end %>
+  <%= t.body do |front_man| %>
+    <%= t.r do %>
+      <%= t.d(h(front_man.id)) %>
+      <%= t.d(h(front_man.project)) %>
+    <% end %>
   <% end %>
 <% end %>
 </div>
