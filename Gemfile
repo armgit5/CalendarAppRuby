@@ -56,7 +56,7 @@ group :development, :test do
   gem 'factory_girl_rails'
 end
 group :production do
-  gem 'sqlite3'
+#  gem 'sqlite3'
   gem 'pg'
 end
 
