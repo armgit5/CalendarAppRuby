@@ -9,6 +9,7 @@
 //= require_tree .
 //
 //
+var test_var = $('.temp_information').data('temp');
 
 
 $(document).ready(function() {
@@ -19,6 +20,7 @@ $(document).ready(function() {
         var d = date.getDate();
         var m = date.getMonth();
         var y = date.getFullYear();
+       
 
         $('#calendar').fullCalendar({
 
@@ -30,7 +32,7 @@ $(document).ready(function() {
                 editable: false,
                 events: [
                         {
-                                title: 'All Day Event',
+                                title: test_var,
                                 start: new Date(y, m, 3)
                         },
                         {

@@ -2,4 +2,11 @@
 
 <%= link_to("Index", {:action => 'index'}) %>
 
+<%= @schedule.customer %>
+
+<%= content_tag :div, class: "temp_information", data: {temp: @schedule.customer} do %>
+<% end %>
+  
 <div id='calendar'></div>
+
+
