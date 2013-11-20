@@ -9,6 +9,8 @@
     <th>Project</th>
     <th>Date</th>
     <th>Customer</th>
+    <th>Location</th>
+    <th>Sales</th>
     <th>Edit</th>
     <th>Delete</th>
   </tr>
@@ -17,6 +19,8 @@
     <td><%= s.project %></td>
     <td><%= s.date %></td>
     <td><%= s.customer %></td>
+    <td><%= s.location %></td>
+    <td><%= s.sales %></td>
     <td><%= link_to("Edit", {:action => 'edit', :id => s.id}) %></td>
     <td><%= link_to("Delete", {:action => 'delete', :id => s.id}) %></td>
   </tr>
