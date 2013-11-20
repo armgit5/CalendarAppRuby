@@ -8,4 +8,7 @@
 //= require jquery_ujs
 //= require_tree .
 //
-$(".calendar").datepicker();
+
+$(function () {
+   $(".calendar").datepicker(); 
+});
