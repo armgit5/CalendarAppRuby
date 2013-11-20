@@ -1,3 +1,6 @@
+#If rake db:create not working try to gem uninstall pg and install pg again
+
+
 development:
   adapter: postgresql
   encoding: unicode
