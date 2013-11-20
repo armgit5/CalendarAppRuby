@@ -11,24 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131120062326) do
-
-  create_table "schedule", :force => true do |t|
-    t.string   "project"
-    t.datetime "date"
-    t.string   "customer"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+ActiveRecord::Schema.define(:version => 20131120090207) do
 
   create_table "schedules", :force => true do |t|
     t.string   "project"
     t.datetime "date"
     t.string   "customer"
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.string   "sales"
     t.string   "location"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end
