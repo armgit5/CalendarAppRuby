@@ -14,7 +14,7 @@
 
 $(document).ready(function() {   
     
-//        $("#schedule_date").datepicker(); 
+        $("#schedule_date").datepicker(); 
         var date = new Date();
         var d = date.getDate();
         var m = date.getMonth();
@@ -31,7 +31,7 @@ $(document).ready(function() {
                 editable: false,
                 events: [
                         {
-                                title: test_var,
+                                title: "test var",
                                 start: new Date(y, m, 3)
                         },
                         {
