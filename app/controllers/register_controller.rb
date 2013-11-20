@@ -25,8 +25,8 @@ class RegisterController < ApplicationController
     @schedule = Schedule.find(params[:id])
     @schedule.update_attributes!(params[:schedule])
     flash[:notice] = "#{@schedule.project} was successfully updated."
-    redirect_to(:action => "show", :id => @schedule.id)
-#    redirect_to(:action => "index")
+#    redirect_to(:action => "show", :id => @schedule.id)
+    redirect_to(:action => "index")
   end
   
   def delete
@@ -47,7 +47,7 @@ class RegisterController < ApplicationController
   end
   
   def calendar
-    @schedule = Schedule.find(1)
+    @schedule = Schedule.find(3)
 #    @front_men = ['David St. Hubbins', 'David Lee Roth']
   end
   

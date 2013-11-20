@@ -4,17 +4,26 @@
 <%= link_to "Index", :action => 'index' %>
 
 <%= form_tag(:action => 'update', :id => @schedule.id) do %>
+
   <label>
-    <div>Project</div>
-    <%= text_field(:schedule, :project) %>
+    <div>Date & Time</div>
+    <%= text_field(:schedule, :date, :class => "calendar") %>
   </label>
   <label>
-    <div>Date</div>
-    <div class="calendar"><%= date_select(:schedule, :date, :order => [:day, :month, :year]) %></div>
-  </label>
-  <label>
-    <div>Customer</div>
+    <div>Customer Name</div>
     <%= text_field(:schedule, :customer) %>
+  </label>
+  <label>
+    <div>Customer Location</div>
+    <%= text_field(:schedule, :location) %>
+  </label>
+  <label>
+    <div>Sales Name</div>
+    <%= text_field(:schedule, :sales) %>
+  </label>
+  <label>
+    <div>Project Description</div>
+    <%= text_field(:schedule, :project) %>
   </label>
   <div class="error"><%= @error %></div>
   

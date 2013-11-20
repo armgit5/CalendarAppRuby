@@ -4,7 +4,7 @@
 
 <%= @schedule.customer %>
 
-<%= javascript_tag("
+<%= javascript_tag do %>
 
     $(document).ready(function() {   
 
@@ -24,7 +24,7 @@
                 editable: false,
                 events: [
                         {
-                                title: test_var,
+                                title: '<%= @schedule.customer %>',
                                 start: new Date(y, m, 3)
                         },
                         {
@@ -69,8 +69,7 @@
 
 });
 
-
-") %>
+<% end %>
   
 <div id='calendar'></div>
 
