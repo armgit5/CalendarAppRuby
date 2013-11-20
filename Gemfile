@@ -34,3 +34,4 @@ end
 
 gem 'rails_12factor', group: :production
 
+#gem ruby "2.0.0" 
