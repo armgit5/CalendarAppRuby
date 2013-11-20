@@ -9,12 +9,11 @@
 //= require_tree .
 //
 //
-$(function () {
-   $("#schedule_date").datepicker(); 
-});
 
 
 $(document).ready(function() {
+        
+        $("#schedule_date").datepicker(); 
 
         var date = new Date();
         var d = date.getDate();
@@ -33,11 +32,6 @@ $(document).ready(function() {
                         {
                                 title: 'All Day Event',
                                 start: new Date(y, m, 3)
-                        },
-                        {
-                                title: 'Long Event',
-                                start: new Date(y, m, d-5),
-                                end: new Date(y, m, d-2)
                         },
                         {
                                 id: 999,
