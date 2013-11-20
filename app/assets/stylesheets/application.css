@@ -16,6 +16,11 @@ body {
     color: #333;
 }
 
+#calendar {
+    width: 775px;
+    margin: 0 auto;
+}
+
 h1 {
     color: red;
 }
@@ -115,7 +120,3 @@ select {
     font-family: monospace;
 }
 
-#calendar {
-    /*width: 900px;*/
-    margin: 10px;
-}
