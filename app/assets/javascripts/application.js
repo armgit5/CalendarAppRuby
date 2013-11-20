@@ -10,5 +10,5 @@
 //
 
 $(function () {
-   $(".calendar").datepicker(); 
+   $("#schedule_date").datepicker(); 
 });
