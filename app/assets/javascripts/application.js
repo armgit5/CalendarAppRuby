@@ -10,15 +10,16 @@
 //
 //
 //var test_var = "testing var";
-$("#schedule_date").datepicker(); 
+
 
 $(document).ready(function() {   
-
+    
+        $("#schedule_date").datepicker(); 
         var date = new Date();
         var d = date.getDate();
         var m = date.getMonth();
         var y = date.getFullYear();
-       
+        
 
         $('#calendar').fullCalendar({
 
