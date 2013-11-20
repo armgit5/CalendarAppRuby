@@ -8,7 +8,7 @@
 //= require jquery_ujs
 //= require_tree .
 //
-
-$(function () {
-   $("#schedule_date").datepicker(); 
-});
+//
+//$(function () {
+//   $("#schedule_date").datepicker(); 
+//});
