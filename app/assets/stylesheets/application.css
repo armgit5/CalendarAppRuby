@@ -18,8 +18,8 @@ body {
 }
 
 #calendar {
-    width: auto;
-    margin: auto;
+    width: 750px;
+    margin: 10px;
 }
 
 h1 {
