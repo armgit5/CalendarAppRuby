@@ -94,7 +94,7 @@ input[type=submit] {
 
 
 table {
-  margin: 10px;
+  /*margin: 10px; this fix calendar not seeing Saturday*/
   border-collapse: collapse;
   width: 100%;
   border-bottom: 2px solid black;
