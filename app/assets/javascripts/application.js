@@ -10,9 +10,9 @@
 //
 //
 //var test_var = "testing var";
-
-$("#schedule_date").datepicker(); 
-
+$(document).ready(function() {
+    $("#schedule_date").datepicker(); 
+});
 //$(document).ready(function() {   
 //    
 //        
