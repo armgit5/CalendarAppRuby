@@ -11,7 +11,7 @@
 //
 //var test_var = "testing var";
 $(document).ready(function() {
-    $("#schedule_date").dtpicker(); 
+    $("#schedule_date").datepicker(); 
 });
 //
 //
