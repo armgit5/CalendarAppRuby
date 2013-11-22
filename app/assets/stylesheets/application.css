@@ -9,8 +9,8 @@
 body {
     font-family: Helvetica, Arial, sans-serif;
     font-size: 14px;
-
-    width: 800px;
+    
+    width: 900px;
     margin: 0 auto;
     padding: 10px;
     color: #333;
@@ -32,29 +32,30 @@ h1 {
 
 label {
   display: block;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 label + label {
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 input[type=text] {
     width: 500px;
     font-size: 20px;
-    padding: 2px;
+    padding: 1px;
     font-family: monospace;
 }
 
 textarea {
   width: 500px;
-  height: 400px;
+  height: 300px;
   font-size: 17px;
   font-family: monospace;
 }
 
 input[type=submit] {
-  font-size: 24px;
+  font-size: 20px;
+  
 }
 
 .main-title {
@@ -100,13 +101,30 @@ table {
   border-bottom: 2px solid black;
 }
 table th {
-  border: 2px solid white;
+  border: 2px solid black;
   font-weight: bold;
   background-color: wheat;
+  height: 35px;
 }
-table th, table td {
+table th.normal, table td.normal {
   padding: 4px;
+  width: 15%;
   text-align: left;
+  border: 1px solid black;
+}
+
+table th.long, table td.long {
+  padding: 4px;
+  width: 25%;
+  text-align: left;
+  border: 1px solid black;
+}
+
+table th.short, table td.short {
+  padding: 4px;
+  width: 7%;
+  text-align: left;
+  border: 1px solid black;
 }
 
 .notice {

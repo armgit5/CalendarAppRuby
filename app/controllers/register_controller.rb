@@ -7,10 +7,11 @@ class RegisterController < ApplicationController
   
   def schedule
 #    @schedule = Schedule.new(:project => "Nilpeter")
-  end
+    end
   
   def index
-    @schedule = Schedule.all
+    @schedule = Schedule.order("date DESC").all
+    
   end
 
   def show 
@@ -47,7 +48,7 @@ class RegisterController < ApplicationController
   end
   
   def calendar
-    @schedule = Schedule.find(3)
+    @schedule = Schedule.all
 #    @front_men = ['David St. Hubbins', 'David Lee Roth']
   end
   
