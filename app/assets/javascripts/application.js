@@ -10,9 +10,15 @@
 //
 //
 //var test_var = "testing var";
-$(document).ready(function() {
-    $("#schedule_date").datepicker(); 
-});
+//$(document).ready(function() {
+//    $("#schedule_date").datepicker(); 
+//});
+//
+//
+//$(function(){
+//        $('#schedule_date').dtpicker();
+//});
+//
 //$(document).ready(function() {   
 //    
 //        
