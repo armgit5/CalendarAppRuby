@@ -20,7 +20,7 @@
   </tr>
   <% @schedule.each do |s| %>
   <tr>   
-    <td class='normal'><%= s.date.strftime("%d/%m/%Y") %></td>
+    <td class='normal'><%= s.date.strftime("%d/%m/%Y %H:%M") %></td>
     <td class='normal'><%= s.customer %></td>
     <td class='normal'><%= s.location %></td>
     <td class='normal'><%= s.sales %></td>
