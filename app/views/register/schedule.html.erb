@@ -5,7 +5,7 @@
 <%= form_tag(:action => 'create') do %>
   
   <label>
-    <div id="date_picker">Date & Time</div>
+    <div>Date & Time</div>
     <%= text_field(:schedule, :date, :class => "calendar") %>
   </label>
   <label>
@@ -35,6 +35,6 @@
 
 <%= javascript_tag do %>  
   $(document).ready(function() {
-    $("#date_picker").datepicker(); 
+    $(".calendar").datepicker(); 
   });
 <% end %>
