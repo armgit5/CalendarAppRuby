@@ -7,7 +7,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
-//
+//= require jquery.datetimepicker.js
 //
 
 //$(document).ready(function() {
