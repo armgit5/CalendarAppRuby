@@ -29,7 +29,7 @@
 			events: [
                                 <% @schedule.each do |s| %>
 				{
-					title: '<%= s.customer %>',
+					title: '<%= s.customer + " : " + s.sales %>',
 					start: new Date(<%= s.date.strftime("%Y, %m - 1, %d") %>)
 				},
 				<% end %>
