@@ -2,57 +2,57 @@
 
 <%= link_to("Index", {:action => 'index'}) %>
 
-<%= javascript_tag do %>
+<%#= javascript_tag do %>
 
    
-	$(document).ready(function() {
+	<%#*$(document).ready(function() {%>
 	
-		var date = new Date();
-		var d = date.getDate();
-		var m = date.getMonth();
-		var y = date.getFullYear();
+		<%#*var date = new Date();%>
+		<%#*var d = date.getDate();%>
+		<%#*var m = date.getMonth();%>
+		<%#*var y = date.getFullYear();%>
                 
 		
               
-		var calendar = $('#calendar').fullCalendar({
-			header: {
-				left: 'prev ,next today',
-				center: 'title',
-				right: 'month,agendaWeek,agendaDay'
-			},
+		<%#*var calendar = $('#calendar').fullCalendar({%>
+			<%#*header: {%>
+				<%#*left: 'prev ,next today',%>
+				<%#*center: 'title',%>
+				<%#*right: 'month,agendaWeek,agendaDay'%>
+			<%#*},%>
                         
-			selectable: true,
-			selectHelper: true,			
-			editable: false,
-			events: [
-                                <% @schedule.each do |s| %>
-				{
-					title: '<%= s.customer + " : " + s.sales %>',
-					start: new Date(<%= s.date.strftime("%Y, %m - 1, %d") %>)
-				},
-				<% end %>
-			], 
+			<%#*selectable: true,%>
+			<%#*selectHelper: true,%>			
+			<%#*editable: false,%>
+			<%#*events: [%>
+                                <%# @schedule.each do |s| %>
+				<%#*{%>
+					<%#*title: '<%= s.customer + " : " + s.sales %>',%>
+					<%#*start: new Date(<%= s.date.strftime("%Y, %m - 1, %d") %>)%>
+				<%#*},%>
+				<%# end %>
+			<%#*],%> 
                         
-                        defaultView: 'agendaWeek'
+                        <%#*defaultView: 'agendaWeek'%>
                        
-		});
+		<%#*});%>
                 
                 
                            
-               $('.fc-button-prev').click(function(){ 
-                   var view = $('#calendar').fullCalendar('getView');  
-//                   alert("The view's title is " + view.title);
-                   alert("The view's title is " + view.start);
-               }); 
+               <%#*$('.fc-button-prev').click(function(){%> 
+                   <%#*var view = $('#calendar').fullCalendar('getView');%>  
+<%#*//                   alert("The view's title is " + view.title);%>
+                   <%#*alert("The view's title is " + view.start);%>
+               <%#*});%> 
                
-               $('.fc-button-month').click(function(){ 
-                   var view = $('#calendar').fullCalendar('getView');
-//                   alert("The view's title is " + view.title);
-                   alert("The view's title is " + view.start);
-               }); 
-	});
+               <%#*$('.fc-button-month').click(function(){%> 
+                   <%#*var view = $('#calendar').fullCalendar('getView');%>
+<%#*//                   alert("The view's title is " + view.title);%>
+                   <%#*alert("The view's title is " + view.start);%>
+               <%#*});%> 
+	<%#*});%>
         
-<% end %>
+<%# end %>
   
 <div id='calendar'></div>
 
