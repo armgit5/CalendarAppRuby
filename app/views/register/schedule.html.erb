@@ -40,7 +40,8 @@
 
 <%= javascript_tag do %>  
   $(function(){
-      $('.datetimepicker').appendDtpicker({"inline": true});
+      <%#*$('.datetimepicker').appendDtpicker({"inline": true});%>
+      $('.datetimepicker').datepicker();
   });
 <% end %>
   
