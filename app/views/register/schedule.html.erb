@@ -1,6 +1,10 @@
 <h1>Welcome to Nilpeter Scheduling form</h1>
 <p>Please fill up your schedule information here</p>
 
+<%= stylesheet_link_tag "jquery.datetimepicker" %>
+<%= javascript_include_tag "jquery.datetimepicker" %>
+
+
 <%= link_to "Index", :action => 'index' %>
 <%= form_tag(:action => 'create') do %>
   
