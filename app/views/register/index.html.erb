@@ -2,6 +2,20 @@
 
 <div class="notice"><%= flash[:notice] %></div>
 
+
+<%= hidden_field_tag :direction, params[:direction] %>
+<%= hidden_field_tag :sort, params[:sort] %>
+
+
+<%= form_tag :action => 'index', :id => "record_search" do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
+  
+  
+
 <%= link_to("Schedule", {:action => 'schedule'}) %>
 <br>
 <div></div>
@@ -10,8 +24,8 @@
 
 <table class="list"  summary="Schedule list">
   <tr class="header">
-    <th>Date & Time</th>
-    <th>Customer Name</th>
+    <th><%= sortable("Date & Time", "date") %></th>
+    <th><%= sortable("Customer", "customer") %></th>
     <th>Customer Location</th>
     <th>Sales Name</th>
     <th>Project Description</th>
@@ -29,4 +43,6 @@
     <td class='short'><%= link_to("Delete", {:action => 'delete', :id => s.id}) %></td>
   </tr>
   <% end %>
+  
 </table>
+<%= will_paginate @schedule %>

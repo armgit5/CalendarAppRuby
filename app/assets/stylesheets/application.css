@@ -139,3 +139,17 @@ select {
     font-family: monospace;
 }
 
+/*
+current {
+  padding-right: 12px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
+current_asc {
+  background-color: red;
+}
+
+current_desc {
+  background-color: black;
+}*/

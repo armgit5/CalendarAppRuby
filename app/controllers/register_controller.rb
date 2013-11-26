@@ -10,7 +10,10 @@ class RegisterController < ApplicationController
     end
   
   def index
-    @schedule = Schedule.order("date DESC").all
+    params[:sort] ||= "date"
+    params[:direction] ||= "desc"
+    
+    @schedule = Schedule.order(params[:sort] + " " + params[:direction]).search(params[:search]).paginate(:per_page => 10, :page => params[:page])
     
   end
 
