@@ -1,6 +1,10 @@
 <h1>Welcome to Calendar Page</h1>
 
-<%= link_to("Index", {:action => 'index'}) %>
+<ul class="nav nav-pills">
+  <li class="active"><%= link_to "Calendar", :action => 'calendar' %></li>
+  <li ><%= link_to "Schedule", :action => 'schedule' %></li>
+  <li ><%= link_to "Table", :action => 'index' %></li>
+</ul>
 
 <%= javascript_tag do %>
 
@@ -33,7 +37,7 @@
 				<% end %>
 			], 
                         
-                        defaultView: 'agendaWeek'
+                        <%#*defaultView: 'agendaWeek'%>
                        
 		});
                 

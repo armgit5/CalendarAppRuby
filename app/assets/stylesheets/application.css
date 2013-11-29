@@ -19,11 +19,21 @@ body {
 
 #calendar {
     width: 850px;
-    margin: 10px;
+    margin: 25px;
 }
 
 h1 {
     color: red;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    /*padding: 10px;*/
+}
+
+p {
+    /*color: red;*/
+    margin-top: 25px;
+    margin-bottom: 25px;
+    /*padding: 10px;*/
 }
 
 .error {
@@ -40,22 +50,21 @@ label + label {
 }
 
 input[type=text] {
-    width: 500px;
+    width: 350px;
     font-size: 20px;
     padding: 1px;
     font-family: monospace;
 }
 
 textarea {
-  width: 500px;
+  width: 350px;
   height: 300px;
   font-size: 17px;
   font-family: monospace;
-}
+}/*
 
-input[type=submit] {
+*/input[type=submit] {
   font-size: 20px;
-  
 }
 
 .main-title {
@@ -95,7 +104,7 @@ input[type=submit] {
 
 
 table {
-  /*margin: 10px; this fix calendar not seeing Saturday*/
+ 
   border-collapse: collapse;
   width: 100%;
   border-bottom: 2px solid black;
@@ -139,17 +148,47 @@ select {
     font-family: monospace;
 }
 
-/*
-current {
-  padding-right: 12px;
-  background-repeat: no-repeat;
-  background-position: right center;
+
+
+
+
+
+.apple_pagination {
+  background: #f1f1f1;
+  border: 1px solid #e5e5e5;
+  text-align: center;
+  padding: 0.1em;
+  cursor: default;
+  
 }
 
-current_asc {
-  background-color: red;
+.apple_pagination a, .apple_pagination span {
+  padding: 0.2em 0.3em;
 }
 
-current_desc {
-  background-color: black;
-}*/
+.apple_pagination .disabled {
+  color: #aaaaaa;
+}
+
+.apple_pagination em {
+  font-style: normal;
+  font-weight: bold;
+  background-color: #bebebe;
+  display: inline-block;
+  width: 1.4em;
+  height: 1.4em;
+  line-height: 1.5;
+  -moz-border-radius: 1em;
+  -webkit-border-radius: 1em;
+  border-radius: 1em;
+  text-shadow: rgba(255, 255, 255, 0.8) 1px 1px 1px;
+}
+
+.apple_pagination a {
+  text-decoration: none;
+  color: black;
+}
+
+.apple_pagination a:hover, .apple_pagination a:focus {
+  text-decoration: underline;
+}

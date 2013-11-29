@@ -2,25 +2,23 @@
 
 <div class="notice"><%= flash[:notice] %></div>
 
+<ul class="nav nav-pills">
+<li ><%= link_to "Calendar", :action => 'calendar' %></li>
+<li ><%= link_to "Schedule", :action => 'schedule' %></li>
+<li class="active"><%= link_to "Table", :action => 'index' %></li> 
 
-<%= hidden_field_tag :direction, params[:direction] %>
-<%= hidden_field_tag :sort, params[:sort] %>
+</ul>
 
-
+<form class="navbar-form navbar-left" role="search">
 <%= form_tag :action => 'index', :id => "record_search" do %>
-  <p>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search", :name => nil %>
-  </p>
+  <%= hidden_field_tag :direction, params[:direction] %>
+  <%= hidden_field_tag :sort, params[:sort] %>
+  <div class="form-group">
+    <%= text_field_tag :search, params[:search], :class=>"form-control", :placeholder=>"Search" %>
+    <%= submit_tag "Search", :name => nil, :class=>"btn btn-default" %>
+  </div>
 <% end %>
-  
-  
-
-<%= link_to("Schedule", {:action => 'schedule'}) %>
-<br>
-<div></div>
-<br>
-<%= link_to("Calendar", {:action => 'calendar'}) %>
+</form>
 
 <table class="list"  summary="Schedule list">
   <tr class="header">
@@ -42,7 +40,10 @@
     <td class='short'><%= link_to("Edit", {:action => 'edit', :id => s.id}) %></td>
     <td class='short'><%= link_to("Delete", {:action => 'delete', :id => s.id}) %></td>
   </tr>
-  <% end %>
-  
+  <% end %>  
 </table>
-<%= will_paginate @schedule %>
+
+
+<div class="apple_pagination">
+    <%= will_paginate @schedule %>
+</div>
