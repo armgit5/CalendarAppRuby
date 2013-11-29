@@ -1,0 +1,29 @@
+
+
+
+<table class="list"  summary="Schedule list">
+  <tr class="header">
+    <th><%= sortable("Date & Time", "date") %></th>
+    <th><%= sortable("Customer", "customer") %></th>
+    <th>Customer Location</th>
+    <th>Sales Name</th>
+    <th>Project Description</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+  <% @schedule.each do |s| %>
+  <tr>   
+    <td class='normal'><%= s.date.strftime("%d/%m/%Y %H:%M") %></td>
+    <td class='normal'><%= s.customer %></td>
+    <td class='normal'><%= s.location %></td>
+    <td class='normal'><%= s.sales %></td>
+    <td class='long'><%= s.project %></td>
+    <td class='short'><%= link_to("Edit", {:action => 'edit', :id => s.id}) %></td>
+    <td class='short'><%= link_to("Delete", {:action => 'delete', :id => s.id}) %></td>
+  </tr>
+  <% end %>  
+</table>
+
+ <div class="apple_pagination">
+    <%= will_paginate @schedule %>
+</div>

@@ -55,6 +55,6 @@ class RegisterController < ApplicationController
 #    @front_men = ['David St. Hubbins', 'David Lee Roth']
   end
   
-
+  
   
 end

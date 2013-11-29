@@ -1,8 +1,8 @@
 <h1>Welcome to Nilpeter Scheduling form</h1>
 
 
-<%= stylesheet_link_tag "jquery.datetimepicker" %>
-<%= javascript_include_tag "jquery.datetimepicker" %>
+<%#= stylesheet_link_tag "jquery.datetimepicker" %>
+<%#= javascript_include_tag "jquery.datetimepicker" %>
 
 <ul class="nav nav-pills">
   <li ><%= link_to "Calendar", :action => 'calendar' %></li>
@@ -46,7 +46,9 @@
 <%= javascript_tag do %>  
   $(function(){
       <%#*$('.datetimepicker').appendDtpicker({"inline": true});%>
-      $('.datetimepicker').datetimepicker();
+      $('.datetimepicker').datetimepicker({
+        format:'d/mY H:i'
+      });
   });
 <% end %>
   

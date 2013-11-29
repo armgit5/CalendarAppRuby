@@ -1,5 +1,5 @@
 class Schedule < ActiveRecord::Base
-  attr_accessible :sales, :customer, :location, :project
+  attr_accessible :sales, :customer, :location, :project, :date
   
   def self.search(search)
     if search

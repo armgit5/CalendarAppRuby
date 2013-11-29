@@ -2,48 +2,43 @@
 
 <div class="notice"><%= flash[:notice] %></div>
 
+
+
+
 <ul class="nav nav-pills">
 <li ><%= link_to "Calendar", :action => 'calendar' %></li>
 <li ><%= link_to "Schedule", :action => 'schedule' %></li>
 <li class="active"><%= link_to "Table", :action => 'index' %></li> 
 
-</ul>
-
-<form class="navbar-form navbar-left" role="search">
-<%= form_tag :action => 'index', :id => "record_search" do %>
-  <%= hidden_field_tag :direction, params[:direction] %>
-  <%= hidden_field_tag :sort, params[:sort] %>
+<form class="navbar-form navbar-left" role="search" id="products_search">
+<%= form_tag :action => 'index', :id => "record_search", :method => "get" do %>
   <div class="form-group">
     <%= text_field_tag :search, params[:search], :class=>"form-control", :placeholder=>"Search" %>
-    <%= submit_tag "Search", :name => nil, :class=>"btn btn-default" %>
+    <%#= submit_tag "Search", :name => nil, :class=>"btn btn-default" %>
   </div>
+
 <% end %>
+  <div id="schedule-table"><%= render 'partial' %></div>
 </form>
-
-<table class="list"  summary="Schedule list">
-  <tr class="header">
-    <th><%= sortable("Date & Time", "date") %></th>
-    <th><%= sortable("Customer", "customer") %></th>
-    <th>Customer Location</th>
-    <th>Sales Name</th>
-    <th>Project Description</th>
-    <th>Edit</th>
-    <th>Delete</th>
-  </tr>
-  <% @schedule.each do |s| %>
-  <tr>   
-    <td class='normal'><%= s.date.strftime("%d/%m/%Y %H:%M") %></td>
-    <td class='normal'><%= s.customer %></td>
-    <td class='normal'><%= s.location %></td>
-    <td class='normal'><%= s.sales %></td>
-    <td class='long'><%= s.project %></td>
-    <td class='short'><%= link_to("Edit", {:action => 'edit', :id => s.id}) %></td>
-    <td class='short'><%= link_to("Delete", {:action => 'delete', :id => s.id}) %></td>
-  </tr>
-  <% end %>  
-</table>
+</ul>
 
 
-<div class="apple_pagination">
-    <%= will_paginate @schedule %>
-</div>
+
+
+
+<%= javascript_tag do %>
+
+   $(document).ready(function() {
+    $(document).on("click", "#schedule-table th a, #schedule-table .pagination a", function() {
+      $.getScript(this.href);
+      return false;
+    });
+    
+    $("#products_search input").keyup(function() {
+      $.get($("#products_search").attr("action"), $("#products_search").serialize(), null, "script");
+    return false;
+    });
+  });
+
+  
+<% end %>

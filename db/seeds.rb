@@ -11,7 +11,7 @@
 #              {:project => 'Calibrating offset', :date => '19-Jan-2014', :customer => 'Salee'},
 #  	 ]
 
-schedules = [{ :project => 'Replacing UV tube', :date => '25-Nov-2013', :customer => 'Thai O PP', :sales => "Pla", :location => "Bang PaKong"}    
+schedules = [{ :project => 'Replacing UV tube', :customer => 'Thai O PP', :sales => "Pla", :location => "Bang PaKong", :date => "2013-11-29"}    
   	 ]
 
 schedules.each do |schedule|
