@@ -13,7 +13,14 @@
 
 schedules = [{ :project => 'Replacing UV tube', :customer => 'Thai O PP', :sales => "Pla", :location => "Bang PaKong", :date => "2013-11-29"}    
   	 ]
-
 schedules.each do |schedule|
   Schedule.create!(schedule)
+end  
+  
+sales = [{:name => "Aek"},
+         {:name => "Pla"},
+         {:name => "Oat"}
+]
+sales.each do |sale|
+  Sale.create!(sale) 
 end

@@ -7,7 +7,8 @@ class RegisterController < ApplicationController
   
   def schedule
 #    @schedule = Schedule.new(:project => "Nilpeter")
-    end
+    @sale = Sale.all
+  end
   
   def index
     params[:sort] ||= "date"

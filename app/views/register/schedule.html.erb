@@ -28,8 +28,9 @@
     <%= text_field(:schedule, :location) %>
   </label>
   <label>
+   
     <div>Sales Name</div>
-    <%= text_field(:schedule, :sales) %>
+    <%= collection_select(:schedule, :sales, @sale, :name, :name) %>
   </label>
   <label>
     <div>Project Description</div>
@@ -47,7 +48,7 @@
   $(function(){
       <%#*$('.datetimepicker').appendDtpicker({"inline": true});%>
       $('.datetimepicker').datetimepicker({
-        format:'d/mY H:i'
+        format:'d/m/Y H:i'
       });
   });
 <% end %>
