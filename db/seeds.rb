@@ -44,9 +44,3 @@ companies.each do |company|
   Company.create!(company) 
 end
 
-  
-Company.find(1).locations << Location.find(1)
-Company.find(1).locations << Location.find(2)
-#thaiopp = Company.find(0)
-#thaiopp.locations << Location.find(1)
-#thaiopp.locations << Location.find(2)
