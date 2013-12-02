@@ -8,5 +8,5 @@
 //= require jquery_ujs
 //= require_tree .
 //= require jquery.datetimepicker.js
-//
+//= require select2.js
 
