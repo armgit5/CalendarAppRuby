@@ -1,8 +1,8 @@
 <h1>Welcome to Nilpeter Scheduling form</h1>
 
 
-<%#= stylesheet_link_tag "jquery.datetimepicker" %>
-<%#= javascript_include_tag "jquery.datetimepicker" %>
+<%= stylesheet_link_tag "jquery.datetimepicker", "select2" %>
+<%= javascript_include_tag "jquery.datetimepicker", "select2" %>
 
 <ul class="nav nav-pills">
   <li ><%= link_to "Calendar", :action => 'calendar' %></li>
@@ -12,6 +12,8 @@
 
 <p>Please fill up your schedule information here</p>
 
+
+
 <%= form_tag(:action => 'create') do %>
 
   
@@ -19,18 +21,41 @@
     <div>Date & Time</div>
     <%= text_field(:schedule, :date, :class => "datetimepicker") %>
   </label>
-  <label>
+
+<%#= collection_select(:schedule, :customer, @companies, :name, :name, {:prompt=>true}, {:id=>'e9'}) %>
+  <label id="company">
     <div>Customer Name</div>
-    <%= text_field(:schedule, :customer) %>
+    <%= collection_select(:schedule, :customer, @companies, :name, :name, {:prompt=>"Please Select Company"}, {:class=>'e9'}) %>
+    
+    <%#= collection_select(:schedule, :customer, @companies, :name, :name, :prompt => "Select Company", :id=>'e9') %>
+    <%#*<select id="e9">%>
+        <%#*<option value="AL">Alabama</option>%>
+        <%#*<option value="WY">Wyoming</option>%>
+        
+    <%#*</select>%>
+    
+    <%#= select_tag(:e9, options_for_select(['Lisbon', 1]) %>
+    
   </label>
-  <label>
-    <div>Customer Location</div>
-    <%= text_field(:schedule, :location) %>
-  </label>
-  <label>
-   
+
+
+
+  
+    <label id="location">
+      <div>Customer Location</div>
+      <%= collection_select(:schedule, :location, @locations, :location, :location, {:prompt=>"Please Select Company"}, {:class=>'e9'}) %>
+      <%#*<select>%>
+        <%#*<option value="volvo">Volvo</option>%>
+        <%#*<option value="saab">Saab</option>%>
+        <%#*<option value="mercedes">Mercedes</option>%>
+        <%#*<option value="audi">Audi</option>%>
+    <%#*</select>%>
+    </label>
+  
+
+  <label>   
     <div>Sales Name</div>
-    <%= collection_select(:schedule, :sales, @sale, :name, :name) %>
+    <%= collection_select(:schedule, :sales, @sale, :name, :name, {:prompt=>"Please Select Company"}, {:class=>'e9'}) %>
   </label>
   <label>
     <div>Project Description</div>
@@ -43,14 +68,59 @@
   
 <% end %>
  
+  
+  
 
 <%= javascript_tag do %>  
+  
+  
+ 
+                
   $(function(){
       <%#*$('.datetimepicker').appendDtpicker({"inline": true});%>
       $('.datetimepicker').datetimepicker({
         format:'d/m/Y H:i'
       });
   });
+  
+  
+  function companySelected() {
+      $("#company").change(function() {
+        company_name = $("#company option:selected").val();
+        <%#*alert(company_name);%>
+        $("#location").show();
+        
+        
+          
+        
+        
+       
+        <%#*output = "<div>Customer Location</div>";%>
+        <%#*$("#location").html(output);%>
+        
+      });
+      
+  }
+  
+  $.getJSON('data.json', function(data) {
+        alert("hi");
+     });
+     
+  
+  
+  
+  $(document).ready(function() {
+    $("#location").hide();
+    companySelected();
+    <%#*$('person_country_id').observe('change', countrySelected);%>
+  });
+  
+  
+  
+  <%#*This is for select box%>
+  $(document).ready(function() { 
+            $(".e9").select2(); 
+        });
 <% end %>
   
   

@@ -3,8 +3,8 @@ class Schedule < ActiveRecord::Base
   
   def self.search(search)
     if search
-      where('sales LIKE ? OR project LIKE ? OR
-        location LIKE ? OR customer LIKE ?', "%#{search}%", 
+      where('lower(sales) LIKE lower(?) OR lower(project) LIKE lower(?) OR
+        lower(location) LIKE lower(?) OR lower(customer) LIKE lower(?)', "%#{search}%", 
         "%#{search}%", "%#{search}%", "%#{search}%")
     else
       scoped

@@ -24,3 +24,29 @@ sales = [{:name => "Aek"},
 sales.each do |sale|
   Sale.create!(sale) 
 end
+
+
+
+
+locations = [{:location => "Bangkok"},
+         {:location => "Bang Pla Kong"},
+         {:location => "Bang Na"}
+]
+locations.each do |location|
+  Location.create!(location) 
+end
+
+companies = [{:name => "Thai O PP"},
+         {:name => "Salle Inc"},
+         {:name => "Imco PP"}
+]
+companies.each do |company|
+  Company.create!(company) 
+end
+
+  
+Company.find(1).locations << Location.find(1)
+Company.find(1).locations << Location.find(2)
+#thaiopp = Company.find(0)
+#thaiopp.locations << Location.find(1)
+#thaiopp.locations << Location.find(2)

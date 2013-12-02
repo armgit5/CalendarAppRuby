@@ -8,6 +8,10 @@ class RegisterController < ApplicationController
   def schedule
 #    @schedule = Schedule.new(:project => "Nilpeter")
     @sale = Sale.all
+    @companies = Company.all
+    @locations = Location.all
+    
+
   end
   
   def index
