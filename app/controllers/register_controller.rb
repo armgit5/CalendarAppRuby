@@ -10,7 +10,7 @@ class RegisterController < ApplicationController
     @sale = Sale.all
     @companies = Company.all
     @locations = Location.all
-    
+#    @schedule = Schedule.new
 
   end
   

@@ -5,8 +5,7 @@ class CreateSchedules < ActiveRecord::Migration
         t.datetime :date
         t.string :customer
         t.string :sales
-        t.string :location
-       
+        t.string :location 
         # Add fields that let Rails automatically keep track
         # of when movies are added or modified:
         t.timestamps

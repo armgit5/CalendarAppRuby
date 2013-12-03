@@ -26,16 +26,6 @@ sales.each do |sale|
 end
 
 
-
-
-locations = [{:location => "Bangkok"},
-         {:location => "Bang Pla Kong"},
-         {:location => "Bang Na"}
-]
-locations.each do |location|
-  Location.create!(location) 
-end
-
 companies = [{:name => "Thai O PP"},
          {:name => "Salle Inc"},
          {:name => "Imco PP"}
@@ -44,3 +34,13 @@ companies.each do |company|
   Company.create!(company) 
 end
 
+
+
+locations = [{:company_id => "1", :name => "Bangkok"},
+              {:company_id => "1", :name => "BangNa"},
+              {:company_id => "2", :name => "BangPlaKong"},
+              {:company_id => "3", :name => "BangNa"}       
+]
+locations.each do |location|
+  Location.create!(location) 
+end
