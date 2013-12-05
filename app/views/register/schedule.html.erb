@@ -22,15 +22,15 @@
   </label>
   <label id="company">
     <div>Customer Name</div>
-    <%= collection_select(:schedule, :customer, @companies, :name, :name, {:prompt=>"Please Select Company"}, {:class=>'e9'}) %> 
+    <%= collection_select(:schedule, :company_id, @companies, :id, :name, {:prompt=>"Please Select Company"}, {:class=>'e9'}) %> 
   </label>
   <label id="location">
     <div>Customer Location</div>
-      <%= grouped_collection_select :schedule, :location, Company.order(:name), :locations, :name, :name, :name, {:prompt=>"Please Select Company"}, {:class=>'e9'} %>
+      <%= grouped_collection_select :schedule, :location_id, Company.order(:name), :locations, :name, :id, :name, {:prompt=>"Please Select Company"}, {:class=>'e9'} %>
   </label>
   <label>   
     <div>Sales Name</div>
-    <%= collection_select(:schedule, :sales, @sale, :name, :name, {:prompt=>"Please Select Company"}, {:class=>'e9'}) %>
+    <%= collection_select(:schedule, :sale_id, @sale, :id, :name, {:prompt=>"Please Select Company"}, {:class=>'e9'}) %>
   </label>
   <label>
     <div>Project Description</div>

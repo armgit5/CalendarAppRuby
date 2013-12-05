@@ -35,9 +35,9 @@ ActiveRecord::Schema.define(:version => 20131203095542) do
   create_table "schedules", :force => true do |t|
     t.text     "project"
     t.datetime "date"
-    t.string   "customer"
-    t.string   "sales"
-    t.string   "location"
+    t.integer  "company_id"
+    t.integer  "sale_id"
+    t.integer  "location_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
