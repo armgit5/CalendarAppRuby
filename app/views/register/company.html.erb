@@ -1,0 +1,53 @@
+<h1>Add Companies</h1>
+
+
+<%#= stylesheet_link_tag "jquery.datetimepicker", "select2" %>
+<%#= javascript_include_tag "jquery.datetimepicker", "select2" %>
+
+<ul class="nav nav-pills">
+  <li ><%= link_to "Calendar", :action => 'calendar' %></li>
+  <li class="active"><%= link_to "Schedule", :action => 'schedule' %></li>
+  <li ><%= link_to "Table", :action => 'index' %></li>
+</ul>
+
+<p>Please fill up your schedule information here</p>
+
+
+
+<%= form_tag(:action => 'create_company', :param => 'company') do %>
+
+  <label>
+    <div>Add Company</div>
+    <%= text_field(:company, :name, :class => "Company Name") %>
+  </label>
+
+  
+  <table class="list"  summary="Schedule list">
+  <tr class="header">
+    
+    <th>Company Name</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+  <% @companies.each do |c| %>
+  <tr>   
+    <td class='normal'><%= c.name %></td>
+    <td class='short'><%= link_to("Edit", {:action => 'edit', :id => c.id}) %></td>
+    <td class='short'><%= link_to("Delete", {:action => 'delete', :id => c.id}) %></td>
+  </tr>
+  <% end %>  
+  </table>
+
+  
+  <div class="error"><%= @error %></div>
+  
+  <%= submit_tag('Create Company') %>
+
+  
+<% end %> 
+  
+
+
+  
+  
+	
