@@ -1,0 +1,41 @@
+<h1>Add Locations</h1>
+
+
+<%#= stylesheet_link_tag "jquery.datetimepicker", "select2" %>
+<%#= javascript_include_tag "jquery.datetimepicker", "select2" %>
+
+<ul class="nav nav-pills">
+  <li class="active"><%= link_to "Add Locations", :action => 'add_locations' %></li>
+  
+</ul>
+<p>Please fill up your schedule information here</p>
+
+<%= form_tag(:action => 'create') do %>
+
+  <label>
+    <div>Add Company</div>
+    <%= hidden_field(:location, :company_id, :value => params[:id]) %>
+    <%= text_field(:location, :name) %>
+  </label>
+
+   <%= submit_tag('Create Location') %>
+<% end %> 
+
+<table class="list"  summary="Schedule list">
+  <tr class="header">
+    
+    <th>Company Location</th>
+    
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+  <% @company.locations.each do |c| %>
+  <tr>   
+    
+    <td class='normal'><%= c.name %></td>
+   
+    <td class='short'><%= link_to("Edit", {:action => 'edit', :id => c.id}) %></td>
+    <td class='short'><%= link_to("Delete", {:action => 'delete', :id => c.id}) %></td>
+  </tr>
+  <% end %>  
+</table>

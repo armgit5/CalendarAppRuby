@@ -60,14 +60,5 @@ class RegisterController < ApplicationController
 #    @front_men = ['David St. Hubbins', 'David Lee Roth']
   end
   
-  def company
-    @companies = Company.all
-  end
-  
-  def create_company
-    @companies = Company.create!(params[:company])
-    flash[:notice] = "#{@companies.name} was successfully created."
-    redirect_to(:action => "company")
-  end
   
 end

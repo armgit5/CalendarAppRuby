@@ -1,0 +1,22 @@
+<h1>Delete Page</h1>
+
+<%= link_to("Index", {:action => 'index'}) %>
+
+
+<%= form_tag(:action => 'destroy', :id => @location.id) do %>
+  <table class="list"  summary="Schedule list">
+    <tr class="header">
+      <th>Company</th>
+    </tr>
+
+    <tr>
+      <td><%= @location.name %></td> 
+    </tr>
+
+  </table>
+
+<%= submit_tag('Delete Comapany') %>
+  
+  
+<% end %>
+  
