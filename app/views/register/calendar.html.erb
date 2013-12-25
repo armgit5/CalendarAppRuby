@@ -31,7 +31,7 @@
 			events: [
                                 <% @schedule.each do |s| %>
 				{
-					title: '<%= s.company.name + " : " + s.sale.name %>',
+					title: '<%= s.company.name + " : " + s.sale.name unless s.company.nil? %>',
 					start: new Date(<%= s.date.strftime("%Y, %m - 1, %d") %>)
 				},
 				<% end %>

@@ -14,9 +14,9 @@
   <% @schedule.each do |s| %>
   <tr>   
     <td class='normal'><%= s.date %></td>
-    <td class='normal'><%= s.company.name %></td>
-    <td class='normal'><%= s.location.name %></td>
-    <td class='normal'><%= s.sale.name %></td>
+    <td class='normal'><%= s.company.name unless s.company.nil? %></td>
+    <td class='normal'><%= s.location.name unless s.location.nil? %></td>
+    <td class='normal'><%= s.sale.name unless s.sale.nil? %></td>
     <td class='long'><%= s.project %></td>
     <td class='short'><%= link_to("Edit", {:action => 'edit', :id => s.id}) %></td>
     <td class='short'><%= link_to("Delete", {:action => 'delete', :id => s.id}) %></td>

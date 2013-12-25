@@ -18,7 +18,7 @@ class RegisterController < ApplicationController
     params[:sort] ||= "date"
     params[:direction] ||= "desc"
     
-    @schedule = Schedule.order(params[:sort] + " " + params[:direction]).search(params[:search]).paginate(:per_page => 3, :page => params[:page])
+    @schedule = Schedule.order(params[:sort] + " " + params[:direction]).search(params[:search]).paginate(:per_page => 25, :page => params[:page])
 #    @schedule = Schedule.all
   end
 
