@@ -83,3 +83,7 @@ CSV.foreach(Rails.root.join("schedules.csv"), headers: true) do |row|
     schedule.location_id = row[5]
   end
 end
+
+ActiveRecord::Base.connection.tables.each do |t|
+  ActiveRecord::Base.connection.reset_pk_sequence!(t)
+end;nil

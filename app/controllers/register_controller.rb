@@ -28,6 +28,9 @@ class RegisterController < ApplicationController
 #  
   def edit
     @schedule = Schedule.find(params[:id])
+    @sale = Sale.all
+    @companies = Company.all
+    @locations = Location.all
   end
   
   def update

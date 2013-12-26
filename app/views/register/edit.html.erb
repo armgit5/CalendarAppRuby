@@ -7,28 +7,43 @@
 
   <label>
     <div>Date & Time</div>
-    <%= text_field(:schedule, :date, :class => "calendar") %>
+    <%= text_field(:schedule, :date, :class => "datetimepicker") %>
   </label>
-  <label>
+  <label id="company">
     <div>Customer Name</div>
-    <%= text_field(:schedule, :customer) %>
+    <%= collection_select(:schedule, :company_id, @companies, :id, :name, {:prompt=>"Please Select Company"}, {:class=>'e9'}) %> 
   </label>
-  <label>
+  <label id="location">
     <div>Customer Location</div>
-    <%= text_field(:schedule, :location) %>
+      <%= grouped_collection_select :schedule, :location_id, Company.order(:name), :locations, :name, :id, :name, {:prompt=>"Please Select Company"}, {:class=>'e9'} %>
   </label>
-  <label>
+  <label>   
     <div>Sales Name</div>
-    <%= text_field(:schedule, :sales) %>
+    <%= collection_select(:schedule, :sale_id, @sale, :id, :name, {:prompt=>"Please Select Company"}, {:class=>'e9'}) %>
   </label>
   <label>
     <div>Project Description</div>
-    <%= text_field(:schedule, :project) %>
+    <%= text_area(:schedule, :project) %>
   </label>
   <div class="error"><%= @error %></div>
   
   <%= submit_tag('Update Schedule') %>
   
   
+<% end %>
+  
+<%= javascript_tag do %>  
+  <%#*Date picker function%>              
+  $(function(){
+      $('.datetimepicker').datetimepicker({
+        format:'d/m/Y H:i'
+      });
+  });
+  
+  
+  <%#*This is for select box%>
+  $(document).ready(function() { 
+      $(".e9").select2(); 
+  });
 <% end %>
   
