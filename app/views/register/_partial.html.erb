@@ -1,7 +1,7 @@
 
 
 
-<table class="list"  summary="Schedule list">
+<table class="table table-bordered" >
   <tr class="header">
     <th><%= sortable("Date & Time", "date") %></th>
     <th><%= sortable("Company", "company") %></th>
@@ -18,8 +18,8 @@
     <td class='normal'><%= s.location.name unless s.location.nil? %></td>
     <td class='normal'><%= s.sale.name unless s.sale.nil? %></td>
     <td class='long'><%= s.project %></td>
-    <td class='short'><%= link_to("Edit", {:action => 'edit', :id => s.id}) %></td>
-    <td class='short'><%= link_to("Delete", {:action => 'delete', :id => s.id}) %></td>
+    <td class='short'><button type="button" class="btn btn-primary"><%= link_to("Edit", {:action => 'edit', :id => s.id}) %></button></td>
+    <td class='short'><button type="button" class="btn btn-primary"><%= link_to("Delete", {:action => 'delete', :id => s.id}) %></button></td>
   </tr>
   <% end %>  
 </table>

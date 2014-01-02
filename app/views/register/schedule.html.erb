@@ -1,19 +1,40 @@
-<h1>Welcome to Nilpeter Scheduling form</h1>
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="http://getbootstrap.com/examples/theme/#">Nilpeter</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li ><%= link_to "Calendar", :action => 'calendar' %></li>
+            <li class="active"><%= link_to "Schedule", :action => 'schedule' %></li>
+            <li ><%= link_to "Table", :action => 'index' %></li>      
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
 
+<div class="container">
 
-<%#= stylesheet_link_tag "jquery.datetimepicker", "select2" %>
-<%#= javascript_include_tag "jquery.datetimepicker", "select2" %>
-
-<ul class="nav nav-pills">
-  <li ><%= link_to "Calendar", :action => 'calendar' %></li>
-  <li class="active"><%= link_to "Schedule", :action => 'schedule' %></li>
-  <li ><%= link_to "Table", :action => 'index' %></li>
-</ul>
+      <!-- Main component for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <h1>Schedule Page</h1>
+        <p>This example is a quick exercise to illustrate how the default, static and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
+        <p>To see the difference between static and fixed top navbars, just scroll.</p>
+        <p>
+          <a class="btn btn-lg btn-primary" href="http://getbootstrap.com/components/#navbar" role="button">View navbar docs »</a>
+        </p>
+      </div> 
 
 <p>Please fill up your schedule information here</p>
 
 
-
+<form class="form-horizontal" role="form">
 <%= form_tag(:action => 'create') do %>
 
   <label>
@@ -22,15 +43,15 @@
   </label>
   <label id="company">
     <div>Customer Name</div>
-    <%= collection_select(:schedule, :company_id, @companies, :id, :name, {:prompt=>"Please Select Company"}, {:class=>'e9'}) %> 
+    <%= collection_select(:schedule, :company_id, @companies, :id, :name, {:prompt=>"Please Select Company"}, {:class=>'e9', :style=>"width:350px"}) %> 
   </label>
   <label id="location">
     <div>Customer Location</div>
-      <%= grouped_collection_select :schedule, :location_id, Company.order(:name), :locations, :name, :id, :name, {:prompt=>"Please Select Company"}, {:class=>'e9'} %>
+      <%= grouped_collection_select :schedule, :location_id, Company.order(:name), :locations, :name, :id, :name, {:prompt=>"Please Select Company"}, {:class=>'e9', :style=>"width:350px"} %>
   </label>
   <label>   
     <div>Sales Name</div>
-    <%= collection_select(:schedule, :sale_id, @sale, :id, :name, {:prompt=>"Please Select Company"}, {:class=>'e9'}) %>
+    <%= collection_select(:schedule, :sale_id, @sale, :id, :name, {:prompt=>"Please Select Company"}, {:class=>'e9', :style=>"width:350px"}) %>
   </label>
   <label>
     <div>Project Description</div>
@@ -42,6 +63,13 @@
 
   
 <% end %> 
+</form>
+  <div id="footer">
+      <div class="container">
+        <p class="text-muted">Nilpeter 2013</p>
+      </div>
+    </div>
+</div>
   
 
 <%= javascript_tag do %>  
