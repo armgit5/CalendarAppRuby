@@ -4,14 +4,14 @@
 <div class="container">
 
       <!-- Main component for a primary marketing message or call to action -->
-      <div class="jumbotron">
-        <h1>Calendar Page</h1>
-        <p>This example is a quick exercise to illustrate how the default, static and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
-        <p>To see the difference between static and fixed top navbars, just scroll.</p>
-        <p>
-          <a class="btn btn-lg btn-primary" href="http://getbootstrap.com/components/#navbar" role="button">View navbar docs »</a>
-        </p>
-      </div>
+      <%#*<div class="jumbotron">%>
+        <%#*<p>Calendar Page</p>%>
+        <%#*<p>This example is a quick exercise to illustrate how the default, static and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>%>
+        <%#*<p>To see the difference between static and fixed top navbars, just scroll.</p>%>
+        <%#*<p>%>
+          <%#*<a class="btn btn-lg btn-primary" href="http://getbootstrap.com/components/#navbar" role="button">View navbar docs »</a>%>
+        <%#*</p>%>
+      <%#*</div>%>
       <div id='calendar'></div>
 </div>
 
@@ -19,24 +19,18 @@
 <div><%= render 'footer' %></div>
 
 <%= javascript_tag do %>
-
-   
-	$(document).ready(function() {
-	
+	$(document).ready(function() {	
 		var date = new Date();
 		var d = date.getDate();
 		var m = date.getMonth();
 		var y = date.getFullYear();
                 
-		
-              
 		var calendar = $('#calendar').fullCalendar({
 			header: {
 				left: 'prev ,next today',
 				center: 'title',
 				right: 'month,agendaWeek,agendaDay'
-			},
-                        
+			},      
 			selectable: true,
 			selectHelper: true,			
 			editable: false,
@@ -44,17 +38,14 @@
                                 <% @schedule.each do |s| %>
 				{
 					title: '<%= s.company.name + " : " + s.sale.name unless s.company.nil? %>',
-					start: new Date(<%= s.date.strftime("%Y, %m - 1, %d") %>)
+					start: new Date(<%= s.date.strftime("%Y, %m - 1, %d, %H, %M") %>),
+                                        allDay: false
 				},
 				<% end %>
 			], 
-                        
-                        <%#*defaultView: 'agendaWeek'%>
-                       
 		});
+                      
                 
-                
-                           
                <%#*$('.fc-button-prev').click(function(){%> 
                    <%#*var view = $('#calendar').fullCalendar('getView');%>  
 <%#*//                   alert("The view's title is " + view.title);%>
