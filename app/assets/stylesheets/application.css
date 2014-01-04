@@ -16,11 +16,12 @@
     padding: 10px;
     color: #333; 
 }*/
-
+/*
 #calendar {
-    width: 850px;
-    margin: 25px;
-}/*
+    width: auto;
+    margin: auto;
+    
+}
 
 h1 {
     color: red;
@@ -39,17 +40,15 @@ p {
 .error {
     color: red;
 }
+*/
 
 
-*/label {
+label {
   display: block;
   font-size: 18px;
   width: 500px;
+  margin: 10px;
 }
-
-/*label + label {
-    margin-top: 10px;
-}*/
 
 input[type=text] {
     width: 350px;
@@ -102,11 +101,8 @@ input[type=submit] {
 
 .post-content {
     margin-top: 5px;
-}/*
+}
 
-
-
-*/
 table {
  
   border-collapse: collapse;
@@ -214,13 +210,15 @@ a {
   color: white;
   
 }
-.navbar-brand {
+.navbar-header .navbar-brand {
     color: white;
+    font-style: italic;
+    
 }
 .navbar .nav > li > a {
-          background-color: red;   
-          color: white;
-        }
+    background-color: red;   
+    color: white;
+}
 
 .navbar .nav > li > a:focus,
     .navbar .nav > li > a:hover {
@@ -234,4 +232,11 @@ a {
 
  background-color: darkred;
  color: white;
+}
+
+#footer {
+    height: 30px;
+    color: lightgrey;
+    background-color: red;
+    margin-top: 10px;
 }
