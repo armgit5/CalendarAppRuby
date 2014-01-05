@@ -1,7 +1,16 @@
-<h1>Edit Page</h1>
-<p>Please fill up your schedule information here</p>
+<!-- / header -->
+<div><%= render 'header' %></div>
 
-<%= link_to "Index", :action => 'index' %>
+<div class="container">
+  <!-- Main component for a primary marketing message or call to action -->
+  <div class="jumbotron">
+    <h1>Edit Page</h1>
+    <p>This example is a quick exercise to illustrate how the default, static and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
+    <p>To see the difference between static and fixed top navbars, just scroll.</p>
+    <p>
+      <a class="btn btn-lg btn-primary" href="http://getbootstrap.com/components/#navbar" role="button">View navbar docs »</a>
+    </p>
+  </div>
 
 <%= form_tag(:action => 'update', :id => @schedule.id) do %>
 
@@ -11,15 +20,15 @@
   </label>
   <label id="company">
     <div>Customer Name</div>
-    <%= collection_select(:schedule, :company_id, @companies, :id, :name, {:prompt=>"Please Select Company"}, {:class=>'e9'}) %> 
+    <%= collection_select(:schedule, :company_id, @companies, :id, :name, {:prompt=>"Please Select Company"}, {:class=>'e9', :style=>"width:350px"}) %> 
   </label>
   <label id="location">
     <div>Customer Location</div>
-      <%= grouped_collection_select :schedule, :location_id, Company.order(:name), :locations, :name, :id, :name, {:prompt=>"Please Select Company"}, {:class=>'e9'} %>
+      <%= grouped_collection_select :schedule, :location_id, Company.order(:name), :locations, :name, :id, :name, {:prompt=>"Please Select Company"}, {:class=>'e9', :style=>"width:350px"} %>
   </label>
   <label>   
     <div>Sales Name</div>
-    <%= collection_select(:schedule, :sale_id, @sale, :id, :name, {:prompt=>"Please Select Company"}, {:class=>'e9'}) %>
+    <%= collection_select(:schedule, :sale_id, @sale, :id, :name, {:prompt=>"Please Select Company"}, {:class=>'e9', :style=>"width:350px"}) %>
   </label>
   <label>
     <div>Project Description</div>
@@ -27,10 +36,12 @@
   </label>
   <div class="error"><%= @error %></div>
   
-  <%= submit_tag('Update Schedule') %>
-  
-  
+  <%= submit_tag('Update Schedule') %> 
 <% end %>
+</div>
+
+<!-- / footer -->
+<div><%= render 'footer' %></div>
   
 <%= javascript_tag do %>  
   <%#*Date picker function%>              

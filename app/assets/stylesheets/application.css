@@ -19,7 +19,7 @@
 /*
 */#calendar {
     height: 100%;
-    margin-top: 55px;
+    margin: auto;
     
 }/*/*
 
@@ -41,6 +41,8 @@ p {
     color: red;
 }
 */
+
+
 
 
 label {
