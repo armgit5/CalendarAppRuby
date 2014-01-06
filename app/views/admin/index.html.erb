@@ -1,47 +1,52 @@
-<h1>Add Companies</h1>
+<!-- / header -->
+<div><%= render 'header' %></div>
 
 
-<%#= stylesheet_link_tag "jquery.datetimepicker", "select2" %>
-<%#= javascript_include_tag "jquery.datetimepicker", "select2" %>
-
-
-
-<p>Please fill up your schedule information here</p>
-
-
-
-<%= form_tag(:action => 'create') do %>
-
-  <label>
-    <div>Add Company</div>
-    <%= text_field(:company, :name, :class => "Company Name") %>
-  </label>
-
-   <%= submit_tag('Create Company') %>
-<% end %>   
-
-
+<div class="container">
+  <!-- Main component for a primary marketing message or call to action -->
+  <div class="jumbotron">
+    <h1>Admin Page</h1>
+    <p>This example is a quick exercise to illustrate how the default, static and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
+    <p>To see the difference between static and fixed top navbars, just scroll.</p>
+    <p>
+      <a class="btn btn-lg btn-primary" href="http://getbootstrap.com/components/#navbar" role="button">View navbar docs »</a>
+    </p>
+  </div><!--/.header-collapse -->
   
-  <table class="list"  summary="Schedule list">
-  <tr class="header">
-    
-    <th>Company Name</th>
-    <th>Location</th>
-    <th>Edit</th>
-    <th>Delete</th>
-  </tr>
-  <% @companies.each do |c| %>
-  <tr>   
-    <td class='normal'><%= c.name %></td>
-    <td class='short'><button type="button" class="btn btn-primary"><%= link_to("Location", {:controller => 'location', :action => 'index', :id => c.id}) %></button></td>
-    <td class='short'><button type="button" class="btn btn-primary"><%= link_to("Edit", {:action => 'edit', :id => c.id}) %></button></td>
-    <td class='short'><button type="button" class="btn btn-primary"><%= link_to("Delete", {:action => 'delete', :id => c.id}) %></button></td>
-  </tr>
-  <% end %>  
+    <%= form_tag(:controller => 'admin', :action => 'create') do %>
+    <label>
+      <div>Customer Name</div>
+     <%= text_field(:company, :name) %>
+    </label>
+    <%= submit_tag('Create Location') %>
+    <% end %>
+  
+  </br>
+  <table class="table table-bordered">
+    <tr class="header">
+      <th>Company Name</th>
+      <th>Location</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+    <% @companies.each do |c| %>
+    <tr>   
+      <td class='normal'><%= c.name %></td>
+      <td class='short'><button type="button" class="btn btn-primary"><%= link_to("Location", {:controller => 'location', :action => 'index', :id => c.id}) %></button></td>
+      <td class='short'><button type="button" class="btn btn-primary"><%= link_to("Edit", {:action => 'edit', :id => c.id}) %></button></td>
+      <td class='short'><button type="button" class="btn btn-primary"><%= link_to("Delete", {:action => 'delete', :id => c.id}) %></button></td>
+    </tr>
+    <% end %>  
   </table>
-
   
-  <div class="error"><%= @error %></div>
+  <div class="apple_pagination">
+    <%= will_paginate @companies %>
+  </div>
+</div>
+
+<!-- / footer -->
+<div><%= render '/register/footer' %></div>
+
   
 
  

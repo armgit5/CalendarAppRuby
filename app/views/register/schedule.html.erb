@@ -12,7 +12,6 @@
     </p>
   </div> 
   <p>Please fill up your schedule information here</p>
-  <form class="form-vertical" role="form">
   <%= form_tag(:action => 'create') do %>
     <label>
       <div>Date & Time</div>
@@ -37,7 +36,6 @@
     <div class="error"><%= @error %></div>
     <%= submit_tag('Create Schedule') %>
   <% end %> 
-  </form>
 </div>
 
 <!-- / footer -->

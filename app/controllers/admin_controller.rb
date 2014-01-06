@@ -1,6 +1,6 @@
 class AdminController < ApplicationController
   def index
-    @companies = Company.all
+    @companies = Company.order('name ASC').paginate(:per_page => 25, :page => params[:page])
   end
   
   def create

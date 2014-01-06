@@ -1,6 +1,16 @@
-<h1>Delete Page</h1>
+<!-- / header -->
+<div><%= render 'header' %></div>
 
-<%= link_to("Index", {:action => 'index'}) %>
+<div class="container">
+  <!-- Main component for a primary marketing message or call to action -->
+  <div class="jumbotron">
+    <h1>Delete Page</h1>
+    <p>This example is a quick exercise to illustrate how the default, static and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
+    <p>To see the difference between static and fixed top navbars, just scroll.</p>
+    <p>
+      <a class="btn btn-lg btn-primary" href="http://getbootstrap.com/components/#navbar" role="button">View navbar docs »</a>
+    </p>
+  </div><!--/.header-collapse -->
 
 
 <%= form_tag(:action => 'destroy', :id => @schedule.id) do %>
@@ -26,3 +36,7 @@
   
 <% end %>
   
+</div>
+
+<!-- / footer -->
+<div><%= render '/register/footer' %></div>
