@@ -6,20 +6,31 @@ class RegisterController < ApplicationController
 #  end
   
   def schedule
-#    @schedule = Schedule.new(:project => "Nilpeter")
     @sale = Sale.all
     @companies = Company.all
     @locations = Location.all
-#    @schedule = Schedule.new
-
   end
   
   def index
     params[:sort] ||= "date"
     params[:direction] ||= "desc"
-    
-    @schedule = Schedule.order(params[:sort] + " " + params[:direction]).search(params[:search]).paginate(:per_page => 25, :page => params[:page])
-#    @schedule = Schedule.all
+    @schedule = Schedule.order(params[:sort] + " " + params[:direction]).search(params[:search]).paginate(:per_page => 25, :page => params[:page])  
+  end
+  
+  def export_csv
+    schedules = Schedule.all
+    csvdata = CSV.generate do |csv|
+      # header row
+      csv << ["Date & Time", "Company", "Company Location", "Sales Name", "Project Description"]
+      schedules.each do |s|
+        if s.location.nil?
+          csv << [s.date, s.company.name, s.sale.name, s.project]
+          else 
+          csv << [s.date, s.company.name, s.location.name, s.sale.name, s.project]
+        end
+      end
+    end
+    send_data(csvdata, :type => 'text/csv', :filename => 'saleapp_export.csv')
   end
 
   def show 

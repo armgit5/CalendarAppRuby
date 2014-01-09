@@ -5,6 +5,7 @@ class Schedule < ActiveRecord::Base
   belongs_to :sale
   
   attr_accessible :sale_id, :company_id, :location_id, :project, :date, :name
+  
   def self.search(search)
     if search
       joins(:company, :sale, :location).where('lower(companies.name) LIKE lower(?) OR lower(sales.name) LIKE lower(?) OR 
@@ -13,5 +14,5 @@ class Schedule < ActiveRecord::Base
       scoped
     end
   end
-
+  
 end

@@ -19,6 +19,8 @@
   </div><!--/.header-collapse -->
   <!--/ flash massages -->
   <div class="notice"><%= flash[:notice] %></div> 
+  
+  <div><button type="button" class="btn pull-right btn-primary"><%= link_to("Export", {:action => 'export_csv'}) %></button></div>
   <!--/ table content -->
   <div id="schedule-table"><%= render 'partial' %></div>
 </div> <!-- /container -->
