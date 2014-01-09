@@ -1,4 +1,5 @@
 ---
+favicon.ico: favicon-cb4f48e4b16baea6c78ac36c89ea66e3.ico
 rails.png: rails-7ad812856c7dc20006d43424bbe57d40.png
 fullcalendar/fullcalendar.min.js: fullcalendar/fullcalendar.min-9826fb5ebfec543690698bbdfc2f74d3.js
 fullcalendar/fullcalendar.print.css: fullcalendar/fullcalendar.print-3ec227e97e005a02da5bad47bd94f75e.css
@@ -9,6 +10,6 @@ jquery.simple-dtpicker.css: jquery.simple-dtpicker-2e9e26cf873df5fb48ebeda1a921f
 jquery.min.js: jquery.min-122b08ac27bb64a471f7cc3999dae87c.js
 jquery.min.map: jquery.min-65a15c9aac52989bb056d466abc85100.map
 application.js: application-7279105a905c5fd6bc28ddbbec927f17.js
-application.css: application-8eed52170b5936e9d901c824d6eacde7.css
+application.css: application-b2c8be29674f11204ed64b577586a7d5.css
 select2.css: select2-7958fde2d888c1557e514188d0ddfe17.css
 select2.js: select2-c6957bd4fd0ea63516fa1411a7c6a706.js
