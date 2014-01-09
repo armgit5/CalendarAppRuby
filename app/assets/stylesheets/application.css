@@ -41,8 +41,6 @@ p {
 }
 */
 
-
-
 label {
   display: block;
   font-size: 18px;
@@ -112,7 +110,7 @@ table {
 table th {
   border: 2px solid black;
   font-weight: bold;
-  background-color: lightcoral;
+  background-color: #FF4D4D;
   height: 35px;
 }
 table th.normal, table td.normal {
@@ -200,10 +198,10 @@ a {
 
 
 .navbar {
-  background-color: red;  
+  background-color: #FF3333;
   background-image: none;
   background-repeat: no-repeat;
-  border-bottom-color: red;
+  border-bottom-color: white;
   filter: none;
   color: white;
   
@@ -211,10 +209,10 @@ a {
 .navbar-header .navbar-brand {
     color: white;
     font-style: italic;
-    
+    background-color: #E60000;
 }
 .navbar .nav > li > a {
-    background-color: red;   
+    background-color: #FF3333;   
     color: white;
 }
 
@@ -235,7 +233,7 @@ a {
 #footer {
     height: 30px;
     color: lightgrey;
-    background-color: red;
+    background-color: #FF3333;
     margin-top: 10px;
 }
 

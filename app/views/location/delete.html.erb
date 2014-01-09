@@ -1,6 +1,11 @@
-<h1>Delete Page</h1>
+<!-- / header -->
+<div><%= render 'header' %></div>
 
-<%= link_to("Index", {:action => 'index'}) %>
+<div class="container">
+  <!-- Main component for a primary marketing message or call to action -->
+  <div class="jumbotron">
+    <h1>Edit Location Page</h1>
+  </div><!--/.header-collapse -->
 
 
 <%= form_tag(:action => 'destroy', :id => @location.id) do %>
@@ -19,4 +24,8 @@
   
   
 <% end %>
+
+</div>
   
+<!-- / footer -->
+<div><%= render '/register/footer' %></div>
