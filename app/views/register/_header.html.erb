@@ -1,5 +1,7 @@
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  
   <div class="container">
+    
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
@@ -17,10 +19,12 @@
         <%= content_tag(:li, link_to("Table", :controller => "register", :action => 'index'), :class => ("active" if current_page? controller: 'register'or 
               current_page?(controller: 'register', action: 'edit') or current_page?(controller: 'register', action: 'delete') ) ) %>
       </ul>
+      <p class="navbar-text">Sales Visit Schedule</p>
       <ul class="nav navbar-nav navbar-right">
          <%= content_tag(:li, link_to("Admin", :controller => 'admin', :action => 'index'), :class => ("active" if current_page? "/admin") )  %>
        </ul>
     </div>
+    
     
   </div>
 </div><!--/.nav-collapse -->

@@ -204,12 +204,19 @@ a {
   color: white;
   
 }
+
+
 .navbar-header .navbar-brand {
     color: white;
     font-style: italic;
     background-color: #E60000;
 }
 .navbar .nav > li > a {
+    background-color: #FF3333;   
+    color: white;
+}
+
+.container > .collapse .navbar-collapse > .navbar-text {
     background-color: #FF3333;   
     color: white;
 }
@@ -228,12 +235,17 @@ a {
  color: white;
 }
 
+.container .navbar-text{
+    color: white;  
+    position:absolute;
+    left:50%;
+    text-align: center;
+}
+
 #footer {
     height: 30px;
     color: lightgrey;
     background-color: #FF3333;
     margin-top: 10px;
 }
-
-
 
