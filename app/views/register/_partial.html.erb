@@ -4,6 +4,7 @@
     <th><%= sortable("Company", "company") %></th>
     <th>Company Location</th>
     <th>Sales Name</th>
+    <th>Products</th>
     <th>Project Description</th>
     <th>Edit</th>
     <th>Delete</th>
@@ -14,6 +15,11 @@
     <td class='normal'><%= s.company.name unless s.company.nil? %></td>
     <td class='normal'><%= s.location.name unless s.location.nil? %></td>
     <td class='normal'><%= s.sale.name unless s.sale.nil? %></td>
+    <td class='normal'><% s.products.each do |i| %>
+    <%= i.name %>
+      <br/>  
+    <% end %>
+    </td>
     <td class='long'><%= s.project %></td>
     <td class='short'><button type="button" class="btn btn-primary"><%= link_to("Edit", {:action => 'edit', :id => s.id}) %></button></td>
     <td class='short'><button type="button" class="btn btn-primary"><%= link_to("Delete", {:action => 'delete', :id => s.id}) %></button></td>

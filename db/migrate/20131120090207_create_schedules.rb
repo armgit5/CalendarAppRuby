@@ -1,5 +1,5 @@
 class CreateSchedules < ActiveRecord::Migration
-  def up
+  def change
     create_table :schedules do |t|  
         t.text :project
         t.datetime :date
@@ -10,10 +10,6 @@ class CreateSchedules < ActiveRecord::Migration
         # of when movies are added or modified:
         t.timestamps
       end 
-  end
-
-  def down
-    drop_table :schedules
   end
  
 end

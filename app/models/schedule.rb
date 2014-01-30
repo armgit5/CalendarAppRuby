@@ -3,8 +3,11 @@ class Schedule < ActiveRecord::Base
   belongs_to :company
   belongs_to :location
   belongs_to :sale
+
+  has_many :categorizations
+  has_many :products, through: :categorizations
   
-  attr_accessible :sale_id, :company_id, :location_id, :project, :date, :name
+  attr_accessible :sale_id, :company_id, :location_id, :project, :date, :name, :product_id
   
   def self.search(search)
     if search

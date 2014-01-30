@@ -47,8 +47,25 @@
 
 require 'csv'
 
+puts "Importing types..."
+CSV.foreach(Rails.root.join("csvdb/types.csv"), headers: true) do |row|
+  Type.create! do |t|
+    t.id = row[0]
+    t.name = row[1]
+  end
+end
+
+puts "Importing products..."
+CSV.foreach(Rails.root.join("csvdb/products.csv"), headers: true) do |row|
+  Product.create! do |p|
+    p.id = row[0]
+    p.type_id = row[1]
+    p.name = row[2]
+  end
+end
+
 puts "Importing sales..."
-CSV.foreach(Rails.root.join("sales.csv"), headers: true) do |row|
+CSV.foreach(Rails.root.join("csvdb/sales.csv"), headers: true) do |row|
   Sale.create! do |sale|
     sale.id = row[0]
     sale.name = row[1]
@@ -56,7 +73,7 @@ CSV.foreach(Rails.root.join("sales.csv"), headers: true) do |row|
 end
 
 puts "Importing companies..."
-CSV.foreach(Rails.root.join("companies.csv"), headers: true) do |row|
+CSV.foreach(Rails.root.join("csvdb/companies.csv"), headers: true) do |row|
   Company.create! do |company|
     company.id = row[0]
     company.name = row[1]
@@ -64,7 +81,7 @@ CSV.foreach(Rails.root.join("companies.csv"), headers: true) do |row|
 end
 
 puts "Importing locations..."
-CSV.foreach(Rails.root.join("locations.csv"), headers: true) do |row|
+CSV.foreach(Rails.root.join("csvdb/locations.csv"), headers: true) do |row|
   Location.create! do |location|
     location.id = row[0]
     location.company_id = row[1]
@@ -73,7 +90,7 @@ CSV.foreach(Rails.root.join("locations.csv"), headers: true) do |row|
 end
 
 puts "Importing schedules..."
-CSV.foreach(Rails.root.join("schedules.csv"), headers: true) do |row|
+CSV.foreach(Rails.root.join("csvdb/schedules.csv"), headers: true) do |row|
   Schedule.create! do |schedule|
     schedule.id = row[0]
     schedule.project = row[1]

@@ -24,6 +24,23 @@
       <div>Sales Name</div>
       <%= collection_select(:schedule, :sale_id, @sale, :id, :name, {:prompt=>"Please Select Company"}, {:class=>'e9', :style=>"width:350px"}) %>
     </label>
+  
+  <div><b>Nilpeter Products</b></div>
+    <div class="field">
+    <% @nilpeter_products.each do |category| %>
+      <%= check_box_tag('products[]', category.id) %>
+      <%= category.name %><br>
+    <% end %>
+    </div>
+  
+  <div><b>Meech Products</b></div>
+    <div class="field">
+    <% @meech_products.each do |category| %>
+      <%= check_box_tag('products[]', category.id) %>
+      <%= category.name %><br>
+    <% end %>
+    </div>
+  
     <label>
       <div>Project Description</div>
       <%= text_area(:schedule, :project) %>
@@ -33,8 +50,12 @@
   <% end %> 
 </div>
 
+
+
 <!-- / footer -->
 <div><%= render 'footer' %></div>
+
+
   
 <%= javascript_tag do %>  
   <%#*Date picker function%>              

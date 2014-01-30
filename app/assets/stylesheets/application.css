@@ -249,3 +249,6 @@ a {
     margin-top: 10px;
 }
 
+label.checkbox-inline {
+    width: 75px;
+}

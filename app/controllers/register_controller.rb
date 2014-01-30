@@ -9,12 +9,17 @@ class RegisterController < ApplicationController
     @sale = Sale.all
     @companies = Company.all
     @locations = Location.all
+    
+    @nilpeter_products = Product.where(:type_id => 1)
+    @meech_products = Product.where(:type_id => 2)
   end
   
   def index
     params[:sort] ||= "date"
     params[:direction] ||= "desc"
     @schedule = Schedule.order(params[:sort] + " " + params[:direction]).search(params[:search]).paginate(:per_page => 25, :page => params[:page])  
+    @nilpeter_products = Product.where(:type_id => 1)
+    @meech_products = Product.where(:type_id => 2)
   end
   
   def export_csv
@@ -65,13 +70,13 @@ class RegisterController < ApplicationController
   
   def create
     @schedule = Schedule.create!(params[:schedule])
+    @schedule.product_ids = params[:products]
     flash[:notice] = "#{@schedule.project} was successfully created."
     redirect_to(:action => "index")
   end
   
   def calendar
     @schedule = Schedule.all
-#    @front_men = ['David St. Hubbins', 'David Lee Roth']
   end
   
   
