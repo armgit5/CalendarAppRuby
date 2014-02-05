@@ -5,13 +5,18 @@ class RegisterController < ApplicationController
 #    # will render app/views/movies/show.<extension> by default
 #  end
   
+  http_basic_authenticate_with :name => "sales", :password => "npasia"
+  
+  
+  
   def schedule
     @sale = Sale.all
     @companies = Company.all
     @locations = Location.all
     
     @nilpeter_products = Product.where(:type_id => 1)
-    @meech_products = Product.where(:type_id => 2)
+    @oem1 = Product.where(:type_id => 2).limit(6)
+    @oem2 = Product.where(:type_id => 2).last(5)
   end
   
   def index
@@ -47,11 +52,16 @@ class RegisterController < ApplicationController
     @sale = Sale.all
     @companies = Company.all
     @locations = Location.all
+    
+    @nilpeter_products = Product.where(:type_id => 1)
+    @oem1 = Product.where(:type_id => 2).limit(6)
+    @oem2 = Product.where(:type_id => 2).last(5)
   end
   
   def update
     @schedule = Schedule.find(params[:id])
     @schedule.update_attributes!(params[:schedule])
+    @schedule.product_ids = params[:products]
     flash[:notice] = "#{@schedule.project} was successfully updated."
 #    redirect_to(:action => "show", :id => @schedule.id)
     redirect_to(:action => "index")

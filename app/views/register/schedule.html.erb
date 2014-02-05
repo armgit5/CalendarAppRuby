@@ -25,21 +25,42 @@
       <%= collection_select(:schedule, :sale_id, @sale, :id, :name, {:prompt=>"Please Select Company"}, {:class=>'e9', :style=>"width:350px"}) %>
     </label>
   
+  
+  <div class="checkbox-inline">
   <div><b>Nilpeter Products</b></div>
     <div class="field">
     <% @nilpeter_products.each do |category| %>
-      <%= check_box_tag('products[]', category.id) %>
-      <%= category.name %><br>
+      <%= check_box_tag('products[]', category.id, false, id: dom_id(category)) %>
+      <%= category.name %><br/>
     <% end %>
     </div>
+  </div>
   
-  <div><b>Meech Products</b></div>
+  </br>
+  
+  
+  <div class="checkbox-inline">
+  <div><b>OEM Products</b></div>
     <div class="field">
-    <% @meech_products.each do |category| %>
+    <% @oem1.each do |category| %>
       <%= check_box_tag('products[]', category.id) %>
       <%= category.name %><br>
     <% end %>
     </div>
+  </div>
+  
+  <div class="checkbox-inline">
+    </br>
+    <div class="field">
+    <% @oem2.each do |category| %>
+      <%= check_box_tag('products[]', category.id) %>
+      <%= category.name %><br>
+    <% end %>
+    </div>
+  </div>
+  
+ 
+  
   
     <label>
       <div>Project Description</div>

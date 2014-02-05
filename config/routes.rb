@@ -3,6 +3,7 @@ NilpeterWeb::Application.routes.draw do
 
   get "admin/index"
   
+  
 #  get "register/schedule"
   # The priority is based upon order of creation:
   # first created -> highest priority.
