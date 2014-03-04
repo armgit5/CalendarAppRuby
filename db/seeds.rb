@@ -101,6 +101,26 @@ CSV.foreach(Rails.root.join("csvdb/schedules.csv"), headers: true) do |row|
   end
 end
 
+puts "Importing pendings..."
+CSV.foreach(Rails.root.join("csvdb/hotlists/pendings.csv"), headers: true) do |row|
+  Pending.create! do |p|
+    p.id = row[0]
+    p.date = row[1]
+    p.company_id = row[2]
+    p.project = row[3]
+    p.sale_id = row[4]
+    p.status_id = row[5]
+  end
+end
+
+puts "Importing statuses..."
+CSV.foreach(Rails.root.join("csvdb/hotlists/statuses.csv"), headers: true) do |row|
+  Status.create! do |s|
+    s.id = row[0]
+    s.name = row[1]
+  end
+end
+
 ActiveRecord::Base.connection.tables.each do |t|
   ActiveRecord::Base.connection.reset_pk_sequence!(t)
 end;nil

@@ -18,7 +18,7 @@
         <%= content_tag(:li, link_to("Schedule", :controller => "register", :action => 'schedule'), :class => ("active" if current_page? "/register/schedule") ) %>
         <%= content_tag(:li, link_to("Table", :controller => "register", :action => 'index'), :class => ("active" if current_page? controller: 'register'or 
               current_page?(controller: 'register', action: 'edit') or current_page?(controller: 'register', action: 'delete') ) ) %>
-        <%= content_tag(:li, link_to("Hotlists", :controller => "hotlists", :action => 'index'), :class => ("active" if current_page? "/hotlists/index") ) %>
+        <%= content_tag(:li, link_to("Hotlists", :controller => "hotlists", :action => 'index'), :class => ("active" if current_page? "/hotlists") ) %>
         
       </ul>
       <p class="navbar-text">Sales Visit Schedule</p>

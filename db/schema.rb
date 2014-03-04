@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140130041136) do
+ActiveRecord::Schema.define(:version => 20140207053822) do
 
   create_table "categorizations", :force => true do |t|
     t.integer  "product_id"
@@ -29,6 +29,16 @@ ActiveRecord::Schema.define(:version => 20140130041136) do
   create_table "locations", :force => true do |t|
     t.integer  "company_id"
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "pendings", :force => true do |t|
+    t.datetime "date"
+    t.integer  "company_id"
+    t.text     "project"
+    t.integer  "sale_id"
+    t.integer  "status_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -52,6 +62,12 @@ ActiveRecord::Schema.define(:version => 20140130041136) do
     t.integer  "company_id"
     t.integer  "sale_id"
     t.integer  "location_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "statuses", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

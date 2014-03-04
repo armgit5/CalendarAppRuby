@@ -1,0 +1,40 @@
+
+<!-- / header -->
+<div><%= render 'header' %></div>
+
+<div class="container">
+  <!-- Main component for a primary marketing message or call to action -->
+  <div class="jumbotron">
+    <h1>Table Page</h1>
+  </div><!--/.header-collapse -->
+  <!--/ flash massages -->
+  <div class="notice"><%= flash[:notice] %></div> 
+  <!--/ table content -->
+  <table class="table table-bordered" >
+  <tr class="header">   
+    <th>Date & Time</th>
+    <th>Companies</th>
+    <th>Project Description</th>
+    <th>Sales</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+  <% @pendings.each do |p| %>
+  <tr>   
+    <td class='normal'><%= p.date %></td>
+    <td class='normal'><%= p.company.name unless p.company.nil? %></td>
+    <td class='long'><%= p.project %></td>
+    <td class='normal'><%= p.sale.name unless p.sale.nil? %></td>
+    <td class='short'><button type="button" class="btn btn-primary"><%= link_to("Edit", {:action => 'edit', :id => p.id}) %></button></td>
+    <td class='short'><button type="button" class="btn btn-primary"><%= link_to("Delete", {:action => 'delete', :id => p.id}) %></button></td>
+  </tr>
+  <% end %>  
+</table>
+
+ <%#*<div class="apple_pagination">%>
+    <%#= will_paginate @pendings %>
+<%#*</div>%>
+</div> <!-- /container -->
+
+<!-- / footer -->
+<div><%= render 'hotlists/footer' %></div>

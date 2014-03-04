@@ -1,0 +1,52 @@
+<!-- / header -->
+<div><%= render 'header' %></div>
+
+<div class="container">
+  <!-- Main component for a primary marketing message or call to action -->
+  <div class="jumbotron">
+    <h1>Add Pending Page</h1>
+  </div> 
+  <p class="instruction">Please fill up your schedule information here</p>
+  <%= form_tag(:action => 'create') do %>
+    <label>
+      <div>Date & Time</div>
+      <%= text_field(:pending, :date, :class => "datetimepicker") %>
+    </label>
+    <label id="company">
+      <div>Customer Name</div>
+      <%= collection_select(:pending, :company_id, @companies, :id, :name, {:prompt=>"Please Select Company"}, {:class=>'e9', :style=>"width:350px"}) %> 
+    </label>    
+    <label>   
+      <div>Sales Name</div>
+      <%= collection_select(:pending, :sale_id, @sale, :id, :name, {:prompt=>"Please Select Sales Name"}, {:class=>'e9', :style=>"width:350px"}) %>
+    </label>
+    <label>
+      <div>Status</div>
+      <%= collection_select(:pending, :status_id, @statuses, :id, :status, {:prompt=>"Please Select Status"}, {:class=>'e9', :style=>"width:350px"}) %>
+    </label>
+    <label>
+      <div>Project Description</div>
+      <%= text_area(:pending, :project) %>
+    </label>
+    <%= submit_tag('Create Schedule') %>
+  <% end %> 
+</div>
+
+<!-- / footer -->
+<div><%= render 'hotlists/footer' %></div>
+  
+<%= javascript_tag do %>  
+  <%#*Date picker function%>              
+  $(function(){
+      $('.datetimepicker').datetimepicker({
+        format:'d/m/Y H:i'
+      });
+  });
+  <%#*This is for select box%>
+  $(document).ready(function() { 
+      $(".e9").select2(); 
+  });
+<% end %>
+  
+  
+	
