@@ -9,6 +9,14 @@
   </div><!--/.header-collapse -->
   <!--/ flash massages -->
   <div class="notice"><%= flash[:notice] %></div> 
+  
+  <ul class="nav nav-tabs">
+    <%= content_tag(:li, link_to("Hotlists", :controller => "hotlists", :action => 'index'), 
+      :class => ("inactive" if current_page? "/pending")) %>
+    <%= content_tag(:li, link_to("Pending", :controller => 'pending', :action => 'index'), 
+      :class => ("active" if current_page? "/pending")) %>  
+  </ul>
+  
   <!--/ table content -->
   <table class="table table-bordered" >
   <tr class="header">   
@@ -27,8 +35,8 @@
     <td class='long'><%= p.project %></td>
     <td class='normal'><%= p.sale.name unless p.sale.nil? %></td>
     <td class='normal'><%= p.status.name unless p.status.nil? %></td>
-    <td class='short'><button type="button" class="btn btn-primary"><%= link_to("Edit", {:action => 'edit', :id => p.id}) %></button></td>
-    <td class='short'><button type="button" class="btn btn-primary"><%= link_to("Delete", {:action => 'delete', :id => p.id}) %></button></td>
+    <td class='short'><button type="button" class="btn btn-primary"><%= link_to("Edit", {:action => 'edit_pending', :id => p.id}) %></button></td>
+    <td class='short'><button type="button" class="btn btn-primary"><%= link_to("Delete", {:action => 'delete_pending', :id => p.id}) %></button></td>
   </tr>
   <% end %>  
 </table>
@@ -36,7 +44,8 @@
  <%#*<div class="apple_pagination">%>
     <%#= will_paginate @pendings %>
 <%#*</div>%>
+  
+  <!-- / footer -->
+<div><%= render 'hotlists/footer' %></div>
 </div> <!-- /container -->
 
-<!-- / footer -->
-<div><%= render 'hotlists/footer' %></div>

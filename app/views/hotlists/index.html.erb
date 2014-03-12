@@ -5,19 +5,25 @@
 <div class="container">
   <!-- Main component for a primary marketing message or call to action -->
   <div class="jumbotron">
-    <h1>Table Page</h1>
+    <h1>Hotlists Page</h1>
   </div><!--/.header-collapse -->
   <!--/ flash massages -->
   <div class="notice"><%= flash[:notice] %></div>
   
+  <ul class="nav nav-tabs">
+    <%= content_tag(:li, link_to("Hotlists", :controller => "hotlists", :action => 'index'), 
+      :class => ("active" if current_page? "/hotlists") ) %>
+    <%= content_tag(:li, link_to("Pending", :controller => 'pending', :action => 'index'), 
+      :class => ("inactive" if current_page? "/hotlists") ) %>  
+  </ul>
+
   
   <!--/ table content -->
-  <table class="table table-bordered" >
   
+  <table class="table table-bordered one" >
   <thead>
     <tr>
-      <th colspan="4">Pending</th>
-      <th colspan="4">Order</th>
+      <th colspan="4">Pending</th>  
     </tr>
   </thead>
   <tbody>  
@@ -26,21 +32,46 @@
     <td>Company</td>
     <td>Project</th>
     <td>Sales Name</th>
+    </tr>  
+    <% @pendings.each do |p| %>
+   <tr>   
+    <td class='normal'><%= p.date %></td>
+    <td class='normal'><%= p.company.name unless p.company.nil? %></td>
+    <td class='normal'><%= p.project %></td>    
+    <td class='normal'><%= p.sale.name unless p.sale.nil? %></td>
+  <% end %>    
+  </tbody> 
+  </table>
+
+  
+   <table class="table table-bordered two" >
+  <thead>
+    <tr>
+      <th colspan="4">Order</th>
+    </tr>
+  </thead>
+  <tbody>  
+    <tr class="header">
     <td>Date & Time</td>
     <td>Company</td>
     <td>Project</td>
     <td>Sales Name</td>
+    </tr>    
+    <% @orders.each do |o| %>    
+    <td class='normal'><%= o.date %></td>
+    <td class='normal'><%= o.company.name unless o.company.nil? %></td>
+    <td class='normal'><%= o.project %></td>    
+    <td class='normal'><%= o.sale.name unless o.sale.nil? %></td>
     </tr>
+  <% end %> 
   </tbody>
   
   </table>
- 
   
-  
-  
-</div> <!-- /container -->
-
-<!-- / footer -->
+  <!-- / footer -->
 <div><%= render 'footer' %></div>
+</div>
+
+
 
 

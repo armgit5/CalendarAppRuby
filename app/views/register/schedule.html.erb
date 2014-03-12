@@ -6,7 +6,11 @@
   <div class="jumbotron">
     <h1>Sales Visit Schedule Page</h1>
   </div> 
-  <p class="instruction">Please fill up your schedule information here</p>
+  
+  
+  <div id="schedule-form">
+    
+    <p class="instruction">Please fill up your schedule information here</p>
   <%= form_tag(:action => 'create') do %>
     <label>
       <div>Date & Time</div>
@@ -69,12 +73,15 @@
     <div class="error"><%= @error %></div>
     <%= submit_tag('Create Schedule') %>
   <% end %> 
+  </div>
+    
+    <!-- / footer -->
+<div><%= render 'footer' %></div>
 </div>
 
 
 
-<!-- / footer -->
-<div><%= render 'footer' %></div>
+
 
 
   

@@ -1,4 +1,3 @@
-
 <!-- / header -->
 <div><%= render 'header' %></div>
 
@@ -7,34 +6,51 @@
   <div class="jumbotron">
     <h1>Table Page</h1>
   </div><!--/.header-collapse -->
-  <!--/ flash massages -->
-  <div class="notice"><%= flash[:notice] %></div> 
-  <!--/ table content -->
-  <table class="table table-bordered" >
-  <tr class="header">   
-    <th>Date & Time</th>
-    <th>Companies</th>
-    <th>Project Description</th>
-    <th>Sales</th>
-    <th>Edit</th>
-    <th>Delete</th>
-  </tr>
-  <% @pendings.each do |p| %>
-  <tr>   
-    <td class='normal'><%= p.date %></td>
-    <td class='normal'><%= p.company.name unless p.company.nil? %></td>
-    <td class='long'><%= p.project %></td>
-    <td class='normal'><%= p.sale.name unless p.sale.nil? %></td>
-    <td class='short'><button type="button" class="btn btn-primary"><%= link_to("Edit", {:action => 'edit', :id => p.id}) %></button></td>
-    <td class='short'><button type="button" class="btn btn-primary"><%= link_to("Delete", {:action => 'delete', :id => p.id}) %></button></td>
-  </tr>
-  <% end %>  
-</table>
-
- <%#*<div class="apple_pagination">%>
-    <%#= will_paginate @pendings %>
-<%#*</div>%>
+  
+ <%= form_tag(:action => 'update', :id => @pending.id) do %>
+    <%#= hidden_field :pending, :updated_at => Time.now %>
+  <label>
+    <div>Date & Time</div>
+    <%= text_field(:pending, :date, :class => "datetimepicker") %>
+  </label>
+  <label id="company">
+    <div>Customer Name</div>
+    <%= collection_select(:pending, :company_id, @companies, :id, :name, {:prompt=>"Please Select Company"}, {:class=>'e9', :style=>"width:350px"}) %> 
+  </label>
+  <label>   
+    <div>Sales Name</div>
+    <%= collection_select(:pending, :sale_id, @sale, :id, :name, {:prompt=>"Please Select Company"}, {:class=>'e9', :style=>"width:350px"}) %>
+  </label>
+  <label>
+      <div>Status</div>
+      <%= collection_select(:pending, :status_id, @statuses, :id, :name, {:prompt=>"Please Select Status"}, {:class=>'e9', :style=>"width:350px"}) %>
+    </label>
+  
+  <label>
+    <div>Project Description</div>
+    <%= text_area(:pending, :project) %>
+  </label>
+  <div class="error"><%= @error %></div>
+  
+  <%= submit_tag('Update Pending') %> 
+<% end %>
+  
 </div> <!-- /container -->
 
 <!-- / footer -->
 <div><%= render 'hotlists/footer' %></div>
+
+
+
+<%= javascript_tag do %>  
+  <%#*Date picker function%>              
+  $(function(){
+      $('.datetimepicker').datetimepicker({
+        format:'d/m/Y H:i'
+      });
+  });
+  <%#*This is for select box%>
+  $(document).ready(function() { 
+      $(".e9").select2(); 
+  });
+<% end %>

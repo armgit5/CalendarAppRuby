@@ -104,18 +104,21 @@ table {
   border-collapse: collapse;
   width: 100%;
   border-bottom: 2px solid black;
+  
 }
 table th {
   border: 2px solid black;
   font-weight: bold;
   background-color: #FF4D4D;
   height: 35px;
+  border-radius: 10px;
 }
 table th.normal, table td.normal {
   padding: 4px;
   width: 15%;
   text-align: left;
   border: 1px solid black;
+  
 }
 
 table th.long, table td.long {
@@ -195,6 +198,22 @@ a {
 }
 
 
+/*hotlist inactive bars*/
+.nav-tabs  li.active  a,
+.nav-tabs  li.active  a:hover,
+.nav-tabs  li.active  a:focus{
+            color: white;
+            background-color: #E60000;
+} 
+
+.nav-tabs  li.inactive  a,
+.nav-tabs  li.inactive  a:hover,
+.nav-tabs  li.inactive  a:focus{
+            color: #555555;
+            background-color: #DDDDDD;
+} 
+
+
 .navbar {
   background-color: #FF3333;
   background-image: none;
@@ -202,9 +221,7 @@ a {
   border-bottom-color: white;
   filter: none;
   color: white;
-  
 }
-
 
 .navbar-header .navbar-brand {
     color: white;
@@ -218,7 +235,7 @@ a {
 
 .container > .collapse .navbar-collapse > .navbar-text {
     background-color: #FF3333;   
-    color: white;
+    color: white; 
 }
 
 .navbar .nav > li > a:focus,
@@ -238,15 +255,18 @@ a {
 .container .navbar-text{
     color: white;  
     position:absolute;
-    left:50%;
+    left:55%;
     text-align: center;
 }
-
+          
 #footer {
     height: 30px;
     color: lightgrey;
     background-color: #FF3333;
     margin-top: 10px;
+    clear: both;
+    border-radius: 15px;
+    bottom: 0px;
 }
 
 .checkbox-inline {
@@ -254,4 +274,30 @@ a {
     vertical-align: text-top;
     margin-right: 10px;
     
+}
+
+.one {
+    float: left;
+    width: 50%;
+}
+.two {
+   float: right;
+    width: 50%;
+}
+
+.btn-primary {
+    background-color: lightsteelblue;
+}
+
+.export {
+    margin-right: 1%;
+    margin-bottom: 10px;
+}
+
+#calendar table th{
+    border-radius: 5px;
+}
+
+#schedule-form {
+    margin-left: 3%;
 }

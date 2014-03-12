@@ -20,13 +20,14 @@
   <!--/ flash massages -->
   <div class="notice"><%= flash[:notice] %></div> 
   
-  <div><button type="button" class="btn pull-right btn-primary"><%= link_to("Export", {:action => 'export_csv'}) %></button></div>
+  <div><button type="button" class="btn pull-right btn-primary export"><%= link_to("Export", {:action => 'export_csv'}) %></button></div>
   <!--/ table content -->
   <div id="schedule-table"><%= render 'partial' %></div>
+  <!-- / footer -->
+<div><%= render 'footer' %></div>
+
 </div> <!-- /container -->
 
-<!-- / footer -->
-<div><%= render 'footer' %></div>
 
 
 <!-- / javascript -->
