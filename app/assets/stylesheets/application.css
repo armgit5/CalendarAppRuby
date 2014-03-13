@@ -301,3 +301,12 @@ a {
 #schedule-form {
     margin-left: 3%;
 }
+
+.error {
+    color: red;
+    font-size: 9pt;
+}
+
+.e9 {
+    font-size: 12pt;
+}
