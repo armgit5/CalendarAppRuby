@@ -28,7 +28,7 @@
 
 </div> <!-- /container -->
 
-
+<div><%= render 'hover' %></div>
 
 <!-- / javascript -->
 <%= javascript_tag do %>
@@ -41,5 +41,6 @@
       $.get($("#products_search").attr("action"), $("#products_search").serialize(), null, "script");
     return false;
     });
+   
   });  
 <% end %>

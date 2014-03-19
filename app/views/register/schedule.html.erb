@@ -49,7 +49,6 @@
 
   </br>
 
-
   <div class="checkbox-inline">
   <div><b>OEM Products</b></div>
     <div class="field">
@@ -73,14 +72,15 @@
  
   
   
-    <label for="cproject">
+  <label class="blink">
       <div>Project Description</div>
-      <%= text_area(:schedule, :project, :id => "cproject", :required => true) %>
+      <%= text_area(:schedule, :project, :required => true) %>
    </label>
-
+  
     <%= submit_tag('Create Schedule') %>
   
    </fieldset>
+    
   <% end %> 
   </div>
     
@@ -88,14 +88,94 @@
 <div><%= render 'footer' %></div>
 </div>
 
+<div><%= render 'hover' %></div>
+
+
+
 <%= javascript_tag do %>  
+
+<%#*http://jsfiddle.net/Sk8erPeter/Yca4Z/%>
+(function($) {
+    $.fn.blink = function(options) {
+        
+
+        return this.each(function() {
+            var obj = $(this);
+            
+                if ($(obj).css("visibility") == "visible") {
+                    $(obj).css('visibility', 'hidden');
+                }
+                else {
+                    $(obj).css('visibility', 'visible');
+                }
+            
+        });
+    }
+}(jQuery)) 
+
+
   $(document).ready(function () { 
+  
+    
+    
     $('.datetimepicker').datetimepicker({
         format:'d/m/Y H:i'
      });
     $(".e9").select2(); 
     $("#commentForm").validate();
+    
+    
+    $.ionSound({
+            sounds: [
+                "explosion",
+                "missile",
+                "5323deda0e35b",
+                "5323e33d4ac1e",
+                "5323ebdfedd7c",
+                "1513616",
+                "1530346"
+            ],
+            <%#*path: "http://www.fromtexttospeech.com/texttospeech_output_files/0851407001394869628/",%>
+            path: "http://k007.kiwi6.com/hotlink/7zp3wj4k6i/",
+            multiPlay: true,
+            volume: "1.0"
+        });
+    
+   
+      var x = 0;
+      var intervalID = setInterval(function(){
+            // method to be executed;
+            // $.ionSound.play("explosion"); 
+            if ($('label.error').length > 0) {
+                $.ionSound.play("1530346"); 
+                speech();
+                if (++x === 1) {
+                    window.clearInterval(intervalID);
+                }
+            }   
+      },1000);
+
+      
+      setInterval(function () {
+         // Your logic here
+         $('label.error').blink();    
+      }, 500);
+ 
+      function speech() { 
+            setInterval(function () {
+               // Your logic here
+                if ($('label.error').length > 0) {
+                      $.ionSound.play("1530346");   
+                }
+            }, 7000);
+      } 
+    
+    
+
   });
+  
+ 
+
 <% end %>
   
   
