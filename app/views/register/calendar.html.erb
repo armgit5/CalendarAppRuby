@@ -41,7 +41,7 @@
 			events: [
                                 <% @schedule.each do |s| %>
 				{
-					title: '<%= s.company.name + " : " + s.sale.name unless s.company.nil? or s.location.nil? %>',
+					title: '<%= s.company.name + " : " + s.sale.name unless s.company.nil? %>',
 					start: new Date(<%= s.date.strftime("%Y, %m - 1, %d, %H, %M") %>),
                                         allDay: false
 				},
@@ -63,6 +63,20 @@
                    <%#*alert("The view's title is " + view.start);%>
                <%#*});%> 
                
+                
+                 $.ionSound({
+                    sounds: [
+                        "calendar"
+                    ],
+                  
+                    path: "http://k007.kiwi6.com/hotlink/jerymfm7jb/",
+                    multiPlay: true,
+                    volume: "1.0"
+                    
+                });
+                
+                $.ionSound.play("calendar");
+    
 	});     
 <% end %>
   

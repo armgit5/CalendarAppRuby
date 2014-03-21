@@ -35,10 +35,10 @@
     </tr>  
     <% @pendings.each do |p| %>
    <tr>   
-    <td class='normal'><%= p.date %></td>
-    <td class='normal'><%= p.company.name unless p.company.nil? %></td>
-    <td class='normal'><%= p.project %></td>    
-    <td class='normal'><%= p.sale.name unless p.sale.nil? %></td>
+    <td class='normal burning'><%= p.date %></td>
+    <td class='normal burning'><%= p.company.name unless p.company.nil? %></td>
+    <td class='normal burning'><%= p.project %></td>    
+    <td class='normal burning'><%= p.sale.name unless p.sale.nil? %></td>
   <% end %>    
   </tbody> 
   </table>
@@ -72,8 +72,16 @@
 <div><%= render 'footer' %></div>
 </div>
 
-
 <div><%= render 'hover' %></div>
+
+
+<%= javascript_tag do %>
+
+  $(document).ready(function() {
+      $('.burning').burn();
+  });
+
+<% end %>
 
 
 

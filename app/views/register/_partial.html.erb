@@ -3,7 +3,7 @@
     <th><%= sortable("Date & Time", "date") %></th>
     <th><%= sortable("Company", "company") %></th>
     <th>Company Location</th>
-    <th>Sales Name</th>
+    <th>Sales</th>
     <th>Products</th>
     <th>Project Description</th>
     <th>Edit</th>
@@ -11,10 +11,10 @@
   </tr>
   <% @schedule.each do |s| %>
   <tr>   
-    <td class='normal'><%= s.date %></td>
+    <td class='normal'><%= s.date.strftime("%d/%m/%Y, %H:%M") %></td>
     <td class='normal'><%= s.company.name unless s.company.nil? %></td>
-    <td class='normal'><%= s.location.name unless s.location.nil? %></td>
-    <td class='normal'><%= s.sale.name unless s.sale.nil? %></td>
+    <td class='long'><%= s.location.name unless s.location.nil? %></td>
+    <td class='short'><%= s.sale.name unless s.sale.nil? %></td>
     <td class='normal'><% s.products.each do |i| %>
     <%= i.name %>
       <br/>  

@@ -41,6 +41,19 @@
       $.get($("#products_search").attr("action"), $("#products_search").serialize(), null, "script");
     return false;
     });
+    
+     $.ionSound({
+                    sounds: [
+                        "table"
+                    ],
+                  
+                    path: "http://k007.kiwi6.com/hotlink/iho1yhka0o/",
+                    multiPlay: true,
+                    volume: "1.0"
+                    
+                });
+                
+                $.ionSound.play("table");
    
   });  
 <% end %>

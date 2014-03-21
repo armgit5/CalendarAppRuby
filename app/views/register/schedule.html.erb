@@ -125,14 +125,23 @@
     $("#commentForm").validate();
     
     
+     $.ionSound({
+                    sounds: [
+                        "schedule"
+                    ],
+                  
+                    path: "http://k007.kiwi6.com/hotlink/pxc891oxo6/",
+                    multiPlay: true,
+                    volume: "1.0"
+                    
+                });
+                
+                $.ionSound.play("schedule");
+    
+    
     $.ionSound({
             sounds: [
-                "explosion",
-                "missile",
-                "5323deda0e35b",
-                "5323e33d4ac1e",
-                "5323ebdfedd7c",
-                "1513616",
+               
                 "1530346"
             ],
             <%#*path: "http://www.fromtexttospeech.com/texttospeech_output_files/0851407001394869628/",%>
@@ -141,6 +150,7 @@
             volume: "1.0"
         });
     
+        
    
       var x = 0;
       var intervalID = setInterval(function(){
@@ -167,7 +177,7 @@
                 if ($('label.error').length > 0) {
                       $.ionSound.play("1530346");   
                 }
-            }, 7000);
+            }, 10000);
       } 
     
     
