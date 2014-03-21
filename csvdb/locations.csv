@@ -1,36 +1,51 @@
 id,company_id,name,created_at,updated_at
-2,23,Bangkok,2014-01-13 05:27:43.15872,2014-01-13 05:27:43.15872
-3,25,Bang PaKong,2014-01-13 05:27:43.164295,2014-01-13 05:27:43.164295
-4,25,BangNa,2014-01-13 05:27:43.171622,2014-01-13 05:27:43.171622
-5,25,Bangkok,2014-01-13 05:27:43.177276,2014-01-13 05:27:43.177276
-6,33,"39/73 Moo 2, Samutsakorn Industrial Estate Rama 2 Road, Bang Ka-Jao, Muang Samutsakorn, 74000 Tel :034-490639",2014-01-13 05:27:43.189709,2014-01-13 05:27:43.189709
-7,1,"Amata City Industrial Estate, 7/374, Moo 6, Tumbol Marbyangporn, Amphur Pluakdaeng, Rayaong-21140",2014-01-13 05:27:43.195761,2014-01-13 05:27:43.195761
-8,2,"118/5-7 Moo 5 Rama 2 Rd. Soi Watyairom, Takam, Bangkhuntian, Bangkok , Thailand, 10150 Tel: 02 863-9777",2014-01-13 05:27:43.20442,2014-01-13 05:27:43.20442
-9,4,"69 Moo 5 Wellgrow Industrial Estate KM 36 Bangna-Trad Highway, Bangsamak Bangpakong, Chachoengsao 24180 Tel: 038 571381",2014-01-13 05:27:43.211852,2014-01-13 05:27:43.211852
-10,6,"1/28 Moo.2 Samutsakorn Industrial Estate Rama2 Rd,Ta-Sai , Muang Samutsakorn 74000 Tel: 034-403300",2014-01-13 05:27:43.218658,2014-01-13 05:27:43.218658
-11,7,"588/85 Soi Buan Hua, Sathupradit Road Bangpongpang, Yannawa Bangkok 10120 Tel: 02 295 4926-30",2014-01-13 05:27:43.224556,2014-01-13 05:27:43.224556
-12,17,"19 Moo 10 T. Klong 4, A. Klongluang, Pathumthani 12120 Tel: 02 529 6000",2014-01-13 05:27:43.233159,2014-01-13 05:27:43.233159
-13,34,"Jl. Sumur Bandung I no 99, Kel Harjamukti Kec Cimanggis, Depok 16954 Indonesia",2014-01-13 05:27:43.240365,2014-01-13 05:27:43.240365
-14,35,"1 Charoenrat Road, Thung Wat Don, Sathon, Bangkok 10120 Tel: 02 210 8888",2014-01-13 05:27:43.250892,2014-01-13 05:27:43.250892
-15,36,"221/12 Moo 5, Srinakarintr Road Bangmuang, Muang Samutprakarn 10270 Tel: 02 385 6176-95",2014-01-13 05:27:43.256878,2014-01-13 05:27:43.256878
-16,37,"68 / 2 Moo 5, Tambon Bang Samak, Bangpakong, Chachoengsao 24180 Tel: Tel.038-540 000",2014-01-13 05:27:43.296327,2014-01-13 05:27:43.296327
-17,39,"51/8 Moo.6, Sethakit 1 Rd, Klongmadua, Kratumban, Samutsakhon 74110 Tel: Tel. 0-3444-7536-8",2014-01-13 05:27:43.305275,2014-01-13 05:27:43.305275
-18,40,"192,194,196 Soi Lasalle24, Sukhumvit 105 Road, Bangna, Bangkok 10260 Tel: 02 398 0021-2",2014-01-13 05:27:43.316196,2014-01-13 05:27:43.316196
-19,38,"22/45-47 Moo 4 Soi Pracha-utid 33 Yak 10, Bangkok, Thailand 10140 Tel: 02 427 5430",2014-01-13 05:27:43.322728,2014-01-13 05:27:43.322728
-20,21,"10 Soi Lasalle 49,  Lasalle Road, Bangna, Bangna Bangkok  10260  Tel: 02 3615346  ",2014-01-15 04:00:34.89138,2014-01-15 04:00:34.89138
-21,27,"30/61 Moo 1 Sinsakhon Industrial Estate, Khok Kham, Muang, Samutsakhon 74000 Tel: 034 452276  ",2014-01-15 04:10:57.711435,2014-01-15 04:10:57.711435
-22,42,"10 Bangchan Industrial Soi 5/1 Soi Serithai 93, Minburi, Bangkok 10510  Tel:  02 5173020",2014-01-15 05:06:46.681523,2014-01-15 05:06:46.681523
-23,43,"500/54 Moo 3 Hemaraj Eastern Seaboard Industrial Estate (Freezone), Tasit, Pluakdaeng, Rayong 21140 Thailand T: +66 38 958227",2014-01-16 04:23:38.262038,2014-01-16 04:23:38.262038
-24,44,"222/1 Moo 3 , Soi Watbuaroi, Tambon Bangsaotong, Amphur Bangsaotong Samutprakarn 10540 Tel: 02-3979137-9",2014-01-16 05:00:51.170974,2014-01-16 05:08:27.348866
-25,45,"83/1 Moo 4, Khaerai, Kratumban, Samutsakhon 74110 Tel:  034 849401",2014-01-16 05:44:14.022835,2014-01-16 05:44:14.022835
-27,46,"9/9 Moo.6 King-Kaew Rd., Rachatheva, Bangplee, Samutprakarn 10540 (Our location next to Soi King Kaew 48.)  Tel. +66 2-1752201-8",2014-01-22 08:21:35.475157,2014-01-22 08:21:35.475157
-28,47,"1/1 moo 4 Tambon Bangchang Amphoae Amphawa Samutsongkram 75110, Thailand.  Tel	(034) 751-186-7",2014-01-22 08:34:10.219943,2014-01-22 08:34:10.219943
-29,48,"Siam Eastern Industrial Park,60/24, Moo3, Tambol Mabyangporn, Amphur Pluakdaeng, Rayong 21140  Tel: 038891352-4",2014-01-22 08:45:28.741891,2014-01-22 08:45:28.741891
-30,49,"Sinsakhon Industrial Estate 30/50 Moo 1, Soi S 1/4 Chetsadawithi Road, Khok Kham, Muang, Samut Sakhon 74000. Tel : 034 417348, 034 417318",2014-01-27 04:20:18.326827,2014-01-27 04:20:18.326827
-32,50,"234 Soi petchkasem 81, Macharoen Road, Nongkhaem, Bangkok 10160. Tel : 02 420 1705,02 420 1454 ",2014-01-29 03:07:46.019552,2014-01-29 03:07:46.019552
-31,50,"116/17-18, 2nd floor, Srivit Building, Na Ranong Road, Klongtoey, Bangkok 10110. ",2014-01-29 02:54:08.738969,2014-01-29 03:08:02.099668
-33,51,"94/133 Moo 3, Soi Kajornwit, Teparak Road, Bangplee Yai, Samutprakarn 10540. Tel : 02 3855030-5",2014-01-29 03:55:36.594721,2014-01-29 03:55:36.594721
-34,52,"20/203 Moo 6, Rama 2 Road,Tumbol Kokkraber, Aumphur Muang, Samutsakorn 74000. Tel: 034833200-2",2014-01-29 04:44:42.442535,2014-01-29 04:44:42.442535
-35,30,"42/1 Moo 6 Bangnumchuard, Muangsamutsakorn, Samutsakorn 74000. Tel: 034854701-2",2014-02-03 03:10:01.388873,2014-02-03 03:10:01.388873
-36,53,"86 Moo 13 Bangna-Trad Km. 10, Bangplee-yai, Bangplee, Samutprakarn 10540. Tel: 02 7510825",2014-02-03 06:15:14.930215,2014-02-03 06:15:14.930215
-37,54,"91 Moo 13 Kingkaew Road, T. Rachadewa, A. Bangplee, Samutprakarn 10540. Tel: 02 7502240",2014-02-03 06:21:18.103209,2014-02-03 06:21:18.103209
+2,23,Bangkok,32:08.9,32:08.9
+3,25,Bang PaKong,32:09.0,32:09.0
+4,25,BangNa,32:09.0,32:09.0
+5,25,Bangkok,32:09.0,32:09.0
+6,33,"39/73 Moo 2, Samutsakorn Industrial Estate Rama 2 Road, Bang Ka-Jao, Muang Samutsakorn, 74000 Tel :034-490639",32:09.0,32:09.0
+7,1,"Amata City Industrial Estate, 7/374, Moo 6, Tumbol Marbyangporn, Amphur Pluakdaeng, Rayaong-21140",32:09.0,32:09.0
+8,2,"118/5-7 Moo 5 Rama 2 Rd. Soi Watyairom, Takam, Bangkhuntian, Bangkok , Thailand, 10150 Tel: 02 863-9777",32:09.0,32:09.0
+9,4,"69 Moo 5 Wellgrow Industrial Estate KM 36 Bangna-Trad Highway, Bangsamak Bangpakong, Chachoengsao 24180 Tel: 038 571381",32:09.0,32:09.0
+10,6,"1/28 Moo.2 Samutsakorn Industrial Estate Rama2 Rd,Ta-Sai , Muang Samutsakorn 74000 Tel: 034-403300",32:09.0,32:09.0
+11,7,"588/85 Soi Buan Hua, Sathupradit Road Bangpongpang, Yannawa Bangkok 10120 Tel: 02 295 4926-30",32:09.0,32:09.0
+12,17,"19 Moo 10 T. Klong 4, A. Klongluang, Pathumthani 12120 Tel: 02 529 6000",32:09.0,32:09.0
+13,34,"Jl. Sumur Bandung I no 99, Kel Harjamukti Kec Cimanggis, Depok 16954 Indonesia",32:09.0,32:09.0
+14,35,"1 Charoenrat Road, Thung Wat Don, Sathon, Bangkok 10120 Tel: 02 210 8888",32:09.1,32:09.1
+15,36,"221/12 Moo 5, Srinakarintr Road Bangmuang, Muang Samutprakarn 10270 Tel: 02 385 6176-95",32:09.1,32:09.1
+16,37,"68 / 2 Moo 5, Tambon Bang Samak, Bangpakong, Chachoengsao 24180 Tel: Tel.038-540 000",32:09.1,32:09.1
+17,39,"51/8 Moo.6, Sethakit 1 Rd, Klongmadua, Kratumban, Samutsakhon 74110 Tel: Tel. 0-3444-7536-8",32:09.1,32:09.1
+18,40,"192,194,196 Soi Lasalle24, Sukhumvit 105 Road, Bangna, Bangkok 10260 Tel: 02 398 0021-2",32:09.1,32:09.1
+19,38,"22/45-47 Moo 4 Soi Pracha-utid 33 Yak 10, Bangkok, Thailand 10140 Tel: 02 427 5430",32:09.1,32:09.1
+20,21,"10 Soi Lasalle 49, Lasalle Road, Bangna, Bangna Bangkok 10260 Tel: 02 3615346",32:09.1,32:09.1
+21,27,"30/61 Moo 1 Sinsakhon Industrial Estate, Khok Kham, Muang, Samutsakhon 74000 Tel: 034 452276",32:09.1,32:09.1
+22,42,"10 Bangchan Industrial Soi 5/1 Soi Serithai 93, Minburi, Bangkok 10510 Tel: 02 5173020",32:09.1,32:09.1
+23,43,"500/54 Moo 3 Hemaraj Eastern Seaboard Industrial Estate (Freezone), Tasit, Pluakdaeng, Rayong 21140 Thailand T: +66 38 958227",32:09.1,32:09.1
+24,44,"222/1 Moo 3 , Soi Watbuaroi, Tambon Bangsaotong, Amphur Bangsaotong Samutprakarn 10540 Tel: 02-3979137-9",32:09.1,32:09.1
+25,45,"83/1 Moo 4, Khaerai, Kratumban, Samutsakhon 74110 Tel: 034 849401",32:09.1,32:09.1
+27,46,"9/9 Moo.6 King-Kaew Rd., Rachatheva, Bangplee, Samutprakarn 10540 (Our location next to Soi King Kaew 48.) Tel. +66 2-1752201-8",32:09.2,32:09.2
+28,47,"1/1 moo 4 Tambon Bangchang Amphoae Amphawa Samutsongkram 75110, Thailand. Tel (034) 751-186-7",32:09.2,32:09.2
+29,48,"Siam Eastern Industrial Park,60/24, Moo3, Tambol Mabyangporn, Amphur Pluakdaeng, Rayong 21140 Tel: 038891352-4",32:09.2,32:09.2
+30,49,"Sinsakhon Industrial Estate 30/50 Moo 1, Soi S 1/4 Chetsadawithi Road, Khok Kham, Muang, Samut Sakhon 74000. Tel : 034 417348, 034 417318",32:09.2,32:09.2
+31,50,"116/17-18, 2nd floor, Srivit Building, Na Ranong Road, Klongtoey, Bangkok 10110.",32:09.2,32:09.2
+32,50,"234 Soi petchkasem 81, Macharoen Road, Nongkhaem, Bangkok 10160. Tel : 02 420 1705,02 420 1454",32:09.2,32:09.2
+33,51,"94/133 Moo 3, Soi Kajornwit, Teparak Road, Bangplee Yai, Samutprakarn 10540. Tel : 02 3855030-5",32:09.2,32:09.2
+34,52,"20/203 Moo 6, Rama 2 Road,Tumbol Kokkraber, Aumphur Muang, Samutsakorn 74000. Tel: 034833200-2",32:09.2,32:09.2
+35,30,"42/1 Moo 6 Bangnumchuard, Muangsamutsakorn, Samutsakorn 74000. Tel: 034854701-2",32:09.2,32:09.2
+36,53,"86 Moo 13 Bangna-Trad Km. 10, Bangplee-yai, Bangplee, Samutprakarn 10540. Tel: 02 7510825",32:09.2,32:09.2
+37,54,"91 Moo 13 Kingkaew Road, T. Rachadewa, A. Bangplee, Samutprakarn 10540. Tel: 02 7502240",32:09.2,32:09.2
+38,55,"Tam Phuoc Industrial Zone, Street No 4, Bien Hoa City, Dong Nai Province, Vietnam. Contact :Quang Pham Van Thanh, Tel: (+84) 937 307 868",53:56.5,53:56.5
+39,57,"Lot 19, Road 3, Tan Duc Iindustrial Zone, Duc Hoa Ha WardDuc Hoa District, Long An Province, Vietnam. Contact : Dat Thanh Nguyen , Tel: (+84) 72 3 769 370",38:28.3,38:28.3
+40,58,"No 59/9 Pham Van Chieu Street, 14 Ward,Go Vap District, HCM City, Vietnam.Tel: (+84) 866 780 206",45:14.6,45:14.6
+41,59,"Phu Minh Industrial Zone, Co Nhue Commune Tu Liem DIstrict - Ha Noi - Vietnam. Contact: Ha Hong Vo, Tel: (+84) 438 371 353",53:17.6,53:17.6
+42,60,"No.11/34 Moo 6, Klong 3, Klong Luang, Pathumthani 12120, Thailand. Tel: 02 5240929-36, 086 0874461",09:55.5,09:55.5
+43,61,"83/1 Moo 4 Khea Rai, Kratumban, Samutsakorn 74110. Tel: 034-849-401, 034-849-592-3",23:46.7,23:46.7
+44,62,"200/1 Soi Jaransanitwong 42 Jaransanitwong Road, Bangyeekhan, Bangplad, Bangkok 10700 Thailand. Tel: 02 423-0051-2",14:34.5,14:34.5
+45,65,"559/97-98 Soi Nonsi, Chongnonsi, Yannawa, Bangkok 10120. Tel: 02-2841297, 081-7208552",33:11.1,33:11.1
+46,66,"Lot A , Longduc Industrial Park Travinh City, Travinh Province, Vietnam/Contact: Huan Tran Quang/Tel:(+84) 932 778 354",10:06.6,10:06.6
+47,68,"F 12 / 23 F Quach Dieu St ., Ap 6, Vinh Loc Ward, Binh Chanh Dist. , HCM City, Vietnam/Contact: Chuong Ha Vu Hoang/ Tel: (+84) 913 386 272",13:19.3,13:19.3
+48,69,"3/107 Thu Khoa Huan St,.KP Binh Thuan 1 , Thuan Giao,Thuan An Town , Binh Duong Province , Vietnam./Contact: Tri Do Quoc /Tel: (+84) 942 555 439",19:27.1,19:27.1
+49,70,"176 Moo 6 Sethakij Road, Thasai, Muang Samutsakorn 74000 Thailand. Tel: 034816 126-9",49:37.8,49:37.8
+50,71,"98/6 Moo 1 Rama2 Rd, Bangnumjude Muang, Samutsakorn 74000 Thailand/ Tel: 034 441848-50",36:21.2,36:21.2
+51,72,"888/127 Moo 19, Bang Phli-Tamru Rd, T. Bang Phli Yai, A. Bang Phli, Samutprakarn 10540 Thailand./ Tel : 02 1747367",43:41.4,43:41.4
+52,73,"30/32 Moo 1 Soi S1/2 Khok kham, Muang Samutsakhon, Samutsakhon 74000 Thailand/ Tel:(034)-452136-9, (02)-4022223-6",46:23.8,46:23.8
