@@ -87,6 +87,7 @@ class RegisterController < ApplicationController
   
   def calendar
     @schedule = Schedule.all
+    
   end
   
   
