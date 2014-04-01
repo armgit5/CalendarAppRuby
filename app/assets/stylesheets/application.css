@@ -109,11 +109,19 @@ table {
 }
 table th {
   border: 2px solid black;
-  font-weight: bold;
-  background-color: #FF4D4D;
+  font-family: modern;
+  background-color: #FA5858;
   height: 35px;
-  border-radius: 10px;
 }
+
+/*table th:first-child {
+    border-radius: 15px 0 0 0;
+}
+
+table th:last-child {
+    border-radius: 0 15px 0 0;
+}*/
+
 table th.normal, table td.normal {
   padding: 4px;
   width: 15%;
@@ -295,9 +303,9 @@ a {
     margin-bottom: 10px;
 }
 
-#calendar table th{
-    border-radius: 5px;
-}
+/*#calendar table th{
+    border-radius: 5px 0 0 0;
+}*/
 
 #schedule-form {
     margin-left: 3%;
