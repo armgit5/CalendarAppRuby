@@ -93,7 +93,7 @@
                                         company: '<%= s.company.name unless s.company.nil? %>',
                                         location: '<%= s.location.name unless s.location.nil? %>',
                                         sales: '<%= s.sale.name unless s.sale.nil? %>',
-                                        
+                                        project: '<%= s.project.gsub("'"){"\\'"} unless s.project.nil? %>',
                                         <% x = Array.new  %>
                                         <% s.products.each do |i| %>
                                           <% x.push(i.name)  %>
