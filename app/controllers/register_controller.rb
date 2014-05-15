@@ -5,9 +5,9 @@ class RegisterController < ApplicationController
 #    # will render app/views/movies/show.<extension> by default
 #  end
   
-  http_basic_authenticate_with :name => "sales", :password => "npasia"
+#  http_basic_authenticate_with :name => "sales", :password => "npasia"
   
-  
+  before_filter :authorize
   
   def schedule
     @sale = Sale.all

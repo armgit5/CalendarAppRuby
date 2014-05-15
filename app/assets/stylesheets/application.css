@@ -17,9 +17,9 @@
     color: #333; 
 }*/
 /*
-*/#calendar {
+*/
+#calendar {
     margin-top: 60px;
-    
 }/*/*
 
 */h1 {
@@ -331,4 +331,16 @@ a {
     position:absolute;
     color: red;
     background-color: red;
+}
+
+.btn.btn-default {
+    font-size: 12pt;
+}
+
+.navbar-form.navbar-right {
+    margin: 0px;
+}
+
+.form-control {
+    width: 20%;
 }

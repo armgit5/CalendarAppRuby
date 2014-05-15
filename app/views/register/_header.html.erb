@@ -26,11 +26,17 @@
       <p class="navbar-text">Sales Visit Schedule</p>
       <ul class="nav navbar-nav navbar-right">
         <%#= content_tag(:li, link_to("Service", :controller => "service", :action => 'index'), :class => ("active" if current_page? "/service/index") ) %>
+        
          <%= content_tag(:li, link_to("Admin", :controller => 'admin', :action => 'index'), :class => ("active" if current_page? "/admin") )  %>
        </ul>
     </div>
-    
-    
+    <% if current_user %>
+      Welcome <%= current_user.email %>.
+      <%= link_to "Log Out", logout_path %>
+    <% else %>
+      <%= link_to "Sign Up", signup_path %>
+      <%= link_to "Log In", login_path %>
+    <% end %>
   </div>
 </div><!--/.nav-collapse -->
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
