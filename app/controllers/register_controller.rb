@@ -22,9 +22,12 @@ class RegisterController < ApplicationController
   def index
     params[:sort] ||= "date"
     params[:direction] ||= "desc"
-    @schedule = Schedule.order(params[:sort] + " " + params[:direction]).search(params[:search]).paginate(:per_page => 25, :page => params[:page])  
+    @schedule = Schedule.where(sale_id: User.find(session[:user_id]).sale_id)
+    .order(params[:sort] + " " + params[:direction]).search(params[:search])
+    .paginate(:per_page => 25, :page => params[:page])  
     @nilpeter_products = Product.where(:type_id => 1)
     @meech_products = Product.where(:type_id => 2)
+#    @test =  session[:user_id]
   end
   
   def export_csv

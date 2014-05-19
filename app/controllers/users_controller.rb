@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   def new
     @user = User.new
+    @sale = Sale.all
+    @role = Role.all
   end
   
   def create

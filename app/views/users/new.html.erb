@@ -11,18 +11,36 @@
       </ul>
     </div>
   <% end %>
-
+  <label>  
   <div class="field">
     <%= f.label :email %><br />
     <%= f.text_field :email %>
   </div>
+  </label>  
+  <label>  
   <div class="field">
     <%= f.label :password %><br />
     <%= f.password_field :password %>
   </div>
+  </label>  
+  <label>  
   <div class="field">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation %>
   </div>
+  </label>  
+
+ <label>   
+      <div>Sales Name</div>
+      <%= f.collection_select :sale_id, @sale, :id, :name, {:prompt=>"Please Select Sales Person"} %>
+    </label>
+
+<label>   
+      <div>Role</div>
+      <%= f.collection_select :role_id, @role, :id, :name, {:prompt=>"Please Select Role"} %>
+    </label>
+
+  <label>  
   <div class="actions"><%= f.submit "Sign Up" %></div>
+  </label>  
 <% end %>

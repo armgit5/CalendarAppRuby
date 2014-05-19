@@ -47,6 +47,25 @@
 
 require 'csv'
 
+puts "Importing users..."
+CSV.foreach(Rails.root.join("csvdb/users.csv"), headers: true) do |row|
+  User.create! do |t|
+    t.id = row[0]
+    t.email = row[1]
+    t.password_digest = row[2]
+    t.sale_id = row[3]
+    t.role_id = row[4]
+  end
+end
+
+puts "Importing roles..."
+CSV.foreach(Rails.root.join("csvdb/roles.csv"), headers: true) do |row|
+  Role.create! do |t|
+    t.id = row[0]
+    t.name = row[1]
+  end
+end
+
 puts "Importing types..."
 CSV.foreach(Rails.root.join("csvdb/types.csv"), headers: true) do |row|
   Type.create! do |t|
