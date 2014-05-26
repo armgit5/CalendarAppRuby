@@ -37,3 +37,5 @@ gem 'rails_12factor', group: :production
 gem 'will_paginate', '3.0.pre2'
 
 gem 'bcrypt-ruby', '~> 3.0.0'
+
+gem 'rails_12factor', group: :production
