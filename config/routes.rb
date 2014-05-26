@@ -7,8 +7,8 @@ NilpeterWeb::Application.routes.draw do
   resources :sessions
   resources :users
   match ':controller(/:action(/:id(.:format)))'
-  resources :register
-  resources :admin
+#  resources :register
+#  resources :admin
 #  get "location/index"
 #  get "admin/index"
   
