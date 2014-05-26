@@ -4,10 +4,13 @@
 // It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
 // the compiled file.
 //
-//= require
+//= require_tree .
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+//= require ion.sound.js
 //= require jquery.datetimepicker.js
 //= require select2.js
+
+
+
 

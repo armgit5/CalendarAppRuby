@@ -1,26 +1,26 @@
 
 
-<!-- / javascript -->
-<%= javascript_tag do %>
+<%#*<!-- / javascript -->%>
+<%#= javascript_tag do %>
 
-$(document).ready(function() {
- $.ionSound({
-            sounds: [
-                "click"
-            ],
+<%#*$(document).ready(function() {%>
+ <%#*$.ionSound({%>
+            <%#*sounds: [%>
+                <%#*"click"%>
+            <%#*],%>
             <%#*path: "http://www.fromtexttospeech.com/texttospeech_output_files/0851407001394869628/",%>
-            path: "http://k007.kiwi6.com/hotlink/5c7cg3lngg/",
-            multiPlay: true,
-            volume: "1.0"
-        });
+            <%#*path: "http://k007.kiwi6.com/hotlink/5c7cg3lngg/",%>
+            <%#*multiPlay: true,%>
+            <%#*volume: "1.0"%>
+        <%#*});%>
         
-    $( "a" ).hover(
-      function() {
-        $.ionSound.play("click");
-      }, function() {
-        $.ionSound.stop("click");
-      }
-    );
+    <%#*$( "a" ).hover(%>
+      <%#*function() {%>
+        <%#*$.ionSound.play("click");%>
+      <%#*}, function() {%>
+        <%#*$.ionSound.stop("click");%>
+      <%#*}%>
+    <%#*);%>
     
-});  
-<% end %>
+<%#*});%>  
+<%# end %>

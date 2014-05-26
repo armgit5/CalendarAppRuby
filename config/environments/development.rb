@@ -29,5 +29,6 @@ NilpeterWeb::Application.configure do
   config.assets.debug = true
   
   config.serve_static_assets = false
+  config.assets.prefix = "/dev-assets"
   
 end
