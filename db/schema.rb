@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140519050506) do
+ActiveRecord::Schema.define(:version => 20140526072605) do
 
   create_table "categorizations", :force => true do |t|
     t.integer  "product_id"
@@ -91,6 +91,7 @@ ActiveRecord::Schema.define(:version => 20140519050506) do
     t.integer  "role_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "auth_token"
   end
 
 end
