@@ -4,12 +4,10 @@ NilpeterWeb::Application.routes.draw do
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
   
-  resources :users
-  resources :sessions
+  
 
-  get "location/index"
-
-  get "admin/index"
+#  get "location/index"
+#  get "admin/index"
   
   
 #  get "register/schedule"
@@ -71,4 +69,7 @@ NilpeterWeb::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
    match ':controller(/:action(/:id(.:format)))'
    resources :register
+   resources :users
+   resources :sessions
+   resources :admin
 end
