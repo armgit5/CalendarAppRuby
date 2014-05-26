@@ -5,11 +5,7 @@
 // the compiled file.
 //
 //= require_tree .
-//= require jquery
-//= require jquery_ujs
-//= require ion.sound.js
-//= require jquery.datetimepicker.js
-//= require select2.js
+
 
 
 
