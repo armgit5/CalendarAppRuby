@@ -27,3 +27,5 @@ production:
   username: postgres
   password: enter123
   host: localhost
+  
+sslmode: disable
