@@ -22,19 +22,19 @@ class RegisterController < ApplicationController
   def index
     params[:sort] ||= "date"
     params[:direction] ||= "desc"
-#    user_id = session[:user_id]
-#    if user_id != 3
-#      @schedule = Schedule.where(sale_id: User.find(user_id).sale_id)
-#      .order(params[:sort] + " " + params[:direction]).search(params[:search])
-#      .paginate(:per_page => 25, :page => params[:page])  
-#    else 
-    @schedule = Schedule
-    .order(params[:sort] + " " + params[:direction]).search(params[:search])
-    .paginate(:per_page => 25, :page => params[:page])
-#    end
+#    user_id = current_user.id
+    if current_user.role_id != 3
+      @schedule = Schedule.where(sale_id: User.find(current_user.id).sale_id)
+      .order(params[:sort] + " " + params[:direction]).search(params[:search])
+      .paginate(:per_page => 25, :page => params[:page])  
+    else 
+      @schedule = Schedule
+      .order(params[:sort] + " " + params[:direction]).search(params[:search])
+      .paginate(:per_page => 25, :page => params[:page])
+    end
     @nilpeter_products = Product.where(:type_id => 1)
     @meech_products = Product.where(:type_id => 2)
-#    @test =  session[:user_id]
+    @test =  current_user
   end
   
   def export_csv

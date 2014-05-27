@@ -35,7 +35,7 @@
       <%#= collection_select(:schedule, :sale_id, @sale, :id, :name, {:prompt=>"Please Select Company"}, {:class=>'e9', 
           :style=>"width:350px", :required => true}) %>
     <%#*</label>%>
-   <%= hidden_field(:schedule, :sale_id, :value => User.find(session[:user_id]).sale_id) %>
+   <%= hidden_field(:schedule, :sale_id, :value => User.find(current_user.id).sale_id) %>
   
   <div class="checkbox-inline">
   <div><b>Nilpeter Products</b></div>
