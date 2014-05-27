@@ -27,7 +27,7 @@
 #end
 class PendingController < ApplicationController
   def index
-    @pendings = Pending.all
+    @pendings = Pending.order("date desc")
   end
   
   def add_pending
