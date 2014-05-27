@@ -24,7 +24,7 @@
     <%#*<li class="active"><a href="#">Home</a></li>%>
     <%= content_tag(:li, link_to("Companies", :controller => "admin", :action => 'index'), :class => ("active" if current_page? "/admin") ) %>
     <%= content_tag(:li, link_to("Pending", :controller => "pending", :action => 'index'), :class => ("active" if current_page? "/pending") ) %>
-    <%#= content_tag(:li, link_to("Add Pending", :controller => "pending", :action => 'add_pending'), :class => ("active" if current_page? "/pending/add_pending") ) %>
+    <%= content_tag(:li, link_to("Users", :controller => "users", :action => 'index'), :class => ("active" if current_page? "/users") ) %>
   </ul>
   
   

@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   
   before_create { generate_token(:auth_token) }
   
+  belongs_to :sale
   belongs_to :role
   has_secure_password
   attr_accessible :email, :password, :password_confirmation, :sale_id, :role_id
