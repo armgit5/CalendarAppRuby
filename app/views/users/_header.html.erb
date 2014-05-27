@@ -1,13 +1,4 @@
-<style type="text/css">    
 
-  .user_name {
-    color: black;
-    margin-top: 35px;
-    margin-bottom: 0px;
-    text-align: right;
-  }
-  
-</style>
 
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   
@@ -37,20 +28,10 @@
         <%#= content_tag(:li, link_to("Service", :controller => "service", :action => 'index'), :class => ("active" if current_page? "/service/index") ) %>
         
          <%= content_tag(:li, link_to("Admin", :controller => 'admin', :action => 'index'), :class => ("active" if current_page? "/admin") )  %>
-         <% if current_user %>
-           <%= content_tag(:li, link_to("Log Out", logout_path, :class => ("active" if current_page? "/admin"))) %>
-         <% end %>
        </ul>
     </div>
-   
-    
   </div>
-  
 </div><!--/.nav-collapse -->
-
-
-
-
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 <link href='//cdn.jsdelivr.net/qtip2/2.2.0/jquery.qtip.css' rel='stylesheet' />
 <script src="//cdn.jsdelivr.net/qtip2/2.2.0/jquery.qtip.js"></script>
