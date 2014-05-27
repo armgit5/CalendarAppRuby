@@ -13,7 +13,7 @@
   <ul class="nav nav-tabs">
     <%= content_tag(:li, link_to("Hotlists", :controller => "hotlists", :action => 'index'), 
       :class => ("active" if current_page? "/hotlists") ) %>
-    <%= content_tag(:li, link_to("Pending", :controller => 'pending', :action => 'index'), 
+    <%#= content_tag(:li, link_to("Pending", :controller => 'pending', :action => 'index'), 
       :class => ("inactive" if current_page? "/hotlists") ) %>  
   </ul>
 

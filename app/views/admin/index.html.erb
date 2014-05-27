@@ -9,7 +9,6 @@
   
     <%= form_tag({:controller => 'admin', :action => 'create'}, {:class => 'navbar-form navbar-right', :role => 'search'}) do %>
     <div class="form-group">
-      
      <%= text_field(:company, :name, :class => 'form-control', :pleaceholder => 'Search') %>
     </div>
     <%= submit_tag('Create Company', :class => "btn btn-default") %>
@@ -22,9 +21,9 @@
         <%#*<button type="submit" class="btn btn-default">Submit</button>%>
       <%#*</form>%>
   <ul class="nav nav-tabs">
-    <li class="active"><a href="#">Home</a></li>
-    <li><a href="#">Profile</a></li>
-    <li><a href="#">Messages</a></li>
+    <%#*<li class="active"><a href="#">Home</a></li>%>
+    <%= content_tag(:li, link_to("Companies", :controller => "admin", :action => 'index'), :class => ("active" if current_page? "/admin") ) %>
+    <%= content_tag(:li, link_to("Pending", :controller => "pending", :action => 'index'), :class => ("active" if current_page? "/pending") ) %>
   </ul>
   
   

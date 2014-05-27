@@ -5,16 +5,18 @@
 <div class="container">
   <!-- Main component for a primary marketing message or call to action -->
   <div class="jumbotron">
-    <h1>Pending Page</h1>
+    <h1>Admin Page</h1>
   </div><!--/.header-collapse -->
   <!--/ flash massages -->
   <div class="notice"><%= flash[:notice] %></div> 
   
   <ul class="nav nav-tabs">
-    <%= content_tag(:li, link_to("Hotlists", :controller => "hotlists", :action => 'index'), 
+    <%#= content_tag(:li, link_to("Hotlists", :controller => "hotlists", :action => 'index'), 
       :class => ("inactive" if current_page? "/pending")) %>
-    <%= content_tag(:li, link_to("Pending", :controller => 'pending', :action => 'index'), 
+    <%#= content_tag(:li, link_to("Pending", :controller => 'pending', :action => 'index'), 
       :class => ("active" if current_page? "/pending")) %>  
+    <%= content_tag(:li, link_to("Companies", :controller => "admin", :action => 'index'), :class => ("active" if current_page? "/admin") ) %>
+    <%= content_tag(:li, link_to("Pending", :controller => "pending", :action => 'index'), :class => ("active" if current_page? "/pending") ) %>
   </ul>
   
   <!--/ table content -->
