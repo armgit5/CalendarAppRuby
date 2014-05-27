@@ -11,7 +11,11 @@ class SessionsController < ApplicationController
       else
        cookies[:auth_token] = user.auth_token  
       end
-      redirect_to root_url, notice: "Logged in!"
+      if user.role_id == 3
+        redirect_to(:controller => "admin", notice: "Logged in!")
+      else
+        redirect_to root_url, notice: "Logged in!"
+      end
     else
       redirect_to login_url, notice: "Email or password is invalid."
     end

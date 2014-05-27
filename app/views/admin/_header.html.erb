@@ -19,6 +19,12 @@
       <p class="navbar-text">Sales Visit Schedule</p>
        <ul class="nav navbar-nav navbar-right">
          <%= content_tag(:li, link_to("Admin", :controller => 'admin', :action => 'index'), :class => ("active") ) %>
+         <% if current_user %>
+           <%= content_tag(:li, link_to("Log Out", logout_path, :class => ("active" if current_page? "/admin"))) %>
+         <%# else %>
+           <%#= link_to "Sign Up", signup_path %>
+           <%#= link_to "Log In", login_path %>
+         <% end %>
        </ul>
     </div>
     

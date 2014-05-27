@@ -344,3 +344,13 @@ a {
 .form-control {
     width: 20%;
 }
+
+.nav-tabs > li > a,
+.nav-tabs > li > a:focus{
+    color: white;
+    background-color: #999;  
+} 
+
+.nav-tabs > li > a:hover {
+    background-color: red;
+}
