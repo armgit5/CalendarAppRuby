@@ -1,5 +1,5 @@
 <!-- / header -->
-<link href="http://getbootstrap.com/2.3.2/assets/css/bootstrap.css" rel="stylesheet">
+<%#*<link href="http://getbootstrap.com/2.3.2/assets/css/bootstrap.css" rel="stylesheet">%>
     <style type="text/css">    
       .form-signin {
         max-width: 300px;
@@ -17,6 +17,7 @@
       .form-signin .form-signin-heading,
       .form-signin .checkbox {
         margin-bottom: 10px;
+        color: #3f3f3f;
       }
       .form-signin input[type="text"],
       .form-signin input[type="password"] {
@@ -31,42 +32,47 @@
         color: red;
         text-align: center;
       }
+      .navbar.navbar-inverse {
+        margin-bottom: 0px;
+      }
+      .jumbotron > h1 {
+        text-align: center;
+        font-size: 36px;
+        
+      }
+      .checkbox {color: black}
+      .btn.btn-large.btn-primary {background-color: lightskyblue}
     </style>
-   <link href="http://getbootstrap.com/2.3.2/assets/css/bootstrap-responsive.css" rel="stylesheet">
+ 
     
 <div><%= render 'header' %></div>
 
 <div class="container">
   <!-- Main component for a primary marketing message or call to action -->
   <div class="jumbotron">
-    <h1>Login Page</h1>
+    <h1>WELCOME TO NILPETER'S SALES APP</h1>
   </div> 
-<div class="notice">
-<%= flash[:notice] %>
-</div>
-<%= form_tag sessions_path, :class => 'form-signin' do %>
-  <h2 class="form-signin-heading">Please sign in</h2>
-  <div class="field">
-          <%= text_field_tag :email, params[:email], class: 'input-block-level', placeholder: "Email address" %>
-  </div>
-  <div class="field">
-          <%= password_field_tag :password, nil,  class: 'input-block-level', placeholder: "Password" %>
-  </div>
-  <div class="field">
-    <%= check_box_tag :remember_me, 1, params[:remember_me] %>Remember me
-    <br></br>
-  </div> 
-  <div class="actions"><%= submit_tag "Log In", class: "btn btn-large btn-primary" %>
- <% end %>
+  <div class="notice">
+  <%= flash[:notice] %>
   </div>
   
-   <%#*<form class="form-signin">%>
-        <%#*<h2 class="form-signin-heading">Please sign in</h2>%>
-        <%#*<input type="text" class="input-block-level" placeholder="Email address">%>
-        <%#*<input type="password" class="input-block-level" placeholder="Password">%>
-       
-        <%#*<button class="btn btn-large btn-primary" type="submit">Sign in</button>%>
-      <%#*</form>%>
+  
+  <%= form_tag sessions_path, :class => 'form-signin' do %>
+      <h2 class="form-signin-heading">Please sign in</h2>
+      <div class="field">
+              <%= text_field_tag :email, params[:email], class: 'input-block-level', placeholder: "Email address" %>
+      </div>
+      <div class="field">
+              <%= password_field_tag :password, nil,  class: 'input-block-level', placeholder: "Password" %>
+      </div>
+      <div class="checkbox">
+        <%= check_box_tag :remember_me, 1, params[:remember_me] %>Remember me
+        <br></br>
+      </div> 
+      <div class="actions"><%= submit_tag "Log In", class: "btn btn-large btn-primary" %></div>
+   <% end %>
+        
+  
   <div><%= render 'footer' %></div>
 </div>
 
