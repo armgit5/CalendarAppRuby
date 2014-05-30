@@ -42,16 +42,44 @@
       }
       .checkbox {color: black}
       .btn.btn-large.btn-primary {background-color: #178FE5}
+      
+      
+      .jumbotron {
+        background-image: url(http://web.nilpeter.com/media/Tech_Center_rotator.gif);
+        height: 225px;
+        opacity: 0.4;
+      }
+    
+      .font-text {
+        text-align: center;
+        color: #3f3f3f;
+      }
+      
     </style>
  
     
 <div><%= render 'header' %></div>
 
+  
+
+
 <div class="container">
-  <!-- Main component for a primary marketing message or call to action -->
-  <div class="jumbotron">
-    <h1>WELCOME TO NILPETER'S SALES APP</h1>
-  </div> 
+  
+  <%#*<div class="carousel-inner">%>
+    <%#*<div class="item active">%>
+      <%#*<img src="http://web.nilpeter.com/media/Tech_Center_rotator.gif" alt="img">%>
+      <%#*<div class="carousel-caption">%>
+        <%#*<h3>WELCOME TO NILPETER'S SALES APP</h3>%>
+      <%#*</div>%>
+    <%#*</div>%>
+  <%#*</div>%>
+  
+  <div class="jumbotron">  
+  </div>
+  <div class="font-text">
+    <h3>WELCOME TO NILPETER'S SALES APP</h3></div>
+  
+  <!-- Main component for a primary marketing message or call to action -->  
   <div class="notice">
   <%= flash[:notice] %>
   </div>
@@ -75,4 +103,6 @@
   
   <div><%= render 'footer' %></div>
 </div>
+
+
 

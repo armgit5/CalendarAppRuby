@@ -315,14 +315,14 @@ a.header-link {
     <%#*</div>%>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <%= content_tag(:li, link_to("Calendar", :controller => "register", :action => 'calendar'), :class => ("active" if current_page? "/register/calendar" or current_page? "/") ) %>
-        <%= content_tag(:li, link_to("Schedule", :controller => "register", :action => 'schedule'), :class => ("active" if current_page? "/register/schedule") ) %>
-        <%= content_tag(:li, link_to("Table", :controller => "register", :action => 'index'), :class => ("active" if current_page? controller: 'register'or 
+        <%= content_tag(:li, link_to("CALENDAR", :controller => "register", :action => 'calendar'), :class => ("active" if current_page? "/register/calendar" or current_page? "/") ) %>
+        <%= content_tag(:li, link_to("SCHEDULE", :controller => "register", :action => 'schedule'), :class => ("active" if current_page? "/register/schedule") ) %>
+        <%= content_tag(:li, link_to("EDIT", :controller => "register", :action => 'index'), :class => ("active" if current_page? controller: 'register'or 
               current_page?(controller: 'register', action: 'edit') or current_page?(controller: 'register', action: 'delete') ) ) %>
       </ul>
      
       <ul class="nav navbar-nav navbar-right">    
-         <%= content_tag(:li, link_to("Admin", :controller => 'admin', :action => 'index'), :class => ("active" if current_page? "/admin") )  %>
+         <%= content_tag(:li, link_to("ADMIN", :controller => 'admin', :action => 'index'), :class => ("active" if current_page? "/admin") )  %>
        </ul>
     </div>
   </div>
