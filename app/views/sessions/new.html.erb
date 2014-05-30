@@ -44,16 +44,17 @@
       .btn.btn-large.btn-primary {background-color: #178FE5}
       
       
-      .jumbotron {
-        background-image: url(http://web.nilpeter.com/media/Tech_Center_rotator.gif);
+      .jumbotron{
+        background: rgba(0, 0, 255, 0.5) url(http://web.nilpeter.com/media/Tech_Center_rotator.gif);
         height: 225px;
-        opacity: 0.4;
-      }
-    
-      .font-text {
-        text-align: center;
-        color: #3f3f3f;
-      }
+        opacity: 0.8;
+        margin: 0;
+        color: red;
+        padding-bottom: 3px;
+      } 
+      
+      
+      h3 {text-align: center;}
       
     </style>
  
@@ -75,9 +76,11 @@
   <%#*</div>%>
   
   <div class="jumbotron">  
+    <%#= image_tag("nilpeter-logo-2013.png") %>
+    
+    
   </div>
-  <div class="font-text">
-    <h3>WELCOME TO NILPETER'S SALES APP</h3></div>
+  <h3>WELCOME TO NILPETER'S SALES APP</h3>
   
   <!-- Main component for a primary marketing message or call to action -->  
   <div class="notice">
