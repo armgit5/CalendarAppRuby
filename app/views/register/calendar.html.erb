@@ -1,42 +1,29 @@
-<%#*<meta name="viewport" content="width=device-width, initial-scale=0.70"/>%>
-
-<!-- / header -->
-<div><%= render 'header' %></div>
+<style>
+  .user_name {
+    text-align: right;
+  }
+  
+  th {
+    color: #303030;
+  }
+</style>
 
 <div class="container">
-
-      <!-- Main component for a primary marketing message or call to action -->
-      <%#*<div class="jumbotron">%>
-        <%#*<p>Calendar Page</p>%>
-        <%#*<p>This example is a quick exercise to illustrate how the default, static and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>%>
-        <%#*<p>To see the difference between static and fixed top navbars, just scroll.</p>%>
-        <%#*<p>%>
-          <%#*<a class="btn btn-lg btn-primary" href="http://getbootstrap.com/components/#navbar" role="button">View navbar docs »</a>%>
-        <%#*</p>%>
-      <%#*</div>%>
-<% if current_user %>
-<div class="user_name">
-Welcome <%= current_user.email %>.
-<% end %>
+  <% if current_user %>
+    <div class="user_name">
+    WELCOME <%= current_user.email %>.
+    </div>
+  <% end %>
+  <div id='calendar'></div>
 </div>
-<div id='calendar'></div>
-      
-      <!-- / footer -->
-<div><%= render 'footer' %></div>
-</div>
-
 <div><%= render 'hover' %></div>
-
-
 
 <%= javascript_tag do %>
 	$(document).ready(function() {	
 		var date = new Date();
 		var d = date.getDate();
 		var m = date.getMonth();
-		var y = date.getFullYear();
-                
-                
+		var y = date.getFullYear(); 
                 var tooltip = $('<div/>').qtip({
 		id: 'fullcalendar',
 		prerender: true,
@@ -44,11 +31,8 @@ Welcome <%= current_user.email %>.
 			text: ' ',
 			title: {
 				button: true
-			},
-                        
-                        
-		},
-                
+			},                
+		},               
 		position: {
 			my: 'bottom right',
 			at: 'bottom right',
@@ -64,8 +48,6 @@ Welcome <%= current_user.email %>.
 		style: 'qtip-default qtip-rounded'
                 }).qtip('api');
 
-                
-                
 		var calendar = $('#calendar').fullCalendar({
                         
 			header: {
@@ -113,34 +95,16 @@ Welcome <%= current_user.email %>.
 			],
                         timeFormat: 'HH:mm'
 		});
-                      
-                
-               <%#*$('.fc-button-prev').click(function(){%> 
-                   <%#*var view = $('#calendar').fullCalendar('getView');%>  
-<%#*//                   alert("The view's title is " + view.title);%>
-                   <%#*alert("The view's title is " + view.start);%>
-               <%#*});%> 
-               
-               <%#*$('.fc-button-month').click(function(){%> 
-                   <%#*var view = $('#calendar').fullCalendar('getView');%>
-<%#*//                   alert("The view's title is " + view.title);%>
-                   <%#*alert("The view's title is " + view.start);%>
-               <%#*});%> 
-               
-                
-                 $.ionSound({
-                    sounds: [
-                        "calendar"
-                    ],
-                  
-                    path: "http://k007.kiwi6.com/hotlink/jerymfm7jb/",
-                    multiPlay: true,
-                    volume: "1.0"
                     
-                });
-                
-                $.ionSound.play("calendar");
-    
+                $.ionSound({
+                   sounds: [
+                       "calendar"
+                   ],
+                   path: "http://k007.kiwi6.com/hotlink/jerymfm7jb/",
+                   multiPlay: true,
+                   volume: "1.0"
+               });
+               $.ionSound.play("calendar");
 	});     
 <% end %>
   
