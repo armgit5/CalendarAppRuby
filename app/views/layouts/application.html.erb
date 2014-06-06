@@ -273,7 +273,16 @@ a.header-link {
 </div>
  
 <div class="navbar navbar-inverse" role="navigation">
-  <div class="container">  
+  <div class="container"> 
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+      </button>
+    </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
         <%= content_tag(:li, link_to("CALENDAR", :controller => "register", :action => 'calendar'), :class => ("active" if current_page? "/register/calendar" or current_page? "/") ) %>
