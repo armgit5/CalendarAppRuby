@@ -26,6 +26,9 @@
 #
 #end
 class PendingController < ApplicationController
+  
+  before_filter :authorize_admin
+  
   def index
     @pendings = Pending.order("date desc")
   end

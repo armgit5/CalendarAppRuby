@@ -1,4 +1,7 @@
 class LocationController < ApplicationController
+  
+  before_filter :authorize_admin
+  
   def index
     @company = Company.find(params[:id])
   end

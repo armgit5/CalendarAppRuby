@@ -1,4 +1,6 @@
 class HotlistsController < ApplicationController
+  
+  before_filter :authorize
   def index
     time_ref = Time.now.utc - 60 * 1
     @pendings = Pending.where(:status_id => 1)

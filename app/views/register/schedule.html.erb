@@ -1,9 +1,9 @@
 <style>
   .cmxform.schedule {
        max-width: 450px;
-       padding: 19px 29px 29px;
+       padding: 19px 29px 9px;
        margin: 0 auto 20px;
-       background-color: #DDDDDD;
+       background-color: #e5e5e5;
        border: 1px solid #e5e5e5;
        -webkit-border-radius: 5px;
           -moz-border-radius: 5px;
@@ -12,19 +12,28 @@
           -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
                box-shadow: 0 1px 2px rgba(0,0,0,.05);
        margin-bottom: 0px;
-       text-area
   }
   
-  label,
-  .checkbox-inline b {
+  .cmxform.schedule label,
+  .cmxform.schedule .checkbox-inline b {
       color: #303030;
+      font-family: modern;
    }
    
    .checkbox-inline .field {
      color: #3f3f3f;
    }
    
-   .btn.btn-large.btn-primary {background-color: #178FE5;}
+   .btn.btn-large.btn-primary {
+     background-color: #33AAFF;
+     margin-bottom: 10px;
+     width: 140px;
+     font-size: 10pt;
+     padding-left: 5px;
+     margin-left: 10px;
+     text-align: center;
+     color: white;
+   }
    
    .instruction {
      text-align: center;
@@ -40,15 +49,15 @@
   <%= form_tag({:action => 'create'}, :id => 'commentForm', :class => "cmxform schedule") do %>
    <fieldset>
     <label for="cdate">
-      <div>Date & Time</div>
+      <div>Date & Time</div><br>
       <%= text_field(:schedule, :date, {:class => "datetimepicker valid", :id => 'cdate', :required => true}) %>
     </label>  
     <label id="company">
-      <div>Customer Name</div>
+      <div>Customer Name</div><br>
       <%= collection_select(:schedule, :company_id, @companies, :id, :name, {:prompt=>"Please Select Company"}, {:class=>'e9', :style=>"width:350px", :required => true}) %> 
     </label>
     <label id="location">
-      <div>Customer Location</div>
+      <div>Customer Location</div><br>
         <%= grouped_collection_select :schedule, :location_id, Company.order(:name), :locations, :name, :id, :name, {:prompt=>"Please Select Company"}, {:class=>'e9', 
           :style=>"width:350px"} %>
     </label>
@@ -82,10 +91,10 @@
     </div>
   </div>
   <label class="blink">
-    <div>Project Description</div>
+    <div>Project Description</div><br>
     <%= text_area(:schedule, :project, :required => true, :class => 'project-des') %>
    </label>
-    <%= submit_tag('Create Schedule', class: "btn btn-large btn-primary") %>
+    <%= submit_tag('CREATE SCHEDULE', class: "btn btn-large btn-primary") %>
    </fieldset>  
   <% end %> 
   </div>

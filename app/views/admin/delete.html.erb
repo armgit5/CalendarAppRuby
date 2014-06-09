@@ -1,26 +1,27 @@
-<!-- / header -->
-<div><%= render 'header' %></div>
+<style>
+  .project-des {font-size: 12pt;}
+  th {
+    color: black;
+  }
+  td {
+    font-size: 9pt;
+  }
+  table {
+    margin-bottom: 10px;
+  }
+</style>
 
 <div class="container">
   <!-- Main component for a primary marketing message or call to action -->
-  <div class="jumbotron">
-    <h1>Delete Company Page</h1>
-  </div><!--/.header-collapse -->
-
   <%= form_tag(:action => 'destroy', :id => @company.id) do %>
     <table class="list"  summary="Schedule list">
       <tr class="header">
         <th>Company</th>
       </tr>
-
       <tr>
         <td><%= @company.name %></td>     
       </tr>
     </table>
-  <%= submit_tag('Delete Comapany') %>
-  <% end %>
-  
+  <%= submit_tag('Delete Comapany', class: "btn btn-large btn-primary") %>
+  <% end %>  
 </div>
-  
-<!-- / footer -->
-<div><%= render '/register/footer' %></div>

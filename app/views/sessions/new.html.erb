@@ -45,7 +45,15 @@
     background-color: #CCCCCC;
   }
   .checkbox {color: black}
-  .btn.btn-large.btn-primary {background-color: #178FE5}
+  .btn.btn-large.btn-primary {
+     background-color: #33AAFF;
+     margin-bottom: 10px;
+     width: 75px;
+     font-size: 10pt;
+     margin-left: 10px;
+     text-align: center;
+     color: white;
+   }
   
 </style>
 
@@ -66,7 +74,7 @@
         <%= check_box_tag :remember_me, 1, params[:remember_me] %>Remember me
         <br></br>
       </div> 
-      <div class="actions"><%= submit_tag "Log In", class: "btn btn-large btn-primary" %></div>
+      <div class="actions"><%= submit_tag "LOG IN", class: "btn btn-large btn-primary" %></div>
   <% end %>
 </div>
 

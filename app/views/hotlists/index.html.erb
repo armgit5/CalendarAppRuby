@@ -1,25 +1,21 @@
-
-<!-- / header -->
-<div><%= render 'header' %></div>
+<style>
+  tbody td {
+    font-size: 11pt;
+    text-align: center;
+  }
+  tr {
+    color: black;
+  }
+  .header {
+    background-color: #BBBBBB;
+  }
+</style>
 
 <div class="container">
   <!-- Main component for a primary marketing message or call to action -->
-  <div class="jumbotron">
-    <h1>Hotlists Page</h1>
-  </div><!--/.header-collapse -->
   <!--/ flash massages -->
   <div class="notice"><%= flash[:notice] %></div>
-  
-  <ul class="nav nav-tabs">
-    <%= content_tag(:li, link_to("Hotlists", :controller => "hotlists", :action => 'index'), 
-      :class => ("active" if current_page? "/hotlists") ) %>
-    <%#= content_tag(:li, link_to("Pending", :controller => 'pending', :action => 'index'), 
-      :class => ("inactive" if current_page? "/hotlists") ) %>  
-  </ul>
-
-  
   <!--/ table content -->
-  
   <table class="table table-bordered one" >
   <thead>
     <tr>
@@ -31,79 +27,52 @@
     <td>Date & Time</td>
     <td>Company</td>
     <td>Project</th>
-    <td>Sales Name</th>
+    <td>Sales</th>
     </tr>  
-   
-   
   <tr><td colspan="4">
   <% @pendings.each do |p| %>
-   
     <marquee behavior="scroll" scrollamount="3" direction="left" class="burning hotlist-text" >
-<%= p.date.strftime("%d/%m/%Y %H:%M") %> &nbsp; &nbsp;
+    <%= p.date.strftime("%d/%m/%Y %H:%M") %> &nbsp; &nbsp;
     <%= p.company.name unless p.company.nil? %> &nbsp; &nbsp;
     <%= p.project %> &nbsp; &nbsp;
     <%= p.sale.name unless p.sale.nil? %> &nbsp; &nbsp;
     </marquee>
   <% end %>
   </td></tr>
-  
-  
   <% @pendings.each do |p| %>
    <tr>  
-    
-     <td><%= p.date.strftime("%d/%m/%Y %H:%M") %></td>
+    <td><%= p.date.strftime("%d/%m/%Y %H:%M") %></td>
     <td><%= p.company.name unless p.company.nil? %></td>
     <td><%= p.project %></td>    
-    <td><%= p.sale.name unless p.sale.nil? %></td>
-    
+    <td><%= p.sale.name unless p.sale.nil? %></td>   
+  </tr>
   <% end %>   
-</tr>
-  
-  
-   
-  
   </tbody>
   </table>
   
-   
-   
-    
-  
-  
-  
-  
- 
-
-  
-   <table class="table table-bordered two" >
-  <thead>
-    <tr>
-      <th colspan="4">Order</th>
-    </tr>
-  </thead>
-  <tbody>  
-    <tr class="header">
-    <td>Date & Time</td>
-    <td>Company</td>
-    <td>Project</td>
-    <td>Sales Name</td>
-    </tr>    
-    <% @orders.each do |o| %>    
-    <td class='normal'><%= o.date %></td>
-    <td class='normal'><%= o.company.name unless o.company.nil? %></td>
-    <td class='normal'><%= o.project %></td>    
-    <td class='normal'><%= o.sale.name unless o.sale.nil? %></td>
-    </tr>
-  <% end %> 
-  </tbody>
-  
+  <table class="table table-bordered two" >
+    <thead>
+      <tr>
+        <th colspan="4">Order</th>
+      </tr>
+    </thead>
+    <tbody>  
+      <tr class="header">
+      <td>Date & Time</td>
+      <td>Company</td>
+      <td>Project</td>
+      <td>Sales</td>
+      </tr>    
+      <% @orders.each do |o| %>    
+      <td class='normal'><%= o.date %></td>
+      <td class='normal'><%= o.company.name unless o.company.nil? %></td>
+      <td class='normal'><%= o.project %></td>    
+      <td class='normal'><%= o.sale.name unless o.sale.nil? %></td>
+      </tr>
+    <% end %> 
+    </tbody>
   </table>
-  
-  
-  <!-- / footer -->
-<div><%= render 'footer' %></div>
 </div>
-
 <div><%= render 'hover' %></div>
 
 

@@ -23,15 +23,15 @@ class RegisterController < ApplicationController
     params[:sort] ||= "date"
     params[:direction] ||= "desc"
 #    user_id = current_user.id
-    if current_user.role_id != 3
-      @schedule = Schedule.where(sale_id: User.find(current_user.id).sale_id)
-      .order(params[:sort] + " " + params[:direction]).search(params[:search])
-      .paginate(:per_page => 25, :page => params[:page])  
-    else 
-      @schedule = Schedule
-      .order(params[:sort] + " " + params[:direction]).search(params[:search])
-      .paginate(:per_page => 25, :page => params[:page])
-    end
+#    if current_user.role_id != 3
+#      @schedule = Schedule.where(sale_id: User.find(current_user.id).sale_id)
+#      .order(params[:sort] + " " + params[:direction]).search(params[:search])
+#      .paginate(:per_page => 25, :page => params[:page])  
+#    else 
+    @schedule = Schedule
+    .order(params[:sort] + " " + params[:direction]).search(params[:search])
+    .paginate(:per_page => 25, :page => params[:page])
+#    end
     @nilpeter_products = Product.where(:type_id => 1)
     @meech_products = Product.where(:type_id => 2)
     @test =  current_user
@@ -59,6 +59,10 @@ class RegisterController < ApplicationController
 #  
   def edit
     @schedule = Schedule.find(params[:id])
+    if current_user.sale_id != @schedule.sale_id
+      redirect_to(:action => "index")
+    end
+    
     @sale = Sale.all
     @companies = Company.all
     @locations = Location.all

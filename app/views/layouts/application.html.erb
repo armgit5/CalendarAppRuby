@@ -256,7 +256,6 @@ a.header-link {
       .jumbotron {
         margin-bottom: 10px;
       }
-
 </style>
 
 <div class="layoutcolumnset" id="columnset1">
@@ -287,7 +286,7 @@ a.header-link {
       <ul class="nav navbar-nav">
         <%= content_tag(:li, link_to("CALENDAR", :controller => "register", :action => 'calendar'), :class => ("active" if current_page? "/register/calendar" or current_page? "/") ) %>
         <%= content_tag(:li, link_to("SCHEDULE", :controller => "register", :action => 'schedule'), :class => ("active" if current_page? "/register/schedule") ) %>
-        <%= content_tag(:li, link_to("HOTLISTS", :controller => "hotlists", :action => 'index'), :class => ("active" if current_page? "/hotlists/index") ) %>
+        <%#= content_tag(:li, link_to("HOTLISTS", :controller => "hotlists", :action => 'index'), :class => ("active" if current_page? "/hotlists") ) %>
         <%= content_tag(:li, link_to("EDIT", :controller => "register", :action => 'index'), :class => ("active" if current_page? controller: 'register'or 
               current_page?(controller: 'register', action: 'edit') or current_page?(controller: 'register', action: 'delete') ) ) %>
       </ul>   

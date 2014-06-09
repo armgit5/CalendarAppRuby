@@ -1,0 +1,93 @@
+id,project,date,company_id,sale_id,location_id
+76,null,2014-01-06 13:00:00,33,5,6
+78,null,2014-01-06 15:00:00,17,2,12
+80,Training,2014-01-06 00:00:00,34,1,13
+81,null,2014-01-07 10:00:00,7,2,11
+82,Training,2014-01-07 00:00:00,34,1,13
+83,null,2014-01-07 10:00:00,35,4,14
+84,null,2014-01-08 11:00:00,36,2,15
+85,Training,2014-01-08 00:00:00,34,1,13
+86,Training,2014-01-09 00:00:00,34,1,13
+87,null,2014-01-08 11:00:00,36,4,15
+88,null,2014-01-08 11:00:00,36,3,15
+91,null,2014-01-08 14:00:00,37,4,16
+92,null,2014-01-08 13:00:00,38,3,19
+93,null,2014-01-09 10:30:00,39,2,17
+94,null,2014-01-09 00:00:00,39,3,17
+95,null,2014-01-09 00:00:00,39,4,17
+96,null,2014-01-09 13:00:00,40,2,18
+97,null,2014-01-09 13:00:00,40,3,18
+98,null,2014-01-09 13:00:00,40,4,18
+99,To have the service call for the up grade of the MO4 on the software.,2014-01-14 09:00:00,25,6,3
+100,Training E+L,2014-01-13 00:00:00,21,1,20
+101,Training E+L,2014-01-14 00:00:00,21,1,20
+102,Training E+L,2014-01-15 00:00:00,21,1,20
+103,Training E+L,2014-01-13 13:00:00,21,4,20
+105,,2014-01-14 13:00:00,42,4,22
+106,,2014-01-15 14:00:00,44,4,24
+107,,2014-01-15 14:00:00,44,3,24
+108,,2014-01-16 10:30:00,45,1,25
+109,,2014-01-16 10:30:00,45,4,25
+110,,2014-01-16 11:00:00,40,3,18
+112,,2014-01-16 13:00:00,43,3,23
+113,,2014-01-14 09:00:00,27,4,21
+114,Anti-Static bars & Anilox rollers,2014-01-23 10:30:00,46,4,27
+115,Printing Sleeves dimension,2014-01-23 13:00:00,47,4,28
+116,,2014-01-17 10:00:00,48,1,29
+117,,2014-01-17 10:00:00,48,4,29
+118,,2014-01-17 11:00:00,40,3,18
+119,,2014-01-23 13:00:00,47,3,28
+120,pick up monitor E+L,2014-01-21 10:00:00,27,4,21
+121,,2014-01-22 10:00:00,38,3,19
+122,,2014-01-22 10:00:00,6,4,10
+126,Measurement Antistatic (971IPS 2 Bar and 1 Bar master) with P' Aek.,2014-01-27 09:30:00,40,3,null
+127,Anilox Roll,2014-01-28 03:30:00,24,3,null
+128,Installation Antistatic -915 /2 Bar - 3 Nozzle - 1 4 way splitter,2014-01-30 09:00:00,38,3,19
+129,Installation Antistatic,2014-01-31 09:00:00,40,3,18
+130,This is a new customer. I have a meeting about Anti-Static bars. Customer would like us to presenting about the Anti-Static bars and show them the sample of the Anti-Static bars.,2014-01-29 13:00:00,50,4,31
+131,This appointment is for measuring Anti-Static.,2014-01-31 11:00:00,6,4,10
+132,This appointment is for Anilox rollers presenting with Mr.Alan Ong (GM).,2014-02-04 14:30:00,49,4,30
+124,Anti-Static Installation - Model 971 Long Range DC bars - 1800mm,2014-01-28 09:30:00,30,4,1
+133,antistatic and Takclean,2014-01-29 14:00:00,51,3,33
+134,TFPC Ayutthaya - Ailox project,2014-01-30 11:00:00,null,1,null
+135,TFPC Ayutthaya - Ailox project,2014-01-30 11:00:00,null,1,null
+137,Installation Anti-Static bars - Model 971 Long Range DC bars (The second one),2014-02-05 10:00:00,30,4,1
+140,Present Anilox Anti-static,2014-02-04 14:00:00,51,3,33
+141,New Customer Anilox rolls,2014-02-03 13:00:00,53,3,36
+142,Plate,2014-02-05 10:30:00,54,3,37
+143,setting Antistatic DEMO,2014-02-04 10:00:00,38,3,19
+144,Installation Anti-Static - 915 shockless bars with K'Jakree & K'Aek.,2014-02-17 11:00:00,31,4,null
+172,Visit new customer,2014-03-05 11:30:00,null,8,null
+148,Nysacan 100 % Inspector systems,2014-02-18 09:30:00,27,4,21
+149,Follow up about Anti-Static bars that we've already quoted and get back the static locator(for test).,2014-02-19 14:00:00,60,4,42
+151,Installation and setting.,2014-02-18 09:00:00,38,3,19
+156,Give the LED Tubelight price and presenting about the inspection systems.,2014-02-24 10:00:00,33,4,6
+153,"Nyscan 100% inspector (Demo) system on the Edale press, with P'Aek & Hans.",2014-02-20 13:30:00,2,4,8
+154,Installation Anilox cleaner (Alphasonics) as demo unit with P'Aek.,2014-02-24 15:00:00,49,4,30
+158,Discussing about the order agreement document (Alphasonics demo).,2014-02-26 09:30:00,49,4,30
+152,Present about anti-Static bars with P'Aek (Customer request these static bars to installation screen printing machine).,2014-02-06 14:00:00,60,4,42
+150,new customer go with P'Aek,2014-02-17 14:00:00,51,3,33
+155,Thai FPC (Ayutthaya) Flexo application training with P'Aek.,2014-02-12 10:00:00,null,4,null
+159,Discussing position of Anti-Static bars to installation & discuss about Anilox rollers to refurbishing too.,2014-02-26 14:00:00,23,4,2
+160,,2014-02-26 09:00:00,18,3,null
+161,singed agreement second order .,2014-03-03 13:00:00,38,3,19
+162,"check static bars and present Anilox rollers ,sleeves .",2014-03-04 13:00:00,26,3,null
+157,Presenting about FB machine.,2014-02-25 10:00:00,65,4,45
+163,Nyscan monitors installation with P'Aek.,2014-03-03 10:30:00,1,4,7
+164,Follow up about the demo alphasonics unit and discussing about the anilox rollers specifications.,2014-03-04 09:30:00,49,4,30
+165,Discussing about the position to installation Anti-Static.,2014-03-04 14:30:00,30,4,35
+166,Discussing about Anilox rollers specifications.,2014-03-05 14:00:00,44,4,24
+171,"Re pair machine Man Rolan 706, hand check two Machine Man Rolan 900.",2014-03-04 11:26:00,59,8,41
+173,Sent quotation QA140125 QA140126,2014-03-10 11:35:00,69,8,48
+174,sent quotation QA140127,2014-03-11 11:40:00,55,8,38
+175,Sent quotation 1047 1048,2014-03-12 11:42:00,58,8,40
+176,Sent quotation 1647,2014-02-20 11:46:00,68,8,47
+177,Change the position of the Power Unit.,2014-03-10 11:00:00,31,4,null
+178,Anti-Static bars installation with Khun Pop.,2014-03-13 13:00:00,30,4,35
+181,Anilox rolls new base and refurbish,2014-03-17 14:00:00,18,3,null
+182,Presentation Anti-Static bars and measurment static for customer.,2014-03-17 14:00:00,72,4,51
+183,Presentation about anilox rollers for coating unit (KBA machine),2014-03-18 09:00:00,73,4,52
+184,Discussed about the Anilox roller to Rebase.,2014-03-18 11:00:00,49,4,30
+185,Check out the anilox rollers with P'Oat (P'Oat customer),2014-03-19 10:30:00,24,4,null
+186,Delivery the barcode printing to customer.,2014-03-19 17:00:00,27,4,21
+187,Presenting about the Anti-Static bars for blow film machine.,2014-03-20 10:00:00,71,4,50
