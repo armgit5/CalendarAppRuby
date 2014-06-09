@@ -6,7 +6,6 @@ testpic.gif: testpic-bfbdd4f2946832c1df6c85a4db5652e0.gif
 fullcalendar/fullcalendar.min.js: fullcalendar/fullcalendar.min-9826fb5ebfec543690698bbdfc2f74d3.js
 fullcalendar/fullcalendar.print.css: fullcalendar/fullcalendar.print-3ec227e97e005a02da5bad47bd94f75e.css
 ion.sound.js: ion.sound-50960e978e1ead2be5d5511ee60d71fd.js
-jquery.burn.min.js: jquery.burn.min-44644d7a016323e128edcc41189cc7ae.js
 jquery.datetimepicker.js: jquery.datetimepicker-5ab86b1ff7fed61d4a730446f44c2fb9.js
 jquery.simple-dtpicker.js: jquery.simple-dtpicker-45ca650ebc08c50999ef00cd3138e209.js
 jquery.validate.js: jquery.validate-e8449c5ef26b0331cfffb5a6b5cd04fe.js
@@ -15,6 +14,6 @@ jquery.simple-dtpicker.css: jquery.simple-dtpicker-2e9e26cf873df5fb48ebeda1a921f
 jquery.min.js: jquery.min-122b08ac27bb64a471f7cc3999dae87c.js
 jquery.min.map: jquery.min-65a15c9aac52989bb056d466abc85100.map
 application.js: application-df7525e917401704ef453cb56bf16697.js
-application.css: application-65253965849b65b87773b33a713574d1.css
+application.css: application-4cb298e8baaf180091eb98e127c87b95.css
 select2.css: select2-7958fde2d888c1557e514188d0ddfe17.css
 select2.js: select2-c6957bd4fd0ea63516fa1411a7c6a706.js
