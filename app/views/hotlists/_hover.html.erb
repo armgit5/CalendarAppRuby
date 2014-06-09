@@ -1,5 +1,3 @@
-
-
 <!-- / javascript -->
 <%= javascript_tag do %>
 
@@ -8,7 +6,6 @@ $(document).ready(function() {
             sounds: [
                 "click"
             ],
-            <%#*path: "http://www.fromtexttospeech.com/texttospeech_output_files/0851407001394869628/",%>
             path: "http://k007.kiwi6.com/hotlink/5c7cg3lngg/",
             multiPlay: true,
             volume: "1.0"
@@ -20,7 +17,6 @@ $(document).ready(function() {
       }, function() {
         $.ionSound.stop("click");
       }
-    );
-    
+    );  
 });  
 <% end %>

@@ -7,37 +7,19 @@
  *= require select2.css
 */
 
-/*body {
-    margin-top: 50px;
-    font-family: Helvetica, Arial, sans-serif;
-    font-size: 14px; 
-    width: 900px;
-    margin: 0 auto;
-    padding: 10px;
-    color: #333; 
-}*/
-/*
-*/
 #calendar {
     margin-top: 15px;
-}/*/*
+}
+h1 {
+    margin-top: 25px;   
+}
 
-*/h1 {
-    margin-top: 25px;
-    
-}/*
-
-*/.instruction {
+.instruction {
     color: red;
     margin-top: 25px;
     margin-bottom: 25px;
     padding: 10px;
-}/*
-
-.error {
-    color: red;
 }
-*/
 
 label {
   display: block;
@@ -52,20 +34,20 @@ input[type=text] {
     font-size: 20px;
     padding: 1px;
     font-family: monospace;
-}/*
+}
 
-*/textarea {
+textarea {
   width: 350px;
-  height: 300px;
-  font-size: 17px;
+  height: 150px;
+  font-size: 28pt;
   font-family: monospace;
 }
 
 input[type=submit] {
   font-size: 20px;
-}/*
+}
 
-*/.main-title {
+.main-title {
     display: block;
     color: #222;
     font-size: 40px;
@@ -114,14 +96,6 @@ table th {
   height: 35px;
 }
 
-/*table th:first-child {
-    border-radius: 15px 0 0 0;
-}
-
-table th:last-child {
-    border-radius: 0 15px 0 0;
-}*/
-
 table th.normal, table td.normal {
   padding: 4px;
   width: 15%;
@@ -142,25 +116,7 @@ table th.short, table td.short {
   width: 7%;
   text-align: left;
   border: 1px solid black;
-}/*/*
-
-
-.notice {
-    color: red;
-    margin: 10px;
 }
-
-select {
-    width: 500px;
-    font-size: 20px;
-    padding: 2px;
-    font-family: monospace;
-}
-
-.e9 {
-    width: 350px;
-}
-*/
 
 a {
     color: white;
@@ -269,7 +225,7 @@ a {
 }
           
 #footer {
-    height: 30px;
+    height: 20px;
     color: lightgrey;
     background-color: #FF3333;
     margin-top: 10px;
@@ -296,16 +252,13 @@ a {
 
 .btn-primary {
     background-color: lightsteelblue;
+    color: black;
 }
 
 .export {
     margin-right: 1%;
     margin-bottom: 10px;
 }
-
-/*#calendar table th{
-    border-radius: 5px 0 0 0;
-}*/
 
 #schedule-form {
     margin-left: 3%;

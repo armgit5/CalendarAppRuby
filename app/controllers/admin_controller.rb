@@ -15,6 +15,7 @@ class AdminController < ApplicationController
 #  end
   
   before_filter :authorize_admin
+ 
   
   def index
     @companies = Company.order('name ASC').paginate(:per_page => 25, :page => params[:page])

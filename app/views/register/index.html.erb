@@ -1,34 +1,27 @@
-
-<!-- / header -->
-<div><%= render 'header' %></div>
-
-<!-- / search bar -->
-<%#*<ul class="nav nav-pills">%>
-<%#*<form class="navbar-form" role="search" id="products_search">%>
-<%#= form_tag :action => 'index', :id => "record_search", :method => "get" do %>
-  <%#*<div class="form-group">%>
-    <%#= text_field_tag :search, params[:search], :class=>"form-control", :placeholder=>"Search" %>
-    <%#= submit_tag "Search", :name => nil, :class=>"btn btn-default" %>
-  <%#*</div>%>
-<%# end %>
+<style>
+  tbody td {
+    font-size: 10pt;
+    text-align: center;
+  }
+  tr {
+    color: black;
+  }
+  .header {
+    background-color: #BBBBBB;
+  }
+</style>
 
 <div class="container">
   <!-- Main component for a primary marketing message or call to action -->
-  <div class="jumbotron">
-    <h1>Table Page</h1>
-    <%#= @test %>
-  </div><!--/.header-collapse -->
   <!--/ flash massages -->
   <div class="notice"><%= flash[:notice] %></div> 
-  
-  <div><button type="button" class="btn pull-right btn-primary export"><%= link_to("Export", {:action => 'export_csv'}) %></button></div>
+  <%#*<div>%>
+  <%#*export button%>
+    <%#*<button type="button" class="btn pull-right btn-primary export"><%= link_to("Export", {:action => 'export_csv'}) %>
+  <%#*</div>%>
   <!--/ table content -->
   <div id="schedule-table"><%= render 'partial' %></div>
-  <!-- / footer -->
-<div><%= render 'footer' %></div>
-
 </div> <!-- /container -->
-
 <div><%= render 'hover' %></div>
 
 <!-- / javascript -->
@@ -44,17 +37,15 @@
     });
     
      $.ionSound({
-                    sounds: [
-                        "table"
-                    ],
-                  
-                    path: "http://k007.kiwi6.com/hotlink/iho1yhka0o/",
-                    multiPlay: true,
-                    volume: "1.0"
-                    
-                });
-                
-                $.ionSound.play("table");
-   
+          sounds: [
+              "table"
+          ],
+
+          path: "http://k007.kiwi6.com/hotlink/iho1yhka0o/",
+          multiPlay: true,
+          volume: "1.0"
+
+      });
+      $.ionSound.play("table");
   });  
 <% end %>

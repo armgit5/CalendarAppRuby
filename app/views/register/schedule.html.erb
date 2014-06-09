@@ -1,54 +1,77 @@
-<!-- / header -->
-<div><%= render 'header' %></div>
+<style>
+  .cmxform.schedule {
+       max-width: 450px;
+       padding: 19px 29px 9px;
+       margin: 0 auto 20px;
+       background-color: #e5e5e5;
+       border: 1px solid #e5e5e5;
+       -webkit-border-radius: 5px;
+          -moz-border-radius: 5px;
+               border-radius: 5px;
+       -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+          -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+               box-shadow: 0 1px 2px rgba(0,0,0,.05);
+       margin-bottom: 0px;
+  }
+  
+  .cmxform.schedule label,
+  .cmxform.schedule .checkbox-inline b {
+      color: #303030;
+      font-family: modern;
+   }
+   
+   .checkbox-inline .field {
+     color: #3f3f3f;
+   }
+   
+   .btn.btn-large.btn-primary {
+     background-color: #33AAFF;
+     margin-bottom: 10px;
+     width: 140px;
+     font-size: 10pt;
+     padding-left: 5px;
+     margin-left: 10px;
+     text-align: center;
+     color: white;
+   }
+   
+   .instruction {
+     text-align: center;
+     margin: 0px;
+   }
+    
+   .project-des {font-size: 12pt;}
+</style>
 
-<div class="container">
-  <!-- Main component for a primary marketing message or call to action -->
-  <div class="jumbotron">
-    <h1>Sales Visit Schedule Page</h1>
-  </div> 
-  
-  
+<div class="container"> 
   <div id="schedule-form">
-    
-    
-    
-    
-    <p class="instruction">Please fill up your schedule information here</p>
-  <%= form_tag({:action => 'create'}, :id => 'commentForm', :class => "cmxform") do %>
+  <p class="instruction">Please fill up your schedule information here</p>
+  <%= form_tag({:action => 'create'}, :id => 'commentForm', :class => "cmxform schedule") do %>
    <fieldset>
     <label for="cdate">
-      <div>Date & Time</div>
+      <div>Date & Time</div><br>
       <%= text_field(:schedule, :date, {:class => "datetimepicker valid", :id => 'cdate', :required => true}) %>
-    </label>
-    
+    </label>  
     <label id="company">
-      <div>Customer Name</div>
+      <div>Customer Name</div><br>
       <%= collection_select(:schedule, :company_id, @companies, :id, :name, {:prompt=>"Please Select Company"}, {:class=>'e9', :style=>"width:350px", :required => true}) %> 
     </label>
     <label id="location">
-      <div>Customer Location</div>
+      <div>Customer Location</div><br>
         <%= grouped_collection_select :schedule, :location_id, Company.order(:name), :locations, :name, :id, :name, {:prompt=>"Please Select Company"}, {:class=>'e9', 
           :style=>"width:350px"} %>
     </label>
-    <%#*<label>%>   
-      <%#*<div>Sales Name</div>%>
-      <%#= collection_select(:schedule, :sale_id, @sale, :id, :name, {:prompt=>"Please Select Company"}, {:class=>'e9', 
-          :style=>"width:350px", :required => true}) %>
-    <%#*</label>%>
-   <%= hidden_field(:schedule, :sale_id, :value => User.find(current_user.id).sale_id) %>
-  
-  <div class="checkbox-inline">
-  <div><b>Nilpeter Products</b></div>
-    <div class="field">
-    <% @nilpeter_products.each do |category| %>
-      <%= check_box_tag('products[]', category.id, false, id: dom_id(category)) %>
-      <%= category.name %><br/>
-    <% end %>
+    <%= hidden_field(:schedule, :sale_id, :value => User.find(current_user.id).sale_id) %>
+    <div class="checkbox-inline">
+    <div><b>Nilpeter Products</b></div>
+      <div class="field">
+      <% @nilpeter_products.each do |category| %>
+        <%= check_box_tag('products[]', category.id, false, id: dom_id(category)) %>
+        <%= category.name %><br/>
+      <% end %>
+      </div>
     </div>
-  </div>
-
   </br>
-
   <div class="checkbox-inline">
   <div><b>OEM Products</b></div>
     <div class="field">
@@ -58,7 +81,6 @@
     <% end %>
     </div>
   </div>
-
   <div class="checkbox-inline">
     </br>
     <div class="field">
@@ -68,90 +90,57 @@
     <% end %>
     </div>
   </div>
-
- 
-  
-  
   <label class="blink">
-      <div>Project Description</div>
-      <%= text_area(:schedule, :project, :required => true) %>
+    <div>Project Description</div><br>
+    <%= text_area(:schedule, :project, :required => true, :class => 'project-des') %>
    </label>
-  
-    <%= submit_tag('Create Schedule') %>
-  
-   </fieldset>
-    
+    <%= submit_tag('CREATE SCHEDULE', class: "btn btn-large btn-primary") %>
+   </fieldset>  
   <% end %> 
   </div>
-    
-    <!-- / footer -->
-<div><%= render 'footer' %></div>
 </div>
-
 <div><%= render 'hover' %></div>
 
-
-
 <%= javascript_tag do %>  
-
-<%#*http://jsfiddle.net/Sk8erPeter/Yca4Z/%>
 (function($) {
     $.fn.blink = function(options) {
-        
-
         return this.each(function() {
             var obj = $(this);
-            
                 if ($(obj).css("visibility") == "visible") {
                     $(obj).css('visibility', 'hidden');
                 }
                 else {
                     $(obj).css('visibility', 'visible');
-                }
-            
+                }      
         });
     }
 }(jQuery)) 
 
-
   $(document).ready(function () { 
-  
-    
-    
     $('.datetimepicker').datetimepicker({
         format:'d/m/Y H:i'
      });
     $(".e9").select2(); 
     $("#commentForm").validate();
-    
-    
-     $.ionSound({
-                    sounds: [
-                        "schedule"
-                    ],
-                  
-                    path: "http://k007.kiwi6.com/hotlink/pxc891oxo6/",
-                    multiPlay: true,
-                    volume: "1.0"
-                    
-                });
-                
-                $.ionSound.play("schedule");
-    
-    
+    $.ionSound({
+                   sounds: [
+                       "schedule"
+                   ],
+                   path: "http://k007.kiwi6.com/hotlink/pxc891oxo6/",
+                   multiPlay: true,
+                   volume: "1.0"
+               });
+               $.ionSound.play("schedule");
     $.ionSound({
             sounds: [
                
                 "1530346"
             ],
-            <%#*path: "http://www.fromtexttospeech.com/texttospeech_output_files/0851407001394869628/",%>
             path: "http://k007.kiwi6.com/hotlink/7zp3wj4k6i/",
             multiPlay: true,
             volume: "1.0"
         });
-    
-        
-   
+
       var x = 0;
       var intervalID = setInterval(function(){
             // method to be executed;
@@ -163,9 +152,7 @@
                     window.clearInterval(intervalID);
                 }
             }   
-      },1000);
-
-      
+      },1000);   
       setInterval(function () {
          // Your logic here
          $('label.error').blink();    
@@ -179,13 +166,7 @@
                 }
             }, 10000);
       } 
-    
-    
-
   });
-  
- 
-
 <% end %>
   
   

@@ -1,23 +1,11 @@
-<!-- / header -->
-<div><%= render 'header' %></div>
-
 <div class="container">
   <!-- Main component for a primary marketing message or call to action -->
-  <div class="jumbotron">
-    <h1>Edit Company Page</h1>
-  </div><!--/.header-collapse -->
-
 <%= form_tag(:action => 'update', :id => @company.id) do %>  
   <label>
     <div>Customer Name</div>
     <%= text_field(:company, :name) %>
   </label>
-  
-  <div class="error"><%= @error %></div>
-  
-  <%= submit_tag('Update Customer') %>
+  <div class="error"><%= @error %></div>  
+  <%= submit_tag('Update Customer', class: "btn btn-large btn-primary") %>
 <% end %>
 </div>  
-
-<!-- / footer -->
-<div><%= render '/register/footer' %></div>

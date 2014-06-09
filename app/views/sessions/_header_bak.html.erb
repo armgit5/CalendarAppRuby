@@ -1,18 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=0.625"/>
-  <title>NilpeterWeb</title>
-    <%= stylesheet_link_tag "http://cdnjs.cloudflare.com/ajax/libs/fullcalendar/1.6.4/fullcalendar.css", "http://cdnjs.cloudflare.com/ajax/libs/fullcalendar/1.6.4/fullcalendar.print.css",
-      "//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css","jquery.datetimepicker.css","jquery.simple-dtpicker.css","select2",
-      "//cdn.jsdelivr.net/qtip2/2.2.0/jquery.qtip.css", "application" %>
-    <%= javascript_include_tag "http://code.jquery.com/jquery-2.1.1.min.js", "http://cdnjs.cloudflare.com/ajax/libs/fullcalendar/1.6.4/fullcalendar.min.js",
-      "ion.sound.js","select2.js","jquery.datetimepicker.js","jquery.validate.js","schedule.js.coffee","select2",
-       "//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js", "//cdn.jsdelivr.net/qtip2/2.2.0/jquery.qtip.js", "application" %>
-    <%= csrf_meta_tags %>
-    <%= favicon_link_tag 'favicon.ico' %>
-</head>
-<body>
 <link rel="stylesheet" href="http://web.nilpeter.com/setup/csscache/package_878172850.css?v=1086.0">
 <style type="text/css">
 
@@ -190,52 +175,6 @@ a.header-link {
       #columnset1_column3 {
         background: white;
       }
-  
-</style> 
-
-<style type="text/css">    
-      .form-signin {
-        max-width: 300px;
-        padding: 19px 29px 29px;
-        margin: 0 auto 20px;
-        background-color: #fff;
-        border: 1px solid #e5e5e5;
-        -webkit-border-radius: 5px;
-           -moz-border-radius: 5px;
-                border-radius: 5px;
-        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
-           -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
-                box-shadow: 0 1px 2px rgba(0,0,0,.05);
-      }
-      .form-signin .form-signin-heading,
-      .form-signin .checkbox {
-        margin-bottom: 10px;
-        color: #3f3f3f;
-      }
-      .form-signin input[type="text"],
-      .form-signin input[type="password"] {
-        font-size: 16px;
-        height: auto;
-        margin-bottom: 15px;
-        padding: 7px 9px;
-        width: 250px;
-      }
-      
-      .notice {
-        color: red;
-        text-align: center;
-      }
-      .navbar.navbar-inverse {
-        margin-bottom: 0px;
-      }
-      .jumbotron > h1, .jumbotron {
-        text-align: center;
-        font-size: 24px;
-        background-color: #CCCCCC;
-      }
-      .checkbox {color: black}
-      .btn.btn-large.btn-primary {background-color: #178FE5}
-      
       
       .jumbotron {
         background-image: url(http://web.nilpeter.com/media/Tech_Center_rotator.gif);
@@ -256,6 +195,12 @@ a.header-link {
       .jumbotron {
         margin-bottom: 10px;
       }
+  
+</style> 
+
+<style type="text/css">    
+     
+     
 </style>
 
 <div class="layoutcolumnset" id="columnset1">
@@ -272,28 +217,19 @@ a.header-link {
 </div>
  
 <div class="navbar navbar-inverse" role="navigation">
-  <div class="container"> 
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-      </button>
-    </div>
+  <div class="container">  
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
         <%= content_tag(:li, link_to("CALENDAR", :controller => "register", :action => 'calendar'), :class => ("active" if current_page? "/register/calendar" or current_page? "/") ) %>
         <%= content_tag(:li, link_to("SCHEDULE", :controller => "register", :action => 'schedule'), :class => ("active" if current_page? "/register/schedule") ) %>
-        <%#= content_tag(:li, link_to("HOTLISTS", :controller => "hotlists", :action => 'index'), :class => ("active" if current_page? "/hotlists") ) %>
+        <%= content_tag(:li, link_to("HOTLISTS", :controller => "hotlists", :action => 'index'), :class => ("active" if current_page? "/hotlists/index") ) %>
         <%= content_tag(:li, link_to("EDIT", :controller => "register", :action => 'index'), :class => ("active" if current_page? controller: 'register'or 
               current_page?(controller: 'register', action: 'edit') or current_page?(controller: 'register', action: 'delete') ) ) %>
       </ul>   
       <ul class="nav navbar-nav navbar-right">    
          <%= content_tag(:li, link_to("ADMIN", :controller => 'admin', :action => 'index'), :class => ("active" if current_page? "/admin") )  %>
          <% if current_user %>
-           <%= content_tag(:li, link_to("LOGOUT", logout_path, :class => ("active" if current_page? "/admin"))) %>
+           <%= content_tag(:li, link_to("Log Out", logout_path, :class => ("active" if current_page? "/admin"))) %>
          <% end %>
        </ul>
     </div>
@@ -303,16 +239,3 @@ a.header-link {
 <div class="container">
   <div class="jumbotron"></div>
 </div>
-
-<%= yield %>
-
-<div class="container">
-  <div id="footer">
-    <div class="container">
-      <p>Copyright @ 2013 Nilpeter A/S All right reserved.</p>
-    </div>
-  </div>
-</div>
-</body>
-
-</html>

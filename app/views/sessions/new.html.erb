@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!-- / header -->
 <%#*<link href="http://getbootstrap.com/2.3.2/assets/css/bootstrap.css" rel="stylesheet">%>
     <style type="text/css">    
@@ -61,10 +62,69 @@
     
 <div><%= render 'header' %></div>
 
+=======
+<style>
+  h3 {
+    text-align: center;
+    margin-top: 0px;
+  }
   
+  .form-signin {
+       max-width: 300px;
+       padding: 19px 29px 29px;
+       margin: 0 auto 20px;
+       background-color: #fff;
+       border: 1px solid #e5e5e5;
+       -webkit-border-radius: 5px;
+          -moz-border-radius: 5px;
+               border-radius: 5px;
+       -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+          -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+               box-shadow: 0 1px 2px rgba(0,0,0,.05);
+  }
+>>>>>>> old-state
+  
+  .form-signin .form-signin-heading,
+  .form-signin .checkbox {
+    margin-bottom: 10px;
+    color: #3f3f3f;
+  }
+  .form-signin input[type="text"],
+  .form-signin input[type="password"] {
+    font-size: 16px;
+    height: auto;
+    margin-bottom: 15px;
+    padding: 7px 9px;
+    width: 250px;
+  }
 
+  .notice {
+    color: red;
+    text-align: center;
+  }
+  .navbar.navbar-inverse {
+    margin-bottom: 0px;
+  }
+  .jumbotron > h1, .jumbotron {
+    text-align: center;
+    font-size: 24px;
+    background-color: #CCCCCC;
+  }
+  .checkbox {color: black}
+  .btn.btn-large.btn-primary {
+     background-color: #33AAFF;
+     margin-bottom: 10px;
+     width: 75px;
+     font-size: 10pt;
+     margin-left: 10px;
+     text-align: center;
+     color: white;
+   }
+  
+</style>
 
 <div class="container">
+<<<<<<< HEAD
   
   <%#*<div class="carousel-inner">%>
     <%#*<div class="item active">%>
@@ -83,28 +143,26 @@
   <h3>WELCOME TO NILPETER'S SALES APP</h3>
   
   <!-- Main component for a primary marketing message or call to action -->  
+=======
+  <h3>WELCOME TO NILPETER'S SALES APP</h3>
+>>>>>>> old-state
   <div class="notice">
-  <%= flash[:notice] %>
+    <%= flash[:notice] %>
   </div>
-  
-  
   <%= form_tag sessions_path, :class => 'form-signin' do %>
       <h2 class="form-signin-heading">Please sign in</h2>
       <div class="field">
-              Login: <%= text_field_tag :email, params[:email], class: 'input-block-level', placeholder: "Email address" %>
+            Login: <%= text_field_tag :email, params[:email], class: 'input-block-level', placeholder: "Email address" %>
       </div>
       <div class="field">
-              Password: <%= password_field_tag :password, nil,  class: 'input-block-level', placeholder: "Password" %>
+            Password: <%= password_field_tag :password, nil,  class: 'input-block-level', placeholder: "Password" %>
       </div>
       <div class="checkbox">
         <%= check_box_tag :remember_me, 1, params[:remember_me] %>Remember me
         <br></br>
       </div> 
-      <div class="actions"><%= submit_tag "Log In", class: "btn btn-large btn-primary" %></div>
-   <% end %>
-        
-  
-  <div><%= render 'footer' %></div>
+      <div class="actions"><%= submit_tag "LOG IN", class: "btn btn-large btn-primary" %></div>
+  <% end %>
 </div>
 
 

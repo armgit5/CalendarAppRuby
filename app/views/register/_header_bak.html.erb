@@ -28,29 +28,15 @@
         <%= content_tag(:li, link_to("Calendar", :controller => "register", :action => 'calendar'), :class => ("active" if current_page? "/register/calendar" or current_page? "/") ) %>
         <%= content_tag(:li, link_to("Schedule", :controller => "register", :action => 'schedule'), :class => ("active" if current_page? "/register/schedule") ) %>
         <%= content_tag(:li, link_to("Table", :controller => "register", :action => 'index'), :class => ("active" if current_page? controller: 'register'or 
-              current_page?(controller: 'register', action: 'edit') or current_page?(controller: 'register', action: 'delete') ) ) %>
-        <%#= content_tag(:li, link_to("Hotlists", :controller => "hotlists", :action => 'index'), :class => ("active" if current_page? "/hotlists/index") ) %>
-        
+              current_page?(controller: 'register', action: 'edit') or current_page?(controller: 'register', action: 'delete') ) ) %>   
       </ul>
       <p class="navbar-text">Sales Visit Schedule</p>
-      <ul class="nav navbar-nav navbar-right">
-        <%#= content_tag(:li, link_to("Service", :controller => "service", :action => 'index'), :class => ("active" if current_page? "/service/index") ) %>
-        
+      <ul class="nav navbar-nav navbar-right">   
          <%= content_tag(:li, link_to("Admin", :controller => 'admin', :action => 'index'), :class => ("active" if current_page? "/admin") )  %>
          <% if current_user %>
            <%= content_tag(:li, link_to("Log Out", logout_path, :class => ("active" if current_page? "/admin"))) %>
          <% end %>
        </ul>
     </div>
-   
-    
   </div>
-  
-</div><!--/.nav-collapse -->
-
-
-
-
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-<link href='//cdn.jsdelivr.net/qtip2/2.2.0/jquery.qtip.css' rel='stylesheet' />
-<script src="//cdn.jsdelivr.net/qtip2/2.2.0/jquery.qtip.js"></script>
+</div>
