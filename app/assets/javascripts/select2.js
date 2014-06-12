@@ -3200,7 +3200,13 @@ the specific language governing permissions and limitations under the Apache Lic
         },
         formatResultCssClass: function(data) {return undefined;},
         formatSelectionCssClass: function(data, container) {return undefined;},
-        formatNoMatches: function () { return "No matches found"; },
+        formatNoMatches: function (term) {   
+            if (term === "add new") {
+                return $("#newcom").show(), "Add new company below";
+            } else {
+                return "No match, type 'add new'";
+            }
+        },
         formatInputTooShort: function (input, min) { var n = min - input.length; return "Please enter " + n + " more character" + (n == 1? "" : "s"); },
         formatInputTooLong: function (input, max) { var n = input.length - max; return "Please delete " + n + " character" + (n == 1? "" : "s"); },
         formatSelectionTooBig: function (limit) { return "You can only select " + limit + " item" + (limit == 1 ? "" : "s"); },
@@ -3224,6 +3230,8 @@ the specific language governing permissions and limitations under the Apache Lic
         adaptDropdownCssClass: function(c) { return null; },
         nextSearchTerm: function(selectedObject, currentSearchTerm) { return undefined; }
     };
+    
+    
 
     $.fn.select2.ajaxDefaults = {
         transport: $.ajax,

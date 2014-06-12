@@ -103,5 +103,10 @@ class RegisterController < ApplicationController
     @schedule = Schedule.all
   end
   
+  def create_new
+    @company = Company.create!(params[:company])
+    flash[:notice] = "#{@company.name} was successfully created."
+    redirect_to(:action => "schedule")
+  end
   
 end

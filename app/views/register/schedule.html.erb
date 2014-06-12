@@ -41,6 +41,13 @@
    }
     
    .project-des {font-size: 12pt;}
+   
+   #newcom .newcom-title {
+     color: black;
+     font-size: 12pt;
+     font-weight:bold;
+     font-family: modern;
+   }
 </style>
 
 <div class="container"> 
@@ -54,7 +61,7 @@
     </label>  
     <label id="company">
       <div>Customer Name</div><br>
-      <%= collection_select(:schedule, :company_id, @companies, :id, :name, {:prompt=>"Please Select Company"}, {:class=>'e9', :style=>"width:350px", :required => true}) %> 
+      <%= collection_select(:schedule, :company_id, @companies, :id, :name, {:prompt=>"Please Select Company"}, {:class=>'e9', :style=>"width:350px", :required => true}) %>   
     </label>
     <label id="location">
       <div>Customer Location</div><br>
@@ -98,6 +105,19 @@
    </fieldset>  
   <% end %> 
   </div>
+  
+  
+  <div id='newcom'>
+   <%= form_tag({:controller => 'register', :action => 'create_new'}, {:class => "cmxform schedule", :role => 'search'}) do %>
+    <h3 class="newcom-title">Add New Company Below</h3><br>
+    <div class="form-group">
+     <%= text_field(:company, :name, :class => 'form-control', :pleaceholder => 'Search') %>
+     <%= hidden_field(:company, :newcom, :value => '1') %>
+    </div> 
+    <%= submit_tag('Create Company', :class => "btn btn-default") %>
+    <% end %>
+  </div>
+  
 </div>
 <div><%= render 'hover' %></div>
 
@@ -166,6 +186,17 @@
                 }
             }, 10000);
       } 
+      
+      $("#newcom").hide();
+      
+      setInterval(function () {
+         // Your logic here
+         if ($("#newcom").css('display') !== 'none') {
+            $("#schedule-form").hide();
+          }  
+      }, 500);
+      
+      
   });
 <% end %>
   
