@@ -43,11 +43,12 @@
    .project-des {font-size: 12pt;}
    
    #newcom .newcom-title {
-     color: black;
+     color: red;
      font-size: 12pt;
      font-weight:bold;
      font-family: modern;
    }
+  
 </style>
 
 <div class="container"> 
@@ -127,9 +128,11 @@
         return this.each(function() {
             var obj = $(this);
                 if ($(obj).css("visibility") == "visible") {
+                    $(obj).css('color', 'red');
                     $(obj).css('visibility', 'hidden');
                 }
                 else {
+                    $(obj).css('color', 'red');
                     $(obj).css('visibility', 'visible');
                 }      
         });
@@ -193,6 +196,7 @@
          // Your logic here
          if ($("#newcom").css('display') !== 'none') {
             $("#schedule-form").hide();
+            $(".newcom-title").blink();
           }  
       }, 500);
       

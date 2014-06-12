@@ -11,8 +11,8 @@ class RegisterController < ApplicationController
   
   def schedule
     @sale = Sale.all
-    @companies = Company.all
-    @locations = Location.all
+    @companies = Company.order("name asc")
+    @locations = Location.order("name asc")
     
     @nilpeter_products = Product.where(:type_id => 1)
     @oem1 = Product.where(:type_id => 2).limit(6)
