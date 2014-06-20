@@ -1,20 +1,17 @@
 NilpeterWeb::Application.routes.draw do
   
+  get "password_resets/new"
+
   get 'signup', to: 'users#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to:  'sessions#destroy', as: 'logout'
 
   resources :sessions
   resources :users
-#  resources :admin
+  resources :password_resets
+
   match ':controller(/:action(/:id(.:format)))'
-#  resources :register
-  
-#  get "location/index"
-#  get "admin/index"
-  
-  
-#  get "register/schedule"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

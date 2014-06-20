@@ -38,7 +38,7 @@ class AdminController < ApplicationController
 #    redirect_to(:action => "show", :id => @schedule.id)
     redirect_to(:action => "index")
   end
-#  
+  
   def delete
     @company = Company.find(params[:id])
   end
@@ -49,19 +49,26 @@ class AdminController < ApplicationController
     flash[:notice] = "#{@company.name} was successfully deleted."
     redirect_to(:action => "index")
   end
-  
-  def login
-#    authenticate_or_request_with_http_basic do |username, password|
-#    if(username == "arm" && password == "123")
-#      redirect_to '/admin/index'
-#    else
-#      redirect_to '/register/calendar'
-#    end
-#    end
-  end
-#  
-#  def location
-#    @company = Company.find(params[:id])
-#  end
 
+  def users
+    @users = User.all.paginate(:per_page => 25, :page => params[:page])
+  end
+
+  def reset_password
+    @user = User.find(params[:id])
+  end
+  
+  def update_password
+    @user = User.find(params[:id])
+    @user.update_attributes!(params[:user])
+    flash[:notice] = "#{@user.email} was successfully updated."
+    redirect_to(:controller => 'admin', :action => "users")
+  end
+  
+  def delete_user
+    @user = User.find(params[:id])
+    @user.destroy
+    flash[:notice] = "#{@user.email} was successfully deleted."
+    redirect_to(:controller => 'admin', :action => "users")
+  end
 end

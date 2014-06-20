@@ -25,31 +25,37 @@
     </div>
     <%= submit_tag('Create Company', :class => "btn btn-default") %>
     <% end %>
-  <ul class="nav nav-tabs">
+  <ul class="nav nav-tabs"> 
     <%= content_tag(:li, link_to("COMPANIES", :controller => "admin", :action => 'index'), :class => ("active" if current_page? "/admin") ) %>
-    <%#= content_tag(:li, link_to("Pending", :controller => "pending", :action => 'index'), :class => ("active" if current_page? "/pending") ) %>
     <%= content_tag(:li, link_to("USERS", :controller => "admin", :action => 'users'), :class => ("active" if current_page? "/admin/users") ) %>
   </ul> 
   <table class="table table-bordered">
     <tr class="header">
-      <th>Company Name</th>
-      <th>Location</th>
-      <th>Edit</th>
-      <th>Delete</th>
+      <th>EMAIL</th>
+      <th>EDIT PASSWORD</th>
+      <th>DELETE</th>
     </tr>
-    <% @companies.each do |c| %>
+    <% @users.each do |u| %>
     <tr>   
-      <td class='normal'><%= c.name %></td>
-      <td class='short'><button type="button" class="btn btn-primary"><%= link_to("Location", {:controller => 'location', :action => 'index', :id => c.id}) %></button></td>
-      <td class='short'><button type="button" class="btn btn-primary"><%= link_to("Edit", {:action => 'edit', :id => c.id}) %></button></td>
-      <td class='short'><button type="button" class="btn btn-primary"><%= link_to("Delete", {:action => 'delete', :id => c.id}) %></button></td>
+      <td class='normal'><%= u.email %></td>
+      <td class='short'><button type="button" class="btn btn-primary"><%= link_to("Edit", {:controller => 'admin', :action => 'reset_password', :id => u.id}) %></button></td>
+      <td class='short'><button type="button" class="btn btn-primary"><%= link_to("Delete", {:controller => 'admin', :action => 'delete_user', :id => u.id}, :confirm => "Are you sure?") %></button></td>
     </tr>
     <% end %>  
   </table> 
   <div class="apple_pagination">
-    <%= will_paginate @companies %>
+    <%= will_paginate @users %>
   </div>
 </div>
+
+<%= javascript_tag do %>  
+  $(document).ready(function () {
+  $('*[data-confirm]').click(function(){
+    return confirm($(this).attr('data-confirm'));
+  });
+});
+<% end %>
+
 
 
  
