@@ -1,18 +1,16 @@
-<!-- / header -->
-<div><%= render 'header' %></div>
+
 
 <div class="container">
   <!-- Main component for a primary marketing message or call to action -->
-  <div class="jumbotron">
-    <h1>Table Page</h1>
-  </div><!--/.header-collapse -->
   
- <%= form_tag(:action => 'update', :id => @pending.id) do %>
+  
+ <%= form_tag({:action => 'update', :id => @pending.id}, :multipart => true) do %>
     <%#= hidden_field :pending, :updated_at => Time.now %>
   <label>
     <div>Date & Time</div>
     <%= text_field(:pending, :date, :class => "datetimepicker") %>
   </label>
+  
   <label id="company">
     <div>Customer Name</div>
     <%= collection_select(:pending, :company_id, @companies, :id, :name, {:prompt=>"Please Select Company"}, {:class=>'e9', :style=>"width:350px"}) %> 
@@ -21,10 +19,16 @@
     <div>Sales Name</div>
     <%= collection_select(:pending, :sale_id, @sale, :id, :name, {:prompt=>"Please Select Company"}, {:class=>'e9', :style=>"width:350px"}) %>
   </label>
+  
   <label>
       <div>Status</div>
       <%= collection_select(:pending, :status_id, @statuses, :id, :name, {:prompt=>"Please Select Status"}, {:class=>'e9', :style=>"width:350px"}) %>
     </label>
+ 
+  <label>
+    <div>PDF</div>
+    <%= file_field(:pending, :pdf) %>
+  </label>
   
   <label>
     <div>Project Description</div>
@@ -36,9 +40,6 @@
 <% end %>
   
 </div> <!-- /container -->
-
-<!-- / footer -->
-<div><%= render 'hotlists/footer' %></div>
 
 
 

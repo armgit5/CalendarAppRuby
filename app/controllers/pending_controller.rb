@@ -71,4 +71,9 @@ class PendingController < ApplicationController
     redirect_to(:action => "index")
   end
 
+  def download
+    pending = Pending.find(params[:id])
+    send_file pending.pdf.current_path
+  end
+  
 end
