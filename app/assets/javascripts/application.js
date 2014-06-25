@@ -5,7 +5,8 @@
 // the compiled file.
 // 
 //= require_tree .
-//= require schedule2.js
+
+
 
 
 
