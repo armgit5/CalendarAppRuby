@@ -2,13 +2,16 @@
 
 class PdfUploader < CarrierWave::Uploader::Base
 
-  # Include RMagick or ImageScience support:
-  # include CarrierWave::RMagick
-  # include CarrierWave::ImageScience
-
+#   Include RMagick or ImageScience support:
+#   include CarrierWave::RMagick
+#   include CarrierWave::ImageScience
+#  include CarrierWaveDirect::Uploader
   # Choose what kind of storage to use for this uploader:
-  storage :file
-  # storage :s3
+#  storage :file
+  storage :fog
+  
+  include CarrierWave::MimeTypes
+  process :set_content_type
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:

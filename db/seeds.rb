@@ -120,17 +120,18 @@ CSV.foreach(Rails.root.join("csvdb/schedules.csv"), headers: true) do |row|
   end
 end
 
-puts "Importing pendings..."
-CSV.foreach(Rails.root.join("csvdb/hotlists/pendings.csv"), headers: true) do |row|
-  Pending.create! do |p|
-    p.id = row[0]
-    p.date = row[1]
-    p.company_id = row[2]
-    p.project = row[3]
-    p.sale_id = row[4]
-    p.status_id = row[5]
-  end
-end
+#puts "Importing pendings..."
+#CSV.foreach(Rails.root.join("csvdb/hotlists/pendings.csv"), headers: true) do |row|
+#  Pending.create! do |p|
+#    p.id = row[0]
+#    p.date = row[1]
+#    p.company_id = row[2]
+#    p.project = row[3]
+#    p.sale_id = row[4]
+#    p.status_id = row[5]
+#    p.pdf = row[6]
+#  end
+#end
 
 puts "Importing statuses..."
 CSV.foreach(Rails.root.join("csvdb/hotlists/statuses.csv"), headers: true) do |row|

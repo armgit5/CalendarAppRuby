@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(:version => 20140620075237) do
     t.integer  "status_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.binary   "pdf"
+    t.string   "pdf"
   end
 
   create_table "products", :force => true do |t|

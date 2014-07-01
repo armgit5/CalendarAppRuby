@@ -1,13 +1,9 @@
-<!-- / header -->
-<div><%= render 'header' %></div>
 
 <div class="container">
   <!-- Main component for a primary marketing message or call to action -->
-  <div class="jumbotron">
-    <h1>Add Pending Page</h1>
-  </div> 
+  
   <p class="instruction">Please fill up your schedule information here</p>
-  <%= form_tag(:action => 'create') do %>
+  <%= form_tag({:action => 'create'}, :multipart => true) do %>
     <label>
       <div>Date & Time</div>
       <%= text_field(:pending, :date, :class => "datetimepicker") %>
@@ -24,6 +20,10 @@
       <div>Status</div>
       <%= collection_select(:pending, :status_id, @statuses, :id, :name, {:prompt=>"Please Select Status"}, {:class=>'e9', :style=>"width:350px"}) %>
     </label>
+    <%#*<label>%>
+     <%#*<div>PDF</div>%>
+     <%#= file_field(:pending, :pdf) %>
+   <%#*</label>%>
     <label>
       <div>Project Description</div>
       <%= text_area(:pending, :project) %>
@@ -33,8 +33,7 @@
   <% end %> 
 </div>
 
-<!-- / footer -->
-<div><%= render 'hotlists/footer' %></div>
+
   
 <%= javascript_tag do %>  
   <%#*Date picker function%>              
