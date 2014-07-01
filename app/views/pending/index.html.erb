@@ -37,7 +37,7 @@
     <td class='normal'><%= p.status.name unless p.status.nil? %></td>
     <td class='short'><button type="button" class="btn btn-primary"><%= link_to("Edit", {:action => 'edit_pending', :id => p.id}) %></button></td>
     <td class='short'><button type="button" class="btn btn-primary"><%= link_to("Delete", {:action => 'delete_pending', :id => p.id}) %></button></td>
-    <td class='short'><button type="button" class="btn btn-primary"><%= link_to("Download", {:action => 'download', :id => p.id}) %></button></td>
+    <td class='short'><button type="button" class="btn btn-primary"><%= link_to("Download", {:action => 'download', :id => p.id}, :target => "_blank") %></button></td>
   </tr>
   <% end %>  
 </table>

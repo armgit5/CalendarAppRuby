@@ -20,10 +20,10 @@
       <div>Status</div>
       <%= collection_select(:pending, :status_id, @statuses, :id, :name, {:prompt=>"Please Select Status"}, {:class=>'e9', :style=>"width:350px"}) %>
     </label>
-    <%#*<label>%>
-     <%#*<div>PDF</div>%>
-     <%#= file_field(:pending, :pdf) %>
-   <%#*</label>%>
+    <label>
+     <div>PDF</div>
+     <%= file_field(:pending, :pdf) %>
+   </label>
     <label>
       <div>Project Description</div>
       <%= text_area(:pending, :project) %>
