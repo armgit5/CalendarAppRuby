@@ -51,7 +51,7 @@ class AdminController < ApplicationController
   end
 
   def users
-    @users = User.all.paginate(:per_page => 25, :page => params[:page])
+    @users = User.all
   end
 
   def reset_password
