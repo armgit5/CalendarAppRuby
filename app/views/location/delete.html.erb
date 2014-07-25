@@ -1,31 +1,35 @@
-<!-- / header -->
-<div><%= render 'header' %></div>
+<style>
+   .btn.btn-primary {
+    background-color: #33AAFF;
+    width: 75px;
+  } 
+  .btn.btn-primary a {
+    color: white;
+  }
+  tbody td {
+    font-size: 10pt;
+    text-align: center;
+  }
+  tr {
+    color: black;
+  }
+  .header {
+    background-color: #BBBBBB;
+  }
+</style>
 
 <div class="container">
   <!-- Main component for a primary marketing message or call to action -->
-  <div class="jumbotron">
-    <h1>Edit Location Page</h1>
-  </div><!--/.header-collapse -->
-
-
-<%= form_tag(:action => 'destroy', :id => @location.id) do %>
-  <table class="list"  summary="Schedule list">
-    <tr class="header">
-      <th>Company</th>
-    </tr>
-
-    <tr>
-      <td><%= @location.name %></td> 
-    </tr>
-
-  </table>
-
-<%= submit_tag('Delete Comapany') %>
-  
-  
-<% end %>
-
+  <%= form_tag(:action => 'destroy', :id => @location.id) do %>
+    <table class="list"  summary="Schedule list">
+      <tr class="header">
+        <th>Company</th>
+      </tr>
+      <tr>
+        <td><%= @location.name %></td> 
+      </tr>
+    </table>
+  <%= submit_tag('Delete Comapany') %>
+  <% end %>
 </div>
-  
-<!-- / footer -->
-<div><%= render '/register/footer' %></div>
+ 

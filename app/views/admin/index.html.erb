@@ -5,6 +5,7 @@
   } 
   .btn.btn-primary a {
     color: white;
+    text-align: center;
   }
   tbody td {
     font-size: 10pt;
@@ -23,8 +24,8 @@
     <div class="form-group">
      <%= text_field(:company, :name, :class => 'form-control', :pleaceholder => 'Search') %>
     </div>
-    <%= submit_tag('Create Company', :class => "btn btn-default") %>
-    <% end %>
+    <%= submit_tag('CREATE COMPANY', :class => "btn btn-default") %>
+  <% end %>
   <ul class="nav nav-tabs">
     <%= content_tag(:li, link_to("COMPANIES", :controller => "admin", :action => 'index'), :class => ("active" if current_page? "/admin") ) %>
     <%= content_tag(:li, link_to("PENDING", :controller => "pending", :action => 'index'), :class => ("active" if current_page? "/pending") ) %>
@@ -32,17 +33,17 @@
   </ul> 
   <table class="table table-bordered">
     <tr class="header">
-      <th>Company Name</th>
-      <th>Location</th>
-      <th>Edit</th>
-      <th>Delete</th>
+      <th>COMPANY NAME</th>
+      <th>LOCATION</th>
+      <th>EDIT</th>
+      <th>DELETE</th>
     </tr>
     <% @companies.each do |c| %>
     <tr>   
       <td class='normal'><%= c.name %></td>
-      <td class='short'><button type="button" class="btn btn-primary"><%= link_to("Location", {:controller => 'location', :action => 'index', :id => c.id}) %></button></td>
-      <td class='short'><button type="button" class="btn btn-primary"><%= link_to("Edit", {:action => 'edit', :id => c.id}) %></button></td>
-      <td class='short'><button type="button" class="btn btn-primary"><%= link_to("Delete", {:action => 'delete', :id => c.id}) %></button></td>
+      <td class='short'><button type="button" class="btn btn-primary"><%= link_to("ADD", {:controller => 'location', :action => 'index', :id => c.id}) %></button></td>
+      <td class='short'><button type="button" class="btn btn-primary"><%= link_to("EDIT", {:action => 'edit', :id => c.id}) %></button></td>
+      <td class='short'><button type="button" class="btn btn-primary"><%= link_to("DELETE", {:action => 'delete', :id => c.id}) %></button></td>
     </tr>
     <% end %>  
   </table> 

@@ -3,18 +3,14 @@
  
   <!--/ flash massages -->
   <div class="notice"><%= flash[:notice] %></div> 
-  
   <ul class="nav nav-tabs navbar-right">
     <%= content_tag(:li, link_to("Add Pending", :controller => "pending", :action => 'add_pending'), :class => ("active" if current_page? "/pending/add_pending") ) %>
   </ul>
-  
   <ul class="nav nav-tabs">
     <%= content_tag(:li, link_to("COMPANIES", :controller => "admin", :action => 'index'), :class => ("active" if current_page? "/admin") ) %>
     <%= content_tag(:li, link_to("PENDING", :controller => "pending", :action => 'index'), :class => ("active" if current_page? "/pending") ) %>
     <%= content_tag(:li, link_to("USERS", :controller => "admin", :action => 'users'), :class => ("active" if current_page? "/admin/users") ) %>
   </ul>
-  
-  
   
   <!--/ table content -->
   <table class="table table-bordered" >

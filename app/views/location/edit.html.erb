@@ -1,28 +1,9 @@
-<!-- / header -->
-<div><%= render 'header' %></div>
-
-<div class="container">
-  <!-- Main component for a primary marketing message or call to action -->
-  <div class="jumbotron">
-    <h1>Edit Location Page</h1>
-  </div><!--/.header-collapse -->
-
-<%= form_tag(:action => 'update', :id => @location.id) do %>
-
-  
+<%= form_tag(:action => 'update', :id => @location.id) do %>  
   <label>
     <div>Customer Name</div>
     <%= text_field(:location, :name) %>
   </label>
-  
   <div class="error"><%= @error %></div>
-  
   <%= submit_tag('Update Customer') %>
-  
-  
 <% end %>
-  
-</div>
-  
-<!-- / footer -->
-<div><%= render '/register/footer' %></div>
+ 

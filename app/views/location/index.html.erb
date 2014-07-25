@@ -1,44 +1,44 @@
-<!-- / header -->
-<div><%= render 'header' %></div>
-
-
+<style>
+   .btn.btn-primary {
+    background-color: #33AAFF;
+    width: 75px;
+  } 
+  .btn.btn-primary a {
+    color: white;
+  }
+  tbody td {
+    font-size: 10pt;
+    text-align: center;
+  }
+  tr {
+    color: black;
+  }
+  .header {
+    background-color: #BBBBBB;
+  }
+</style>
 <div class="container">
-  <!-- Main component for a primary marketing message or call to action -->
-  <div class="jumbotron">
-    <h1>Location Page</h1>  
-  </div><!--/.header-collapse -->
-
-<%= form_tag(:action => 'create') do %>
-
-  <label>
-    <div>Add Location</div>
-    <%= hidden_field(:location, :company_id, :value => params[:id]) %>
-    <%= text_field(:location, :name) %>
-  </label>
-
-   <%= submit_tag('Create Location') %>
-<% end %> 
-  </br>
-
-<table class="list"  summary="Schedule list">
-  <tr class="header">
-    
-    <th>Company Location</th>
-    
-    <th>Edit</th>
-    <th>Delete</th>
-  </tr>
-  <% @company.locations.each do |c| %>
-  <tr>   
-    
-    <td class='normal'><%= c.name %></td>
-   
-    <td class='short'><button type="button" class="btn btn-primary"><%= link_to("Edit", {:action => 'edit', :id => c.id}) %></button></td>
-    <td class='short'><button type="button" class="btn btn-primary"><%= link_to("Delete", {:action => 'delete', :id => c.id}) %></button></td>
-  </tr>
-  <% end %>  
-</table>
+  <%= form_tag({:controller => 'location', :action => 'create'}, {:class => 'navbar-form navbar-right', :role => 'search'}) do %>
+    <div class="form-group">
+     <%= hidden_field(:location, :company_id, :value => params[:id]) %>
+     <%= text_field(:location, :name, :class => 'form-control', :pleaceholder => 'Search') %>
+    </div>
+    <%= submit_tag('CREATE LOCATION', :class => "btn btn-default") %>
+  <% end %>
+    </br>
+  <table class="list"  summary="Schedule list">
+    <tr class="header"> 
+      <th>Company Location</th>  
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+    <% @company.locations.each do |c| %>
+    <tr>     
+      <td class='normal'><%= c.name %></td>
+      <td class='short'><button type="button" class="btn btn-primary"><%= link_to("Edit", {:action => 'edit', :id => c.id}) %></button></td>
+      <td class='short'><button type="button" class="btn btn-primary"><%= link_to("Delete", {:action => 'delete', :id => c.id}) %></button></td>
+    </tr>
+    <% end %>  
+  </table>
 </div>
 
-<!-- / footer -->
-<div><%= render '/register/footer' %></div>

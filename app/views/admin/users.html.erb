@@ -19,12 +19,9 @@
 </style>
 <div class="container">
   <!-- Main component for a primary marketing message or call to action -->
-  <%= form_tag({:controller => 'admin', :action => 'create'}, {:class => 'navbar-form navbar-right', :role => 'search'}) do %>
-    <div class="form-group">
-     <%= text_field(:company, :name, :class => 'form-control', :pleaceholder => 'Search') %>
-    </div>
-    <%= submit_tag('Create Company', :class => "btn btn-default") %>
-    <% end %>
+  <ul class="nav nav-tabs navbar-right">
+    <%= content_tag(:li, link_to("ADD USERS", :controller => "signup", :action => 'index'), :class => ("active" if current_page? "/pending/add_pending") ) %>
+  </ul>
   <ul class="nav nav-tabs"> 
     <%= content_tag(:li, link_to("COMPANIES", :controller => "admin", :action => 'index'), :class => ("active" if current_page? "/admin") ) %>
     <%= content_tag(:li, link_to("PENDING", :controller => "pending", :action => 'index'), :class => ("active" if current_page? "/pending") ) %>

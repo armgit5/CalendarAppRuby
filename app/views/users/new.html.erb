@@ -1,56 +1,94 @@
-<div><%= render 'header' %></div>
+<style>
+  .cmxform.schedule {
+       max-width: 450px;
+       padding: 19px 29px 9px;
+       margin: 0 auto 20px;
+       background-color: #e5e5e5;
+       border: 1px solid #e5e5e5;
+       -webkit-border-radius: 5px;
+          -moz-border-radius: 5px;
+               border-radius: 5px;
+       -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+          -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+               box-shadow: 0 1px 2px rgba(0,0,0,.05);
+       margin-bottom: 0px;
+  }
+  
+  .cmxform.schedule label,
+  .cmxform.schedule .checkbox-inline b {
+      color: #303030;
+      font-family: modern;
+   }
+   
+   .checkbox-inline .field {
+     color: #3f3f3f;
+   }
+   
+   .btn.btn-large.btn-primary {
+     background-color: #33AAFF;
+     margin-bottom: 10px;
+     width: 140px;
+     font-size: 10pt;
+     padding-left: 5px;
+     margin-left: 10px;
+     text-align: center;
+     color: white;
+   }
+   
+   .instruction {
+     text-align: center;
+     margin: 0px;
+   }
+    
+   .project-des {font-size: 12pt;}
+   
+   #newcom .newcom-title {
+     color: red;
+     font-size: 12pt;
+     font-weight:bold;
+     font-family: modern;
+   }
+  
+</style>
 
 <div class="container">
   <!-- Main component for a primary marketing message or call to action -->
-  <div class="jumbotron">
-    <h1>Signup Page</h1>
-  </div>
-
-<h1>Sign Up</h1>
-
-<%= form_for @user do |f| %>
-  <% if @user.errors.any? %>
-    <div class="error_messages">
-      <h2>Form is invalid</h2>
-      <ul>
-        <% @user.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <div id="schedule-form">
+  <p class="instruction">Please add new users here</p>
+  <%= form_for @user, :html => {:class => "cmxform schedule"} do |f| %>
+    <% if @user.errors.any? %>
+      <div class="error_messages">
+        <h2>Form is invalid</h2>
+        <ul>
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <label>  
+      <div>Email</div>
+        <%= f.text_field :email %>
+    </label>  
   <label>  
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
+    <div>Password</div>
+      <%= f.password_field :password %> 
   </label>  
   <label>  
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
-  </div>
-  </label>  
-  <label>  
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
+  <div>Password Confirmation</div>
     <%= f.password_field :password_confirmation %>
-  </div>
   </label>  
-
  <label>   
       <div>Sales Name</div>
       <%= f.collection_select :sale_id, @sale, :id, :name, {:prompt=>"Please Select Sales Person"} %>
     </label>
-
-<label>   
+  <label>   
       <div>Role</div>
       <%= f.collection_select :role_id, @role, :id, :name, {:prompt=>"Please Select Role"} %>
-    </label>
-
-  <label>  
-  <div class="actions"><%= f.submit "Sign Up" %></div>
-  </label>  
+  </label>
+  
+  <%= f.submit "Sign Up", :class => "btn btn-large btn-primary" %>
+   
 <% end %>
-
+</div>
 </div>

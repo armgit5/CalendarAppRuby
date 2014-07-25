@@ -1,11 +1,30 @@
+<style>
+   .btn.btn-primary {
+    background-color: #33AAFF;
+    width: 75px;
+  } 
+  .btn.btn-primary a {
+    color: white;
+    text-align: center;
+  }
+  tbody td {
+    font-size: 10pt;
+    text-align: center;
+  }
+  tr {
+    color: black;
+  }
+  .header {
+    background-color: #BBBBBB;
+  }
+</style>
+
 <div class="container">
   <!-- Main component for a primary marketing message or call to action -->
-<%= form_tag(:action => 'update', :id => @company.id) do %>  
-  <label>
-    <div>Customer Name</div>
-    <%= text_field(:company, :name) %>
-  </label>
-  <div class="error"><%= @error %></div>  
-  <%= submit_tag('Update Customer', class: "btn btn-large btn-primary") %>
-<% end %>
+  <%= form_tag({:action => 'update', :id => @company.id}, {:class => 'navbar-form navbar-right', :role => 'search'}) do %>
+    <div class="form-group">
+     <%= text_field(:company, :name, :class => 'form-control', :pleaceholder => 'Search') %>
+    </div>
+    <%= submit_tag('UPDATE COMPANY', :class => "btn btn-default") %>
+  <% end %>
 </div>  

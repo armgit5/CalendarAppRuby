@@ -292,7 +292,8 @@ a.header-link {
               current_page?(controller: 'register', action: 'edit') or current_page?(controller: 'register', action: 'delete') ) ) %>
       </ul>   
       <ul class="nav navbar-nav navbar-right">    
-         <%= content_tag(:li, link_to("ADMIN", :controller => 'admin', :action => 'index'), :class => ("active" if current_page? "/admin") )  %>
+         <%= content_tag(:li, link_to("ADMIN", :controller => 'admin', :action => 'index'), :class => ("active" if current_page? "/admin" or 
+             current_page? "/admin/users" or current_page? "/pending" or current_page? "/signup") )  %>
          <% if current_user %>
            <%= content_tag(:li, link_to("LOGOUT", logout_path, :class => ("active" if current_page? "/admin"))) %>
          <% end %>
