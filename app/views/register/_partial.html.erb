@@ -13,14 +13,14 @@
   <tr class="header">
     <%#*<th><%= sortable("Date & Time", "date") %>
     <%#*<th><%= sortable("Company", "company") %>
-    <th>Date & Time</th>
-    <th>Company</th>
-    <th>Company Location</th>
-    <th>Sales</th>
-    <th>Products</th>
-    <th>Project Description</th>
-    <th>Edit</th>
-    <th>Delete</th>
+    <th>DATE</th>
+    <th>COMPANY</th>
+    <th>LOCATION</th>
+    <th>SALES</th>
+    <th>PRODUCTS</th>
+    <th>DESCRIPTION</th>
+    <th>EDIT</th>
+    <th>DELETE</th>
   </tr>
   <% @schedule.each do |s| %>
   <tr>   
@@ -34,8 +34,8 @@
     <% end %>
     </td>
     <td class='long'><%= s.project %></td>
-    <td class='short'><button type="button" class="btn btn-primary css3button"><%= link_to("Edit", {:action => 'edit', :id => s.id}) %></button></td>
-    <td class='short'><button type="button" class="btn btn-primary css3button"><%= link_to("Delete", {:action => 'delete', :id => s.id}) %></button></td>
+    <td class='short'><button type="button" class="btn btn-primary css3button"><%= link_to("EDIT", {:action => 'edit', :id => s.id}) %></button></td>
+    <td class='short'><button type="button" class="btn btn-primary css3button"><%= link_to("DELETE", {:action => 'delete', :id => s.id}) %></button></td>
   </tr>
   <% end %>  
 </table>

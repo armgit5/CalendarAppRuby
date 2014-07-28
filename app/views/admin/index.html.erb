@@ -17,6 +17,10 @@
   .header {
     background-color: #BBBBBB;
   }
+  .btn.btn-default{
+    background-color: #33AAFF;
+    color: white;
+  }
 </style>
 <div class="container">
   <!-- Main component for a primary marketing message or call to action -->
@@ -28,7 +32,7 @@
   <% end %>
   <ul class="nav nav-tabs">
     <%= content_tag(:li, link_to("COMPANIES", :controller => "admin", :action => 'index'), :class => ("active" if current_page? "/admin") ) %>
-    <%= content_tag(:li, link_to("PENDING", :controller => "pending", :action => 'index'), :class => ("active" if current_page? "/pending") ) %>
+    <%#= content_tag(:li, link_to("PENDING", :controller => "pending", :action => 'index'), :class => ("active" if current_page? "/pending") ) %>
     <%= content_tag(:li, link_to("USERS", :controller => "admin", :action => 'users'), :class => ("active" if current_page? "/admin/users") ) %>
   </ul> 
   <table class="table table-bordered">

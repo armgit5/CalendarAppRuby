@@ -24,7 +24,7 @@
   </ul>
   <ul class="nav nav-tabs"> 
     <%= content_tag(:li, link_to("COMPANIES", :controller => "admin", :action => 'index'), :class => ("active" if current_page? "/admin") ) %>
-    <%= content_tag(:li, link_to("PENDING", :controller => "pending", :action => 'index'), :class => ("active" if current_page? "/pending") ) %>
+    <%#= content_tag(:li, link_to("PENDING", :controller => "pending", :action => 'index'), :class => ("active" if current_page? "/pending") ) %>
     <%= content_tag(:li, link_to("USERS", :controller => "admin", :action => 'users'), :class => ("active" if current_page? "/admin/users") ) %>
   </ul> 
   <table class="table table-bordered">
@@ -36,8 +36,8 @@
     <% @users.each do |u| %>
     <tr>   
       <td class='normal'><%= u.email %></td>
-      <td class='short'><button type="button" class="btn btn-primary"><%= link_to("Edit", {:controller => 'admin', :action => 'reset_password', :id => u.id}) %></button></td>
-      <td class='short'><button type="button" class="btn btn-primary"><%= link_to("Delete", {:controller => 'admin', :action => 'delete_user', :id => u.id}, :confirm => "Are you sure?") %></button></td>
+      <td class='short'><button type="button" class="btn btn-primary"><%= link_to("EDIT", {:controller => 'admin', :action => 'reset_password', :id => u.id}) %></button></td>
+      <td class='short'><button type="button" class="btn btn-primary"><%= link_to("DELETE", {:controller => 'admin', :action => 'delete_user', :id => u.id}, :confirm => "Are you sure?") %></button></td>
     </tr>
     <% end %>  
   </table> 
