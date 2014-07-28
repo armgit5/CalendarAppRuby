@@ -141,6 +141,15 @@ CSV.foreach(Rails.root.join("csvdb/hotlists/statuses.csv"), headers: true) do |r
   end
 end
 
+puts "Importing categorizations..."
+CSV.foreach(Rails.root.join("csvdb/categorizations.csv"), headers: true) do |row|
+  Categorization.create! do |c|
+    c.id = row[0]
+    c.product_id = row[1]
+    c.schedule_id = row[2]
+  end
+end
+
 ActiveRecord::Base.connection.tables.each do |t|
   ActiveRecord::Base.connection.reset_pk_sequence!(t)
 end;nil
