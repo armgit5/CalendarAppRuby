@@ -83,6 +83,9 @@ class RegisterController < ApplicationController
   
   def delete
     @schedule = Schedule.find(params[:id])
+    if current_user.sale_id != @schedule.sale_id
+      redirect_to(:action => "index")
+    end
   end
   
   def destroy
