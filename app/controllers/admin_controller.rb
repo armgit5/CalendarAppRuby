@@ -56,6 +56,7 @@ class AdminController < ApplicationController
 
   def reset_password
     @user = User.find(params[:id])
+    @role = Role.all
   end
   
   def update_password
@@ -70,5 +71,11 @@ class AdminController < ApplicationController
     @user.destroy
     flash[:notice] = "#{@user.email} was successfully deleted."
     redirect_to(:controller => 'admin', :action => "users")
+  end
+  
+  def update_user
+    @user = User.find(params[:id])
+    @user.update_attributes!(params[:user])
+    
   end
 end
