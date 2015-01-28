@@ -1,7 +1,8 @@
 NilpeterWeb::Application.routes.draw do
   
+  get "visitors/index"
   get "password_resets/new"
-
+  
   get 'signup', to: 'users#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to:  'sessions#destroy', as: 'logout'

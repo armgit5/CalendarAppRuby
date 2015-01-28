@@ -1,0 +1,118 @@
+<style>
+  .user_name {
+    text-align: right;
+  }
+  
+  th {
+    color: #303030;
+  }
+  
+  tbody td {
+    font-size: 10pt;
+    text-align: center;
+  }
+</style>
+
+<div class="container">
+  <% if current_user %>
+    <div class="user_name">
+    WELCOME <%= current_user.email %>.
+    </div>
+  <% end %>
+  <div id='calendar'></div>
+</div>
+<div><%= render 'hover' %></div>
+
+<%= javascript_tag do %>
+	$(document).ready(function() {	
+		var date = new Date();
+		var d = date.getDate();
+		var m = date.getMonth();
+		var y = date.getFullYear(); 
+                var tooltip = $('<div/>').qtip({
+		id: 'fullcalendar',
+		prerender: true,
+		content: {
+			text: ' ',
+			title: {
+				button: true
+			},                
+		},               
+		position: {
+			my: 'bottom right',
+			at: 'bottom right',
+			target: 'mouse',
+			viewport: $('#fullcalendar'),
+			adjust: {
+				mouse: false,
+				scroll: false
+			}
+		},
+		show: true,
+		hide: false,
+		style: 'qtip-default qtip-rounded'
+                }).qtip('api');
+
+		var calendar = $('#calendar').fullCalendar({
+                        
+			header: {
+				left: 'prev ,next today',
+				center: 'title',
+				right: 'month,agendaWeek,agendaDay'
+			},      
+			selectable: true,
+			selectHelper: true,			
+			editable: false,
+                        eventClick: function(data, event, view) {
+                        var content = '<h3> '+data.company+'</h3>' + 
+				'<p><b>Start:</b> '+data.start+'<br />' + 
+                                '<p><b>Location:</b> '+data.location+'<br />' +
+                                '<p><b>Sales:</b> '+data.sales+'<br />' +
+                                '<p><b>Products:</b> '+data.products+'<br />' +
+                                '<p><b>Project:</b> '+data.project+'<br />' +
+                                
+				(data.end && '<p><b>End:</b> '+data.end+'</p>' || '');
+
+			tooltip.set({
+				'content.text': content
+			})
+			.reposition(event).show(event);
+                        },
+                        
+			events: [
+                                
+                                <% @schedule.each do |s| %>
+				{
+					title: '<%= s.company.name unless s.company.nil? %>' + " : " + '<%=  s.sale.name unless s.sale.nil? %>',
+                                        company: '<%= s.company.name unless s.company.nil? %>',
+                                        location: '<%= s.location.name unless s.location.nil? %>',
+                                        sales: '<%= s.sale.name unless s.sale.nil? %>',
+                                        project: '<%= s.project.rstrip().gsub("'"){"\\'"}.split.join(' ') unless s.project.nil? %>',
+                                        <% x = Array.new  %>
+                                        <% s.products.each do |i| %>
+                                          <% x.push(i.name)  %>
+                                         <% end %>                      
+                                        products: '<%= x.to_s %>',                                       
+					start: new Date(<%= s.date.strftime("%Y, %m - 1, %d, %H, %M") %>),
+                                        allDay: false
+				},
+				<% end %>
+			],
+                        timeFormat: 'HH:mm'
+		});
+                    
+                $.ionSound({
+                   sounds: [
+                       "calendar"
+                   ],
+                   path: "http://k007.kiwi6.com/hotlink/jerymfm7jb/",
+                   multiPlay: true,
+                   volume: "1.0"
+               });
+               $.ionSound.play("calendar");
+	});     
+<% end %>
+  
+
+
+
