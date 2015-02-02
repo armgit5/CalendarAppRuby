@@ -9,10 +9,19 @@ class Schedule < ActiveRecord::Base
   
   attr_accessible :sale_id, :company_id, :location_id, :project, :date, :name, :product_id
   
+#  search all 
+#  def self.search(search)
+#    if search
+#      joins(:company, :sale, :location).where('lower(companies.name) LIKE lower(?) OR lower(sales.name) LIKE lower(?) OR 
+#        lower(locations.name) LIKE lower(?) OR lower(project) LIKE lower(?)#', "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")
+#    else
+#      scoped
+#    end
+#  end
+  
   def self.search(search)
     if search
-      joins(:company, :sale, :location).where('lower(companies.name) LIKE lower(?) OR lower(sales.name) LIKE lower(?) OR 
-        lower(locations.name) LIKE lower(?) OR lower(project) LIKE lower(?)', "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")
+      joins(:sale).where('lower(sales.name) LIKE lower(?)', "%#{search}%")
     else
       scoped
     end

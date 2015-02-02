@@ -28,7 +28,7 @@ class RegisterController < ApplicationController
 #      .order(params[:sort] + " " + params[:direction]).search(params[:search])
 #      .paginate(:per_page => 25, :page => params[:page])  
 #    else 
-    @schedule = Schedule
+    @schedule = Schedule.search(params[:search])
     .order(params[:sort] + " " + params[:direction]).search(params[:search])
     .paginate(:per_page => 25, :page => params[:page])
 #    end
