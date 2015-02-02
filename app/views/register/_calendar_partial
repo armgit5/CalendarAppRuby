@@ -77,7 +77,10 @@
 			],
                         timeFormat: 'HH:mm'
 		});
-                           
+                    
+               
+               
+               
                
 	});     
 <% end %>
