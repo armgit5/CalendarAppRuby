@@ -29,7 +29,7 @@ class RegisterController < ApplicationController
 #      .paginate(:per_page => 25, :page => params[:page])  
 #    else 
     @schedule = Schedule.search(params[:search])
-    .order(params[:sort] + " " + params[:direction]).search(params[:search])
+    .order(params[:sort] + " " + params[:direction])
     .paginate(:per_page => 25, :page => params[:page])
 #    end
     @nilpeter_products = Product.where(:type_id => 1)
@@ -103,7 +103,7 @@ class RegisterController < ApplicationController
   end
   
   def calendar
-    @schedule = Schedule.all
+    @schedule = Schedule.search(params[:search])
   end
   
   def create_new

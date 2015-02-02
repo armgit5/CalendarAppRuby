@@ -12,6 +12,7 @@
   
   .navbar-form {
     padding: 0px;
+    
   }
   
 </style>
@@ -36,14 +37,6 @@
 <!-- / javascript -->
 <%= javascript_tag do %>
    $(document).ready(function() {
-    $(document).on("click", "#schedule-table th a, #schedule-table .pagination a", function() {
-      $.getScript(this.href);
-      return false;
-    }); 
-    $("#products_search input").keyup(function() {
-      $.get($("#products_search").attr("action"), $("#products_search").serialize(), null, "script");
-    return false;
-    });
     
      $.ionSound({
           sounds: [
