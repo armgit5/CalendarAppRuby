@@ -21,6 +21,7 @@ class Schedule < ActiveRecord::Base
   
   def self.search(search)
     if search and search.length > 2
+      sleep(1)
       joins(:sale).where('lower(sales.name) LIKE lower(?)', "%#{search}%")
     else
       scoped
