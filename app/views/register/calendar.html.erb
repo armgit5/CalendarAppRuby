@@ -16,6 +16,11 @@
     padding: 0px;
     
   }
+  
+  .scrollDown {
+    
+  }
+  
 </style>
 
 <div class="container">
@@ -57,12 +62,19 @@
                });
                $.ionSound.play("calendar");
                
-               $('#sales_search input').keyup(function () {
-                  $.get($('#sales_search').attr('action'), $('#sales_search').serialize(), null, 'script');
-                          
-                   $('#calendar').fullCalendar(  'refetchEvents');                              
-                
-              });
+               var search = function() { 
+                $('#sales_search input').keyup(function () {
+                  $.get($('#sales_search').attr('action'), $('#sales_search').serialize(), null, 'script');                         
+                   $('#calendar').fullCalendar(  'refetchEvents');                                          
+                });
+              };
+              
+              <%#*setInterval(function(){ alert(window.pageYOffset); }, 3000);%>
+              <%#*window.scrollBy(0,425).faceIn();%> 
+              $('html,body').animate({
+                  scrollTop: '+=425px'
+              }, 2000)
+             
 	});     
 <% end %>
   
