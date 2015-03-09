@@ -27,7 +27,7 @@
     <td class='normal'><%= s.date.utc.strftime("%d/%m/%Y %H:%M") unless s.date.nil? %></td>
     <td class='normal'><%= s.company.name unless s.company.nil? %></td>
     <td class='long'><%= s.location.name unless s.location.nil? %></td>
-    <td class='short'><%= s.sale.name unless s.sale.nil? %></td>
+    <td class='short'><%= s.sale.name unless s.sale.nil?  %> <%= if s.sale.nil? then s.user.email.split("@")[0].upcase unless s.user.nil? end  %></td>
     <td class='normal'><% s.products.each do |i| %>
     <%= i.name %>
       <br/>  
