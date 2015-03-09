@@ -70,6 +70,7 @@
           :style=>"width:350px"} %>
     </label>
     <%= hidden_field(:schedule, :sale_id, :value => User.find(current_user.id).sale_id) %>
+     <%= hidden_field(:schedule, :user_id, :value => User.find(current_user.id).id) %>
     <div class="checkbox-inline">
     <div><b>Nilpeter Products</b></div>
       <div class="field">

@@ -60,10 +60,10 @@
                                 
                                 <% @schedule.each do |s| %>
 				{
-					title: '<%= s.company.name unless s.company.nil? %>' + " : " + '<%=  s.sale.name unless s.sale.nil? %>',
+					title: '<%= s.company.name unless s.company.nil? %>' + " : " + '<%=  s.sale.name unless s.sale.nil? %>' + '<%= s.user.email.split("@")[0].upcase unless s.user.nil? %>',
                                         company: '<%= s.company.name unless s.company.nil? %>',
                                         location: '<%= s.location.name unless s.location.nil? %>',
-                                        sales: '<%= s.sale.name unless s.sale.nil? %>',
+                                        sales: '<%= s.sale.name unless s.sale.nil? %>' + '<%= s.user.email.split("@")[0].upcase unless s.user.nil? %>',
                                         project: '<%= s.project.rstrip().gsub("'"){"\\'"}.split.join(' ') unless s.project.nil? %>',
                                         <% x = Array.new  %>
                                         <% s.products.each do |i| %>
