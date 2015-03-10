@@ -108,6 +108,15 @@ class RegisterController < ApplicationController
   
   def calendar
     @schedule = Schedule.search(params[:search])
+#    old_number = Schedule.count 
+    
+#    while true do
+#      sleep 3
+#      num_data = Schedule.count 
+#      if num_data != old_number 
+#        redirect_to(:action => "calendar")
+#      end
+#    end 
   end
   
   def create_new
