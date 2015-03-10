@@ -8,7 +8,7 @@ class Schedule < ActiveRecord::Base
   has_many :categorizations
   has_many :products, through: :categorizations
   
-  attr_accessible :sale_id, :company_id, :location_id, :project, :date, :name, :product_id, :user_id
+  attr_accessible :sale_id, :company_id, :location_id, :project, :date, :name, :product_id, :user_id, :all_day
   
 #  search all 
 #  def self.search(search)

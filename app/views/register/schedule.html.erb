@@ -59,7 +59,13 @@
     <label for="cdate">
       <div>Date & Time</div><br>
       <%= text_field(:schedule, :date, {:class => "datetimepicker valid", :id => 'cdate', :required => true}) %>
-    </label>  
+      
+
+    </label> 
+     <div class="checkbox-inline">
+        <div class="field"> <%= check_box_tag('schedule[all_day][]', 1) %> All Day <br></div> 
+     </div>
+     
     <label id="company">
       <div>Customer Name</div><br>
       <%= collection_select(:schedule, :company_id, @companies, :id, :name, {:prompt=>"Please Select Company"}, {:class=>'e9', :style=>"width:350px", :required => true}) %>   

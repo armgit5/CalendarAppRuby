@@ -17,6 +17,7 @@ class RegisterController < ApplicationController
     @nilpeter_products = Product.where(:type_id => 1)
     @oem1 = Product.where(:type_id => 2).limit(6)
     @oem2 = Product.where(:type_id => 2).last(5)
+    @all_days = [1]
   end
   
   def index
@@ -34,7 +35,9 @@ class RegisterController < ApplicationController
 #    end
     @nilpeter_products = Product.where(:type_id => 1)
     @meech_products = Product.where(:type_id => 2)
+    
     @test =  current_user
+    
   end
   
   def export_csv
@@ -98,6 +101,7 @@ class RegisterController < ApplicationController
   def create
     @schedule = Schedule.create!(params[:schedule])
     @schedule.product_ids = params[:products]
+    @schedule.all_day = 1
     flash[:notice] = "#{@schedule.project} was successfully created."
     redirect_to(:action => "calendar")
   end
