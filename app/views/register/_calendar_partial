@@ -60,7 +60,7 @@
                                 
                                 <% @schedule.each do |s| %>
 				{
-					title: '<%= s.company.name unless s.company.nil? %>' + " : " + '<%=  s.sale.name unless s.sale.nil? %>' + '<%= if s.sale.nil? then s.user.email.split("@")[0].upcase unless s.user.nil? end %>',
+					title:  '<%=  s.sale.name unless s.sale.nil? %>' + '<%= if s.sale.nil? then s.user.email.split("@")[0].upcase unless s.user.nil? end %>' + " : " + '<%= s.company.name unless s.company.nil? %>',
                                         company: '<%= s.company.name unless s.company.nil? %>',
                                         location: '<%= s.location.name unless s.location.nil? %>',
                                         sales: '<%= s.sale.name unless s.sale.nil? %>' + '<%= if s.sale.nil? then s.user.email.split("@")[0].upcase unless s.user.nil? end %>',
