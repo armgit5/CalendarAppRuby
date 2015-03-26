@@ -35,7 +35,7 @@
                 }).qtip('api');
                 
                
-var e = [<% @schedule.each do |s| %>
+                var e = [<% @schedule.each do |s| %>
 				{
 					title:  '<%=  s.sale.name unless s.sale.nil? %>' + '<%= if s.sale.nil? then s.user.email.split("@")[0].upcase unless s.user.nil? end %>' + " : " + '<%= s.company.name unless s.company.nil? %>',
                                         company: '<%= s.company.name unless s.company.nil? %>',
@@ -55,7 +55,7 @@ var e = [<% @schedule.each do |s| %>
                var name = "PLA";
 
                function saleName(object) {
-                    return object.sales.includes(name);
+                    return object.sales.includes(name.toUpperCase());
                };
                console.log(e[1]);
                console.log(e[1].sales);
@@ -91,7 +91,7 @@ var e = [<% @schedule.each do |s| %>
 			.reposition(event).show(event);
                         },
                         
-			events: filtered,
+			events: e,
                         timeFormat: 'HH:mm'
 		});
                    
