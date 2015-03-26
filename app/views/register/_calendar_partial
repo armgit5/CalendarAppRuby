@@ -95,7 +95,7 @@
                         timeFormat: 'HH:mm'
 		});
    
-                var searchVal = "";
+                var searchVal = "PLA";
                
                var search = function() { 
                 $('#sales_search input').keyup(function () {
