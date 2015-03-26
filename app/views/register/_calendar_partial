@@ -94,10 +94,7 @@
 			events: e,
                         timeFormat: 'HH:mm'
 		});
-                   
-
-                
-               
+   
                 var searchVal = "";
                
                var search = function() { 
