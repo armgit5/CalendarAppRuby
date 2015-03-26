@@ -62,12 +62,18 @@
                });
                $.ionSound.play("calendar");
                
-               var search = function() { 
-                $('#sales_search input').keyup(function () {
-                  $.get($('#sales_search').attr('action'), $('#sales_search').serialize(), null, 'script');                         
-                   $('#calendar').fullCalendar(  'refetchEvents');                                          
-                });
-              };
+               <%#*var searchVal = "";%>
+               
+               <%#*var search = function() {%> 
+                <%#*$('#sales_search input').keyup(function () {%>
+                  <%#*$.get($('#sales_search').attr('action'), $('#sales_search').serialize(), null, 'script');%>     
+                   <%#*console.log($(this).text('#sales_search').val());%>
+                   <%#*searchVal = $(this).text('#sales_search').val();%>
+                   <%#*$('#calendar').fullCalendar(  'refetchEvents');%>                                          
+                <%#*});%>
+              <%#*};%>
+              
+              <%#*search();%>
               
               $('html,body').animate({
                   scrollTop: '+=425px'

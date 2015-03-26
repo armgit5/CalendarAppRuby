@@ -33,7 +33,8 @@
 		hide: false,
 		style: 'qtip-default qtip-rounded'
                 }).qtip('api');
-
+                
+               
 var e = [<% @schedule.each do |s| %>
 				{
 					title:  '<%=  s.sale.name unless s.sale.nil? %>' + '<%= if s.sale.nil? then s.user.email.split("@")[0].upcase unless s.user.nil? end %>' + " : " + '<%= s.company.name unless s.company.nil? %>',
@@ -51,14 +52,18 @@ var e = [<% @schedule.each do |s| %>
 				},
 				<% end %>];
 
+               var name = "PLA";
+
                function saleName(object) {
-                    return object.sales.includes('JOA');
+                    return object.sales.includes(name);
                };
                console.log(e[1]);
                console.log(e[1].sales);
                console.log(e[1].sales.includes('JOA'));
                var filtered = e.filter(saleName);
                console.log(filtered);
+
+
 
 		var calendar = $('#calendar').fullCalendar({
                         
@@ -86,14 +91,32 @@ var e = [<% @schedule.each do |s| %>
 			.reposition(event).show(event);
                         },
                         
-			events: e,
+			events: filtered,
                         timeFormat: 'HH:mm'
 		});
                    
 
                 
                
+                var searchVal = "";
                
+               var search = function() { 
+                $('#sales_search input').keyup(function () {
+                  <%#*$.get($('#sales_search').attr('action'), $('#sales_search').serialize(), null, 'script');%>     
+                   console.log($(this).text('#sales_search').val());
+                   searchVal = $(this).text('#sales_search').val();
+                   name = searchVal;
+                   filtered = e.filter(saleName);
+                   console.log(filtered);
+                   $('#calendar').fullCalendar(  'removeEvents');
+                   
+                   $('#calendar').fullCalendar(  'addEventSource', filtered);
+                   $('#calendar').fullCalendar(  'refetchEvents');                                          
+                });
+              };
+              
+              search();
+
                
                
 	});     
