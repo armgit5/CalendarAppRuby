@@ -1,0 +1,92 @@
+<style>
+  .user_name {
+    text-align: left;
+  }
+  
+  th {
+    color: #303030;
+  }
+  
+  tbody td {
+    font-size: 10pt;
+    text-align: center;
+  }
+  
+  .navbar-form {
+    padding: 0px;
+    
+  }
+  
+  .scrollDown {
+    
+  }
+  
+</style>
+
+<div class="container">
+  
+  <%= form_tag '/', :method => 'get', :id => "sales_search", :class => "navbar-form navbar-right" do %>
+    <p>
+      <div class="form-group">
+        <%= text_field_tag :search, params[:search], :placeholder => "SEARCH SALES NAME" %>
+      </div>
+    </p>
+  <% end %>
+    
+    <br>
+    
+  <% if current_user %>
+    <div class="user_name">
+    WELCOME <%= current_user.email %>.
+    </div>
+  <% end %>
+  
+ <div id="calendar_p"><%= render 'calendar_partial' %></div>
+  
+  
+
+</div>
+<div><%= render 'hover' %></div>
+
+<%= javascript_tag do %>
+	
+     $(document).ready(function() {
+     
+     
+                 $.ionSound({
+                   sounds: [
+                       "calendar"
+                   ],
+                   path: "http://k007.kiwi6.com/hotlink/jerymfm7jb/",
+                   multiPlay: true,
+                   volume: "1.0"
+               });
+               $.ionSound.play("calendar");
+               
+               <%#*var searchVal = "";%>
+               
+               <%#*var search = function() {%> 
+                <%#*$('#sales_search input').keyup(function () {%>
+                  <%#*$.get($('#sales_search').attr('action'), $('#sales_search').serialize(), null, 'script');%>     
+                   <%#*console.log($(this).text('#sales_search').val());%>
+                   <%#*searchVal = $(this).text('#sales_search').val();%>
+                   <%#*$('#calendar').fullCalendar(  'refetchEvents');%>                                          
+                <%#*});%>
+              <%#*};%>
+              
+              <%#*search();%>
+              
+              $('html,body').animate({
+                  scrollTop: '+=425px'
+              }, 2000)
+             
+              
+              
+	});     
+<% end %>
+        
+        <%#*http://www.mikesmithdev.com/demo-fullcalendar-with-event-filtering/%>
+  
+
+
+

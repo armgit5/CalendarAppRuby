@@ -1,5 +1,7 @@
 NilpeterWeb::Application.routes.draw do
   
+  get "calendar/index"
+
   get "visitors/index"
   get "password_resets/new"
   
@@ -10,6 +12,7 @@ NilpeterWeb::Application.routes.draw do
   resources :sessions
   resources :users
   resources :password_resets
+  resources :calendar
 
   match ':controller(/:action(/:id(.:format)))'
 
@@ -63,7 +66,7 @@ NilpeterWeb::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-   root :to => 'register#calendar'
+   root :to => 'calendar#index'
 
   # See how all your routes lay out with "rake routes"
 

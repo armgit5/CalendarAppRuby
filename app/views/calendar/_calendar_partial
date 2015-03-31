@@ -96,6 +96,8 @@
 		});
    
                 var searchVal = "PLA";
+
+                
                
                var search = function() { 
                 $('#sales_search input').keyup(function () {
@@ -114,13 +116,19 @@
               
               search();
 
-              setTimeout(function(){
-                    $('#calendar').fullCalendar(  'removeEvents');
-                   
-                   $('#calendar').fullCalendar(  'addEventSource', filtered);
-                   $('#calendar').fullCalendar(  'refetchEvents'); 
+              
+              
+              var lastId = parseInt('<%= @last_id %>'); 
+              
+              var updateComments = function() {
+              
+                $.getScript('/calendar.js?schedule_id=' + lastId);    
+          
+                setTimeout(updateComments, 10000);
+              };
 
-                }, 5000);
-               
+              
+              setTimeout(updateComments, 10000);
+              
 	});     
 <% end %>
