@@ -106,7 +106,7 @@
                    searchVal = $(this).text('#sales_search').val();
                    name = searchVal;
                    filtered = e.filter(saleName);
-                   console.log(filtered);
+                   
                    $('#calendar').fullCalendar(  'removeEvents');
                    
                    $('#calendar').fullCalendar(  'addEventSource', filtered);
