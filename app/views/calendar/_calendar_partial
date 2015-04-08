@@ -54,14 +54,13 @@
 
                var name = "PLA";
 
-               function saleName(object) {
-                    return object.sales.includes(name.toUpperCase());
+               var saleName = function(object) {
+                    return object.sales.indexOf(name.toUpperCase()) > -1;
+
                };
-               console.log(e[1]);
-               console.log(e[1].sales);
-               console.log(e[1].sales.includes('JOA'));
+               
                var filtered = e.filter(saleName);
-               console.log(filtered);
+              
 
 
 
@@ -102,7 +101,7 @@
                var search = function() { 
                 $('#sales_search input').keyup(function () {
                   <%#*$.get($('#sales_search').attr('action'), $('#sales_search').serialize(), null, 'script');%>     
-                   console.log($(this).text('#sales_search').val());
+                 
                    searchVal = $(this).text('#sales_search').val();
                    name = searchVal;
                    filtered = e.filter(saleName);
@@ -126,8 +125,7 @@
           
                 setTimeout(updateComments, 10000);
               };
-
-              
+    
               setTimeout(updateComments, 10000);
               
 	});     
