@@ -1,4 +1,7 @@
 class CalendarController < ApplicationController
+  
+  before_filter :authorize
+  
   def index
     @schedule = Schedule.search(params[:search])
     @last_id = @schedule.last.id

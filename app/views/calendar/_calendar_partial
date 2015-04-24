@@ -100,7 +100,7 @@
                
                var search = function() { 
                 $('#sales_search input').keyup(function () {
-                  <%#*$.get($('#sales_search').attr('action'), $('#sales_search').serialize(), null, 'script');%>     
+                       
                  
                    searchVal = $(this).text('#sales_search').val();
                    name = searchVal;
