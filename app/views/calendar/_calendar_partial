@@ -121,7 +121,7 @@
               
               var updateComments = function() {
               
-                $.getScript('/calendar.js?schedule_id=' + lastId);    
+                $.getScript('/calendar.js);    
           
                 setTimeout(updateComments, 10000);
               };
