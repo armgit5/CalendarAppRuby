@@ -121,7 +121,7 @@
               
               var updateComments = function() {
               
-                $.getScript('/calendar.js');    
+                $.getScript('/calendar.js?');    
           
                 setTimeout(updateComments, 10000);
               };
