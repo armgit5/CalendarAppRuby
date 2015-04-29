@@ -17,7 +17,14 @@ var e = [<% @schedule.each do |s| %>
                                     allDay: <%= if s.all_day == 1 then true else false end %>
                             },
                             <% end %>];
-                             
+                            
+ var holiday = [<% @holidays.each do |s| %>
+                                {
+                                   title:  '<%=  s.name.upcase %>',
+                                   start: new Date(<%= s.date.strftime("%Y, %m - 1, %d, %H, %M") %>),
+                                   allDay: true
+                                 },
+                            <% end %>];   
                             
  
 
@@ -25,6 +32,7 @@ var e = [<% @schedule.each do |s| %>
 
   $('#calendar').fullCalendar(  'removeEvents');
   $('#calendar').fullCalendar(  'addEventSource', e);
+  $('#calendar').fullCalendar(  'addEventSource', holiday);
   $('#calendar').fullCalendar(  'refetchEvents');   
       
       
