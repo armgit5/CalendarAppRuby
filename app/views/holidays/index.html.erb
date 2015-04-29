@@ -1,0 +1,66 @@
+<style>
+   .btn.btn-primary {
+    background-color: #33AAFF;
+    width: 75px;
+  } 
+  .btn.btn-primary a {
+    color: white;
+  }
+  tbody td {
+    font-size: 10pt;
+    text-align: center;
+  }
+  tr {
+    color: black;
+  }
+  .header {
+    background-color: #BBBBBB;
+  }
+</style>
+<div class="container">
+  <!-- Main component for a primary marketing message or call to action -->
+  <ul class="nav nav-tabs navbar-right">
+    <%= content_tag(:li, link_to("ADD HOLIDAYS", :controller => "holidays", :action => 'new'), :class => ("active" if current_page? "") ) %>
+  </ul>
+  <ul class="nav nav-tabs"> 
+    <%= content_tag(:li, link_to("COMPANIES", :controller => "admin", :action => 'index'), :class => ("active" if current_page? "/admin") ) %>
+    <%#= content_tag(:li, link_to("PENDING", :controller => "pending", :action => 'index'), :class => ("active" if current_page? "/pending") ) %>
+    <%= content_tag(:li, link_to("USERS", :controller => "admin", :action => 'users'), :class => ("active" if current_page? "/admin/users") ) %>
+  </ul> 
+  <table class="table table-bordered">
+    <tr class="header">
+      <th>DATE</th>
+      <th>HOLIDAYS</th>
+      
+      <th>DELETE</th>
+    </tr>
+    <% @holidays.each do |u| %>
+    <tr>   
+      <td class='normal'><%= u.date %></td>
+      <td class='normal'><%= u.name %></td>
+      <td class='short'><button type="button" class="btn btn-primary"><%= link_to("DELETE", {:controller => 'holidays', :action => 'delete', :id => u.id}, :confirm => "Are you sure?") %></button></td>
+    </tr>
+    <% end %>  
+  </table> 
+</div>
+
+<%= javascript_tag do %>  
+  $(document).ready(function () {
+  $('*[data-confirm]').click(function(){
+    return confirm($(this).attr('data-confirm'));
+  });
+});
+<% end %>
+
+
+
+ 
+
+  
+
+  
+
+
+  
+  
+	

@@ -1,5 +1,7 @@
 NilpeterWeb::Application.routes.draw do
   
+  
+
   get "calendar/index"
 
   get "visitors/index"

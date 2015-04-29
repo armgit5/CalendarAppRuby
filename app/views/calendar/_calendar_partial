@@ -48,9 +48,23 @@
                                          <% end %>                      
                                         products: '<%= x.to_s %>',                                       
 					start: new Date(<%= s.date.strftime("%Y, %m - 1, %d, %H, %M") %>),
-                                        allDay: <%= if s.all_day == 1 then true else false end %>
+                                        allDay: <%= if s.all_day == 1 then true else false end %>,
+                                     
+					color: 'blue'
 				},
+                             
 				<% end %>];
+
+               
+               var holiday = [<% @holidays.each do |s| %>
+                                {
+                                   title:  '<%=  s.name.upcase %>',
+                                   start: new Date(<%= s.date.strftime("%Y, %m - 1, %d, %H, %M") %>),
+                                   allDay: true
+                                 },
+                            <% end %>];
+
+        
 
                var name = "PLA";
 
@@ -91,9 +105,19 @@
                         },
                         
 			events: e,
-                        timeFormat: 'HH:mm'
+                        textColor: 'red',
+                        
+                        timeFormat: 'HH:mm',
+
+                        eventAfterRender: function (event, element, view) {
+                                                   
+                         <% @holidays.each do |s| %>     
+                       
+                            $("td[data-date= '<%= s.date.strftime("%Y %m %d").gsub(/\s/, "-")%>' ]").css("background-color", "yellow");
+                         <% end %>   
+                        },
 		});
-   
+                $('#calendar').fullCalendar(  'addEventSource', holiday);
                 var searchVal = "PLA";
 
                 

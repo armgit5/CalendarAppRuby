@@ -1,0 +1,99 @@
+<style>
+  .cmxform.schedule {
+       max-width: 450px;
+       padding: 19px 29px 9px;
+       margin: 0 auto 20px;
+       background-color: #e5e5e5;
+       border: 1px solid #e5e5e5;
+       -webkit-border-radius: 5px;
+          -moz-border-radius: 5px;
+               border-radius: 5px;
+       -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+          -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+               box-shadow: 0 1px 2px rgba(0,0,0,.05);
+       margin-bottom: 0px;
+  }
+  
+  .cmxform.schedule label,
+  .cmxform.schedule .checkbox-inline b {
+      color: #303030;
+      font-family: modern;
+   }
+   
+   .checkbox-inline .field {
+     color: #3f3f3f;
+   }
+   
+   .btn.btn-large.btn-primary {
+     background-color: #33AAFF;
+     margin-bottom: 10px;
+     width: 140px;
+     font-size: 10pt;
+     padding-left: 5px;
+     margin-left: 10px;
+     text-align: center;
+     color: white;
+   }
+   
+   .instruction {
+     text-align: center;
+     margin: 0px;
+   }
+    
+   .project-des {font-size: 12pt;}
+   
+   #newcom .newcom-title {
+     color: red;
+     font-size: 12pt;
+     font-weight:bold;
+     font-family: modern;
+   }
+   
+   .content {display:none;}
+   .preload {
+      width:150px;
+      height: 150px;
+      position: fixed;
+      top: 35%;
+      left: 50%;
+      background: url(http://i.imgur.com/KUJoe.gif) no-repeat;
+      border-radius: 5px;
+    }
+    
+  
+</style>
+
+<div class="container">
+  <!-- Main component for a primary marketing message or call to action -->
+  <div id="schedule-form">
+  <p class="instruction">Please add new holiday here</p>
+  <%= form_tag({:action => 'create'}, :id => 'commentForm', :class => "cmxform schedule") do %>
+   <label for="cdate">
+        <div>Date & Time</div><br>
+        <%= text_field(:holiday, :date, {:class => "datetimepicker valid", :id => 'cdate', :required => true}) %>
+  </label> 
+ 
+  <label>
+    <div>Holiday Name</div><br>
+     <%= text_field(:holiday, :name, :required => true, :class => 'project-des') %>
+  </label>
+  <%= submit_tag('Create Holiday', :class => "btn btn-default") %>
+   
+<% end %>
+</div>
+</div>
+
+<%= javascript_tag do %>  
+  $(document).ready(function () { 
+
+  
+    $('.datetimepicker').datetimepicker({
+        format:'d/m/Y H:i'
+     });
+    
+    
+  });
+<% end %>
+  
+  
+	

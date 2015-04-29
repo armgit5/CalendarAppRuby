@@ -4,6 +4,7 @@ class CalendarController < ApplicationController
   
   def index
     @schedule = Schedule.search(params[:search])
+    @holidays = Holiday.all
     @last_id = @schedule.last.id
 #    created_time = @schedule.find(@last_id).created_at
 #    @test = Schedule.where('created_at > ?', created_time)

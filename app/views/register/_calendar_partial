@@ -66,7 +66,7 @@
 
 
 		var calendar = $('#calendar').fullCalendar({
-                        
+
 			header: {
 				left: 'prev ,next today',
 				center: 'title',
@@ -106,7 +106,7 @@
                    filtered = e.filter(saleName);
                    console.log(filtered);
                    $('#calendar').fullCalendar(  'removeEvents');
-                   
+
                    $('#calendar').fullCalendar(  'addEventSource', filtered);
                    $('#calendar').fullCalendar(  'refetchEvents');                                          
                 });

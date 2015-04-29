@@ -34,6 +34,8 @@
     <%= content_tag(:li, link_to("COMPANIES", :controller => "admin", :action => 'index'), :class => ("active" if current_page? "/admin") ) %>
     <%#= content_tag(:li, link_to("PENDING", :controller => "pending", :action => 'index'), :class => ("active" if current_page? "/pending") ) %>
     <%= content_tag(:li, link_to("USERS", :controller => "admin", :action => 'users'), :class => ("active" if current_page? "/admin/users") ) %>
+    <%= content_tag(:li, link_to("HOLIDAYS", :controller => "holidays", :action => 'index'), :class => ("active" if current_page? "/holiday") ) %>
+
   </ul> 
   <table class="table table-bordered">
     <tr class="header">
