@@ -17,8 +17,11 @@
     
   }
   
-  .scrollDown {
-    
+  #header-fixed { 
+    position: fixed; 
+    top: 0px; display:none;
+    background-color:white;
+    z-index:99999;
   }
   
 </style>
@@ -40,8 +43,10 @@
     WELCOME <%= current_user.email %>.
     </div>
   <% end %>
+   <table id="header-fixed" class="table table-bordered"></table>
+ <div id="calendar_p"><%= render 'calendar_partial' %>
   
- <div id="calendar_p"><%= render 'calendar_partial' %></div>
+    </div>
   
   
 
@@ -78,7 +83,29 @@
               $('html,body').animate({
                   scrollTop: '+=425px'
               }, 2000)
-             
+              
+              var tableOffset = $(".fc-border-separate").offset().top;
+          
+              var $header = $(".fc-border-separate > thead").clone();
+              var $fixedHeader = $("#header-fixed").append($header);
+
+              $(window).bind("scroll", function() {
+                  var offset = $(this).scrollTop();
+
+                  if (offset >= tableOffset && $fixedHeader.is(":hidden")) {
+                      $fixedHeader.show();
+                  }
+                  else if (offset < tableOffset) {
+                      $fixedHeader.hide();
+                  }
+              });
+              
+              
+              
+              
+              var carWidth = $("#calendar_p").width();
+              $("#header-fixed").css("width",carWidth);
+              
 	});     
 <% end %>
         
