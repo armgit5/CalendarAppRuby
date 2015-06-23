@@ -131,6 +131,7 @@
                 var search = function() { 
                  $('#sales_search input').keyup(function () {
                     searchVal = $(this).text('#sales_search').val();
+                    name = searchVal;
                     filtered = e.filter(saleName);         
                     $('#calendar').fullCalendar(  'removeEvents');
                     $('#calendar').fullCalendar(  'addEventSource', filtered);
