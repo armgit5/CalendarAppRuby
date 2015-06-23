@@ -115,12 +115,22 @@
                         },
 		});
                 $('#calendar').fullCalendar(  'addEventSource', holiday);
-                var searchVal = "";
+
+                $.urlParam = function(name){
+                    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+                    if (results==null){
+                       return null;
+                    }
+                    else{
+                       return results[1] || 0;
+                    }
+                }
+                var searchVal = $.urlParam('search');
+                console.log(searchVal);
 
                 var search = function() { 
                  $('#sales_search input').keyup(function () {
                     searchVal = $(this).text('#sales_search').val();
-                    name = searchVal;
                     filtered = e.filter(saleName);         
                     $('#calendar').fullCalendar(  'removeEvents');
                     $('#calendar').fullCalendar(  'addEventSource', filtered);
@@ -137,10 +147,11 @@
 
               
    
-              var updateComments = function() {    
-                $.getScript('/calendar.js?');    
+              var updateComments = function() {       
+                clearInterval(updateComments);
                 if (searchVal.length === 0) {
                     console.log("update");
+                    $.getScript('/calendar.js?');   
                     setTimeout(updateComments, 10000);
                 }   
               };

@@ -1,6 +1,4 @@
-console.log("test");
-console.log(<%= @time %>);
-
+console.log("test"); 
 
 var e = [<% @schedule.each do |s| %>
                             {
@@ -15,7 +13,8 @@ var e = [<% @schedule.each do |s| %>
                                      <% end %>                      
                                     products: '<%= x.to_s %>',                                       
                                     start: new Date(<%= s.date.strftime("%Y, %m - 1, %d, %H, %M") %>),
-                                    allDay: <%= if s.all_day == 1 then true else false end %>
+                                    allDay: <%= if s.all_day == 1 then true else false end %>,
+                                    color: 'blue'
                             },
                             <% end %>];
                             
@@ -35,5 +34,7 @@ var e = [<% @schedule.each do |s| %>
   $('#calendar').fullCalendar(  'addEventSource', e);
   $('#calendar').fullCalendar(  'addEventSource', holiday);
   $('#calendar').fullCalendar(  'refetchEvents');   
+  
+  
       
       
