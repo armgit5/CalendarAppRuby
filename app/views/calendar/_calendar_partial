@@ -74,9 +74,6 @@
                };
                
                var filtered = e.filter(saleName);
-              
-
-
 
 		var calendar = $('#calendar').fullCalendar({
                         
@@ -118,36 +115,34 @@
                         },
 		});
                 $('#calendar').fullCalendar(  'addEventSource', holiday);
-                var searchVal = "PLA";
+                var searchVal = "";
 
-                
-               
-               var search = function() { 
-                $('#sales_search input').keyup(function () {
-                       
-                 
-                   searchVal = $(this).text('#sales_search').val();
-                   name = searchVal;
-                   filtered = e.filter(saleName);
-                   
-                   $('#calendar').fullCalendar(  'removeEvents');
-                   
-                   $('#calendar').fullCalendar(  'addEventSource', filtered);
-                   $('#calendar').fullCalendar(  'refetchEvents');                                          
-                });
-              };
+                var search = function() { 
+                 $('#sales_search input').keyup(function () {
+                    searchVal = $(this).text('#sales_search').val();
+                    name = searchVal;
+                    filtered = e.filter(saleName);         
+                    $('#calendar').fullCalendar(  'removeEvents');
+                    $('#calendar').fullCalendar(  'addEventSource', filtered);
+                    $('#calendar').fullCalendar(  'refetchEvents'); 
+                    clearInterval(updateComments);
+                    if (searchVal.length === 0) {
+                        console.log("update from key");
+                        setTimeout(updateComments, 10000);
+                    } 
+                 });
+                };
               
               search();
 
               
-              
-              var lastId = parseInt('<%= @last_id %>'); 
-              
-              var updateComments = function() {
-              
+   
+              var updateComments = function() {    
                 $.getScript('/calendar.js?');    
-          
-                setTimeout(updateComments, 10000);
+                if (searchVal.length === 0) {
+                    console.log("update");
+                    setTimeout(updateComments, 10000);
+                }   
               };
     
               setTimeout(updateComments, 10000);

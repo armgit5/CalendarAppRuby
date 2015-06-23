@@ -8,7 +8,7 @@ class Schedule < ActiveRecord::Base
   has_many :categorizations
   has_many :products, through: :categorizations
   
-  attr_accessible :sale_id, :company_id, :location_id, :project, :date, :name, :product_id, :user_id, :all_day
+  attr_accessible :sale_id, :company_id, :location_id, :project, :date, :name, :product_id, :user_id, :all_day, :email
   
 #  search all 
 #  def self.search(search)
@@ -23,7 +23,9 @@ class Schedule < ActiveRecord::Base
   def self.search(search)
     if search 
 #      sleep(1)
-      joins(:sale).where('lower(sales.name) LIKE lower(?)', "%#{search}%")
+#      joins(:sale).where('lower(sales.name) LIKE lower(?)', "%#{search}%")
+#      joins(:user).where('lower(users.email) LIKE lower(?)', "%#{search}")
+      scoped
     else
 #      sleep(1)
       scoped

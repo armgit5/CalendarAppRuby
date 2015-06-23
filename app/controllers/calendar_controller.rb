@@ -3,6 +3,7 @@ class CalendarController < ApplicationController
   before_filter :authorize
   
   def index
+    @time = params[:time_id]
     @schedule = Schedule.search(params[:search])
     @holidays = Holiday.all
     @last_id = @schedule.last.id
