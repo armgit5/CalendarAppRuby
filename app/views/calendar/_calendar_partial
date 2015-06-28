@@ -3,10 +3,10 @@
 <%= javascript_tag do %>
 	$(document).ready(function() {	
         
-		var date = new Date();
-		var d = date.getDate();
-		var m = date.getMonth();
-		var y = date.getFullYear(); 
+		
+		var d = 15;
+		var m = 06;
+		var y = 2015; 
 
                
 
@@ -103,6 +103,10 @@
                         
 			events: e,
                         textColor: 'red',
+
+                        year: 2014,
+                        month: 5,
+                        date: 15,
                         
                         timeFormat: 'HH:mm',
 

@@ -294,7 +294,7 @@ a.header-link {
         <%#= content_tag(:li, link_to("HOTLISTS", :controller => "hotlists", :action => 'index'), :class => ("active" if current_page? "/hotlists") ) %>
         <%= content_tag(:li, link_to("EDIT", :controller => "register", :action => 'index'), :class => ("active" if current_page? controller: 'register'or 
               current_page?(controller: 'register', action: 'edit') or current_page?(controller: 'register', action: 'delete') ) ) %>
-        <%= content_tag(:li, link_to("VISITOR", :controller => "visitors", :action => 'index'), :class => ("active" if current_page? "/visitors/index") ) %>
+        <%#= content_tag(:li, link_to("VISITOR", :controller => "visitors", :action => 'index'), :class => ("active" if current_page? "/visitors/index") ) %>
       </ul>   
       <ul class="nav navbar-nav navbar-right">    
          <%= content_tag(:li, link_to("ADMIN", :controller => 'admin', :action => 'index'), :class => ("active" if current_page? "/admin" or 
