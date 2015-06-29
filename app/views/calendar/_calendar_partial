@@ -55,6 +55,8 @@
                              
 				<% end %>];
 
+          
+
                
                var holiday = [<% @holidays.each do |s| %>
                                 {
@@ -127,6 +129,7 @@
                 }
                 var searchVal = $.urlParam('search');
                 console.log(searchVal);
+                var timeouts = [];
 
                 var search = function() { 
                  $('#sales_search input').keyup(function () {
@@ -136,10 +139,16 @@
                     $('#calendar').fullCalendar(  'removeEvents');
                     $('#calendar').fullCalendar(  'addEventSource', filtered);
                     $('#calendar').fullCalendar(  'refetchEvents'); 
-                    clearInterval(updateComments);
-                    if (searchVal.length === 0) {
+                    
+                    for (var i = 0; i < timeouts.length; i++) {
+                        clearTimeout(timeouts[i]);
+                    }
+                    timeouts = [];
+
+                    if (searchVal == "" || searchVal == null) {
                         console.log("update from key");
-                        setTimeout(updateComments, 10000);
+                        
+                        timeouts.push(setTimeout(updateComments, 10000));
                     } 
                  });
                 };
@@ -148,16 +157,21 @@
 
               
    
-              var updateComments = function() {       
-                clearInterval(updateComments);
-                if (searchVal.length === 0) {
+              var updateComments = function() {    
+                for (var i = 0; i < timeouts.length; i++) {
+                        clearTimeout(timeouts[i]);
+                    }
+                timeouts = [];
+     
+                if (searchVal == "" || searchVal == null) {
                     console.log("update");
-                    $.getScript('/calendar.js?');   
-                    setTimeout(updateComments, 10000);
+                    $.getScript('/calendar.js?');
+                    
+                    timeouts.push(setTimeout(updateComments, 10000));
                 }   
               };
     
-              setTimeout(updateComments, 10000);
+              timeouts.push(setTimeout(updateComments, 10000));
               
 	});     
 <% end %>
