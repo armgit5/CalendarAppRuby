@@ -47,7 +47,7 @@
                                           <% x.push(i.name)  %>
                                          <% end %>                      
                                         products: '<%= x.to_s %>',                                       
-					start: new Date(<%= s.date.strftime("%Y, %m - 1, %d, %H, %M") %>),
+					start: new Date(<%= s.date.strftime("%Y, %m - 1, %d, %H, %M") unless s.date.nil? %>),
                                         allDay: <%= if s.all_day == 1 then true else false end %>,
                                      
 					color: 'blue'
