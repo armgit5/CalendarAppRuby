@@ -42,3 +42,4 @@ gem 'carrierwave'
 gem "fog"
 gem 'carrierwave_direct'
 
+
