@@ -1,6 +1,10 @@
 NilpeterWeb::Application.routes.draw do
   
-  
+  namespace :api do
+    resources :schedules, only: [:index, :show, :create, :update, :destroy]
+    resources :companies, only: [:index]
+    resources :products, only: [:index]
+  end
 
   get "calendar/index"
 
