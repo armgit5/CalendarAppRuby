@@ -1,0 +1,20 @@
+create schedule
+
+curl \
+-i \
+-H "Accept: application/json" \
+-H "Content-type: application/json" \
+-X POST \
+-d '{"all_day":null,"company_id":"82","date":"2015-06-30T09:38:02Z","location_id":"61","project":"test api","sale_id":null,"user_id":"2"}' \
+http://localhost:3000/api/schedules
+
+test creating date
+
+curl \
+-i \
+-H "Accept: application/json" \
+-H "Content-type: application/json" \
+-X POST \
+-d '{"date":"02-09-2015 11:57"}' \
+http://localhost:3000/api/schedules
+
