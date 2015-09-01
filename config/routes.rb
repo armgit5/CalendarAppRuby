@@ -4,6 +4,7 @@ NilpeterWeb::Application.routes.draw do
     resources :schedules, only: [:index, :show, :create, :update, :destroy]
     resources :companies, only: [:index]
     resources :products, only: [:index]
+    resources :locations, only: [:index]
   end
 
   get "calendar/index"
