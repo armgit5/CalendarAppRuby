@@ -4,7 +4,7 @@ class Api::LocationsController < ApplicationController
       # before_filter  :restrict_access
 
       def index
-        render json: Location.last(10)
+        render json: Location.all
       end
   
 end
