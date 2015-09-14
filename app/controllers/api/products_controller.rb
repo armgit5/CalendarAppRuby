@@ -4,7 +4,7 @@ class Api::ProductsController < ApplicationController
       # before_filter  :restrict_access
 
       def index
-        render json: Product.last(10)
+        render json: Product.all
       end
   
 end
