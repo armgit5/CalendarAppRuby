@@ -16,6 +16,7 @@ class Api::SchedulesController < ApplicationController
 
       def create
         schedule = Schedule.new(params[:schedule])
+        schedule.product_ids = params[:product_ids]
         if schedule.save
           render status: 200, json: {
     	      message: "Successfully created product",
