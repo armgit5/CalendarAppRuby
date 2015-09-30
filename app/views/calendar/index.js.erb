@@ -1,4 +1,4 @@
-console.log("test"); 
+console.log("test");
 
 var e = [<% @schedule.each do |s| %>
                             {
@@ -10,31 +10,27 @@ var e = [<% @schedule.each do |s| %>
                                     <% x = Array.new  %>
                                     <% s.products.each do |i| %>
                                       <% x.push(i.name)  %>
-                                     <% end %>                      
-                                    products: '<%= x.to_s %>',                                       
-                                    start: new Date(<%= s.date.strftime("%Y, %m - 1, %d, %H, %M") %>),
+                                     <% end %>
+                                    products: '<%= x.to_s %>',
+                                    start: new Date(<%= s.date.strftime("%Y, %m - 1, %d, %H, %M") unless s.date.nil? %>),
                                     allDay: <%= if s.all_day == 1 then true else false end %>,
                                     color: 'blue'
                             },
                             <% end %>];
-                            
+
  var holiday = [<% @holidays.each do |s| %>
                                 {
                                    title:  '<%=  s.name.upcase %>',
-                                   start: new Date(<%= s.date.strftime("%Y, %m - 1, %d, %H, %M") %>),
+                                   start: new Date(<%= s.date.strftime("%Y, %m - 1, %d, %H, %M") unless s.date.nil? %>),
                                    allDay: true
                                  },
-                            <% end %>];   
-                            
- 
+                            <% end %>];
+
+
 
 
 
   $('#calendar').fullCalendar(  'removeEvents');
   $('#calendar').fullCalendar(  'addEventSource', e);
   $('#calendar').fullCalendar(  'addEventSource', holiday);
-  $('#calendar').fullCalendar(  'refetchEvents');   
-  
-  
-      
-      
+  $('#calendar').fullCalendar(  'refetchEvents');

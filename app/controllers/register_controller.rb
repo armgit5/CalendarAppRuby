@@ -100,7 +100,7 @@ class RegisterController < ApplicationController
   
   def create
     @schedule = Schedule.create!(params[:schedule])
-    @schedule.product_ids = params[:products]
+
     @schedule.all_day = 1
     flash[:notice] = "#{@schedule.project} was successfully created."
     redirect_to(:controller => "calendar", :action => "index")
