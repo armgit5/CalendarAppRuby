@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=0.625"/>
+  <title>NilpeterWebiOS</title>
+
+  <%= stylesheet_link_tag "http://cdnjs.cloudflare.com/ajax/libs/fullcalendar/1.6.4/fullcalendar.css", "http://cdnjs.cloudflare.com/ajax/libs/fullcalendar/1.6.4/fullcalendar.print.css",
+    "//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css","jquery.datetimepicker.css","jquery.simple-dtpicker.css","select2",
+    "//cdn.jsdelivr.net/qtip2/2.2.0/jquery.qtip.css", "application" %>
+  <%= javascript_include_tag "http://code.jquery.com/jquery-2.1.1.min.js", "http://cdnjs.cloudflare.com/ajax/libs/fullcalendar/1.6.4/fullcalendar.min.js",
+    "ion.sound.js","select2.js","jquery.datetimepicker.js","jquery.validate.js","select2", "schedule2",
+     "//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js", "//cdn.jsdelivr.net/qtip2/2.2.0/jquery.qtip.js", "application" %>
+  <%= favicon_link_tag 'favicon.ico' %>
+<%= csrf_meta_tag %>
+
+<style>
+  .user_name {
+    text-align: left;
+  }
+
+  th {
+    color: #303030;
+  }
+
+  tbody td {
+    font-size: 10pt;
+    text-align: center;
+  }
+
+  .navbar-form {
+    padding: 0px;
+
+  }
+
+  #header-fixed {
+    position: fixed;
+    top: 0px; display:none;
+    background-color:white;
+    z-index:99999;
+  }
+
+</style>
+</head>
+
+<body>
+  <div class="container">
+    <table id="header-fixed" class="table table-bordered"></table>
+    <div id="calendar_p"><%= render 'calendar_partial' %>
+  </div>
+</body>
+
+</html>
+
+<%= javascript_tag do %>
+     $(document).ready(function() {
+          var tableOffset = $(".fc-border-separate").offset().top;
+          var $header = $(".fc-border-separate > thead").clone();
+          var $fixedHeader = $("#header-fixed").append($header);
+          $(window).bind("scroll", function() {
+              var offset = $(this).scrollTop();
+              if (offset >= tableOffset && $fixedHeader.is(":hidden")) {
+                  $fixedHeader.show();
+              }
+              else if (offset < tableOffset) {
+                  $fixedHeader.hide();
+              }
+          });
+          var carWidth = $("#calendar_p").width();
+          $("#header-fixed").css("width",carWidth);
+     });
+<% end %>

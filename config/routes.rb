@@ -1,5 +1,7 @@
 NilpeterWeb::Application.routes.draw do
   
+  get "ioscalendar/index"
+
   namespace :api do
     resources :schedules, only: [:index, :show, :create, :update, :destroy]
     resources :companies, only: [:index]

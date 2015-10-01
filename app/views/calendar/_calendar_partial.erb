@@ -1,0 +1,152 @@
+<div id="calendar"></div>
+
+<%= javascript_tag do %>
+	$(document).ready(function() {
+
+		var date = new Date();
+		var d = date.getDate();
+		var m = date.getMonth();
+		var y = date.getFullYear();
+    var tooltip = $('<div/>').qtip({
+				id: 'fullcalendar',
+				prerender: true,
+				content: {
+					text: ' ',
+					title: {
+						button: true
+					},
+				},
+				position: {
+					my: 'bottom right',
+					at: 'bottom right',
+					target: 'mouse',
+					viewport: $('#fullcalendar'),
+					adjust: {
+						mouse: false,
+						scroll: false
+					}
+				},
+				show: true,
+				hide: false,
+				style: 'qtip-default qtip-rounded'
+    }).qtip('api');
+
+		var e = [<% @schedule.each do |s| %> {
+				title:  '<%=  s.sale.name unless s.sale.nil? %>' + '<%= if s.sale.nil? then s.user.email.split("@")[0].upcase unless s.user.nil? end %>' + " : " + '<%= s.company.name unless s.company.nil? %>',
+	                    company: '<%= s.company.name unless s.company.nil? %>',
+	                    location: '<%= s.location.name unless s.location.nil? %>',
+	                    sales: '<%= s.sale.name unless s.sale.nil? %>' + '<%= if s.sale.nil? then s.user.email.split("@")[0].upcase unless s.user.nil? end %>',
+	                    project: '<%= s.project.rstrip().gsub("'"){"\\'"}.split.join(' ') unless s.project.nil? %>',
+	                    <% x = Array.new  %>
+	                    <% s.products.each do |i| %>
+	                      <% x.push(i.name)  %>
+	                     <% end %>
+	                    products: '<%= x.to_s %>',
+				start: new Date(<%= s.date.strftime("%Y, %m - 1, %d, %H, %M") unless s.date.nil? %>),
+                      allDay: <%= if s.all_day == 1 then true else false end %>,
+											color: 'blue'
+				},
+		<% end %>];
+
+     var holiday = [<% @holidays.each do |s| %>
+                    {
+                       title:  '<%=  s.name.upcase %>',
+                       start: new Date(<%= s.date.strftime("%Y, %m - 1, %d, %H, %M") unless s.date.nil? %>),
+                       allDay: true
+                     },
+      <% end %>];
+
+     var name = "PLA";
+     var saleName = function(object) {
+          return object.sales.indexOf(name.toUpperCase()) > -1;
+
+     };
+
+    var filtered = e.filter(saleName);
+		var calendar = $('#calendar').fullCalendar({
+			header: {
+				left: 'prev ,next today',
+				center: 'title',
+				right: 'month,agendaWeek,agendaDay'
+			},
+			selectable: true,
+			selectHelper: true,
+			editable: false,
+      eventClick: function(data, event, view) {
+      var content = '<h3> '+data.company+'</h3>' +
+							'<p><b>Start:</b> '+data.start+'<br />' +
+              '<p><b>Location:</b> '+data.location+'<br />' +
+              '<p><b>Sales:</b> '+data.sales+'<br />' +
+              '<p><b>Products:</b> '+data.products+'<br />' +
+              '<p><b>Project:</b> '+data.project+'<br />' +
+
+				(data.end && '<p><b>End:</b> '+data.end+'</p>' || '');
+
+			tooltip.set({
+				'content.text': content
+			})
+			.reposition(event).show(event);
+      },
+
+			events: e,
+      textColor: 'red',
+      timeFormat: 'HH:mm',
+      eventAfterRender: function (event, element, view) {
+       <% @holidays.each do |s| %>
+          $("td[data-date= '<%= s.date.strftime("%Y %m %d").gsub(/\s/, "-")%>' ]").css("background-color", "yellow");
+       <% end %>
+      },
+		});
+
+    $('#calendar').fullCalendar(  'addEventSource', holiday);
+
+    $.urlParam = function(name){
+        var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+        if (results==null){
+           return null;
+        }
+        else{
+           return results[1] || 0;
+        }
+    }
+    var searchVal = $.urlParam('search');
+    console.log(searchVal);
+    var timeouts = [];
+
+    var search = function() {
+     $('#sales_search input').keyup(function () {
+        searchVal = $(this).text('#sales_search').val();
+        name = searchVal;
+        filtered = e.filter(saleName);
+        $('#calendar').fullCalendar(  'removeEvents');
+        $('#calendar').fullCalendar(  'addEventSource', filtered);
+        $('#calendar').fullCalendar(  'refetchEvents');
+
+        for (var i = 0; i < timeouts.length; i++) {
+            clearTimeout(timeouts[i]);
+        }
+        timeouts = [];
+        if (searchVal == "" || searchVal == null) {
+            console.log("update from key");
+            timeouts.push(setTimeout(updateComments, 10000));
+        }
+     });
+    };
+  search();
+
+  var updateComments = function() {
+    for (var i = 0; i < timeouts.length; i++) {
+            clearTimeout(timeouts[i]);
+        }
+    timeouts = [];
+    if (searchVal == "" || searchVal == null) {
+        console.log("update");
+        $.getScript('/calendar.js?');
+        timeouts.push(setTimeout(updateComments, 10000));
+    }
+  };
+
+  timeouts.push(setTimeout(updateComments, 10000));
+
+	});
+<% end %>
