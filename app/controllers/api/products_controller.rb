@@ -1,10 +1,9 @@
-class Api::ProductsController < ApplicationController
-      skip_before_filter :verify_authenticity_token
-      # http_basic_authenticate_with name: "admin", password: "secret"
-      # before_filter  :restrict_access
+class Api::ProductsController < Api::ApiController
 
       def index
         render json: Product.all
+        Rails.logger.info "Current user: #{current_user.inspect}"
+        
       end
-  
+
 end

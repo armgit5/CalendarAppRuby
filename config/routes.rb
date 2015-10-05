@@ -1,5 +1,5 @@
 NilpeterWeb::Application.routes.draw do
-  
+
   get "ioscalendar/index"
 
   namespace :api do
@@ -7,13 +7,14 @@ NilpeterWeb::Application.routes.draw do
     resources :companies, only: [:index]
     resources :products, only: [:index]
     resources :locations, only: [:index]
+    resources :user, only: [:index]
   end
 
   get "calendar/index"
 
   get "visitors/index"
   get "password_resets/new"
-  
+
   get 'signup', to: 'users#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to:  'sessions#destroy', as: 'logout'
@@ -81,5 +82,5 @@ NilpeterWeb::Application.routes.draw do
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
-   
+
 end

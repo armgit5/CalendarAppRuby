@@ -1,10 +1,7 @@
-class Api::LocationsController < ApplicationController
-      skip_before_filter :verify_authenticity_token
-      # http_basic_authenticate_with name: "admin", password: "secret"
-      # before_filter  :restrict_access
+class Api::LocationsController < Api::ApiController
 
       def index
         render json: Location.all
       end
-  
+
 end

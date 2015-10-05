@@ -2,6 +2,7 @@ create schedule
 
 curl \
 -i \
+-u pla@nilpeter.com:pla123 \
 -H "Accept: application/json" \
 -H "Content-type: application/json" \
 -X POST \
@@ -17,3 +18,8 @@ curl \
 -X POST \
 -d '{"date":"27-09-2015 11:57","product_ids":["3","7"]}' \
 http://localhost:3000/api/schedules
+
+curl \
+-i \
+-u pla@nilpeter.com:pla123 \
+http://localhost:3000/api/user

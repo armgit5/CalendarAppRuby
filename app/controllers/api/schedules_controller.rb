@@ -1,11 +1,6 @@
-class Api::SchedulesController < ApplicationController
-      skip_before_filter :verify_authenticity_token
-      # http_basic_authenticate_with name: "admin", password: "secret"
-      # before_filter  :restrict_access
+class Api::SchedulesController < Api::ApiController
 
       def index
-#        month = Time.now.month
-#        Schedule.where("date <= :month", month: "2015-01-01")
         render json: Schedule.last(10)
       end
 
@@ -56,5 +51,5 @@ class Api::SchedulesController < ApplicationController
       def list_params
         params.require("schedule")
       end
-  
+
 end
