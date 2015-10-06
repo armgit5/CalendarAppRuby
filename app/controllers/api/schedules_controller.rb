@@ -1,4 +1,4 @@
-class Api::SchedulesController < Api::ApiController
+class Api::SchedulesController < ApplicationController
 
       def index
         render json: Schedule.last(10)

@@ -1,4 +1,4 @@
-class Api::LocationsController < Api::ApiController
+class Api::LocationsController < ApplicationController
 
       def index
         render json: Location.all
