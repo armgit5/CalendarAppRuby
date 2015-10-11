@@ -1,8 +1,7 @@
 create schedule
 
 curl \
--i \
--u pla@nilpeter.com:pla123 \
+a-u pla@nilpeter.com:pla123 \
 -H "Accept: application/json" \
 -H "Content-type: application/json" \
 -X POST \
@@ -23,3 +22,8 @@ curl \
 -i \
 -u pla@nilpeter.com:pla123 \
 http://localhost:3000/api/user
+
+curl \
+-i \
+-u pla@nilpeter.com:pla123 \
+http://arm-calendar-apitest.herokuapp.com/api/user
