@@ -13,17 +13,17 @@
                box-shadow: 0 1px 2px rgba(0,0,0,.05);
        margin-bottom: 0px;
   }
-  
+
   .cmxform.schedule label,
   .cmxform.schedule .checkbox-inline b {
       color: #303030;
       font-family: modern;
    }
-   
+
    .checkbox-inline .field {
      color: #3f3f3f;
    }
-   
+
    .btn.btn-large.btn-primary {
      background-color: #33AAFF;
      margin-bottom: 10px;
@@ -34,21 +34,21 @@
      text-align: center;
      color: white;
    }
-   
+
    .instruction {
      text-align: center;
      margin: 0px;
    }
-    
+
    .project-des {font-size: 12pt;}
-   
+
    #newcom .newcom-title {
      color: red;
      font-size: 12pt;
      font-weight:bold;
      font-family: modern;
    }
-   
+
    .content {display:none;}
    .preload {
       width:150px;
@@ -59,13 +59,8 @@
       background: url(http://i.imgur.com/KUJoe.gif) no-repeat;
       border-radius: 5px;
     }
-    
-  
+
 </style>
-
-
-
-
 
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
@@ -74,8 +69,8 @@
 </div>
 
 <div class="content">
-  
-  <div class="container"> 
+
+  <div class="container">
     <div id="schedule-form">
     <p class="instruction">Please fill up your schedule information here</p>
     <%= form_tag({:action => 'create'}, :id => 'commentForm', :class => "cmxform schedule") do %>
@@ -85,18 +80,18 @@
         <%= text_field(:schedule, :date, {:class => "datetimepicker valid", :id => 'cdate', :required => true}) %>
 
 
-      </label> 
+      </label>
        <div class="checkbox-inline">
-          <div class="field"> <%= check_box_tag('schedule[all_day][]', 1) %> All Day <br></div> 
+          <div class="field"> <%= check_box_tag('schedule[all_day][]', 1) %> All Day <br></div>
        </div>
 
       <label id="company">
         <div>Customer Name</div><br>
-        <%= collection_select(:schedule, :company_id, @companies, :id, :name, {:prompt=>"Please Select Company"}, {:class=>'e9', :style=>"width:350px", :required => true}) %>   
+        <%= collection_select(:schedule, :company_id, @companies, :id, :name, {:prompt=>"Please Select Company"}, {:class=>'e9', :style=>"width:350px", :required => true}) %>
       </label>
       <label id="location">
         <div>Customer Location</div><br>
-          <%= grouped_collection_select :schedule, :location_id, Company.order(:name), :locations, :name, :id, :name, {:prompt=>"Please Select Company"}, {:class=>'e9', 
+          <%= grouped_collection_select :schedule, :location_id, Company.order(:name), :locations, :name, :id, :name, {:prompt=>"Please Select Company"}, {:class=>'e9',
             :style=>"width:350px"} %>
       </label>
       <%= hidden_field(:schedule, :sale_id, :value => User.find(current_user.id).sale_id) %>
@@ -134,8 +129,8 @@
       <%= text_area(:schedule, :project, :required => true, :class => 'project-des') %>
      </label>
       <%= submit_tag('CREATE SCHEDULE', class: "btn btn-large btn-primary") %>
-     </fieldset>  
-    <% end %> 
+     </fieldset>
+    <% end %>
     </div>
 
 
@@ -145,24 +140,24 @@
       <div class="form-group">
        <%= text_field(:company, :name, :class => 'form-control', :pleaceholder => 'Search') %>
        <%= hidden_field(:company, :newcom, :value => '1') %>
-      </div> 
+      </div>
       <%= submit_tag('Create Company', :class => "btn btn-default") %>
       <% end %>
     </div>
   </div>
-  
- 
+
+
 </div>
 
 
 <div><%= render 'hover' %></div>
 
-<%= javascript_tag do %>  
+<%= javascript_tag do %>
 (function($) {
     $(".preload").fadeOut(1000, function() {
-        $(".content").fadeIn(1000);        
-    }); 
-    
+        $(".content").fadeIn(1000);
+    });
+
     $.fn.blink = function(options) {
         return this.each(function() {
             var obj = $(this);
@@ -173,40 +168,40 @@
                 else {
                     $(obj).css('color', 'red');
                     $(obj).css('visibility', 'visible');
-                }      
+                }
         });
     }
-}(jQuery)) 
- 
+}(jQuery))
 
-  $(document).ready(function () { 
-  
-  
-  
+
+  $(document).ready(function () {
+
+
+
   $('#commentForm').submit(function() {
-    
+
     $('input[type="submit"]').attr('disabled','disabled');
     setTimeout(function() {
       $('input[type="submit"]').removeAttr('disabled');
     }, 10000);
-    
+
     $(".content").fadeOut(1000, function() {
-        
+
         $(".preload").fadeIn(500, function() {
                 $(".preload").fadeOut(1000, function() {
-                $(".content").fadeIn(1000);        
-            }); 
-        });        
-    }); 
-    
-    
+                $(".content").fadeIn(1000);
+            });
+        });
+    });
+
+
   });
-  
-  
+
+
     $('.datetimepicker').datetimepicker({
         format:'d/m/Y H:i'
      });
-    $(".e9").select2(); 
+    $(".e9").select2();
     $("#commentForm").validate();
     $.ionSound({
                    sounds: [
@@ -219,7 +214,7 @@
                $.ionSound.play("schedule");
     $.ionSound({
             sounds: [
-               
+
                 "1530346"
             ],
             path: "http://k007.kiwi6.com/hotlink/7zp3wj4k6i/",
@@ -230,42 +225,39 @@
       var x = 0;
       var intervalID = setInterval(function(){
             // method to be executed;
-            // $.ionSound.play("explosion"); 
+            // $.ionSound.play("explosion");
             if ($('label.error').length > 0) {
-                $.ionSound.play("1530346"); 
+                $.ionSound.play("1530346");
                 speech();
                 if (++x === 1) {
                     window.clearInterval(intervalID);
                 }
-            }   
-      },1000);   
+            }
+      },1000);
       setInterval(function () {
          // Your logic here
-         $('label.error').blink();    
+         $('label.error').blink();
       }, 500);
- 
-      function speech() { 
+
+      function speech() {
             setInterval(function () {
                // Your logic here
                 if ($('label.error').length > 0) {
-                      $.ionSound.play("1530346");   
+                      $.ionSound.play("1530346");
                 }
             }, 10000);
-      } 
-      
+      }
+
       $("#newcom").hide();
-      
+
       setInterval(function () {
          // Your logic here
          if ($("#newcom").css('display') !== 'none') {
             $("#schedule-form").hide();
             $(".newcom-title").blink();
-          }  
+          }
       }, 500);
-      
-    
+
+
   });
 <% end %>
-  
-  
-	

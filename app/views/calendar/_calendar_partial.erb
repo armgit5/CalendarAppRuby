@@ -45,7 +45,7 @@
 				start: new Date(<%= s.date.strftime("%Y, %m - 1, %d, %H, %M") unless s.date.nil? %>),
                       allDay: <%= if s.all_day == 1 then true else false end %>,
 											color: <% if !(s.company.nil?) and !(s.company.newcom.nil?) %>
-											     '<%= 'red' %>'
+											     '<%= 'orange' %>'
 													 <% else %>
 													 '<%= 'blue' %>'
 													 <% end %>
