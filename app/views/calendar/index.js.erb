@@ -1,37 +1,37 @@
 console.log("test");
 
 var e = [<% @schedule.each do |s| %>
-                            {
-                                    title:  '<%=  s.sale.name unless s.sale.nil? %>' + '<%= if s.sale.nil? then s.user.email.split("@")[0].upcase unless s.user.nil? end %>' + " : " + '<%= s.company.name unless s.company.nil? %>',
-                                    company: '<%= s.company.name unless s.company.nil? %>',
-                                    location: '<%= s.location.name unless s.location.nil? %>',
-                                    sales: '<%= s.sale.name unless s.sale.nil? %>' + '<%= if s.sale.nil? then s.user.email.split("@")[0].upcase unless s.user.nil? end %>',
-                                    project: '<%= s.project.rstrip().gsub("'"){"\\'"}.split.join(' ') unless s.project.nil? %>',
-                                    <% x = Array.new  %>
-                                    <% s.products.each do |i| %>
-                                      <% x.push(i.name)  %>
-                                     <% end %>
-                                    products: '<%= x.to_s %>',
-                                    start: new Date(<%= s.date.strftime("%Y, %m - 1, %d, %H, %M") unless s.date.nil? %>),
-                                    allDay: <%= if s.all_day == 1 then true else false end %>,
-                                    color: <% if !(s.company.nil?) and !(s.company.newcom.nil?) %>
-              											     '<%= 'red' %>'
-              													 <% else %>
-              													 '<%= 'blue' %>'
-              													 <% end %>
-                            },
-                            <% end %>];
+        {
+                title:  '<%=  s.sale.name unless s.sale.nil? %>' + '<%= if s.sale.nil? then s.user.email.split("@")[0].upcase unless s.user.nil? end %>' + " : " + '<%= s.company.name unless s.company.nil? %>',
+                company: '<%= s.company.name unless s.company.nil? %>',
+                location: '<%= s.location.name unless s.location.nil? %>',
+                sales: '<%= s.sale.name unless s.sale.nil? %>' + '<%= if s.sale.nil? then s.user.email.split("@")[0].upcase unless s.user.nil? end %>',
+                project: '<%= s.project.rstrip().gsub("'"){"\\'"}.split.join(' ') unless s.project.nil? %>',
+                <% x = Array.new  %>
+                <% s.products.each do |i| %>
+                  <% x.push(i.name)  %>
+                 <% end %>
+                products: '<%= x.to_s %>',
+                start: new Date(<%= s.date.strftime("%Y, %m - 1, %d, %H, %M") unless s.date.nil? %>),
+                allDay: <%= if s.all_day == 1 then true else false end %>,
+                color: <% if !(s.company.nil?) and !(s.company.newcom.nil?) %>
+								     '<%= 'red' %>'
+										 <% else %>
+										 '<%= 'blue' %>'
+										 <% end %>
+        },
+        <% end %>];
 
  var holiday = [<% @holidays.each do |s| %>
-                {
-                   title:  '<%=  s.name.upcase %>',
-                   start: new Date(<%= s.date.strftime("%Y, %m - 1, %d, %H, %M") unless s.date.nil? %>),
-                   allDay: true
-                 },
-            <% end %>];
+        {
+           title:  '<%=  s.name.upcase %>',
+           start: new Date(<%= s.date.strftime("%Y, %m - 1, %d, %H, %M") unless s.date.nil? %>),
+           allDay: true
+         },
+    <% end %>];
 
-var day = $('#calendar').fullCalendar( 'getDate');
-console.log(day.mon);
+var moment = $('#calendar').fullCalendar('getDate');
+console.log(moment.getMonth()+1);
 
 $('#calendar').fullCalendar(  'removeEvents');
 $('#calendar').fullCalendar(  'addEventSource', e);

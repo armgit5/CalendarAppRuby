@@ -53,11 +53,11 @@
 		<% end %>];
 
      var holiday = [<% @holidays.each do |s| %>
-                    {
-                       title:  '<%=  s.name.upcase %>',
-                       start: new Date(<%= s.date.strftime("%Y, %m - 1, %d, %H, %M") unless s.date.nil? %>),
-                       allDay: true
-                     },
+          {
+             title:  '<%=  s.name.upcase %>',
+             start: new Date(<%= s.date.strftime("%Y, %m - 1, %d, %H, %M") unless s.date.nil? %>),
+             allDay: true
+           },
       <% end %>];
 
      var name = "PLA";
@@ -145,7 +145,7 @@
     timeouts = [];
     if (searchVal == "" || searchVal == null) {
         console.log("update");
-        $.getScript('/calendar.js?');
+        $.getScript('/calendar.js?month=10');
         timeouts.push(setTimeout(updateComments, 10000));
     }
   };
