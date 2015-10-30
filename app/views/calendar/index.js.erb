@@ -23,18 +23,17 @@ var e = [<% @schedule.each do |s| %>
                             <% end %>];
 
  var holiday = [<% @holidays.each do |s| %>
-                                {
-                                   title:  '<%=  s.name.upcase %>',
-                                   start: new Date(<%= s.date.strftime("%Y, %m - 1, %d, %H, %M") unless s.date.nil? %>),
-                                   allDay: true
-                                 },
-                            <% end %>];
+                {
+                   title:  '<%=  s.name.upcase %>',
+                   start: new Date(<%= s.date.strftime("%Y, %m - 1, %d, %H, %M") unless s.date.nil? %>),
+                   allDay: true
+                 },
+            <% end %>];
 
+var day = $('#calendar').fullCalendar( 'getDate');
+console.log(day.mon);
 
-
-
-
-  $('#calendar').fullCalendar(  'removeEvents');
-  $('#calendar').fullCalendar(  'addEventSource', e);
-  $('#calendar').fullCalendar(  'addEventSource', holiday);
-  $('#calendar').fullCalendar(  'refetchEvents');
+$('#calendar').fullCalendar(  'removeEvents');
+$('#calendar').fullCalendar(  'addEventSource', e);
+$('#calendar').fullCalendar(  'addEventSource', holiday);
+$('#calendar').fullCalendar(  'refetchEvents');
