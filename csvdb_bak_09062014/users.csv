@@ -1,5 +1,0 @@
-id,email,password_digest,sale_id,role_id
-1,arm@nilpeter.com,$2a$10$Uk4IkT9yAflm/4ybi5Gc9eH76N2fHH568evGghbbGD3yCVCX6a.oG,,1
-2,pla@nilpeter.com,$2a$10$hkP9b50du2lwzPjhRCVa1.ZJd36I8ohwpd1ZwsRTRSasuIVQlJXJ.,4,1
-3,admin@nilpeter.com,$2a$10$AtOLQhwFFZCLld/IBp5bx.yO7iZi0UagAJJcD/MdVIRb3bFx7ys6C,,3
-4,service@nilpeter.com,$2a$10$mgVlwH8sxO69oCWj8lMH..B8lBrNTXdE83opGiohe2WwZIPkmPVti,,2
