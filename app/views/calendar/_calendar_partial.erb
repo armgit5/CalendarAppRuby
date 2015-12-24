@@ -32,9 +32,10 @@
     }).qtip('api');
 
 		var e = [<% @schedule.each do |s| %> {
-				title:  '<%=  s.sale.name unless s.sale.nil? %>' + '<%= if s.sale.nil? then s.user.email.split("@")[0].upcase unless s.user.nil? end %>' + " : " + '<%= s.company.name unless s.company.nil? %>',
-	                    company: '<%= s.company.name unless s.company.nil? %>',
-	                    location: '<%= s.location.name unless s.location.nil? %>',
+				title:  '<%=  s.sale.name unless s.sale.nil? %>' + '<%= if s.sale.nil? then s.user.email.split("@")[0].upcase unless s.user.nil? end %>' + " : " + '<%= s.company_name unless s.company_name.nil? %>'
+											+ " : " + '<%= s.job_num unless s.job_num.nil? %>',
+	                    company: '<%= s.company_name unless s.company_name.nil? %>',
+	                    job_num: '<%= s.job_num unless s.job_num.nil? %>',
 	                    sales: '<%= s.sale.name unless s.sale.nil? %>' + '<%= if s.sale.nil? then s.user.email.split("@")[0].upcase unless s.user.nil? end %>',
 	                    project: '<%= s.project.rstrip().gsub("'"){"\\'"}.split.join(' ') unless s.project.nil? %>',
 	                    <% x = Array.new  %>
@@ -78,12 +79,11 @@
 			editable: false,
       eventClick: function(data, event, view) {
       var content = '<h3> '+data.company+'</h3>' +
+							'<p><b>Job Number:</b> '+data.job_num +'<br />' +
 							'<p><b>Start:</b> '+data.start+'<br />' +
-              '<p><b>Location:</b> '+data.location+'<br />' +
-              '<p><b>Sales:</b> '+data.sales+'<br />' +
+              '<p><b>Engineer:</b> '+data.sales+'<br />' +
               '<p><b>Products:</b> '+data.products+'<br />' +
               '<p><b>Project:</b> '+data.project+'<br />' +
-
 				(data.end && '<p><b>End:</b> '+data.end+'</p>' || '');
 
 			tooltip.set({
