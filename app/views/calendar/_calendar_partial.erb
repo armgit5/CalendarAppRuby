@@ -33,9 +33,11 @@
 
 		var e = [<% @schedule.each do |s| %> {
 				title:  '<%=  s.sale.name unless s.sale.nil? %>' + '<%= if s.sale.nil? then s.user.email.split("@")[0].upcase unless s.user.nil? end %>' + " : " + '<%= s.company_name unless s.company_name.nil? %>'
-											+ " : " + '<%= s.job_num unless s.job_num.nil? %>',
+											+ " : " + '<%= s.job_num unless s.job_num.nil? %>'
+											+ " : " + '<%= s.machine_number unless s.machine_number.nil? %>',
 	                    company: '<%= s.company_name unless s.company_name.nil? %>',
 	                    job_num: '<%= s.job_num unless s.job_num.nil? %>',
+											machine_number: '<%= s.machine_number unless s.machine_number.nil? %>',
 	                    sales: '<%= s.sale.name unless s.sale.nil? %>' + '<%= if s.sale.nil? then s.user.email.split("@")[0].upcase unless s.user.nil? end %>',
 	                    project: '<%= s.project.rstrip().gsub("'"){"\\'"}.split.join(' ') unless s.project.nil? %>',
 	                    <% x = Array.new  %>
@@ -80,6 +82,7 @@
       eventClick: function(data, event, view) {
       var content = '<h3> '+data.company+'</h3>' +
 							'<p><b>Job Number:</b> '+data.job_num +'<br />' +
+							'<p><b>Machine Number:</b> '+data.machine_number +'<br />' +
 							'<p><b>Start:</b> '+data.start+'<br />' +
               '<p><b>Engineer:</b> '+data.sales+'<br />' +
               '<p><b>Products:</b> '+data.products+'<br />' +

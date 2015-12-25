@@ -2,9 +2,11 @@ console.log("test");
 
 var e = [<% @schedule.each do |s| %> {
     title:  '<%=  s.sale.name unless s.sale.nil? %>' + '<%= if s.sale.nil? then s.user.email.split("@")[0].upcase unless s.user.nil? end %>' + " : " + '<%= s.company_name unless s.company_name.nil? %>'
-                  + " : " + '<%= s.job_num unless s.job_num.nil? %>',
+                  + " : " + '<%= s.job_num unless s.job_num.nil? %>'
+                  + " : " + '<%= s.machine_number unless s.machine_number.nil? %>',
                   company: '<%= s.company_name unless s.company_name.nil? %>',
                   job_num: '<%= s.job_num unless s.job_num.nil? %>',
+                  machine_number: '<%= s.machine_number unless s.machine_number.nil? %>',
                   sales: '<%= s.sale.name unless s.sale.nil? %>' + '<%= if s.sale.nil? then s.user.email.split("@")[0].upcase unless s.user.nil? end %>',
                   project: '<%= s.project.rstrip().gsub("'"){"\\'"}.split.join(' ') unless s.project.nil? %>',
                   <% x = Array.new  %>
