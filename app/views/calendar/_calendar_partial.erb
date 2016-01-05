@@ -148,7 +148,7 @@
     timeouts = [];
     if (searchVal == "" || searchVal == null) {
         console.log("update");
-        $.getScript('/calendar.js?month=12');
+        $.getScript('/calendar.js?');
         timeouts.push(setTimeout(updateComments, 10000));
     }
   };
