@@ -128,7 +128,7 @@
 
            <div class="field">
            <% @engineer1.each do |category| %>
-             <%= check_box_tag('engineers[]', category.id, false, id: dom_id(category)) %>
+             <%= check_box_tag('engineers[]', category.id) %>
              <%= category.email.split("@")[0].upcase %><br/>
            <% end %>
            </div>

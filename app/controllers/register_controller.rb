@@ -22,9 +22,9 @@ class RegisterController < ApplicationController
     @users = User.all
     @users = @users - [current_user]
     third = @users.length / 3
-    @engineer1 = @users.slice(0,third+1)
-    @engineer2 = @users.slice(third+1, third+1)
-    @engineer3 = @users.slice((third + 1)* 2,@users.length)
+    @engineer1 = @users.slice(0,third)
+    @engineer2 = @users.slice(third, third)
+    @engineer3 = @users.slice((third)* 2,@users.length)
   end
 
   def index
