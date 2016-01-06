@@ -8,6 +8,9 @@ class Schedule < ActiveRecord::Base
   has_many :categorizations
   has_many :products, through: :categorizations
 
+  has_many :engineers
+  has_many :users, through: :engineers
+
   attr_accessible :sale_id, :company_id, :location_id, :project, :date, :name, :product_id, :user_id, :all_day, :email,
                    :job_num, :machine_number, :company_name
 

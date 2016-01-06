@@ -123,6 +123,37 @@
       <%= hidden_field(:schedule, :sale_id, :value => User.find(current_user.id).sale_id) %>
        <%= hidden_field(:schedule, :user_id, :value => User.find(current_user.id).id) %>
 
+       <div class="checkbox-inline">
+         <div><b>Engineers</b></div>
+
+           <div class="field">
+           <% @engineer1.each do |category| %>
+             <%= check_box_tag('engineers[]', category.id, false, id: dom_id(category)) %>
+             <%= category.email.split("@")[0].upcase %><br/>
+           <% end %>
+           </div>
+       </div>
+
+       <div class="checkbox-inline">
+         <br>
+           <div class="field">
+           <% @engineer2.each do |category| %>
+             <%= check_box_tag('engineers[]', category.id, false, id: dom_id(category)) %>
+             <%= category.email.split("@")[0].upcase %><br/>
+           <% end %>
+           </div>
+       </div>
+
+       <div class="checkbox-inline">
+         <br>
+           <div class="field">
+           <% @engineer3.each do |category| %>
+             <%= check_box_tag('engineers[]', category.id, false, id: dom_id(category)) %>
+             <%= category.email.split("@")[0].upcase %><br/>
+           <% end %>
+           </div>
+       </div>
+
       <div class="checkbox-inline">
         <div><b>Nilpeter Products</b></div>
 

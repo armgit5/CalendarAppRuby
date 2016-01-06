@@ -18,6 +18,13 @@ class RegisterController < ApplicationController
     @oem1 = Product.where(:type_id => 2).limit(6)
     @oem2 = Product.where(:type_id => 2).last(5)
     @all_days = [1]
+
+    @users = User.all
+    @users = @users - [current_user]
+    third = @users.length / 3
+    @engineer1 = @users.slice(0,third+1)
+    @engineer2 = @users.slice(third+1, third+1)
+    @engineer3 = @users.slice((third + 1)* 2,@users.length)
   end
 
   def index
