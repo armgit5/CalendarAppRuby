@@ -41,19 +41,19 @@ class RegisterController < ApplicationController
   end
 
   def export_csv
-    schedules = Schedule.all
-    csvdata = CSV.generate do |csv|
-      # header row
-      csv << ["Date & Time", "Company", "Company Location", "Sales Name", "Project Description"]
-      schedules.each do |s|
-        if s.location.nil?
-          csv << [s.date, s.company.name, s.sale.name, s.project]
-          else
-          csv << [s.date, s.company.name, s.location.name, s.sale.name, s.project]
-        end
-      end
-    end
-    send_data(csvdata, :type => 'text/csv', :filename => 'saleapp_export.csv')
+    # schedules = Schedule.all
+    # csvdata = CSV.generate do |csv|
+    #   # header row
+    #   csv << ["Date & Time", "Company", "Company Location", "Sales Name", "Project Description"]
+    #   schedules.each do |s|
+    #     if s.location.nil?
+    #       csv << [s.date, s.company.name, s.sale.name, s.project]
+    #       else
+    #       csv << [s.date, s.company.name, s.location.name, s.sale.name, s.project]
+    #     end
+    #   end
+    # end
+    # send_data(csvdata, :type => 'text/csv', :filename => 'saleapp_export.csv')
   end
 
   def show
@@ -99,10 +99,10 @@ class RegisterController < ApplicationController
   end
 
   def create
-    @schedule = Schedule.create!(params[:schedule])
-
-    @schedule.all_day = 1
-    flash[:notice] = "#{@schedule.project} was successfully created."
+    schedule = params[:schedule]
+    s = Schedule.create!(schedule)
+    s.product_ids = params[:products]
+    flash[:notice] = "#{s.project} was successfully created."
     redirect_to(:controller => "calendar", :action => "index")
   end
 
