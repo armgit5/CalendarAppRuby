@@ -1,9 +1,11 @@
 class User < ActiveRecord::Base
 
+  has_many :schedules
+
   has_many :engineers
   has_many :schedules, through: :engineers
 
-  has_many :schedules
+
 
   before_create { generate_token(:auth_token) }
 

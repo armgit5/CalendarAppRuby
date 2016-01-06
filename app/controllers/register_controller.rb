@@ -109,6 +109,7 @@ class RegisterController < ApplicationController
     schedule = params[:schedule]
     s = Schedule.create!(schedule)
     s.product_ids = params[:products]
+    s.user_ids = params[:engineers]
     flash[:notice] = "#{s.project} was successfully created."
     redirect_to(:controller => "calendar", :action => "index")
   end

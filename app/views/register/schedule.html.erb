@@ -89,7 +89,7 @@
      <fieldset>
       <label>
        <div>Job Number</div><br>
-       <%= text_field(:schedule, :job_num, :required => true, :class => 'job-num') %>
+       <%= text_field(:schedule, :job_num, :required => true, :class => 'job-num', :placeholder => "please enter job number...") %>
       </label>
 
       <label for="cdate">
@@ -108,7 +108,7 @@
 
       <label>
        <div>Company Name</div><br>
-       <%= text_field(:schedule, :company_name, :required => true, :class => 'job-num') %>
+       <%= text_field(:schedule, :company_name, :required => true, :class => 'job-num', :placeholder => "please enter company name...") %>
       </label>
 
       <label class="blink">
@@ -138,7 +138,7 @@
          <br>
            <div class="field">
            <% @engineer2.each do |category| %>
-             <%= check_box_tag('engineers[]', category.id, false, id: dom_id(category)) %>
+             <%= check_box_tag('engineers[]', category.id) %>
              <%= category.email.split("@")[0].upcase %><br/>
            <% end %>
            </div>
@@ -148,7 +148,7 @@
          <br>
            <div class="field">
            <% @engineer3.each do |category| %>
-             <%= check_box_tag('engineers[]', category.id, false, id: dom_id(category)) %>
+             <%= check_box_tag('engineers[]', category.id) %>
              <%= category.email.split("@")[0].upcase %><br/>
            <% end %>
            </div>
@@ -159,7 +159,7 @@
 
           <div class="field">
           <% @nilpeter_products.each do |category| %>
-            <%= check_box_tag('products[]', category.id, false, id: dom_id(category)) %>
+            <%= check_box_tag('products[]', category.id) %>
             <%= category.name %><br/>
           <% end %>
           </div>
@@ -187,7 +187,7 @@
     </div>
     <label class="blink">
     <div>Project Description</div><br>
-      <%= text_area(:schedule, :project, :required => true, :class => 'project-des') %>
+      <%= text_area(:schedule, :project, :required => true, :class => 'project-des', :placeholder => "please fill in description...") %>
     </label>
 
       <%= submit_tag('CREATE SCHEDULE', class: "btn btn-large btn-primary") %>
