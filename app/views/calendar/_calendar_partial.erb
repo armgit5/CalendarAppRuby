@@ -32,9 +32,15 @@
     }).qtip('api');
 
 		var e = [<% @schedule.each do |s| %> {
-				title:  '<%=  s.sale.name unless s.sale.nil? %>' + '<%= if s.sale.nil? then s.user.email.split("@")[0].upcase unless s.user.nil? end %>' + " : " + '<%= s.company_name unless s.company_name.nil? %>'
-											+ " : " + '<%= s.job_num unless s.job_num.nil? %>'
-											+ " : " + '<%= s.machine_number unless s.machine_number.nil? %>',
+
+				title:			<% engineers = ""  %>
+										<% s.users.each do |i| %>
+									  <% engineers = engineers + i.email.split("@")[0].upcase  + ", " %>
+				 						<% end %>
+				             'Engineers: ' + '<%= engineers.chomp(', ') %> \n'
+				              + "Company: " + '<%= s.company_name unless s.company_name.nil? %> \n'
+											+ "Job Num: " + '<%= s.job_num unless s.job_num.nil? %> \n'
+											+ "Mo Num: " + '<%= s.machine_number unless s.machine_number.nil? %> \n',
 	                    company: '<%= s.company_name unless s.company_name.nil? %>',
 	                    job_num: '<%= s.job_num unless s.job_num.nil? %>',
 											machine_number: '<%= s.machine_number unless s.machine_number.nil? %>',
