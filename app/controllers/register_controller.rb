@@ -80,15 +80,23 @@ class RegisterController < ApplicationController
     @nilpeter_products = Product.where(:type_id => 1)
     @oem1 = Product.where(:type_id => 2).limit(6)
     @oem2 = Product.where(:type_id => 2).last(5)
+
+    @users = User.all
+    @users = @users - [current_user]
+    third = @users.length / 3
+    @engineer1 = @users.slice(0,third)
+    @engineer2 = @users.slice(third, third)
+    @engineer3 = @users.slice((third)* 2,@users.length)
   end
 
   def update
     @schedule = Schedule.find(params[:id])
-    @schedule.update_attributes!(params[:schedule])
     @schedule.product_ids = params[:products]
+    @schedule.user_ids = params[:engineers]
+    @schedule.update_attributes!(params[:schedule])
     flash[:notice] = "#{@schedule.project} was successfully updated."
 #    redirect_to(:action => "show", :id => @schedule.id)
-    redirect_to(:action => "index")
+    redirect_to(:controller => "register", :action => "index")
   end
 
   def delete

@@ -2,7 +2,7 @@
    .btn.btn-primary {
     background-color: #33AAFF;
     width: 75px;
-  } 
+  }
   .btn.btn-primary a {
     color: white;
   }
@@ -22,11 +22,11 @@
   <ul class="nav nav-tabs navbar-right">
     <%= content_tag(:li, link_to("ADD USERS", :controller => "signup", :action => 'index'), :class => ("active" if current_page? "/pending/add_pending") ) %>
   </ul>
-  <ul class="nav nav-tabs"> 
+  <ul class="nav nav-tabs">
     <%= content_tag(:li, link_to("COMPANIES", :controller => "admin", :action => 'index'), :class => ("active" if current_page? "/admin") ) %>
     <%#= content_tag(:li, link_to("PENDING", :controller => "pending", :action => 'index'), :class => ("active" if current_page? "/pending") ) %>
     <%= content_tag(:li, link_to("USERS", :controller => "admin", :action => 'users'), :class => ("active" if current_page? "/admin/users") ) %>
-  </ul> 
+  </ul>
   <table class="table table-bordered">
     <tr class="header">
       <th>EMAIL</th>
@@ -34,32 +34,19 @@
       <th>DELETE</th>
     </tr>
     <% @users.each do |u| %>
-    <tr>   
+    <tr>
       <td class='normal'><%= u.email %></td>
       <td class='short'><button type="button" class="btn btn-primary"><%= link_to("EDIT", {:controller => 'admin', :action => 'reset_password', :id => u.id}) %></button></td>
       <td class='short'><button type="button" class="btn btn-primary"><%= link_to("DELETE", {:controller => 'admin', :action => 'delete_user', :id => u.id}, :confirm => "Are you sure?") %></button></td>
     </tr>
-    <% end %>  
-  </table> 
+    <% end %>
+  </table>
 </div>
 
-<%= javascript_tag do %>  
+<%= javascript_tag do %>
   $(document).ready(function () {
   $('*[data-confirm]').click(function(){
     return confirm($(this).attr('data-confirm'));
   });
 });
 <% end %>
-
-
-
- 
-
-  
-
-  
-
-
-  
-  
-	

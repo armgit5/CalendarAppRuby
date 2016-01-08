@@ -13,17 +13,21 @@
                box-shadow: 0 1px 2px rgba(0,0,0,.05);
        margin-bottom: 0px;
   }
-  
+
   .cmxform.schedule label,
   .cmxform.schedule .checkbox-inline b {
       color: #303030;
       font-family: modern;
    }
-   
+
+   .checkbox-inline b {
+     font-size: 11pt;
+   }
    .checkbox-inline .field {
      color: #3f3f3f;
+     font-size: 10pt;
    }
-   
+
    .btn.btn-large.btn-primary {
      background-color: #33AAFF;
      margin-bottom: 10px;
@@ -34,46 +38,129 @@
      text-align: center;
      color: white;
    }
-   
+
    .instruction {
      text-align: center;
      margin: 0px;
    }
-    
-   .project-des {font-size: 12pt;}
+
+   .project-des {font-size: 9pt;}
+
+   #schedule_project.machine-num {
+      width: 85%;
+      margin-bottom: 10px;
+   }
+   input::-webkit-input-placeholder {
+    font-size: 12px;
+    }
+
+   #newcom .newcom-title {
+     color: red;
+     font-size: 12pt;
+     font-weight:bold;
+     font-family: modern;
+   }
+
+   .content {display:none;}
+   .preload {
+      width:150px;
+      height: 150px;
+      position: fixed;
+      top: 80%;
+      left: 50%;
+      background: url(http://i.imgur.com/KUJoe.gif) no-repeat;
+      border-radius: 5px;
+    }
+
 </style>
 
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
 <div class="container">
-<!-- Main component for a primary marketing message or call to action -->
-<div id="schedule-form">
-<%= form_tag({:action => 'update', :id => @schedule.id}, :class => "cmxform schedule") do %>
-  <fieldset>
-  <label for="cdate">
-    <div>Date & Time</div>
-    <%= text_field(:schedule, :date, :class => "datetimepicker") %>
-  </label>
-  <label id="company">
-    <div>Customer Name</div>
-    <%= collection_select(:schedule, :company_id, @companies, :id, :name, {:prompt=>"Please Select Company"}, {:class=>'e9', :style=>"width:350px"}) %> 
-  </label>
-  <label id="location">
-    <div>Customer Location</div>
-      <%= grouped_collection_select :schedule, :location_id, Company.order(:name), :locations, :name, :id, :name, {:prompt=>"Please Select Company"}, {:class=>'e9', :style=>"width:350px"} %>
-  </label>
-  <label>   
-    <div>Sales Name</div>
-    <%= collection_select(:schedule, :sale_id, @sale, :id, :name, {:prompt=>"Please Select Company"}, {:class=>'e9', :style=>"width:350px"}) %>
-  </label> 
-  <div class="checkbox-inline">
-  <div><b>Nilpeter Products</b></div>
-    <div class="field">
-    <% @nilpeter_products.each do |category| %>
-      <%= check_box_tag('products[]', category.id, @schedule.product_ids.include?(category.id)) %>
-      <%= category.name %><br/>
-    <% end %>
+  <div id="schedule-form">
+  <p class="instruction">Please fill up your schedule information here</p>
+  <%= form_tag({:action => 'update', :id => @schedule.id}, :id => 'commentForm', :class => "cmxform schedule") do %>
+   <fieldset>
+    <label>
+     <div>Job Number</div><br>
+     <%= text_field(:schedule, :job_num, :required => true, :class => 'job-num', :placeholder => "please enter job number...") %>
+    </label>
+
+    <label for="cdate">
+      <div>Date & Time</div><br>
+      <%= text_field(:schedule, :date, {:class => "datetimepicker valid", :id => 'cdate', :required => true}) %>
+    </label>
+
+     <!-- <div class="checkbox-inline">
+        <div class="field"> <%= check_box_tag('schedule[all_day][]', 1) %> All Day <br></div>
+     </div> -->
+
+    <!-- <label id="company">
+      <div>Customer Name</div><br>
+      <%= collection_select(:schedule, :company_id, @companies, :id, :name, {:prompt=>"Please Select Company"}, {:class=>'e9', :style=>"width:350px", :required => true}) %>
+    </label> -->
+
+    <label>
+     <div>Company Name</div><br>
+     <%= text_field(:schedule, :company_name, :required => true, :class => 'job-num', :placeholder => "please enter company name...") %>
+    </label>
+
+    <label class="blink">
+
+
+    <label id="location">
+      <div>Customer Location</div><br>
+        <%= grouped_collection_select :schedule, :location_id, Company.order(:name), :locations, :name, :id, :name, {:prompt=>"Please Select Company"}, {:class=>'e9',
+          :style=>"width:350px"} %>
+    </label>
+
+    <%= hidden_field(:schedule, :sale_id, :value => User.find(current_user.id).sale_id) %>
+     <%= hidden_field(:schedule, :user_id, :value => User.find(current_user.id).id) %>
+
+     <div class="checkbox-inline">
+       <div><b>Engineers</b></div>
+
+         <div class="field">
+         <% @engineer1.each do |category| %>
+           <%= check_box_tag('engineers[]', category.id, @schedule.user_ids.include?(category.id)) %>
+           <%= category.email.split("@")[0].upcase %><br/>
+         <% end %>
+         </div>
+     </div>
+
+     <div class="checkbox-inline">
+       <br>
+         <div class="field">
+         <% @engineer2.each do |category| %>
+           <%= check_box_tag('engineers[]', category.id, @schedule.user_ids.include?(category.id)) %>
+           <%= category.email.split("@")[0].upcase %><br/>
+         <% end %>
+         </div>
+     </div>
+
+     <div class="checkbox-inline">
+       <br>
+         <div class="field">
+         <% @engineer3.each do |category| %>
+           <%= check_box_tag('engineers[]', category.id, @schedule.user_ids.include?(category.id)) %>
+           <%= category.email.split("@")[0].upcase %><br/>
+         <% end %>
+         </div>
+     </div>
+
+    <div class="checkbox-inline">
+      <div><b>Nilpeter Products</b></div>
+
+        <div class="field">
+        <% @nilpeter_products.each do |category| %>
+          <%= check_box_tag('products[]', category.id, @schedule.product_ids.include?(category.id)) %>
+          <%= category.name %><br/>
+        <% end %>
+        </div>
+        <div><%= text_field(:schedule, :machine_number, :required => true, :class => "machine-num", :placeholder => "please enter machine number...") %></div>
+
     </div>
-  </div>
-  </br>
+
   <div class="checkbox-inline">
   <div><b>OEM Products</b></div>
     <div class="field">
@@ -82,7 +169,7 @@
       <%= category.name %><br>
     <% end %>
     </div>
-  </div> 
+  </div>
   <div class="checkbox-inline">
     </br>
     <div class="field">
@@ -92,27 +179,28 @@
     <% end %>
     </div>
   </div>
-  <label>
-    <div>Project Description</div>
-    <%= text_area(:schedule, :project, :class => 'project-des') %>
+  <label class="blink">
+  <div>Project Description</div><br>
+    <%= text_area(:schedule, :project, :required => true, :class => 'project-des', :placeholder => "please fill in description...") %>
   </label>
-  <div class="error"><%= @error %></div>
-  <%= submit_tag('Update Schedule', class: "btn btn-large btn-primary") %> 
-<% end %>
-  </fieldset>
-</div>
+
+    <%= submit_tag('CREATE SCHEDULE', class: "btn btn-large btn-primary") %>
+   </fieldset>
+  <% end %>
+  </div>
+
 </div>
 
-<%= javascript_tag do %>  
-  <%#*Date picker function%>              
+
+<%= javascript_tag do %>
+  <%#*Date picker function%>
   $(function(){
       $('.datetimepicker').datetimepicker({
         format:'d/m/Y H:i'
       });
   });
- 
-  $(document).ready(function() { 
-      $(".e9").select2(); 
+
+  $(document).ready(function() {
+      $(".e9").select2();
   });
 <% end %>
-  

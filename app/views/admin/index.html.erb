@@ -2,7 +2,7 @@
    .btn.btn-primary {
     background-color: #33AAFF;
     width: 75px;
-  } 
+  }
   .btn.btn-primary a {
     color: white;
     text-align: center;
@@ -36,7 +36,7 @@
     <%= content_tag(:li, link_to("USERS", :controller => "admin", :action => 'users'), :class => ("active" if current_page? "/admin/users") ) %>
     <%= content_tag(:li, link_to("HOLIDAYS", :controller => "holidays", :action => 'index'), :class => ("active" if current_page? "/holiday") ) %>
 
-  </ul> 
+  </ul>
   <table class="table table-bordered">
     <tr class="header">
       <th>COMPANY NAME</th>
@@ -45,27 +45,15 @@
       <th>DELETE</th>
     </tr>
     <% @companies.each do |c| %>
-    <tr>   
+    <tr>
       <td class='normal'><%= c.name %></td>
       <td class='short'><button type="button" class="btn btn-primary"><%= link_to("ADD", {:controller => 'location', :action => 'index', :id => c.id}) %></button></td>
       <td class='short'><button type="button" class="btn btn-primary"><%= link_to("EDIT", {:action => 'edit', :id => c.id}) %></button></td>
       <td class='short'><button type="button" class="btn btn-primary"><%= link_to("DELETE", {:action => 'delete', :id => c.id}) %></button></td>
     </tr>
-    <% end %>  
-  </table> 
+    <% end %>
+  </table>
   <div class="apple_pagination">
     <%= will_paginate @companies %>
   </div>
 </div>
-
-
- 
-
-  
-
-  
-
-
-  
-  
-	
