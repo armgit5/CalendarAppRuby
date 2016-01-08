@@ -35,10 +35,18 @@
     </td>
     <td class='long'><%= s.project %></td>
     <td class='short'><button type="button" class="btn btn-primary css3button"><%= link_to("EDIT", {:action => 'edit', :id => s.id}) %></button></td>
-    <td class='short'><button type="button" class="btn btn-primary css3button"><%= link_to("DELETE", {:action => 'delete', :id => s.id}) %></button></td>
+    <td class='short'><button type="button" class="btn btn-primary css3button"><%= link_to("DELETE", {:action => 'destroy', :id => s.id}, :confirm => "Are you sure?") %></button></td>
   </tr>
   <% end %>
 </table>
  <div class="apple_pagination">
     <%= will_paginate @schedule %>
 </div>
+
+<%= javascript_tag do %>
+  $(document).ready(function () {
+  $('*[data-confirm]').click(function(){
+    return confirm($(this).attr('data-confirm'));
+  });
+});
+<% end %>
