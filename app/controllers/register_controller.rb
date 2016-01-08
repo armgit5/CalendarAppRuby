@@ -108,9 +108,14 @@ class RegisterController < ApplicationController
 
   def destroy
     @schedule = Schedule.find(params[:id])
-    @schedule.destroy
-    flash[:notice] = "#{@schedule.project} was successfully deleted."
-    redirect_to(:action => "index")
+    if current_user.id != @schedule.user_id and current_user.role_id != 3
+      redirect_to(:controller => "register", :action => "index")
+    else
+      @schedule.destroy
+      flash[:notice] = "#{@schedule.project} was successfully deleted."
+      redirect_to(:controller => "register", :action => "index")
+    end
+
   end
 
   def create
