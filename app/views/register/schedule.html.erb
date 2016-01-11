@@ -94,7 +94,8 @@
 
       <label for="cdate">
         <div>Date & Time</div><br>
-        <%= text_field(:schedule, :date, {:class => "datetimepicker valid", :id => 'cdate', :required => true}) %>
+        <%= text_field(:schedule, :date, {:class => "datetimepicker valid", :id => 'cdate', :required => true, :placeholder => "start date"}) %>
+        <%= text_field(:schedule, :end_date, {:class => "datetimepicker valid", :id => 'cdate', :required => true, :placeholder => "end date"}) %>
       </label>
 
        <!-- <div class="checkbox-inline">

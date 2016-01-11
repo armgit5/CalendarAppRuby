@@ -51,13 +51,19 @@
 	                      <% x.push(i.name)  %>
 	                     <% end %>
 	                    products: '<%= x.to_s %>',
-				start: new Date(<%= s.date.strftime("%Y, %m - 1, %d, %H, %M") unless s.date.nil? %>),
+											start: new Date(<%= s.date.strftime("%Y, %m-1, %d, %H, %M") unless s.date.nil? %>),
                       allDay: <%= if s.all_day == 1 then true else false end %>,
 											color: <% if !(s.company.nil?) and !(s.company.newcom.nil?) %>
 											     '<%= 'red' %>'
 													 <% else %>
 													 '<%= 'blue' %>'
-													 <% end %>
+													 <% end %>,
+											end:  <% if !(s.end_date.nil?) %>
+														<% d = s.end_date + 1.days%>
+											     '<%= d.strftime("%Y, %m, %d")%>'
+													 <% else %>
+													 '<%= '' %>'
+													 <% end %>,
 				},
 		<% end %>];
 
