@@ -15,8 +15,9 @@
     <%#*<th><%= sortable("Company", "company") %>
     <th>DATE</th>
     <th>COMPANY</th>
-    <th>LOCATION</th>
-    <th>SALES</th>
+    <!-- <th>LOCATION</th> -->
+    <th>ENGINEERS</th>
+    <th>CREATOR</th>
     <th>PRODUCTS</th>
     <th>DESCRIPTION</th>
     <th>EDIT</th>
@@ -25,8 +26,13 @@
   <% @schedule.each do |s| %>
   <tr>
     <td class='normal'><%= s.date.utc.strftime("%d/%m/%Y %H:%M") unless s.date.nil? %></td>
-    <td class='normal'><%= s.company.name unless s.company.nil? %></td>
-    <td class='long'><%= s.location.name unless s.location.nil? %></td>
+    <td class='normal'><%= s.company_name unless s.company_name.nil? %></td>
+    <td class='normal'><% s.users.each do |i| %>
+    <%= i.email.split("@")[0].upcase %>
+      <br/>
+    <% end %>
+    </td>
+    <!-- <td class='long'><%= s.location.name unless s.location.nil? %></td> -->
     <td class='short'><%= s.sale.name unless s.sale.nil?  %> <%= if s.sale.nil? then s.user.email.split("@")[0].upcase unless s.user.nil? end  %></td>
     <td class='normal'><% s.products.each do |i| %>
     <%= i.name %>
