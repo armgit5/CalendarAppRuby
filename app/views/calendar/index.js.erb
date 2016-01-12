@@ -6,10 +6,10 @@ var e = [<% @schedule.each do |s| %> {
                 <% s.users.each do |i| %>
                 <% engineers = engineers + i.email.split("@")[0].upcase  + ", " %>
                 <% end %>
-                 'Engineers: ' + '<%= engineers.chomp(', ') %> \n'
-                  + "Company: " + '<%= s.company_name unless s.company_name.nil? %> \n'
-                  + "Job Num: " + '<%= s.job_num unless s.job_num.nil? %> \n'
-                  + "Mo Num: " + '<%= s.machine_number unless s.machine_number.nil? %> \n',
+                  '<%= engineers.chomp(', ') %> ' + ': ' +
+                  '<%= s.company_name unless s.company_name.nil? %> ' + ': ' +
+                  '<%= s.job_num unless s.job_num.nil? %> ' + ': ' +
+                  '<%= s.machine_number unless s.machine_number.nil? %> ',
                   company: '<%= s.company_name unless s.company_name.nil? %>',
                   job_num: '<%= s.job_num unless s.job_num.nil? %>',
                   machine_number: '<%= s.machine_number unless s.machine_number.nil? %>',
@@ -20,15 +20,22 @@ var e = [<% @schedule.each do |s| %> {
                     <% x.push(i.name)  %>
                    <% end %>
                   products: '<%= x.to_s %>',
-    start: new Date(<%= s.date.strftime("%Y, %m - 1, %d, %H, %M") unless s.date.nil? %>),
+                  start: new Date(<%= s.date.strftime("%Y, %m-1, %d, %H, %M") unless s.date.nil? %>),
                   allDay: <%= if s.all_day == 1 then true else false end %>,
                   color: <% if !(s.company.nil?) and !(s.company.newcom.nil?) %>
                        '<%= 'red' %>'
                        <% else %>
                        '<%= 'blue' %>'
-                       <% end %>
+                       <% end %>,
+                  end:  <% if !(s.end_date.nil?) %>
+                        <% d = s.end_date + 1.days%>
+                       '<%= d.strftime("%Y, %m, %d")%>'
+                       <% else %>
+                       '<%= '' %>'
+                       <% end %>,
     },
 <% end %>];
+
 
  var holiday = [<% @holidays.each do |s| %>
         {
