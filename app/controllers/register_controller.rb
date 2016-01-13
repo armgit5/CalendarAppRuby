@@ -92,7 +92,11 @@ class RegisterController < ApplicationController
   def update
     @schedule = Schedule.find(params[:id])
     @schedule.product_ids = params[:products]
-    @schedule.user_ids = params[:engineers]
+    if current_user.role_id != 3
+      @schedule.user_ids = params[:engineers] + [current_user.id]
+    else
+      @schedule.user_ids = params[:engineers]
+    end
     @schedule.update_attributes!(params[:schedule])
     flash[:notice] = "#{@schedule.project} was successfully updated."
 #    redirect_to(:action => "show", :id => @schedule.id)
@@ -122,7 +126,14 @@ class RegisterController < ApplicationController
     schedule = params[:schedule]
     s = Schedule.create!(schedule)
     s.product_ids = params[:products]
-    s.user_ids = params[:engineers]
+
+
+    if current_user.role_id != 3
+      s.user_ids = params[:engineers] + [current_user.id]
+    else
+      s.user_ids = params[:engineers]
+    end
+
     flash[:notice] = "#{s.project} was successfully created."
     redirect_to(:controller => "calendar", :action => "index")
   end
