@@ -8,6 +8,10 @@ module Api
       @current_user
     end
 
+    # def mobile_user
+    #   User.find(params[:user_id])
+    # end
+
     def authenticate
       authenticate_or_request_with_http_basic do |email, password|
         Rails.logger.info "API authentication: #{email} #{password}"

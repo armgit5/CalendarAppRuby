@@ -1,14 +1,18 @@
 create schedule
 
 curl \
-a-u pla@nilpeter.com:pla123 \
+-u ome@nilpeter.com:ome123 \
 -H "Accept: application/json" \
 -H "Content-type: application/json" \
 -X POST \
--d '{"all_day":null,"company_id":"82","date":"28-09-2015 11:57","location_id":"61","project":"test api","sale_id":null,"user_id":"2"}' \
+-d '{"end_date": "15-01-2016 13:58","company_name":"com","date":"14-01-2016 11:57","project":"test api","user_id":"2","job_num": "job","engineer_ids": "["1", "2"]"}' \
 http://localhost:3000/api/schedules
 
 test creating date
+
+{"date": "14-01-2016 13:58" , "end_date": "15-01-2016 13:58" , "company_name": "com" , "job_num": "job" , "product_ids": ["3", "8"] , "engineer_ids": "["1", "2"]" , "project": "Des" , "user_id": "13" }
+
+
 
 curl \
 -i \
