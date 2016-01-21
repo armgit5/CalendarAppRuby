@@ -1,7 +1,6 @@
 console.log("test");
 
 var e = [<% @schedule.each do |s| %> {
-
     title:			<% engineers = ""  %>
                 <% s.users.each do |i| %>
                 <% engineers = engineers + i.email.split("@")[0].upcase  + ", " %>
@@ -28,8 +27,7 @@ var e = [<% @schedule.each do |s| %> {
                        '<%= 'blue' %>'
                        <% end %>,
                   end:  <% if !(s.end_date.nil?) %>
-                        <% d = s.end_date + 1.days%>
-                       '<%= d.strftime("%Y, %m, %d")%>'
+                        new Date(<%= s.end_date.strftime("%Y, %m-1, %d, %H, %M") unless s.end_date.nil? %>)
                        <% else %>
                        '<%= '' %>'
                        <% end %>,
