@@ -9,18 +9,22 @@
   .header {
     background-color: #BBBBBB;
   }
-  
+
   .navbar-form {
     padding: 0px;
-    
+
   }
-  
+
 </style>
 
 <div class="container">
   <!-- Main component for a primary marketing message or call to action -->
   <!--/ flash massages -->
-  
+  <% if current_user %>
+    <div class="user_name">
+    WELCOME <%= current_user.email %>.
+    </div>
+  <% end %>
   <%= form_tag '/register', :method => 'get', :id => "sales_search", :class => "navbar-form navbar-right" do %>
     <p>
       <div class="form-group">
@@ -28,16 +32,16 @@
       </div>
     </p>
   <% end %>
-  
-  <div class="notice"><%= flash[:notice] %></div> 
+
+  <div class="notice"><%= flash[:notice] %></div>
   <div id="schedule-table"><%= render 'partial' %></div>
-</div> 
+</div>
 <div><%= render 'hover' %></div>
 
 <!-- / javascript -->
 <%= javascript_tag do %>
    $(document).ready(function() {
-    
+
      $.ionSound({
           sounds: [
               "table"
@@ -49,9 +53,9 @@
 
       });
       $.ionSound.play("table");
-      
+
       $('#sales_search input').keyup(function () {
         $.get($('#sales_search').attr('action'), $('#sales_search').serialize(), null, 'script');
       });
-  });  
+  });
 <% end %>
