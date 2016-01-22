@@ -21,6 +21,7 @@ class RegisterController < ApplicationController
 
     @users = User.all
     @users = @users - [current_user]
+    @users = @users - ["ios@nilpeter.com"]
     third = @users.length / 3
     @engineer1 = @users.slice(0,third)
     @engineer2 = @users.slice(third, third)
@@ -83,7 +84,7 @@ class RegisterController < ApplicationController
 
     @users = User.all
     @users = @users - [current_user]
-    @users = @users - "ios@nilpeter.com"
+    @users = @users - ["ios@nilpeter.com"]
 
     third = @users.length / 3
     @engineer1 = @users.slice(0,third)
