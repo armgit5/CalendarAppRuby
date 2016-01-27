@@ -51,7 +51,13 @@ var e = [<% @schedule.each do |s| %> {
 var moment = $('#calendar').fullCalendar('getDate');
 console.log(moment.getMonth()+1);
 
+var height =  $(window).scrollTop();
+console.log("current height " + height);
+
 $('#calendar').fullCalendar(  'removeEvents');
 $('#calendar').fullCalendar(  'addEventSource', e);
 $('#calendar').fullCalendar(  'addEventSource', holiday);
 $('#calendar').fullCalendar(  'refetchEvents');
+
+window.scrollTo(0,height);
+console.log("scroll to " + height);

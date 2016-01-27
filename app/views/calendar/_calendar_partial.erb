@@ -157,6 +157,8 @@
     };
   search();
 
+
+
   var updateComments = function() {
     for (var i = 0; i < timeouts.length; i++) {
             clearTimeout(timeouts[i]);
@@ -164,7 +166,9 @@
     timeouts = [];
     if (searchVal == "" || searchVal == null) {
         console.log("update");
+
         $.getScript('/calendar.js?');
+			
         timeouts.push(setTimeout(updateComments, 10000));
     }
   };
