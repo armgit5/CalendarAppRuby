@@ -25,7 +25,11 @@
   </tr>
   <% @schedule.each do |s| %>
   <tr>
-    <td class='normal'><%= s.date.utc.strftime("%d/%m/%Y %H:%M") unless s.date.nil? %></td>
+    <td class='normal'>
+      <%= s.date.utc.strftime("%d/%m/%Y %H:%M") unless s.date.nil? %>&ensp;&ndash;
+      <br/>
+      <%= s.end_date.utc.strftime("%d/%m/%Y %H:%M") unless s.end_date.nil? %>
+    </td>
     <td class='normal'><%= s.company_name unless s.company_name.nil? %></td>
     <td class='normal'><% s.users.each do |i| %>
     <%= i.email.split("@")[0].upcase %>

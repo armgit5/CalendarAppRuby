@@ -50,18 +50,29 @@ class RegisterController < ApplicationController
 
   def export_csv
     # schedules = Schedule.all
-    # csvdata = CSV.generate do |csv|
-    #   # header row
-    #   csv << ["Date & Time", "Company", "Company Location", "Sales Name", "Project Description"]
-    #   schedules.each do |s|
-    #     if s.location.nil?
-    #       csv << [s.date, s.company.name, s.sale.name, s.project]
-    #       else
-    #       csv << [s.date, s.company.name, s.location.name, s.sale.name, s.project]
-    #     end
-    #   end
-    # end
-    # send_data(csvdata, :type => 'text/csv', :filename => 'saleapp_export.csv')
+    params[:sort] ||= "date"
+    params[:direction] ||= "desc"
+    schedules = Schedule.search(params[:search])
+    .order(params[:sort] + " " + params[:direction])
+    .paginate(:per_page => 25, :page => params[:page])
+    csvdata = CSV.generate do |csv|
+      # header row
+      csv << ["Date & Time", "Company", "Engineers", "Creator", "Products", "Descrip"]
+
+      schedules.each do |s|
+          enginner_names = []
+          products = []
+          s.users.each do |e|
+            enginner_names.push(e.email.split("@")[0].upcase)
+          end
+          creator = s.user.email.split("@")[0].upcase unless s.user.nil?
+          s.products.each do |p|
+            products.push(p.name)
+          end
+          csv << [s.date, s.company_name, enginner_names, creator, products, s.project]
+      end
+    end
+    send_data(csvdata, :type => 'text/csv', :filename => 'serviceapp_export.csv')
   end
 
   def show
