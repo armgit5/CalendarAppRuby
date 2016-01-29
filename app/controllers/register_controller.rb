@@ -62,6 +62,7 @@ class RegisterController < ApplicationController
       schedules.each do |s|
           enginner_names = []
           products = []
+          dates = []
           s.users.each do |e|
             enginner_names.push(e.email.split("@")[0].upcase)
           end
@@ -69,7 +70,9 @@ class RegisterController < ApplicationController
           s.products.each do |p|
             products.push(p.name)
           end
-          csv << [s.date, s.company_name, enginner_names, creator, products, s.project]
+          dates.push(s.date.utc.strftime("%d/%m/%Y %H:%M")) unless s.date.nil?
+          dates.push(s.end_date.utc.strftime("%d/%m/%Y %H:%M")) unless s.end_date.nil?
+          csv << [dates, s.company_name, enginner_names, creator, products, s.project]
       end
     end
     send_data(csvdata, :type => 'text/csv', :filename => 'serviceapp_export.csv')
