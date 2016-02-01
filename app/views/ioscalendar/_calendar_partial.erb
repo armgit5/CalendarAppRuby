@@ -157,23 +157,37 @@
     };
   search();
 
-
-
   var updateComments = function() {
     for (var i = 0; i < timeouts.length; i++) {
             clearTimeout(timeouts[i]);
         }
     timeouts = [];
+
+		var moment = $('#calendar').fullCalendar('getDate');
+		m = moment.getMonth()+1;
+		console.log("m ="+m);
+
     if (searchVal == "" || searchVal == null) {
         console.log("update");
-
-        $.getScript('/calendar.js?');
-
+        $.getScript('/calendar.js?month='+m);
         timeouts.push(setTimeout(updateComments, 10000));
     }
   };
 
   timeouts.push(setTimeout(updateComments, 10000));
 
+	$(document).on("click",".fc-button-prev span",function(){
+	   console.log('prev is clicked, do something');
+		 updateComments();
 	});
+
+	$(document).on("click",".fc-button-next span",function(){
+	   console.log('nextis clicked, do something');
+		 updateComments();
+	});
+
+
+	});
+
+
 <% end %>

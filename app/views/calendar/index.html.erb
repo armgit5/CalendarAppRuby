@@ -41,8 +41,11 @@
   <% if current_user %>
     <div class="user_name">
     WELCOME <%= current_user.email %>.
+    <button class="reload-page">Refresh</button>
     </div>
+
   <% end %>
+
    <table id="header-fixed" class="table table-bordered"></table>
    <div id="calendar_p"><%= render 'calendar_partial' %>
 
