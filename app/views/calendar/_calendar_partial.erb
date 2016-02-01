@@ -90,7 +90,7 @@
 			header: {
 				left: 'prev ,next today',
 				center: 'title',
-				right: 'month,agendaWeek,agendaDay'
+				right: 'month'
 			},
 			selectable: true,
 			selectHelper: true,
@@ -168,7 +168,7 @@
         console.log("update");
 
         $.getScript('/calendar.js?');
-			
+
         timeouts.push(setTimeout(updateComments, 10000));
     }
   };

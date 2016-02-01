@@ -8,7 +8,7 @@ class CalendarController < ApplicationController
       params[:month] = Time.now.month
     end
     Rails.logger.info "Month = #{params[:month]}"
-    @schedule = Schedule.where('extract(month from date) = ?', params[:month])
+    @schedule = Schedule.where('extract(month from date) = ? OR extract(month from end_date) = ?', params[:month], params[:month])
     @holidays = Holiday.all
   end
 
