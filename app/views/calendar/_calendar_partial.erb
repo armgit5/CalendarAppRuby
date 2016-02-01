@@ -90,7 +90,7 @@
 			header: {
 				left: 'prev ,next today',
 				center: 'title',
-				right: 'month'
+				right: ''
 			},
 			selectable: true,
 			selectHelper: true,
@@ -164,11 +164,14 @@
             clearTimeout(timeouts[i]);
         }
     timeouts = [];
+
+		var moment = $('#calendar').fullCalendar('getDate');
+		m = moment.getMonth()+1;
+		console.log("m ="+m);
+
     if (searchVal == "" || searchVal == null) {
         console.log("update");
-
-        $.getScript('/calendar.js?');
-
+        $.getScript('/calendar.js?month='+m);
         timeouts.push(setTimeout(updateComments, 10000));
     }
   };
