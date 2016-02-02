@@ -57,12 +57,11 @@ class RegisterController < ApplicationController
     .paginate(:per_page => 25, :page => params[:page])
     csvdata = CSV.generate do |csv|
       # header row
-      csv << ["Date & Time", "Company", "Engineers", "Creator", "Products", "Descrip"]
+      csv << ["Start Date", "End Date", "Company", "Job Num", "Engineers", "Creator", "Products", "Descrip"]
 
       schedules.each do |s|
           enginner_names = []
           products = []
-          dates = []
           s.users.each do |e|
             enginner_names.push(e.email.split("@")[0].upcase)
           end
@@ -70,9 +69,10 @@ class RegisterController < ApplicationController
           s.products.each do |p|
             products.push(p.name)
           end
-          dates.push(s.date.utc.strftime("%d/%m/%Y %H:%M")) unless s.date.nil?
-          dates.push(s.end_date.utc.strftime("%d/%m/%Y %H:%M")) unless s.end_date.nil?
-          csv << [dates, s.company_name, enginner_names, creator, products, s.project]
+          start_date = s.date.utc.strftime("%d/%m/%Y %H:%M") unless s.date.nil?
+          end_date = s.end_date.utc.strftime("%d/%m/%Y %H:%M") unless s.end_date.nil?
+          job_num = s.job_num unless s.job_num.nil?
+          csv << [start_date, end_date, job_num, s.company_name, enginner_names, creator, products, s.project]
       end
     end
     send_data(csvdata, :type => 'text/csv', :filename => 'serviceapp_export.csv')

@@ -15,7 +15,7 @@
     <%#*<th><%= sortable("Company", "company") %>
     <th>DATE</th>
     <th>COMPANY</th>
-    <!-- <th>LOCATION</th> -->
+    <th>JOB NO</th>
     <th>ENGINEERS</th>
     <th>CREATOR</th>
     <th>PRODUCTS</th>
@@ -31,6 +31,7 @@
       <%= s.end_date.utc.strftime("%d/%m/%Y %H:%M") unless s.end_date.nil? %>
     </td>
     <td class='normal'><%= s.company_name unless s.company_name.nil? %></td>
+    <td class='normal'><%= s.job_num unless s.job_num.nil? %></td>
     <td class='normal'><% s.users.each do |i| %>
     <%= i.email.split("@")[0].upcase %>
       <br/>
