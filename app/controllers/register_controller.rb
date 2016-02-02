@@ -49,16 +49,16 @@ class RegisterController < ApplicationController
   end
 
   def export_csv
-    begin_month = Date.today.at_beginning_of_month
+    begin_month = DateTime.now.at_beginning_of_month
     end_month = begin_month.end_of_month
     Rails.logger.info "None Month = #{params[:pick_month]}"
     if params[:pick_month] == "1"
-      begin_month = Date.today.at_beginning_of_month << 1
+      begin_month = DateTime.now.at_beginning_of_month << 1
       end_month = begin_month.end_of_month
       Rails.logger.info "picked"
     end
     if params[:pick_month] == "2"
-      begin_month = Date.today.at_beginning_of_month << 2
+      begin_month = DateTime.now.at_beginning_of_month << 2
       end_month = begin_month.end_of_month
       Rails.logger.info "picked"
     end
