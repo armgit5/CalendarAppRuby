@@ -57,7 +57,7 @@ class RegisterController < ApplicationController
     .paginate(:per_page => 25, :page => params[:page])
     csvdata = CSV.generate do |csv|
       # header row
-      csv << ["Start Date", "End Date", "Company", "Job Num", "Engineers", "Creator", "Products", "Descrip"]
+      csv << ["Start Date", "End Date", "Job Num", "Company", "Engineers", "Creator", "Products", "Descrip"]
 
       schedules.each do |s|
           enginner_names = []
