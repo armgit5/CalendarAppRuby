@@ -29,11 +29,19 @@
   <% if current_user %>
     <div class="user_name">
     WELCOME <%= current_user.email %>.
-    <%= link_to("Download", {:action => 'export_csv'}, :class => "navbar-form navbar-right download") %>
-    </div>
   <% end %>
+  <!-- Single button -->
+<div class="btn-group navbar-form navbar-right">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Download <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+    <%= link_to("Current Month", {:action => 'export_csv'}) %> <br>
+    <%= link_to("Last Month", {:action => 'export_csv', :pick_month => 1}) %> <br>
+    <%= link_to("Last 2 Months", {:action => 'export_csv', :pick_month => 2}) %>
+  </ul>
+</div>
   <%= form_tag '/register', :method => 'get', :id => "sales_search", :class => "navbar-form navbar-right" do %>
-
     <p>
       <div class="form-group">
         <%= text_field_tag :search, params[:search], :placeholder => "SEARCH SALES NAME" %>
