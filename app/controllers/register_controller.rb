@@ -118,12 +118,14 @@ class RegisterController < ApplicationController
   def update
     @schedule = Schedule.find(params[:id])
     @schedule.product_ids = params[:products]
-    Rails.logger.info "Month update = #{current_user.id}, #{current_user.email}, #{current_user.role_id}"
+    enginners ||= []
+    enginners.push(params[:engineers])
+    # Rails.logger.info "Month update = #{current_user.id}, #{current_user.email}, #{current_user.role_id}"
     if current_user.role_id != 3
-      Rails.logger.info "update current user role id less than 3, #{params[:engineers]}"
-      s.user_ids = params[:engineers].push(current_user.id)
+      # Rails.logger.info "update current user role id less than 3, #{params[:engineers]}"
+      s.user_ids = enginners.push(current_user.id)
     else
-      s.user_ids = params[:engineers]
+      s.user_ids = engineers
     end
     @schedule.update_attributes!(params[:schedule])
     flash[:notice] = "#{@schedule.project} was successfully updated."
@@ -156,9 +158,9 @@ class RegisterController < ApplicationController
     s.product_ids = params[:products]
     enginners ||= []
     enginners.push(params[:engineers])
-    Rails.logger.info "Month create = #{current_user.id}, #{current_user.email}, #{current_user.role_id}, #{params[:engineers]}"
+    # Rails.logger.info "Month create = #{current_user.id}, #{current_user.email}, #{current_user.role_id}, #{params[:engineers]}"
     if current_user.role_id != 3
-      Rails.logger.info "create current user role id less than 3, #{params[:engineers]}"
+      # Rails.logger.info "create current user role id less than 3, #{params[:engineers]}"
       s.user_ids = enginners.push(current_user.id)
     else
       s.user_ids = enginners
