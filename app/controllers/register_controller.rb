@@ -123,9 +123,9 @@ class RegisterController < ApplicationController
     # Rails.logger.info "Month update = #{current_user.id}, #{current_user.email}, #{current_user.role_id}"
     if current_user.role_id != 3
       # Rails.logger.info "update current user role id less than 3, #{params[:engineers]}"
-      s.user_ids = enginners.push(current_user.id)
+      @schedule.user_ids = enginners.push(current_user.id)
     else
-      s.user_ids = engineers
+      @schedule.user_ids = engineers
     end
     @schedule.update_attributes!(params[:schedule])
     flash[:notice] = "#{@schedule.project} was successfully updated."
