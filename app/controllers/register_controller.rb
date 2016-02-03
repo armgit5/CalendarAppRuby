@@ -119,9 +119,9 @@ class RegisterController < ApplicationController
     @schedule = Schedule.find(params[:id])
     @schedule.product_ids = params[:products]
     if current_user.role_id != 3
-      @schedule.user_ids = params[:engineers] + [current_user.id]
+      s.user_ids = params[:engineers] + [params[:user_id]]
     else
-      @schedule.user_ids = params[:engineers]
+      s.user_ids = params[:engineers]
     end
     @schedule.update_attributes!(params[:schedule])
     flash[:notice] = "#{@schedule.project} was successfully updated."
