@@ -154,13 +154,14 @@ class RegisterController < ApplicationController
     schedule = params[:schedule]
     s = Schedule.create!(schedule)
     s.product_ids = params[:products]
-
-    Rails.logger.info "Month create = #{current_user.id}, #{current_user.email}, #{current_user.role_id}"
+    enginners ||= []
+    enginners.push(params[:engineers])
+    Rails.logger.info "Month create = #{current_user.id}, #{current_user.email}, #{current_user.role_id}, #{params[:engineers]}"
     if current_user.role_id != 3
       Rails.logger.info "create current user role id less than 3, #{params[:engineers]}"
-      s.user_ids = params[:engineers].push(current_user.id)
+      s.user_ids = enginners.push(current_user.id)
     else
-      s.user_ids = params[:engineers]
+      s.user_ids = enginners
     end
 
     flash[:notice] = "#{s.project} was successfully created."
