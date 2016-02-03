@@ -1,7 +1,11 @@
 class Api::SchedulesController < Api::ApiController
 
       def index
-        render json: Schedule.last(10)
+        # begin_month = DateTime.now.at_beginning_of_month
+        # end_month = begin_month.end_of_month
+        # schedules = Schedule.where('date >= ? AND date <= ?',begin_month,end_month).order("date desc")
+        # render json: schedules
+        render json: Schedule.order("id desc").limit(10)
       end
 
       def show

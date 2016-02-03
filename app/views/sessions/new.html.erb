@@ -3,7 +3,7 @@
     text-align: center;
     margin-top: 0px;
   }
-  
+
   .form-signin {
        max-width: 300px;
        padding: 19px 29px 29px;
@@ -17,7 +17,7 @@
           -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
                box-shadow: 0 1px 2px rgba(0,0,0,.05);
   }
-  
+
   .form-signin .form-signin-heading,
   .form-signin .checkbox {
     margin-bottom: 10px;
@@ -54,11 +54,11 @@
      text-align: center;
      color: white;
    }
-  
+
 </style>
 
 <div class="container">
-  <h3>WELCOME TO NILPETER'S SALES APP</h3>
+  <h3>WELCOME TO NILPETER'S SERVICE APP</h3>
   <div class="notice">
     <%= flash[:notice] %>
   </div>
@@ -73,10 +73,7 @@
       <div class="checkbox">
         <%= check_box_tag :remember_me, 1, params[:remember_me] %>Remember me
         <br></br>
-      </div> 
+      </div>
       <div class="actions"><%= submit_tag "LOG IN", class: "btn btn-large btn-primary" %></div>
   <% end %>
 </div>
-
-
-
