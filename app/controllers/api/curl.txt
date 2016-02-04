@@ -17,8 +17,11 @@ DELETE schedules
 curl \
 -i \
 -u pla@nilpeter.com:pla123 \
+-H "Accept: application/json" \
+-H "Content-type: application/json" \
 -X DELETE \
-http://localhost:3000/api/schedules/322
+-d {""} \
+http://localhost:3000/api/schedules/320
 
 
 curl \
