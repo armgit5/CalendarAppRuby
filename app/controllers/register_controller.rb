@@ -118,12 +118,12 @@ class RegisterController < ApplicationController
   def update
     @schedule = Schedule.find(params[:id])
     @schedule.product_ids = params[:products]
-    enginners = []
-    enginners.push(params[:engineers])
+    engineers = []
+    engineers.push(params[:engineers])
     # Rails.logger.info "Month update = #{current_user.id}, #{current_user.email}, #{current_user.role_id}"
     if current_user.role_id != 3
       # Rails.logger.info "update current user role id less than 3, #{params[:engineers]}"
-      @schedule.user_ids = enginners.push(current_user.id)
+      @schedule.user_ids = engineers.push(current_user.id)
     else
       @schedule.user_ids = engineers
     end
@@ -156,14 +156,14 @@ class RegisterController < ApplicationController
     schedule = params[:schedule]
     s = Schedule.create!(schedule)
     s.product_ids = params[:products]
-    enginners = []
-    enginners.push(params[:engineers])
+    engineers = []
+    engineers.push(params[:engineers])
     # Rails.logger.info "Month create = #{current_user.id}, #{current_user.email}, #{current_user.role_id}, #{params[:engineers]}"
     if current_user.role_id != 3
       # Rails.logger.info "create current user role id less than 3, #{params[:engineers]}"
-      s.user_ids = enginners.push(current_user.id)
+      s.user_ids = engineers.push(current_user.id)
     else
-      s.user_ids = enginners
+      s.user_ids = engineers
     end
 
     flash[:notice] = "#{s.project} was successfully created."

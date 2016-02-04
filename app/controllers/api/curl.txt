@@ -12,6 +12,13 @@ test creating date
 
 {"date": "14-01-2016 13:58" , "end_date": "15-01-2016 13:58" , "company_name": "com" , "job_num": "job" , "product_ids": ["3", "8"] , "engineer_ids": "["1", "2"]" , "project": "Des" , "user_id": "13" }
 
+DELETE schedules
+
+curl \
+-i \
+-u pla@nilpeter.com:pla123 \
+-X DELETE \
+http://localhost:3000/api/schedules/322
 
 
 curl \
