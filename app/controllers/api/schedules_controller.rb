@@ -10,7 +10,7 @@ class Api::SchedulesController < Api::ApiController
 
       def show
         schedule = Schedule.find(params[:id])
-        render json: schedule.as_json
+        render json: [schedule.as_json]
       end
 
       def create
