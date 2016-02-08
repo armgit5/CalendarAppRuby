@@ -66,7 +66,7 @@ class RegisterController < ApplicationController
 
     csvdata = CSV.generate do |csv|
       # header row
-      csv << ["Start Date", "End Date", "Job Num", "Company", "Engineers", "Creator", "Products", "Description"]
+      csv << ["Start Date", "End Date", "Job Num", "Company", "Machine No.","Engineers", "Creator", "Products", "Description"]
 
       schedules.each do |s|
           enginner_names = []
@@ -81,7 +81,7 @@ class RegisterController < ApplicationController
           start_date = s.date.utc.strftime("%d/%m/%Y %H:%M") unless s.date.nil?
           end_date = s.end_date.utc.strftime("%d/%m/%Y %H:%M") unless s.end_date.nil?
           job_num = s.job_num unless s.job_num.nil?
-          csv << [start_date, end_date, job_num, s.company_name, enginner_names, creator, products, s.project]
+          csv << [start_date, end_date, job_num, s.company_name, s.machine_number, enginner_names, creator, products, s.project]
       end
     end
     send_data(csvdata, :type => 'text/csv', :filename => 'serviceapp_export.csv')
@@ -119,7 +119,7 @@ class RegisterController < ApplicationController
     @schedule = Schedule.find(params[:id])
     @schedule.product_ids = params[:products]
     engineers = []
-    engineers.push(params[:engineers])
+    engineers = engineers + params[:engineers]
     # Rails.logger.info "Month update = #{current_user.id}, #{current_user.email}, #{current_user.role_id}"
     if current_user.role_id != 3
       # Rails.logger.info "update current user role id less than 3, #{params[:engineers]}"
@@ -157,7 +157,7 @@ class RegisterController < ApplicationController
     s = Schedule.create!(schedule)
     s.product_ids = params[:products]
     engineers = []
-    engineers.push(params[:engineers])
+    engineers = engineers + params[:engineers]
     # Rails.logger.info "Month create = #{current_user.id}, #{current_user.email}, #{current_user.role_id}, #{params[:engineers]}"
     if current_user.role_id != 3
       # Rails.logger.info "create current user role id less than 3, #{params[:engineers]}"

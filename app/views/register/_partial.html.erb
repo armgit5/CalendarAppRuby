@@ -16,9 +16,10 @@
     <th>DATE</th>
     <th>COMPANY</th>
     <th>JOB NO</th>
+    <th>MACHINE NO.</th>
     <th>ENGINEERS</th>
     <th>CREATOR</th>
-    <th>PRODUCTS</th>
+    <!-- <th>PRODUCTS</th> -->
     <th>DESCRIPTION</th>
     <th>EDIT</th>
     <th>DELETE</th>
@@ -32,6 +33,7 @@
     </td>
     <td class='normal'><%= s.company_name unless s.company_name.nil? %></td>
     <td class='normal'><%= s.job_num unless s.job_num.nil? %></td>
+    <td class='normal'><%= s.machine_number unless s.machine_number.nil? %></td>
     <td class='normal'><% s.users.each do |i| %>
     <%= i.email.split("@")[0].upcase %>
       <br/>
@@ -39,11 +41,11 @@
     </td>
     <!-- <td class='long'><%= s.location.name unless s.location.nil? %></td> -->
     <td class='short'><%= s.sale.name unless s.sale.nil?  %> <%= if s.sale.nil? then s.user.email.split("@")[0].upcase unless s.user.nil? end  %></td>
-    <td class='normal'><% s.products.each do |i| %>
+    <!-- <td class='normal'><% s.products.each do |i| %>
     <%= i.name %>
       <br/>
     <% end %>
-    </td>
+    </td> -->
     <td class='long'><%= s.project %></td>
     <td class='short'><button type="button" class="btn btn-primary css3button"><%= link_to("EDIT", {:action => 'edit', :id => s.id}) %></button></td>
     <td class='short'><button type="button" class="btn btn-primary css3button"><%= link_to("DELETE", {:action => 'destroy', :id => s.id}, :confirm => "Are you sure?") %></button></td>
