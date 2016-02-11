@@ -7,7 +7,7 @@ NilpeterWeb::Application.routes.draw do
     resources :companies, only: [:index]
     resources :products, only: [:index]
     resources :locations, only: [:index]
-    resources :user, only: [:index]
+    resources :user, only: [:index, :show]
     resources :engineers, only: [:index]
   end
 

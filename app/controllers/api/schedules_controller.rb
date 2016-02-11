@@ -5,8 +5,15 @@ class Api::SchedulesController < Api::ApiController
         # end_month = begin_month.end_of_month
         # schedules = Schedule.where('date >= ? AND date <= ?',begin_month,end_month).order("date desc")
         # render json: schedules
-        render json: Schedule.order("id desc").limit(10)
+        schedule = Schedule.where('user_id = ?', params[:id]).order("id desc").limit(25)
+        render json: schedule
       end
+
+      def find_users
+        schedule = Schedule.find(params[:id])
+        render json: schedule.users, only: [:email, :id]
+      end
+
 
       def show
         schedule = Schedule.find(params[:id])
