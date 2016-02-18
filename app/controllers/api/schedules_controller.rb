@@ -14,6 +14,10 @@ class Api::SchedulesController < Api::ApiController
         render json: schedule.users, only: [:email, :id]
       end
 
+      def find_nilpeters
+        schedule = Schedule.find(params[:id])
+        render json: schedule.products
+      end
 
       def show
         schedule = Schedule.find(params[:id])
