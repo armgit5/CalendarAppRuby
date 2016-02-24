@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-ruby "2.1.0" ||ENV['CUSTOM_RUBY_VERSION'] || "2.2.4"
+# ruby "2.1.0" ||ENV['CUSTOM_RUBY_VERSION'] || "2.2.4"
 gem 'rails', '3.2.0'
 
 # Bundle edge Rails instead:
