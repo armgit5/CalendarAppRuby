@@ -27,8 +27,12 @@ class RegisterController < ApplicationController
     @engineer2 = @users.slice(third, third)
     @engineer3 = @users.slice((third)* 2,@users.length)
 
-    @last_job_num = Schedule.where('user_id = ?', current_user.id).last.job_num
-
+    begin_month = DateTime.now.at_beginning_of_month
+    end_month = begin_month.end_of_month
+    @last_job_num = "00"
+    if !Schedule.where('user_id = ? AND date >= ? AND date <= ?', current_user.id, begin_month, end_month).last.nil?
+      @last_job_num = Schedule.where('user_id = ? AND date >= ? AND date <= ?', current_user.id, begin_month, end_month).last.job_num
+    end
   end
 
   def index
