@@ -246,10 +246,12 @@
     var month = ("0" + (d.getMonth())).slice(-2);
     var day = ("0" + (d.getDate())).slice(-2);
     var userInit = '<%= current_user.email %>';
+    var lastJobNum = '<%= @last_job_num %>';
+    lastJobNum = parseInt(lastJobNum.slice(-2)) + 1;
 
-    var dtString =  userInit.substring(0,1).toUpperCase() + month.toString() + day.toString();
+    var dtString =  userInit.substring(0,1).toUpperCase() + month.toString() + day.toString() + lastJobNum.toString();
 
-    console.log(userInit);
+    console.log(lastJobNum);
     $("#schedule_job_num").val(dtString);
 
   $('#commentForm').submit(function() {

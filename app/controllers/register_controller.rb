@@ -26,6 +26,9 @@ class RegisterController < ApplicationController
     @engineer1 = @users.slice(0,third)
     @engineer2 = @users.slice(third, third)
     @engineer3 = @users.slice((third)* 2,@users.length)
+
+    @last_job_num = Schedule.where('user_id = ?', current_user.id).last.job_num
+
   end
 
   def index
