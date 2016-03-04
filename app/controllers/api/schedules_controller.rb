@@ -16,7 +16,12 @@ class Api::SchedulesController < Api::ApiController
 
       def find_nilpeters
         schedule = Schedule.find(params[:id])
-        render json: schedule.products
+        render json: schedule.products.where("type_id = ?",1)
+      end
+
+      def find_third
+        schedule = Schedule.find(params[:id])
+        render json: schedule.products.where("type_id = ?",2)
       end
 
       def show

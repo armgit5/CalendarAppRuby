@@ -119,7 +119,7 @@ class RegisterController < ApplicationController
     @schedule = Schedule.find(params[:id])
     @schedule.product_ids = params[:products]
     engineers = []
-    engineers = engineers + params[:engineers]
+    engineers = engineers + params[:engineers] unless params[:engineers].nil?
     # Rails.logger.info "Month update = #{current_user.id}, #{current_user.email}, #{current_user.role_id}"
     if current_user.role_id != 3
       # Rails.logger.info "update current user role id less than 3, #{params[:engineers]}"
@@ -157,7 +157,7 @@ class RegisterController < ApplicationController
     s = Schedule.create!(schedule)
     s.product_ids = params[:products]
     engineers = []
-    engineers = engineers + params[:engineers]
+    engineers = engineers + params[:engineers] unless params[:engineers].nil?
     # Rails.logger.info "Month create = #{current_user.id}, #{current_user.email}, #{current_user.role_id}, #{params[:engineers]}"
     if current_user.role_id != 3
       # Rails.logger.info "create current user role id less than 3, #{params[:engineers]}"
