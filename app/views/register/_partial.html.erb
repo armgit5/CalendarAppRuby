@@ -7,6 +7,7 @@
     color: white;
   }
 
+
 </style>
 
 <table class="table table-bordered" >
@@ -16,6 +17,7 @@
     <th>DATE</th>
     <th>COMPANY</th>
     <th>JOB NO</th>
+    <th style="width:200px;">CHARGABLE</th>
     <th>MACHINE NO.</th>
     <th>ENGINEERS</th>
     <th>CREATOR</th>
@@ -33,6 +35,7 @@
     </td>
     <td class='normal'><%= s.company_name unless s.company_name.nil? %></td>
     <td class='normal'><%= s.job_num unless s.job_num.nil? %></td>
+    <td class='normal'><%= s.chargable == 1 ? "YES" : "NO" %></td>
     <td class='normal'><%= s.machine_number unless s.machine_number.nil? %></td>
     <td class='normal'><% s.users.each do |i| %>
     <%= i.email.split("@")[0].upcase %>

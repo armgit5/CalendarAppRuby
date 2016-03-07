@@ -97,6 +97,10 @@
        <%= text_field(:schedule, :job_num, :required => true, :class => 'job-num', :placeholder => "please enter job number...") %>
       </label>
 
+      <div class="checkbox-inline">
+         <div class="field"> <%= check_box_tag('schedule[chargable][]', 1) %> Chargable <br></div>
+      </div>
+
       <label for="cdate">
         <div>Date & Time</div><br>
         <%= text_field(:schedule, :date, {:class => "datetimepicker valid", :id => 'cdate', :required => true, :placeholder => "start date"}) %>
