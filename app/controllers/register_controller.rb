@@ -124,7 +124,16 @@ class RegisterController < ApplicationController
 
   def update
     @schedule = Schedule.find(params[:id])
+
+    # Rails.logger.info "scheduleParamsNil = #{params[:schedule]}"
+    # @schedule.update_attributes!(params[:schedule])
     @schedule.product_ids = params[:products]
+
+    if !params[:id].include? "chargable"
+      @schedule.chargable = 0
+      Rails.logger.info "not chargable"
+    end
+
     engineers = []
     engineers = engineers + params[:engineers] unless params[:engineers].nil?
     # Rails.logger.info "Month update = #{current_user.id}, #{current_user.email}, #{current_user.role_id}"
