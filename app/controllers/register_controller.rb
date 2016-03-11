@@ -73,7 +73,7 @@ class RegisterController < ApplicationController
 
     csvdata = CSV.generate do |csv|
       # header row
-      csv << ["Start Date", "End Date", "Job Num", "Company", "Machine No.","Engineers", "Creator", "Products", "Description"]
+      csv << ["Start Date", "End Date", "Job Num", "Company", "Machine No.","Engineers", "Creator", "Products", "Description", "Chargable"]
 
       schedules.each do |s|
           enginner_names = []
@@ -88,7 +88,7 @@ class RegisterController < ApplicationController
           start_date = s.date.utc.strftime("%d/%m/%Y %H:%M") unless s.date.nil?
           end_date = s.end_date.utc.strftime("%d/%m/%Y %H:%M") unless s.end_date.nil?
           job_num = s.job_num unless s.job_num.nil?
-          csv << [start_date, end_date, job_num, s.company_name, s.machine_number, enginner_names, creator, products, s.project]
+          csv << [start_date, end_date, job_num, s.company_name, s.machine_number, enginner_names, creator, products, s.project, s.chargable == 1 ? "YES" : "" ]
       end
     end
     send_data(csvdata, :type => 'text/csv', :filename => 'serviceapp_export.csv')
