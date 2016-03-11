@@ -24,6 +24,7 @@ class Api::SchedulesController < Api::ApiController
         render json: schedule.products.where("type_id = ?",2)
       end
 
+
       def show
         schedule = Schedule.find(params[:id])
         render json: [schedule.as_json]
@@ -52,6 +53,9 @@ class Api::SchedulesController < Api::ApiController
 
       def update
         schedule = Schedule.find(params[:id])
+        schedule.product_ids = params[:product_ids]
+        schedule.user_ids = params[:user_ids]
+
         if schedule.update_attributes(params[:schedule])
           render status: 200, json: {
     	      message: "Successfully updated product",

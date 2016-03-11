@@ -32,6 +32,17 @@ curl \
 -d '{"date":"27-09-2015 11:57","product_ids":["3","7"]}' \
 http://localhost:3000/api/schedules
 
+{"date": "2016-03-11T14:23:00Z" , "end_date": "2016-03-11T14:23:00Z" , "company_name": "test com" , "job_num": "k91238" , "machine_number": "k8182d" , product_ids: ["2", "7"], "user_ids": ["2", "3"] , "project": "test" , "user_id": "2" }
+
+curl \
+-i \
+-u pla@nilpeter.com:pla123 \
+-H "Accept: application/json" \
+-H "Content-type: application/json" \
+-X PUT \
+-d '{"date": "2016-03-11T14:23:00Z" , "end_date": "2016-03-11T14:23:00Z" , "company_name": "test com" , "job_num": "k91238" , "machine_number": "k8182d" , product_ids: ["3", "7"] , "project": "test" , "user_id": "2" }' \
+http://localhost:3000/api/schedules/353
+
 curl \
 -i \
 -u pla@nilpeter.com:pla123 \
