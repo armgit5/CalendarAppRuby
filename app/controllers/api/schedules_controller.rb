@@ -24,6 +24,21 @@ class Api::SchedulesController < Api::ApiController
         render json: schedule.products.where("type_id = ?",2)
       end
 
+      def auto_jobnum
+        begin_month = DateTime.now.at_beginning_of_month
+        end_month = begin_month.end_of_month
+        @last_job_num = "00"
+        if !Schedule.where('user_id = ? AND date >= ? AND date <= ?', params[:id], begin_month, end_month).last.nil?
+          @last_job_num = Schedule.where('user_id = ? AND date >= ? AND date <= ?', params[:id], begin_month, end_month).last.job_num
+        end
+        user_email = User.find(params[:id])
+        first_char = user_email.email[0].upcase
+        year = begin_month.year.to_s[-2,2]
+        month = ("0"+begin_month.month.to_s)[-2,2]
+        last_2_digits = @last_job_num[-2,2].to_i + 1
+        output = first_char + year + month + last_2_digits.to_s
+        render json: [output.as_json]
+      end
 
       def show
         schedule = Schedule.find(params[:id])
