@@ -36,8 +36,8 @@ class Api::SchedulesController < Api::ApiController
         year = begin_month.year.to_s[-2,2]
         month = ("0"+begin_month.month.to_s)[-2,2]
         last_2_digits = @last_job_num[-2,2].to_i + 1
-        output = first_char + year + month + last_2_digits.to_s
-        render json: [output.as_json]
+        output = first_char + year + month + ("0"+last_2_digits.to_s)[-2,2]
+        render json: JSON.parse('[{"newJobNum": "' + output + '" }]')
       end
 
       def show
