@@ -24,9 +24,22 @@
     z-index:99999;
   }
 
+  .preload {
+     width:150px;
+     height: 150px;
+     position: fixed;
+     top: 50%;
+     left: 50%;
+     background: url(http://i.imgur.com/KUJoe.gif) no-repeat;
+     border-radius: 5px;
+   }
+
 </style>
 
 <div class="container">
+  <div class="preload">
+  <%#*<img src="http://i.imgur.com/KUJoe.gif" height="150" width="150">%>
+  </div>
 
   <%= form_tag '/', :method => 'get', :id => "sales_search", :class => "navbar-form navbar-right" do %>
     <p>
@@ -46,7 +59,9 @@
 
   <% end %>
 
+
    <table id="header-fixed" class="table table-bordered"></table>
+
    <div id="calendar_p"><%= render 'calendar_partial' %>
 
     </div>
@@ -107,6 +122,10 @@
 
               var carWidth = $("#calendar_p").width();
               $("#header-fixed").css("width",carWidth);
+
+              $(".preload").fadeOut(0, function() {
+                  
+              });
 
 	});
 <% end %>

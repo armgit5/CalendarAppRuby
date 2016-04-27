@@ -168,6 +168,8 @@
 		m = moment.getMonth()+1;
 		console.log("m ="+m);
 
+
+
     if (searchVal == "" || searchVal == null) {
         console.log("update");
         $.getScript('/calendar.js?month='+m);
@@ -179,18 +181,28 @@
 
 	$(document).on("click",".fc-button-prev span",function(){
 	   console.log('prev is clicked, do something');
+		 $(".preload").fadeIn(0, function() {
+ 		});
 		 updateComments();
+
 	});
 
 	$(document).on("click",".fc-button-next span",function(){
 	   console.log('nextis clicked, do something');
+		 $(".preload").fadeIn(0, function() {
+ 		});
 		 updateComments();
+
 	});
 
 	$(document).on("click",".reload-page",function(){
 		console.log('reloadpage clicked, do something');
+		$(".preload").fadeIn(0, function() {
+		});
 		updateComments();
+
 	});
+
 
 
 	});
