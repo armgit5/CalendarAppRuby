@@ -3,9 +3,9 @@ class SessionsController < ApplicationController
   end
 
   def create
-    para = ""
+    para = params[:email]
     if !params[:email].include? "@"
-      para = params[:email] + "@nilpeter.com"
+      para = para + "@nilpeter.com"
     end
     Rails.logger.info "API authentication: #{para}"
     user = User.find_by_email(para)
