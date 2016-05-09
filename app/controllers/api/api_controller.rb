@@ -15,6 +15,9 @@ module Api
     def authenticate
       authenticate_or_request_with_http_basic do |email, password|
         Rails.logger.info "API authentication: #{email} #{password}"
+        if !email.include? "@"
+          email = email + "@nilpeter.com"
+        end
         user = User.find_by_email(email)
         if user && user.authenticate(password)
           @current_user = user
