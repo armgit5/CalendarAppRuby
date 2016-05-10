@@ -9,7 +9,9 @@ class IoscalendarController < ActionController::Base
     @holidays = Holiday.all
   end
 
-  def timesheet
-
+  def create_timesheet
+    @timesheet = Timesheet.create!(params[:timesheet])
+    flash[:notice] = "#{@timesheet.job_num} was successfully created."
+    redirect_to(:action => "timesheet")
   end
 end

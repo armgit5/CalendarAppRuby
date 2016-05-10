@@ -23,9 +23,9 @@
         padding: 0px;
       }
 
-table td{
-border:1px solid #FF0000;
-}
+      table td{
+        border:1px solid #FF0000;
+      }
 
     </style>
   </head>
@@ -34,7 +34,7 @@ border:1px solid #FF0000;
       <table class="table table-reflow">
         <h1>TIME SHEET</h1>
         <tbody>
-
+          <%= form_tag({:action => 'create_timesheet'}, :id => 'commentForm', :class => "cmxform schedule") do %>
             <%= render 'order_date_partial' %>
             <%= render 'customer_partial' %>
             <%= render 'engineer_machine_partial' %>
@@ -42,6 +42,8 @@ border:1px solid #FF0000;
             <%= render 'arrival_partial' %>
             <%= render 'kilometers_partial' %>
 
+            <%= submit_tag('Submit Timesheet', :class => "btn btn-default") %>
+          <% end %>
 
 
 
