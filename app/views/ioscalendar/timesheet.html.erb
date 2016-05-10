@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+    <style>
+      h1 {
+        text-align: right;
+      }
+      .col-md-6 {
+        border-collapse:collapse;
+        border:1px solid #FF0000;
+        color: red;
+        padding: 0px;
+      }
+
+      .col-md-4, .col-md-8 {
+        padding: 0px;
+      }
+
+table td{
+border:1px solid #FF0000;
+}
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <table class="table table-reflow">
+        <h1>TIME SHEET</h1>
+        <tbody>
+
+            <%= render 'order_date_partial' %>
+            <%= render 'customer_partial' %>
+            <%= render 'engineer_machine_partial' %>
+            <%= render 'departure_partial' %>
+            <%= render 'arrival_partial' %>
+            <%= render 'kilometers_partial' %>
+
+
+
+
+
+
+    </tbody>
+  </table>
+
+    </div>
+
+    <!-- jQuery first, then Bootstrap JS. -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
+  </body>
+</html>
