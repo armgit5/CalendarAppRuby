@@ -28,7 +28,8 @@
 				},
 				show: true,
 				hide: false,
-				style: 'qtip-default qtip-rounded'
+				<!-- style: 'qtip-light qtip-rounded' -->
+				style: { classes: 'myCustomClass' }
     }).qtip('api');
 
 		var e = [<% @schedule.each do |s| %> {
