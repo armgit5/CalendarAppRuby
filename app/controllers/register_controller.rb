@@ -101,7 +101,7 @@ class RegisterController < ApplicationController
   def edit
     @schedule = Schedule.find(params[:id])
     if current_user.id != @schedule.user_id and current_user.role_id != 3
-      redirect_to(:action => "index")
+      redirect_to(:controller => "calendar", :action => "index")
     end
 
     @sale = Sale.all
@@ -159,7 +159,8 @@ class RegisterController < ApplicationController
   def destroy
     @schedule = Schedule.find(params[:id])
     if current_user.id != @schedule.user_id and current_user.role_id != 3
-      redirect_to(:controller => "register", :action => "index")
+      flash[:notice] = "you don't have permission to delete"
+      redirect_to(:controller => "calendar", :action => "index")
     else
       @schedule.destroy
       flash[:notice] = "#{@schedule.project} was successfully deleted."

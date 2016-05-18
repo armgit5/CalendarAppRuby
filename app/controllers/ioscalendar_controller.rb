@@ -14,4 +14,9 @@ class IoscalendarController < ActionController::Base
     flash[:notice] = "#{@timesheet.job_num} was successfully created."
     redirect_to(:action => "timesheet")
   end
+
+  def timesheet
+    id = params[:id]
+    @schedule.find(id)
+  end
 end
