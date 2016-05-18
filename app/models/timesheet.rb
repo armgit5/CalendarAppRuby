@@ -1,5 +1,5 @@
 class Timesheet < ActiveRecord::Base
 
-  attr_accessible :job_num
-
+  attr_protected
+  
 end

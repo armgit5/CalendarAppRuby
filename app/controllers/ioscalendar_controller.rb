@@ -12,7 +12,7 @@ class IoscalendarController < ActionController::Base
   def create_timesheet
     @timesheet = Timesheet.create!(params[:timesheet])
     flash[:notice] = "#{@timesheet.job_num} was successfully created."
-    redirect_to(:action => "timesheet")
+    redirect_to(:controller => "calendar", :action => "index")
   end
 
   def timesheet
