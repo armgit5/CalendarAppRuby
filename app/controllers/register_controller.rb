@@ -146,7 +146,7 @@ class RegisterController < ApplicationController
     @schedule.update_attributes!(params[:schedule])
     flash[:notice] = "#{@schedule.project} was successfully updated."
 #    redirect_to(:action => "show", :id => @schedule.id)
-    redirect_to(:controller => "register", :action => "index")
+    redirect_to(:controller => "calendar", :action => "index")
   end
 
   def delete
@@ -163,7 +163,7 @@ class RegisterController < ApplicationController
     else
       @schedule.destroy
       flash[:notice] = "#{@schedule.project} was successfully deleted."
-      redirect_to(:controller => "register", :action => "index")
+      redirect_to(:controller => "calendar", :action => "index")
     end
 
   end

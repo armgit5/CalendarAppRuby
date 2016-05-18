@@ -37,6 +37,7 @@ var e = [<% @schedule.each do |s| %> {
                        <% else %>
                        '<%= '' %>'
                        <% end %>,
+                  id: <%= s.id %>,
     },
 <% end %>];
 
