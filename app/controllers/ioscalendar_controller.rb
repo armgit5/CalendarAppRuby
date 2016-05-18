@@ -17,6 +17,6 @@ class IoscalendarController < ActionController::Base
 
   def timesheet
     id = params[:id]
-    @schedule.find(id)
+    @schedule = Schedule.find(id)
   end
 end
