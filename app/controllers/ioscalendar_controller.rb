@@ -23,5 +23,12 @@ class IoscalendarController < ActionController::Base
       @engineers = user.email.split("@")[0].upcase + ", " + @engineers
     end
     @engineers = @engineers.chop.chop
+
+    @product_types = ""
+    for product in @schedule.products.reverse
+      @product_types = product.name.upcase + ", " + @product_types
+    end
+    @product_types = @product_types.chop.chop
+    
   end
 end
