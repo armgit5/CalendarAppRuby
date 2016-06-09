@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160510101953) do
+ActiveRecord::Schema.define(:version => 20160609082726) do
 
   create_table "categorizations", :force => true do |t|
     t.integer  "product_id"
@@ -113,6 +113,7 @@ ActiveRecord::Schema.define(:version => 20160510101953) do
     t.integer  "kilometers"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.string   "country"
   end
 
   create_table "types", :force => true do |t|

@@ -18,5 +18,10 @@ class IoscalendarController < ActionController::Base
   def timesheet
     id = params[:id]
     @schedule = Schedule.find(id)
+    @engineers = ""
+    for user in @schedule.users.reverse
+      @engineers = user.email.split("@")[0].upcase + ", " + @engineers
+    end
+    @engineers = @engineers.chop.chop
   end
 end

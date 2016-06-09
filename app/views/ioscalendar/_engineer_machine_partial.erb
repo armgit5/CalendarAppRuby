@@ -2,17 +2,18 @@
   <div class="col-md-6">
     <div class="input-group">
     <span class="input-group-addon">Engineer:</span>
-    <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1">
+    <!-- <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1"> -->
+    <%= text_field(:timesheet, :engineers, :class => 'form-control', :placeholder => "", :value => @engineers) %>
     </div>
   </div>
   <div class="col-md-6">
-    <div class="col-md-6 ">
+    <div class="col-md-6 inside">
       <div class="input-group">
       <span class="input-group-addon">Machine Type:</span>
       <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1">
       </div>
     </div>
-    <div class="col-md-6 ">
+    <div class="col-md-6 inside">
       <div class="input-group second-layer-color">
       <span class="input-group-addon">Machine No.:</span>
       <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1">
