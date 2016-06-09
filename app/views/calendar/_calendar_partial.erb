@@ -108,7 +108,7 @@
               '<p><b>Project:</b> '+data.project+'<br />' +
 				(data.end && '<p><b>End:</b> '+data.end+'</p>' || '') +
 					'<a href="/register/edit/'+data.id+'">Edit Schedule</a>' + ' ' +
-					 '<a href="/register/destroy/'+data.id+'">Delete Schedule</a>' + ' ' +
+					 '<a href="/register/destroy/'+data.id+'" onclick="return confirm(' + "'Are you sure?'" + ')">Delete Schedule</a>' + ' ' +
 					 '<a href="/ioscalendar/timesheet/'+data.id+'">Timesheet</a>';
 
 			tooltip.set({
@@ -208,7 +208,17 @@
 
 	});
 
+	function confirm_delete(question) {
 
+  if(confirm(question)){
+
+     alert("Action to delete");
+
+  }else{
+    return false;
+  }
+
+}
 
 	});
 
