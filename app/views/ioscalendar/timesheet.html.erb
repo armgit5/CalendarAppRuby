@@ -21,10 +21,9 @@
       }
 
       .col-md-3 {
-        /*border-collapse:collapse;
-        border-right: 1px solid #FF0000;
+        border-right:1px solid #FF0000;
         color: red;
-        padding: 0px;*/
+        padding: 0px;
       }
 
       .inside {
@@ -72,6 +71,7 @@
             <%= render 'arrival_partial' %>
             <%= render 'kilometers_partial' %>
             <%= render 'weekday_partial' %>
+            <%= render 'monday_partial' %>
             <%= submit_tag('Submit Timesheet', :class => "btn btn-default") %>
           <% end %>
         </tbody>
