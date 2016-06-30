@@ -12,11 +12,19 @@
       h1 {
         text-align: right;
       }
-      .col-md-6 {
-        border-collapse:collapse;
-        border:1px solid #FF0000;
+      .col-md-6, .col-md-2, .col-md-10 {
+        /*border-collapse:collapse;*/
+        border-top:1px solid #FF0000;
+        border-right:1px solid #FF0000;
         color: red;
         padding: 0px;
+      }
+
+      .col-md-3 {
+        /*border-collapse:collapse;
+        border-right: 1px solid #FF0000;
+        color: red;
+        padding: 0px;*/
       }
 
       .inside {
@@ -53,7 +61,7 @@
   </head>
   <body>
     <div class="container">
-      <table class="table table-reflow">
+      <table class="table table-bordered">
         <h1>TIME SHEET</h1>
         <tbody>
           <%= form_tag({:action => 'create_timesheet'}, :id => 'commentForm', :class => "cmxform schedule") do %>
@@ -63,16 +71,13 @@
             <%= render 'departure_partial' %>
             <%= render 'arrival_partial' %>
             <%= render 'kilometers_partial' %>
-
+            <%= render 'weekday_partial' %>
             <%= submit_tag('Submit Timesheet', :class => "btn btn-default") %>
           <% end %>
-
-
-
-
-
-    </tbody>
+        </tbody>
   </table>
+
+
 
     </div>
 
