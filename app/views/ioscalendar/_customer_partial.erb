@@ -1,15 +1,15 @@
-<div class="row">
-  <div class="col-md-6" style="border-left:1px solid #FF0000;">
+<tr>
+  <td style="width:50%">
     <div class="input-group">
       <span class="input-group-addon">Customer:</span>
       <!-- <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1"> -->
       <%= text_field(:timesheet, :customer, :class => 'form-control', :placeholder => "", :value => @schedule.company_name) %>
     </div>
-  </div>
-  <div class="col-md-6">
+  </td>
+  <td style="width:50%">
     <div class="input-group">
       <span class="input-group-addon">Country:</span>
       <%= text_field(:timesheet, :country, :class => 'form-control', :placeholder => "", :value => "Thailand") %>
     </div>
-  </div>
-</div>
+  </td>
+</tr>

@@ -1,25 +1,29 @@
-<div class="row">
-  <div class="col-md-6" style="border-left:1px solid #FF0000;">
+<tr>
+  <td style="width:50%">
     <div class="input-group">
     <span class="input-group-addon">Engineer:</span>
     <!-- <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1"> -->
     <%= text_field(:timesheet, :engineers, :class => 'form-control', :placeholder => "", :value => @engineers) %>
     </div>
-  </div>
-  <div class="col-md-6" style="border-top:none;border-right:none;">
-    <div class="col-md-6">
-      <div class="input-group">
-      <span class="input-group-addon">Machine Type:</span>
-      <!-- <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1"> -->
-      <%= text_field(:timesheet, :engineers, :class => 'form-control', :placeholder => "", :value => @product_types) %>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="input-group">
-      <span class="input-group-addon">Machine No.:</span>
-      <!-- <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1"> -->
-      <%= text_field(:timesheet, :engineers, :class => 'form-control', :placeholder => "", :value => @schedule.machine_number) %>
-      </div>
-    </div>
-  </div>
-</div>
+  </td>
+  <td style="width:50%;padding:0px">
+    <table>
+      <tr>
+      <td style="width:50%;border:none;">
+        <div class="input-group">
+        <span class="input-group-addon">Machine Type:</span>
+        <!-- <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1"> -->
+        <%= text_field(:timesheet, :engineers, :class => 'form-control', :placeholder => "", :value => @product_types) %>
+        </div>
+      </td>
+      <td style="width:50%;border:none;">
+        <div class="input-group">
+        <span class="input-group-addon">Machine No.:</span>
+        <!-- <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1"> -->
+        <%= text_field(:timesheet, :engineers, :class => 'form-control', :placeholder => "", :value => @schedule.machine_number) %>
+        </div>
+      </td>
+    </tr>
+    </table>
+  </td>
+</tr>

@@ -1,35 +1,39 @@
-<div class="row">
-  <div class="col-md-6">
-      <div class="col-md-6 inside" style="border-left:1px solid #FF0000;">
+<tr>
+  <td style="width:50%;padding:0px">
+  <table style="padding:0px;border:none">
+    <td style="width:50%;border:none">
         <div class="input-group">
         <span class="input-group-addon">Departure:</span>
         <!-- <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1"> -->
         <%= text_field(:timesheet, :date, :class => 'form-control', :placeholder => "", :value => @schedule.date.strftime("%d/%m/%Y %H:%M")) %>
         </div>
-      </div>
-      <div class="col-md-6 inside">
+    </td>
+    <td style="width:50%;border:none">
         <div class="input-group">
         <span class="input-group-addon">From:</span>
         <!-- <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1"> -->
         <%= text_field(:timesheet, :from, :class => 'form-control', :placeholder => "", :value => "Nilpeter") %>
         </div>
       </div>
-    </div>
-  <div class="col-md-6">
-      <div class="col-md-6 inside">
-        <div class="input-group">
-        <span class="input-group-addon">From</span>
-        <!-- <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1"> -->
-        <%= text_field(:timesheet, :date, :class => 'form-control', :placeholder => "", :value => @schedule.end_date.strftime("%d/%m/%Y %H:%M")) %>
-        </div>
-      </div>
-      <div class="col-md-6 inside">
-        <div class="input-group">
-        <span class="input-group-addon">at:</span>
-        <!-- <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1"> -->
-        <%= text_field(:timesheet, :customer, :class => 'form-control', :placeholder => "", :value => @schedule.company_name) %>
-        </div>
-      </div>
-    </div>
-
-  </div>
+    </td>
+  </table>
+  </td>
+  <td style="width:50%;padding:0px">
+      <table style="padding:0px">
+      <td style="width:50%;border:none">
+          <div class="input-group">
+          <span class="input-group-addon">From</span>
+          <!-- <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1"> -->
+          <%= text_field(:timesheet, :date, :class => 'form-control', :placeholder => "", :value => @schedule.end_date.strftime("%d/%m/%Y %H:%M")) %>
+          </div>
+      </td>
+      <td style="width:50%;border:none">
+          <div class="input-group">
+          <span class="input-group-addon">at:</span>
+          <!-- <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1"> -->
+          <%= text_field(:timesheet, :customer, :class => 'form-control', :placeholder => "", :value => @schedule.company_name) %>
+          </div>
+      </td>
+    </table>
+  </td>
+</tr>

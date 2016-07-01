@@ -12,8 +12,8 @@
       h1 {
         text-align: right;
       }
-      .col-md-6, .col-md-2, .col-md-10 {
-        /*border-collapse:collapse;*/
+      /*.col-md-6, .col-md-2, .col-md-10 {
+        border-collapse:collapse;
         border-top:1px solid #FF0000;
         border-right:1px solid #FF0000;
         color: red;
@@ -24,18 +24,19 @@
         border-right:1px solid #FF0000;
         color: red;
         padding: 0px;
-      }
+      }*/
 
-      .inside {
+      /*.inside {
         color: white;
-      }
+      }*/
 
-      .col-md-4, .col-md-8 {
+      /*.col-md-4, .col-md-8 {
         padding: 0px;
-      }
+      }*/
 
       table td{
         border:1px solid #FF0000;
+        border-color: red;
       }
 
       .input-group-addon {
@@ -44,41 +45,44 @@
         border-color: white;
       }
 
-      .form-control {
+      /*.form-control {
         border-color: white;
-      }
+      }*/
 
-      .second-layer-color {
+      /*.second-layer-color {
         border-color: white;
       }
 
       .col-md-6 .inside {
         border: none;
+      }*/
+
+      .table-bordered td, .table-bordered th{
+          border-color: red;
       }
 
     </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
   </head>
   <body>
     <div class="container">
-      <table class="table table-bordered">
-        <h1>TIME SHEET</h1>
-        <tbody>
-          <%= form_tag({:action => 'create_timesheet'}, :id => 'commentForm', :class => "cmxform schedule") do %>
-            <%= render 'order_date_partial' %>
-            <%= render 'customer_partial' %>
-            <%= render 'engineer_machine_partial' %>
-            <%= render 'departure_partial' %>
-            <%= render 'arrival_partial' %>
-            <%= render 'kilometers_partial' %>
-            <%= render 'weekday_partial' %>
-            <%= render 'monday_partial' %>
-            <%= submit_tag('Submit Timesheet', :class => "btn btn-default") %>
-          <% end %>
-        </tbody>
-  </table>
-
-
-
+        <table class="table table-bordered">
+          <h1>TIME SHEET</h1>
+          <tbody>
+            <%= form_tag({:action => 'create_timesheet'}, :id => 'commentForm', :class => "cmxform schedule") do %>
+              <%= render 'order_date_partial' %>
+              <%= render 'customer_partial' %>
+              <%= render 'engineer_machine_partial' %>
+              <%= render 'departure_partial' %>
+              <%= render 'arrival_partial' %>
+              <%= render 'kilometers_partial' %>
+              <%= render 'weekday_partial' %>
+              <%= render 'monday_partial' %>
+              <%= submit_tag('Submit Timesheet', :class => "btn btn-default") %>
+            <% end %>
+          </tbody>
+      </table>
     </div>
 
     <!-- jQuery first, then Bootstrap JS. -->
