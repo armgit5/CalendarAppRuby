@@ -1,5 +1,6 @@
 'use strict';
 
+alert('test');
 var app = angular.module('Timesheet', [])
 app.controller('TimesheetCtrl', ['$scope', '$http', function($scope, $http) {
   // // console.log($scope.timeSheet.jobNo);
