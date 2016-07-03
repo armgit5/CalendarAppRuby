@@ -1,5 +1,6 @@
 'use strict';
 
+(function ($) {
 alert('test');
 var app = angular.module('Timesheet', [])
 app.controller('TimesheetCtrl', ['$scope', '$http', function($scope, $http) {
@@ -12,3 +13,5 @@ app.controller('TimesheetCtrl', ['$scope', '$http', function($scope, $http) {
     $scope.jobno = "test123";
   }
 }]);
+
+}(jQuery));
