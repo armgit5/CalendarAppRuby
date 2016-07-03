@@ -43,8 +43,8 @@ NilpeterWeb::Application.configure do
   # config.action_controller.asset_host = "http://assets.example.com"
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
-  # bundle exec rake assets:precompile
-   config.assets.precompile += %w( jquery.datetimepicker.css jquery.datetimepicker.js select2.css select2.js schedule2.js timesheet.js)
+  # RAILS_ENV=production bundle exec rake assets:precompile
+   config.assets.precompile += %w( jquery.datetimepicker.css jquery.datetimepicker.js select2.css select2.js schedule2.js )
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
