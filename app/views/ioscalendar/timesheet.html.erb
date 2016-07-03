@@ -12,53 +12,38 @@
       h1 {
         text-align: right;
       }
-      /*.col-md-6, .col-md-2, .col-md-10 {
-        border-collapse:collapse;
-        border-top:1px solid #FF0000;
-        border-right:1px solid #FF0000;
-        color: red;
-        padding: 0px;
-      }
 
-      .col-md-3 {
-        border-right:1px solid #FF0000;
-        color: red;
-        padding: 0px;
-      }*/
-
-      /*.inside {
-        color: white;
-      }*/
-
-      /*.col-md-4, .col-md-8 {
-        padding: 0px;
-      }*/
-
-      table td{
+      .table td{
         border:1px solid #FF0000;
         border-color: red;
+        padding: none;
+      }
+
+      .table tr td {
+        margin:0;
+        padding:0;
+      }
+
+      .weekend tr td {
+        margin:0;
+        padding:0;
+      }
+
+      .table.monday tr td {
+        font-size:small;
+        width: 190pt;
       }
 
       .input-group-addon {
         color: red;
         background-color: white;
         border-color: white;
+        font-size: 9;
       }
-
-      /*.form-control {
-        border-color: white;
-      }*/
-
-      /*.second-layer-color {
-        border-color: white;
-      }
-
-      .col-md-6 .inside {
-        border: none;
-      }*/
 
       .table-bordered td, .table-bordered th{
           border-color: red;
+          padding: none;
       }
 
     </style>
@@ -68,8 +53,8 @@
   <body>
     <div class="container">
       <%= form_tag({:action => 'create_timesheet'}, :id => 'commentForm', :class => "cmxform schedule") do %>
-      
-        <table class="table table-bordered">
+
+        <table class="table table-bordered" style="margin:0">
           <h1>TIME SHEET</h1>
           <tbody>
               <%= render 'order_date_partial' %>
