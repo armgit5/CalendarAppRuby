@@ -17,7 +17,6 @@
       width:992px;
     }
 
-
       h1 {
         text-align: right;
       }
@@ -98,22 +97,32 @@
 
     var app = angular.module('Timesheet', [])
     app.controller('TimesheetCtrl', ['$scope', '$http', function($scope, $http) {
-      $scope.timeSheet = {
-        jobNo: '<%= @schedule.job_num %>',
-        date: '<%= @schedule.date.strftime("%d/%m/%Y") %>',
-        customer: '<%= @schedule.company_name %>',
-        country: 'Thailand',
-        engineer: '<%= @engineers %>',
-        machine_type: '<%= @product_types %>',
-        machine_no: '<%= @schedule.machine_number %>',
-        departure: '<%= @schedule.date.strftime("%d/%m/%Y %H:%M") %>',
-        departureFrom: 'Nilpeter',
-        arrivalIn: '<%= @schedule.company_name %>',
-      }
+      $scope.timeSheet = {};
+      $scope.timeSheet.jobNo = '<%= @schedule.job_num %>';
+      $scope.timeSheet.date = '<%= @schedule.date.strftime("%d/%m/%Y") %>';
+      $scope.timeSheet.customer = '<%= @schedule.company_name %>';
+      $scope.country = 'Thailand';
+      $scope.engineer = 
 
-      var timeSheetData = JSON.stringify($scope.timeSheet);
+
 
       $scope.submitTimeSheet = function() {
+
+        $scope.timeSheet = {
+          jobNo: $scope.timeSheet.jobNo,
+          date: $scope.timeSheet.date,
+          customer: $scope.timeSheet.customer,
+          country: $scope.timeSheet.country,
+          engineer: '<%= @engineers %>',
+          machine_type: '<%= @product_types %>',
+          machine_no: '<%= @schedule.machine_number %>',
+          departure: '<%= @schedule.date.strftime("%d/%m/%Y %H:%M") %>',
+          departureFrom: 'Nilpeter',
+          arrivalIn: '<%= @schedule.company_name %>',
+        }
+
+        var timeSheetData = JSON.stringify($scope.timeSheet);
+
         console.log(timeSheetData);
         $http.post('/ioscalendar/create_timesheet', {
           user_id: '<%= @current_user_id %>',
