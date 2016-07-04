@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Timesheet">
+  <head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <!-- Bootstrap CSS -->
+    <script src="https://www.atlasestateagents.co.uk/javascript/tether.min.js"></script><!-- Tether for Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+    <style>
+      h1 {
+        text-align: right;
+      }
+
+      .table td{
+        border:1px solid #FF0000;
+        border-color: red;
+        padding: none;
+      }
+
+      .table tr td {
+        margin:0;
+        padding:0;
+      }
+
+      .weekend tr td {
+        margin:0;
+        padding:0;
+      }
+
+      .table.monday tr td {
+        font-size:small;
+        width: 190pt;
+      }
+
+      .input-group-addon {
+        color: red;
+        background-color: white;
+        border-color: white;
+        font-size: 9;
+      }
+
+      .table-bordered td, .table-bordered th{
+          border-color: red;
+          padding: none;
+      }
+
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
+  </head>
+  <body ng-controller="TimesheetCtrl">
+    <div class="container">
+      <form ng-submit="submitTimeSheet()" id="sign-up-form" class="form-signin" name="signup">
+        <table class="table table-bordered" style="margin:0">
+          <h1>TIME SHEET</h1>
+          <tbody>
+              <%= render 'order_date_partial' %>
+              <%= render 'customer_partial' %>
+              <%= render 'engineer_machine_partial' %>
+              <%= render 'departure_partial' %>
+              <%= render 'arrival_partial' %>
+              <%= render 'kilometers_partial' %>
+              <%= render 'weekday_partial' %>
+              <%= render 'monday_partial' %>
+
+          </tbody>
+      </table>
+
+      <button class="btn btn-primary btn-lg btn-block" type="submit" ng-disabled="signup.$invalid">
+          <span ng-show="!signupForm.loading">Create Account</span>
+          <span class="overlord-loading-spinner fa fa-spinner fa-spin" ng-show="signupForm.loading" ></span>
+          <span ng-show="signupForm.loading">Preparing your new account...</span>
+        </button>
+
+    <button class="btn btn-info" ng-click="deselect()">Clear</button>
+    </div>
+
+    <!-- jQuery first, then Bootstrap JS. -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+
+    <script>
+
+    console.log('<%= @current_user_id %>');
+
+    'use strict';
+
+    var app = angular.module('Timesheet', [])
+    app.controller('TimesheetCtrl', ['$scope', '$http', function($scope, $http) {
+      $scope.timeSheet = {
+        jobNo: "fdsa",
+        date: "03/06/2016"
+      }
+
+      var timeSheetData = JSON.stringify({jobNo:$scope.timeSheet.jobNo});
+
+      $scope.submitTimeSheet = function() {
+        console.log(timeSheetData);
+        $http.post('/ioscalendar/create_timesheet', {
+          user_id: '<%= @current_user_id %>',
+          schedule_id: '<%= @schedule_id %>',
+          timesheet_data : timeSheetData
+        }).
+        catch(function onError(sailsResponse) {
+          console.log(sailsResponse);
+        }).
+        finally(function eitherWay() {
+          console.log("successfully");
+        });
+      };
+
+      $scope.deselect = function() {
+        console.log($scope.jobno);
+        console.log('test');
+        $scope.jobno = "test123";
+      }
+    }]);
+
+    </script>
+  </body>
+</html>

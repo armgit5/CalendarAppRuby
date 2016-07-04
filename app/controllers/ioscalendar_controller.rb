@@ -38,4 +38,25 @@ class IoscalendarController < ActionController::Base
     @product_types = @product_types.chop.chop
   end
 
+  def edit_timesheet
+    id = params[:id]
+    @schedule_id = id
+    @schedule = Schedule.find(id)
+    @current_user_id = @schedule.user_id
+    @engineers = ""
+    for user in @schedule.users.reverse
+      @engineers = user.email.split("@")[0].upcase + ", " + @engineers
+    end
+    @engineers = @engineers.chop.chop
+
+    @product_types = ""
+    for product in @schedule.products.reverse
+      @product_types = product.name.upcase + ", " + @product_types
+    end
+    @product_types = @product_types.chop.chop
+
+    @timesheet = Timesheet.where(schedule_id: params[:id])[0]
+    @timesheet_data = @timesheet.timesheet_data
+  end
+
 end
