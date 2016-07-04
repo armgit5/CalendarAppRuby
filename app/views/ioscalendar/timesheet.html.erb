@@ -10,6 +10,14 @@
     <script src="https://www.atlasestateagents.co.uk/javascript/tether.min.js"></script><!-- Tether for Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
     <style>
+
+    .container {
+      min-width:992px;
+      width: auto !important;
+      width:992px;
+    }
+
+
       h1 {
         text-align: right;
       }
@@ -98,6 +106,9 @@
         engineer: '<%= @engineers %>',
         machine_type: '<%= @product_types %>',
         machine_no: '<%= @schedule.machine_number %>',
+        departure: '<%= @schedule.date.strftime("%d/%m/%Y %H:%M") %>',
+        departureFrom: 'Nilpeter',
+        arrivalIn: '<%= @schedule.company_name %>',
       }
 
       var timeSheetData = JSON.stringify($scope.timeSheet);
