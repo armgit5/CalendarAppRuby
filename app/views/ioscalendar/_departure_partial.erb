@@ -4,15 +4,15 @@
     <td style="width:50%;border:none">
         <div class="input-group">
         <span class="input-group-addon">Departure:</span>
-        <!-- <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1"> -->
-        <%= text_field(:timesheet, :date, :class => 'form-control', :placeholder => "", :value => @schedule.date.strftime("%d/%m/%Y %H:%M")) %>
+        <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1">
+        <!-- <%= text_field(:timesheet, :date, :class => 'form-control', :placeholder => "", :value => @schedule.date.strftime("%d/%m/%Y %H:%M")) %> -->
         </div>
     </td>
     <td style="width:50%;border:none">
         <div class="input-group">
         <span class="input-group-addon">From:</span>
-        <!-- <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1"> -->
-        <%= text_field(:timesheet, :from, :class => 'form-control', :placeholder => "", :value => "Nilpeter") %>
+        <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1">
+        <!-- <%= text_field(:timesheet, :from, :class => 'form-control', :placeholder => "", :value => "Nilpeter") %> -->
         </div>
       </div>
     </td>
@@ -23,15 +23,15 @@
       <td style="width:50%;border:none">
           <div class="input-group">
           <span class="input-group-addon">From</span>
-          <!-- <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1"> -->
-          <%= text_field(:timesheet, :date, :class => 'form-control', :placeholder => "", :value => @schedule.end_date.strftime("%d/%m/%Y %H:%M")) %>
+          <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1">
+          <!-- <%= text_field(:timesheet, :date, :class => 'form-control', :placeholder => "", :value => @schedule.end_date.strftime("%d/%m/%Y %H:%M")) %> -->
           </div>
       </td>
       <td style="width:50%;border:none">
           <div class="input-group">
           <span class="input-group-addon">at:</span>
-          <!-- <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1"> -->
-          <%= text_field(:timesheet, :customer, :class => 'form-control', :placeholder => "", :value => @schedule.company_name) %>
+          <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1">
+          <!-- <%= text_field(:timesheet, :customer, :class => 'form-control', :placeholder => "", :value => @schedule.company_name) %> -->
           </div>
       </td>
     </table>

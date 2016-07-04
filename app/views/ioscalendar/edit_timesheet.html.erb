@@ -84,15 +84,24 @@
 
     <script>
 
-    console.log('<%= @current_user_id %>');
+    // console.log('<%= @current_user_id %>');
+    // console.log( '<%= raw @timesheet_data.to_json %>' );
 
     'use strict';
 
     var app = angular.module('Timesheet', [])
     app.controller('TimesheetCtrl', ['$scope', '$http', function($scope, $http) {
+      var timeSheetData = <%= raw @timesheet_data.to_json %>;
+      // console.log(timeSheetData.jobNo);
+
       $scope.timeSheet = {
-        jobNo: "fdsa",
-        date: "03/06/2016"
+        jobNo: timeSheetData.jobNo,
+        date: timeSheetData.date,
+        customer: timeSheetData.customer,
+        country: timeSheetData.country,
+        engineer: timeSheetData.engineer,
+        machine_type: timeSheetData.machine_type,
+        machine_no: timeSheetData.machine_no,
       }
 
       var timeSheetData = JSON.stringify({jobNo:$scope.timeSheet.jobNo});

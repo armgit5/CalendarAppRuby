@@ -1,4 +1,7 @@
 class IoscalendarController < ActionController::Base
+
+  require 'json'
+
   def index
     # if params[:month] == nil
     #   Rails.logger.info "None Month = #{params[:month]}"
@@ -55,8 +58,9 @@ class IoscalendarController < ActionController::Base
     end
     @product_types = @product_types.chop.chop
 
-    @timesheet = Timesheet.where(schedule_id: params[:id])[0]
-    @timesheet_data = @timesheet.timesheet_data
+    @timesheet = Timesheet.where(schedule_id: params[:id]).last
+    @timesheet_data = JSON.parse(@timesheet.timesheet_data)
+
   end
 
 end
