@@ -54,6 +54,12 @@
           padding: none;
       }
 
+      .form-group {
+        border: 1px solid #FF0000;
+        color: red;
+        margin: 0;
+      }
+
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
@@ -72,7 +78,8 @@
               <%= render 'kilometers_partial' %>
               <%= render 'weekday_partial' %>
               <%= render 'monday_partial' %>
-
+              <%= render 'customer_comment_partial' %>
+              <%= render 'nilpeter_comment_partial' %>
           </tbody>
       </table>
 
@@ -101,8 +108,8 @@
       $scope.timeSheet.jobNo = '<%= @schedule.job_num %>';
       $scope.timeSheet.date = '<%= @schedule.date.strftime("%d/%m/%Y") %>';
       $scope.timeSheet.customer = '<%= @schedule.company_name %>';
-      $scope.country = 'Thailand';
-      $scope.engineer = 
+      $scope.timeSheet.country = 'Thailand';
+      $scope.timeSheet.engineer = '<%= @engineers %>';
 
 
 
@@ -113,7 +120,7 @@
           date: $scope.timeSheet.date,
           customer: $scope.timeSheet.customer,
           country: $scope.timeSheet.country,
-          engineer: '<%= @engineers %>',
+          engineer: $scope.timeSheet.engineer,
           machine_type: '<%= @product_types %>',
           machine_no: '<%= @schedule.machine_number %>',
           departure: '<%= @schedule.date.strftime("%d/%m/%Y %H:%M") %>',
