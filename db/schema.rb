@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160510101953) do
+ActiveRecord::Schema.define(:version => 20160706060439) do
 
   create_table "categorizations", :force => true do |t|
     t.integer  "product_id"
@@ -104,9 +104,11 @@ ActiveRecord::Schema.define(:version => 20160510101953) do
   create_table "timesheets", :force => true do |t|
     t.integer  "user_id"
     t.integer  "schedule_id"
-    t.string   "timesheet_data"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.text     "data"
+    t.text     "nil_sig"
+    t.text     "cus_sig"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "types", :force => true do |t|

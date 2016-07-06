@@ -13,11 +13,13 @@ class IoscalendarController < ActionController::Base
   end
 
   def create_timesheet
-    Rails.logger.info "timesheet data controller value #{params[:timesheet_data]}"
+    Rails.logger.info "timesheet data controller value #{params[:timesheet_nil_sig]}"
     @timesheet = Timesheet.new
     @timesheet.user_id = params[:user_id]
     @timesheet.schedule_id = params[:schedule_id]
-    @timesheet.timesheet_data = params[:timesheet_data]
+    @timesheet.data = params[:data]
+    @timesheet.nil_sig = params[:nil_sig]
+    @timesheet.cus_sig = params[:cus_sig]
     @timesheet.save!
     # flash[:notice] = "#{@timesheet.job_num} was successfully created."
     redirect_to(:controller => "calendar", :action => "index")
@@ -59,8 +61,9 @@ class IoscalendarController < ActionController::Base
     @product_types = @product_types.chop.chop
 
     @timesheet = Timesheet.where(schedule_id: params[:id]).last
-    @timesheet_data = JSON.parse(@timesheet.timesheet_data)
-
+    @timesheet_data = JSON.parse(@timesheet.data)
+    @timesheet_nil_sig = JSON.parse(@timesheet.nil_sig)
+    @timesheet_cus_sig = JSON.parse(@timesheet.cus_sig)
   end
 
 end

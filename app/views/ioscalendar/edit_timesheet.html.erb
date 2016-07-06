@@ -10,6 +10,13 @@
     <script src="https://www.atlasestateagents.co.uk/javascript/tether.min.js"></script><!-- Tether for Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
     <style>
+
+    .container {
+      min-width:992px;
+      width: auto !important;
+      width:992px;
+    }
+
       h1 {
         text-align: right;
       }
@@ -47,9 +54,35 @@
           padding: none;
       }
 
+      .form-group {
+        border: 1px solid #FF0000;
+        color: red;
+        margin: 0;
+      }
+
+      .input-group {
+        width:100%;
+      }
+
     </style>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+
+    <!-- Signature -->
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/themes/south-street/jquery-ui.css" rel="stylesheet">
+    <%= stylesheet_link_tag "jquery.signature" %>
+    <style>
+    .kbw-signature { width: 400px; height: 200px; }
+    </style>
+    <!--[if IE]>
+    <script src="excanvas.js"></script>
+    <![endif]-->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/jquery-ui.min.js"></script>
+    <%= javascript_include_tag "jquery.signature" %>
+
   </head>
   <body ng-controller="TimesheetCtrl">
     <div class="container">
@@ -65,69 +98,125 @@
               <%= render 'kilometers_partial' %>
               <%= render 'weekday_partial' %>
               <%= render 'monday_partial' %>
+              <%= render 'customer_comment_partial' %>
+              <%= render 'nilpeter_comment_partial' %>
+              <%= render 'edit_signature_partial' %>
 
           </tbody>
       </table>
 
       <button class="btn btn-primary btn-lg btn-block" type="submit" ng-disabled="signup.$invalid">
-          <span ng-show="!signupForm.loading">Create Account</span>
-          <span class="overlord-loading-spinner fa fa-spinner fa-spin" ng-show="signupForm.loading" ></span>
-          <span ng-show="signupForm.loading">Preparing your new account...</span>
-        </button>
+        <span ng-show="!signupForm.loading">Create Account</span>
+        <span class="overlord-loading-spinner fa fa-spinner fa-spin" ng-show="signupForm.loading" ></span>
+        <span ng-show="signupForm.loading">Preparing your new account...</span>
+      </button>
+    </form>
 
-    <button class="btn btn-info" ng-click="deselect()">Clear</button>
+      <button ng-click="deselect()">test</button>
+
     </div>
 
     <!-- jQuery first, then Bootstrap JS. -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script>
+        console.log('<%=(raw @timesheet_nil_sig)%>');
+        'use strict';
 
+        var app = angular.module('Timesheet', [])
+        app.controller('TimesheetCtrl', ['$scope', '$http', function($scope, $http) {
+          $scope.timeSheet = {};
+          $scope.timeSheet.jobNo = '<%= @schedule.job_num %>';
+          $scope.timeSheet.date = '<%= @schedule.date.strftime("%d/%m/%Y") %>';
+          $scope.timeSheet.customer = '<%= @schedule.company_name %>';
+          $scope.timeSheet.country = 'Thailand';
+          $scope.timeSheet.engineer = '<%= @engineers %>';
+
+          $scope.submitTimeSheet = function() {
+
+            a = JSON.parse($('#nilpeterSignature').signature('toJSON')).lines;
+
+            $scope.timeSheet = {
+              jobNo: $scope.timeSheet.jobNo,
+              date: $scope.timeSheet.date,
+              customer: $scope.timeSheet.customer,
+              country: $scope.timeSheet.country,
+              engineer: $scope.timeSheet.engineer,
+              machine_type: '<%= @product_types %>',
+              machine_no: '<%= @schedule.machine_number %>',
+              departure: '<%= @schedule.date.strftime("%d/%m/%Y %H:%M") %>',
+              departureFrom: 'Nilpeter',
+              arrivalIn: '<%= @schedule.company_name %>',
+
+            }
+
+            var timeSheetData = JSON.stringify($scope.timeSheet);
+            var nilSig = JSON.stringify(JSON.parse($('#nilpeterSignature').signature('toJSON')));
+            var cusSig = JSON.stringify(JSON.parse($('#customerSignature').signature('toJSON')));
+
+            console.log(timeSheetData);
+            $http.post('/ioscalendar/create_timesheet', {
+              user_id: '<%= @current_user_id %>',
+              schedule_id: '<%= @schedule_id %>',
+              data : timeSheetData,
+              nil_sig : nilSig,
+              cus_sig : cusSig
+            }).
+            catch(function onError(sailsResponse) {
+              console.log(sailsResponse);
+            }).
+            finally(function eitherWay() {
+              console.log("successfully");
+            });
+          };
+
+          $scope.deselect = function() {
+            var nilSig = $('#nilpeterSignature').signature('toJSON');
+            console.log(nilSig);
+            console.log(nilSig.lines);
+          }
+        }]);
+    </script>
+
+    <!-- Auto resize textarea -->
+    <!-- Signature -->
     <script>
 
-    // console.log('<%= @current_user_id %>');
-    // console.log( '<%= raw @timesheet_data.to_json %>' );
+    function autoSize(ele) {
+       ele.style.height = 'auto';
+       var newHeight = (ele.scrollHeight > 32 ? ele.scrollHeight : 32);
+       ele.style.height = newHeight.toString() + 'px';
+    }
 
-    'use strict';
+    $( document ).ready(function() {
 
-    var app = angular.module('Timesheet', [])
-    app.controller('TimesheetCtrl', ['$scope', '$http', function($scope, $http) {
-      var timeSheetData = <%= raw @timesheet_data.to_json %>;
-      // console.log(timeSheetData.jobNo);
+    	$('#sig').signature();
+    	$('#clear').click(function() {
+    		$('#sig').signature('clear');
+    	});
+    	$('#json').click(function() {
+    		alert($('#sig').signature('toJSON'));
+    	});
+    	$('#svg').click(function() {
+    		alert($('#sig').signature('toSVG'));
+    	});
+      $('#redrawButton').click(function() {
+  	    $('#redrawSignature').signature('draw', '{"lines":[[[142,50.13],[141,50.13],[140,50.13],[138,52.13],[134,56.13],[126,67.13],[115,86.13],[105,109.13],[98,130.13],[94,147.13],[92,157.13],[92,165.13],[92,169.13],[97,169.13],[111,158.13],[126,143.13],[140,126.13],[146,117.13],[152,110.13],[158,106.13],[160,106.13],[163,112.13],[166,121.13],[175,128.13],[188,132.13],[206,132.13],[220,131.13],[233,128.13],[241,127.13],[245,126.13],[248,127.13],[248,129.13]]]}');
+  		});
 
-      $scope.timeSheet = {
-        jobNo: timeSheetData.jobNo,
-        date: timeSheetData.date,
-        customer: timeSheetData.customer,
-        country: timeSheetData.country,
-        engineer: timeSheetData.engineer,
-        machine_type: timeSheetData.machine_type,
-        machine_no: timeSheetData.machine_no,
-      }
+      $('#nilpeterSignature').signature({
+      });
+      $('#customerSignature').signature({
 
-      var timeSheetData = JSON.stringify({jobNo:$scope.timeSheet.jobNo});
+      });
 
-      $scope.submitTimeSheet = function() {
-        console.log(timeSheetData);
-        $http.post('/ioscalendar/create_timesheet', {
-          user_id: '<%= @current_user_id %>',
-          schedule_id: '<%= @schedule_id %>',
-          timesheet_data : timeSheetData
-        }).
-        catch(function onError(sailsResponse) {
-          console.log(sailsResponse);
-        }).
-        finally(function eitherWay() {
-          console.log("successfully");
-        });
-      };
+  		$('#redrawNilSignature').signature({disabled: false});
+      $('#redrawNilSignature').signature('draw', '<%=(raw @timesheet_nil_sig.to_json)%>');
 
-      $scope.deselect = function() {
-        console.log($scope.jobno);
-        console.log('test');
-        $scope.jobno = "test123";
-      }
-    }]);
+      $('#redrawCusSignature').signature({disabled: false});
+      $('#redrawCusSignature').signature('draw', '<%=(raw @timesheet_cus_sig.to_json)%>');
 
+    });
     </script>
+
+
   </body>
 </html>
