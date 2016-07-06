@@ -166,8 +166,18 @@
         }]);
     </script>
 
+    <!-- Auto resize textarea -->
+    <!-- Signature -->
     <script>
+
+    function autoSize(ele) {
+       ele.style.height = 'auto';
+       var newHeight = (ele.scrollHeight > 32 ? ele.scrollHeight : 32);
+       ele.style.height = newHeight.toString() + 'px';
+    }
+
     $( document ).ready(function() {
+
     	$('#sig').signature();
     	$('#clear').click(function() {
     		$('#sig').signature('clear');
@@ -186,7 +196,7 @@
 
       });
       $('#customerSignature').signature({
-        
+
       });
 
   		$('#redrawSignature').signature({disabled: true});
