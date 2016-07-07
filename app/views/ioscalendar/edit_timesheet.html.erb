@@ -97,7 +97,7 @@
               <%= render 'arrival_partial' %>
               <%= render 'kilometers_partial' %>
               <%= render 'weekday_partial' %>
-              <%= render 'monday_partial' %>
+              <%= render 'sundries_partial' %>
               <%= render 'customer_comment_partial' %>
               <%= render 'nilpeter_comment_partial' %>
               <%= render 'edit_signature_partial' %>
@@ -117,16 +117,98 @@
     <!-- jQuery first, then Bootstrap JS. -->
     <script>
         console.log('<%=(raw @timesheet_nil_sig)%>');
+        var a = JSON.parse('<%=raw @timesheet_data.to_json %>');
         'use strict';
 
         var app = angular.module('Timesheet', [])
         app.controller('TimesheetCtrl', ['$scope', '$http', function($scope, $http) {
+          var timesheet = JSON.parse('<%=raw @timesheet_data.to_json %>');
           $scope.timeSheet = {};
-          $scope.timeSheet.jobNo = '<%= @schedule.job_num %>';
-          $scope.timeSheet.date = '<%= @schedule.date.strftime("%d/%m/%Y") %>';
-          $scope.timeSheet.customer = '<%= @schedule.company_name %>';
-          $scope.timeSheet.country = 'Thailand';
-          $scope.timeSheet.engineer = '<%= @engineers %>';
+          $scope.timeSheet.jobNo = timesheet.jobNo;
+          $scope.timeSheet.date = timesheet.date;
+          $scope.timeSheet.customer = timesheet.customer;
+          $scope.timeSheet.country = timesheet.country;
+          $scope.timeSheet.engineer = timesheet.engineer;
+          $scope.timeSheet.machineType = timesheet.machineType;
+          $scope.timeSheet.machineNo = timesheet.machineNo;
+          $scope.timeSheet.departure = timesheet.departure;
+          $scope.timeSheet.departureFrom = timesheet.departureFrom;
+          $scope.timeSheet.from = timesheet.from;
+          $scope.timeSheet.fromAt = timesheet.fromAt;
+          $scope.timeSheet.arrival = timesheet.arrival;
+          $scope.timeSheet.arrivalIn = timesheet.arrivalIn;
+          $scope.timeSheet.in = timesheet.in;
+          $scope.timeSheet.inAt = timesheet.inAt;
+          $scope.timeSheet.kilometers = timesheet.kilometers;
+          $scope.timeSheet.car = timesheet.car;
+          $scope.timeSheet.ownCar = timesheet.ownCar;
+
+          $scope.timeSheet.mondayOutN = timesheet.mondayOutN;
+          $scope.timeSheet.mondayOutO = timesheet.mondayOutO;
+          $scope.timeSheet.mondayWeekN = '';
+          $scope.timeSheet.mondayWeekO = '';
+          $scope.timeSheet.mondayWeek2N = '';
+          $scope.timeSheet.mondayWeek2O = '';
+          $scope.timeSheet.mondayBackN = '';
+          $scope.timeSheet.mondayBackO = '';
+
+          $scope.timeSheet.tuesdayOutN = '';
+          $scope.timeSheet.tuesdayOutO = '';
+          $scope.timeSheet.tuesdayWeekN = '';
+          $scope.timeSheet.tuesdayWeekO = '';
+          $scope.timeSheet.tuesdayWeek2N = '';
+          $scope.timeSheet.tuesdayWeek2O = '';
+          $scope.timeSheet.tuesdayBackN = '';
+          $scope.timeSheet.tuesdayBackO = '';
+
+          $scope.timeSheet.wednesdayOutN = '';
+          $scope.timeSheet.wednesdayOutO = '';
+          $scope.timeSheet.wednesdayWeekN = '';
+          $scope.timeSheet.wednesdayWeekO = '';
+          $scope.timeSheet.wednesdayWeek2N = '';
+          $scope.timeSheet.wednesdayWeek2O = '';
+          $scope.timeSheet.wednesdayBackN = '';
+          $scope.timeSheet.wednesdayBackO = '';
+
+          $scope.timeSheet.thursdayOutN = '';
+          $scope.timeSheet.thursdayOutO = '';
+          $scope.timeSheet.thursdayWeekN = '';
+          $scope.timeSheet.thursdayWeekO = '';
+          $scope.timeSheet.thursdayWeek2N = '';
+          $scope.timeSheet.thursdayWeek2O = '';
+          $scope.timeSheet.thursdayBackN = '';
+          $scope.timeSheet.thursdayBackO = '';
+
+          $scope.timeSheet.fridayOutN = '';
+          $scope.timeSheet.fridayOutO = '';
+          $scope.timeSheet.fridayWeekN = '';
+          $scope.timeSheet.fridayWeekO = '';
+          $scope.timeSheet.fridayWeek2N = '';
+          $scope.timeSheet.fridayWeek2O = '';
+          $scope.timeSheet.fridayBackN = '';
+          $scope.timeSheet.fridayBackO = '';
+
+          $scope.timeSheet.saturdayOutN = '';
+          $scope.timeSheet.saturdayOutO = '';
+          $scope.timeSheet.saturdayWeekN = '';
+          $scope.timeSheet.saturdayWeekO = '';
+          $scope.timeSheet.saturdayWeek2N = '';
+          $scope.timeSheet.saturdayWeek2O = '';
+          $scope.timeSheet.saturdayBackN = '';
+          $scope.timeSheet.saturdayBackO = '';
+
+          $scope.timeSheet.sundayOutN = '';
+          $scope.timeSheet.sundayOutO = '';
+          $scope.timeSheet.sundayWeekN = '';
+          $scope.timeSheet.sundayWeekO = '';
+          $scope.timeSheet.sundayWeek2N = '';
+          $scope.timeSheet.sundayWeek2O = '';
+          $scope.timeSheet.sundayBackN = '';
+          $scope.timeSheet.sundayBackO = '';
+
+          $scope.timeSheet.jobFinishedYes = timesheet.jobFinishedYes;
+          $scope.timeSheet.jobFinishedNo = timesheet.jobFinishedNo;
+
 
           $scope.submitTimeSheet = function() {
 
