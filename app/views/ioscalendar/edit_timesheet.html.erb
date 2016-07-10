@@ -116,13 +116,15 @@
 
     <!-- jQuery first, then Bootstrap JS. -->
     <script>
-        console.log('<%=(raw @timesheet_nil_sig)%>');
-        var a = JSON.parse('<%=raw @timesheet_data.to_json %>');
+        // console.log('<%=(raw @timesheet_nil_sig)%>');
+        var a = (JSON.parse(<%=raw @timesheet_data.to_json %>));
+        console.log(a);
         'use strict';
 
         var app = angular.module('Timesheet', [])
         app.controller('TimesheetCtrl', ['$scope', '$http', function($scope, $http) {
-          var timesheet = JSON.parse('<%=raw @timesheet_data.to_json %>');
+          var timesheet = JSON.parse(<%=raw @timesheet_data.to_json %>);
+
           $scope.timeSheet = {};
           $scope.timeSheet.jobNo = timesheet.jobNo;
           $scope.timeSheet.date = timesheet.date;
@@ -208,7 +210,24 @@
 
           $scope.timeSheet.jobFinishedYes = timesheet.jobFinishedYes;
           $scope.timeSheet.jobFinishedNo = timesheet.jobFinishedNo;
-
+          $scope.timeSheet.sparePartYes = timesheet.sparePartYes;
+          $scope.timeSheet.sparePartNo = timesheet.sparePartNo;
+          $scope.timeSheet.partYes = timesheet.partYes;
+          $scope.timeSheet.partNo = timesheet.partNo;
+          $scope.timeSheet.mechanicalYes = timesheet.mechanicalYes;
+          $scope.timeSheet.mechanicalNo = timesheet.mechanicalNo;
+          $scope.timeSheet.electricalYes = timesheet.electricalYes;
+          $scope.timeSheet.electricalNo = timesheet.electricalNo;
+          $scope.timeSheet.serviceYes = timesheet.serviceYes;
+          $scope.timeSheet.serviceNo = timesheet.serviceNo;
+          $scope.timeSheet.graphicYes = timesheet.graphicYes;
+          $scope.timeSheet.graphicNo = timesheet.graphicNo;
+          $scope.timeSheet.concerningYes = timesheet.concerningYes;
+          $scope.timeSheet.concerningNo = timesheet.concerningNo;
+          $scope.timeSheet.customerComment = timesheet.customerComment;
+          $scope.timeSheet.nilpeterComment = timesheet.nilpeterComment;
+          $scope.timeSheet.nilpeterDate = timesheet.nilpeterDate;
+          $scope.timeSheet.customerDate = timesheet.customerDate;
 
           $scope.submitTimeSheet = function() {
 
@@ -266,6 +285,12 @@
        ele.style.height = newHeight.toString() + 'px';
     }
 
+    function setSize(ele) {
+       ele.style.height = 'auto';
+       var newHeight = (ele.scrollHeight > 32 ? ele.scrollHeight : 32);
+       ele.style.height = newHeight.toString() + 'px';
+    }
+
     $( document ).ready(function() {
 
 
@@ -276,14 +301,15 @@
         $('#redrawCusSignature').signature('clear');
       });
 
-
-
   		$('#redrawNilSignature').signature({disabled: false});
       $('#redrawNilSignature').signature('draw', '<%=(raw @timesheet_nil_sig.to_json)%>');
 
       $('#redrawCusSignature').signature({disabled: false});
       $('#redrawCusSignature').signature('draw', '<%=(raw @timesheet_cus_sig.to_json)%>');
 
+
+      setSize($('textarea')[0]);
+      setSize($('textarea')[1]);
     });
     </script>
 

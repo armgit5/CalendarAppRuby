@@ -222,9 +222,15 @@
           $scope.timeSheet.concerningYes = false;
           $scope.timeSheet.concerningNo = false;
 
+          $scope.timeSheet.customerComment = '';
+          $scope.timeSheet.nilpeterComment = '';
+
+          $scope.timeSheet.nilpeterDate = '';
+          $scope.timeSheet.customerDate = '';
+
           $scope.submitTimeSheet = function() {
 
-            a = JSON.parse($('#nilpeterSignature').signature('toJSON')).lines;
+            // a = JSON.parse($('#nilpeterSignature').signature('toJSON')).lines;
 
             $scope.timeSheet = {
               jobNo: $scope.timeSheet.jobNo,
@@ -295,7 +301,8 @@
               saturdayOutO: $scope.timeSheet.saturdayOutO,
               saturdayWeekN: $scope.timeSheet.saturdayWeekN,
               saturdayWeekO: $scope.timeSheet.saturdayWeekO,
-              saturdayOutO: $scope.timeSheet.saturdayWeek2N,
+              saturdayOutO: $scope.timeSheet.saturdayOutO,
+              saturdayWeek2N: $scope.timeSheet.saturdayWeek2N,
               saturdayWeek2O: $scope.timeSheet.saturdayWeek2O,
               saturdayBackN: $scope.timeSheet.saturdayBackN,
               saturdayBackO: $scope.timeSheet.saturdayBackO,
@@ -325,7 +332,10 @@
               graphicNo: $scope.timeSheet.graphicNo,
               concerningYes: $scope.timeSheet.concerningYes,
               concerningNo: $scope.timeSheet.concerningNo,
-
+              customerComment: $scope.timeSheet.customerComment,
+              nilpeterComment: $scope.timeSheet.nilpeterComment,
+              nilpeterDate: $scope.timeSheet.nilpeterDate,
+              customerDate: $scope.timeSheet.customerDate
             }
 
             var timeSheetData = JSON.stringify($scope.timeSheet);
@@ -378,7 +388,6 @@
 
       $('#nilpeterSignature').signature();
       $('#customerSignature').signature();
-
 
     });
     </script>

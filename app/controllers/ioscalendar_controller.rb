@@ -61,7 +61,7 @@ class IoscalendarController < ActionController::Base
     @product_types = @product_types.chop.chop
 
     @timesheet = Timesheet.where(schedule_id: params[:id]).last
-    @timesheet_data = JSON.parse(@timesheet.data)
+    @timesheet_data = @timesheet.data
     @timesheet_nil_sig = JSON.parse(@timesheet.nil_sig)
     @timesheet_cus_sig = JSON.parse(@timesheet.cus_sig)
   end
