@@ -23,6 +23,7 @@
     <th>CREATOR</th>
     <!-- <th>PRODUCTS</th> -->
     <th>DESCRIPTION</th>
+    <th>TIMESHEET</th>
     <th>EDIT</th>
     <th>DELETE</th>
   </tr>
@@ -50,6 +51,13 @@
     <% end %>
     </td> -->
     <td class='long'><%= s.project %></td>
+    <td>
+    <% if !s.timesheet_id.nil? %>
+      <%= link_to("edit timesheet", "/ioscalendar/edit_timesheet/#{s.timesheet_id}") %>
+    <% else %>
+      <%= link_to("create timesheet", "/ioscalendar/timesheet/#{s.id}") %>
+    <% end %>
+    </td>
     <td class='short'><button type="button" class="btn btn-primary css3button"><%= link_to("EDIT", {:action => 'edit', :id => s.id}) %></button></td>
     <td class='short'><button type="button" class="btn btn-primary css3button"><%= link_to("DELETE", {:action => 'destroy', :id => s.id}, :confirm => "Are you sure?") %></button></td>
   </tr>

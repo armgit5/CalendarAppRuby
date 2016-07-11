@@ -50,6 +50,13 @@ class RegisterController < ApplicationController
 #    end
     @nilpeter_products = Product.where(:type_id => 1)
     @meech_products = Product.where(:type_id => 2)
+    @have_timesheet = false
+    @timesheet_id = 0
+
+    # if Timesheet.where(schedule_id: @schedule.id).length > 0
+    #   @have_timesheet = true
+    #   @timesheet_id = Timesheet.where(schedule_id: @schedule.id).last
+    # end
 
     @test =  current_user
 

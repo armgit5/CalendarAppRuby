@@ -21,6 +21,11 @@ class IoscalendarController < ActionController::Base
     @timesheet.nil_sig = params[:nil_sig]
     @timesheet.cus_sig = params[:cus_sig]
     @timesheet.save!
+
+    @schedule = Schedule.find(params[:schedule_id])
+    @schedule.timesheet_id = @timesheet.id
+    @schedule.update_attributes!(params[:timesheet_id])
+
     # flash[:notice] = "#{@timesheet.job_num} was successfully created."
     redirect_to(:controller => "calendar", :action => "index")
   end
@@ -44,23 +49,24 @@ class IoscalendarController < ActionController::Base
   end
 
   def edit_timesheet
-    id = params[:id]
-    @schedule_id = id
-    @schedule = Schedule.find(id)
-    @current_user_id = @schedule.user_id
-    @engineers = ""
-    for user in @schedule.users.reverse
-      @engineers = user.email.split("@")[0].upcase + ", " + @engineers
-    end
-    @engineers = @engineers.chop.chop
+    # id = params[:id]
+    # @schedule_id = id
+    # @schedule = Schedule.find(id)
+    # @current_user_id = @schedule.user_id
+    # @engineers = ""
+    # for user in @schedule.users.reverse
+    #   @engineers = user.email.split("@")[0].upcase + ", " + @engineers
+    # end
+    # @engineers = @engineers.chop.chop
+    #
+    # @product_types = ""
+    # for product in @schedule.products.reverse
+    #   @product_types = product.name.upcase + ", " + @product_types
+    # end
+    # @product_types = @product_types.chop.chop
 
-    @product_types = ""
-    for product in @schedule.products.reverse
-      @product_types = product.name.upcase + ", " + @product_types
-    end
-    @product_types = @product_types.chop.chop
-
-    @timesheet = Timesheet.where(schedule_id: params[:id]).last
+    # @timesheet = Timesheet.where(schedule_id: params[:id]).last
+    @timesheet = Timesheet.find(params[:id])
     @timesheet_data = @timesheet.data
     @timesheet_nil_sig = JSON.parse(@timesheet.nil_sig)
     @timesheet_cus_sig = JSON.parse(@timesheet.cus_sig)
