@@ -54,11 +54,11 @@
     <td>
     <% if !s.timesheet_id.nil? %>
     <button type="button" class="btn btn-warning css3button" style="width:90%">
-      <%= link_to("EDIT", "/ioscalendar/edit_timesheet/#{s.timesheet_id}", target: '_blank', style: 'color:black') %>
+      <%= link_to("EDIT", "/ioscalendar/edit_timesheet/#{s.timesheet_id}",  style: 'color:black') %>
     </button>
     <% else %>
     <button type="button" class="btn btn-primary css3button">
-      <%= link_to("CREATE", "/ioscalendar/timesheet/#{s.id}", target: '_blank') %>
+      <%= link_to("CREATE", "/ioscalendar/timesheet/#{s.id}") %>
     </button>
     <% end %>
     </td>

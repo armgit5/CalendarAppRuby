@@ -350,12 +350,16 @@
               data : timeSheetData,
               nil_sig : nilSig,
               cus_sig : cusSig
-            }).
-            catch(function onError(sailsResponse) {
+            })
+            .then(function onSuccess (){
+              // Refresh the page now that we've been logged in.
+              window.location = '/register';
+            })
+            .catch(function onError(sailsResponse) {
               console.log(sailsResponse);
             }).
             finally(function eitherWay() {
-              console.log("successfully");
+              console.log("successfully created");
             });
           };
 
