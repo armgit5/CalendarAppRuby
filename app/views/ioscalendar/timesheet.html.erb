@@ -129,10 +129,10 @@
           </tbody>
       </table>
 
-      <button class="btn btn-primary" type="submit" ng-disabled="signup.$invalid">
+      <button class="btn btn-primary" type="submit" ng-disabled="signupForm.loading">
         <span ng-show="!signupForm.loading">Create Timesheet</span>
         <span class="overlord-loading-spinner fa fa-spinner fa-spin" ng-show="signupForm.loading" ></span>
-        <span ng-show="signupForm.loading">Creating timesheet ...</span>
+        <span ng-show="signupForm.loading" ng-disabled="signupForm.loading">Creating timesheet ...</span>
       </button>
     </form>
       <!-- <button ng-click="deselect()">test</button> -->
