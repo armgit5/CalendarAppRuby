@@ -109,7 +109,7 @@
       <button class="btn btn-primary" type="submit" ng-disabled="signup.$invalid">
         <span ng-show="!signupForm.loading">Edit Timesheet</span>
         <span class="overlord-loading-spinner fa fa-spinner fa-spin" ng-show="signupForm.loading" ></span>
-        <span ng-show="signupForm.loading">Preparing your new account...</span>
+        <span ng-show="signupForm.loading">Updating timesheet...</span>
       </button>
     </form>
       <!-- <button ng-click="deselect()">test</button> -->
@@ -127,6 +127,10 @@
         var app = angular.module('Timesheet', [])
         app.controller('TimesheetCtrl', ['$scope', '$http', function($scope, $http) {
           var timesheet = JSON.parse(<%=raw @timesheet_data.to_json %>);
+
+          $scope.signupForm = {
+            loading: false
+          };
 
           $scope.timeSheet = {};
           $scope.timeSheet.jobNo = timesheet.jobNo;
@@ -234,6 +238,8 @@
 
           $scope.updateTimeSheet = function() {
             console.log("updateing timesheet");
+
+            $scope.signupForm.loading = true;
 
             var timeSheet = {
               jobNo: $scope.timeSheet.jobNo,
@@ -363,6 +369,7 @@
             })
             .finally(function eitherWay() {
               console.log("successfully");
+              $scope.signupForm.loading = false;
             });
           };
 
