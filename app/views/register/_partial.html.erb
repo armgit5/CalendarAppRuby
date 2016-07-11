@@ -53,9 +53,13 @@
     <td class='long'><%= s.project %></td>
     <td>
     <% if !s.timesheet_id.nil? %>
-      <%= link_to("edit timesheet", "/ioscalendar/edit_timesheet/#{s.timesheet_id}") %>
+    <button type="button" class="btn btn-success css3button">
+      <%= link_to("EDIT", "/ioscalendar/edit_timesheet/#{s.timesheet_id}", target: '_blank') %>
+    </button>
     <% else %>
-      <%= link_to("create timesheet", "/ioscalendar/timesheet/#{s.id}") %>
+    <button type="button" class="btn btn-primary css3button">
+      <%= link_to("CREATE", "/ioscalendar/timesheet/#{s.id}", target: '_blank') %>
+    </button>
     <% end %>
     </td>
     <td class='short'><button type="button" class="btn btn-primary css3button"><%= link_to("EDIT", {:action => 'edit', :id => s.id}) %></button></td>
