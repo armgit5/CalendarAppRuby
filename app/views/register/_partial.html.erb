@@ -53,8 +53,8 @@
     <td class='long'><%= s.project %></td>
     <td>
     <% if !s.timesheet_id.nil? %>
-    <button type="button" class="btn btn-success css3button">
-      <%= link_to("EDIT", "/ioscalendar/edit_timesheet/#{s.timesheet_id}", target: '_blank') %>
+    <button type="button" class="btn btn-warning css3button" style="width:90%">
+      <%= link_to("EDIT", "/ioscalendar/edit_timesheet/#{s.timesheet_id}", target: '_blank', style: 'color:black') %>
     </button>
     <% else %>
     <button type="button" class="btn btn-primary css3button">
