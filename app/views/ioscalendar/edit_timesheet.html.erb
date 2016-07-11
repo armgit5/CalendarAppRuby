@@ -86,6 +86,10 @@
   </head>
   <body ng-controller="TimesheetCtrl">
     <div class="container">
+      <span ng-show="loading">
+        <div class="loader" style="display: inline-block;"></div>
+        <div style="display: inline-block;">Loading timesheet ...</div>
+      </span>
       <a href="/">back</a>
       <form ng-submit="updateTimeSheet()" id="sign-up-form" class="form-signin" name="signup">
         <table class="table table-bordered" style="margin:0">
@@ -131,6 +135,8 @@
           $scope.signupForm = {
             loading: false
           };
+
+          $scope.loading = false;
 
           $scope.timeSheet = {};
           $scope.timeSheet.jobNo = timesheet.jobNo;
