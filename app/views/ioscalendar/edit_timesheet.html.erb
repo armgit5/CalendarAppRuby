@@ -87,7 +87,7 @@
   <body ng-controller="TimesheetCtrl">
     <div class="container">
       <a href="/">back</a>
-      <form ng-submit="submitTimeSheet()" id="sign-up-form" class="form-signin" name="signup">
+      <form ng-submit="updateTimeSheet()" id="sign-up-form" class="form-signin" name="signup">
         <table class="table table-bordered" style="margin:0">
           <h1>TIME SHEET</h1>
           <tbody>
@@ -119,8 +119,10 @@
     <script>
         // console.log('<%=(raw @timesheet_nil_sig)%>');
         var a = (JSON.parse(<%=raw @timesheet_data.to_json %>));
-        console.log(a);
+        console.log(<%= @timesheet_id %>);
+
         'use strict';
+
 
         var app = angular.module('Timesheet', [])
         app.controller('TimesheetCtrl', ['$scope', '$http', function($scope, $http) {
@@ -230,22 +232,124 @@
           $scope.timeSheet.nilpeterDate = timesheet.nilpeterDate;
           $scope.timeSheet.customerDate = timesheet.customerDate;
 
-          $scope.submitTimeSheet = function() {
+          $scope.updateTimeSheet = function() {
+            console.log("updateing timesheet");
 
-            a = JSON.parse($('#nilpeterSignature').signature('toJSON')).lines;
+            var timeSheet = {
+              jobNo: $scope.timeSheet.jobNo,
+              date: $scope.timeSheet.date,
+              customer: $scope.timeSheet.customer,
+              country: $scope.timeSheet.country,
+              engineer: $scope.timeSheet.engineer,
+              machineType: $scope.timeSheet.machineType,
+              machineNo: $scope.timeSheet.machineNo,
+              departure: $scope.timeSheet.departure,
+              departureFrom: $scope.timeSheet.departureFrom,
+              from: $scope.timeSheet.from,
+              fromAt: $scope.timeSheet.fromAt,
+              arrival: $scope.timeSheet.arrival,
+              arrivalIn: $scope.timeSheet.arrivalIn,
+              in: $scope.timeSheet.in,
+              inAt: $scope.timeSheet.inAt,
+              kilometers: $scope.timeSheet.kilometers,
+              car: $scope.timeSheet.car,
+              ownCar: $scope.timeSheet.ownCar,
 
-            $scope.timeSheet = {
+              mondayOutN: $scope.timeSheet.mondayOutN,
+              mondayOutO: $scope.timeSheet.mondayOutO,
+              mondayWeekN: $scope.timeSheet.mondayWeekN,
+              mondayWeekO: $scope.timeSheet.mondayWeekO,
+              mondayWeek2N: $scope.timeSheet.mondayWeek2N,
+              mondayWeek2O: $scope.timeSheet.mondayWeek2O,
+              mondayBackN: $scope.timeSheet.mondayBackN,
+              mondayBackO: $scope.timeSheet.mondayBackO,
 
+              tuesdayOutN: $scope.timeSheet.tuesdayOutN,
+              tuesdayOutO: $scope.timeSheet.tuesdayOutO,
+              tuesdayWeekN: $scope.timeSheet.tuesdayWeekN,
+              tuesdayWeekO: $scope.timeSheet.tuesdayWeekO,
+              tuesdayWeek2N: $scope.timeSheet.tuesdayWeek2N,
+              tuesdayWeek2O: $scope.timeSheet.tuesdayWeek2O,
+              tuesdayBackN: $scope.timeSheet.tuesdayBackN,
+              tuesdayBackO: $scope.timeSheet.tuesdayBackO,
+
+              wednesdayOutN: $scope.timeSheet.wednesdayOutN,
+              wednesdayOutO: $scope.timeSheet.wednesdayOutO,
+              wednesdayWeekN: $scope.timeSheet.wednesdayWeekN,
+              wednesdayWeekO: $scope.timeSheet.wednesdayWeekO,
+              wednesdayWeek2N: $scope.timeSheet.wednesdayWeek2N,
+              wednesdayWeek2O: $scope.timeSheet.wednesdayWeek2O,
+              wednesdayBackN: $scope.timeSheet.wednesdayBackN,
+              wednesdayBackO: $scope.timeSheet.wednesdayBackO,
+
+              thursdayOutN: $scope.timeSheet.thursdayOutN,
+              thursdayOutO: $scope.timeSheet.thursdayOutO,
+              thursdayWeekN: $scope.timeSheet.thursdayWeekN,
+              thursdayWeekO: $scope.timeSheet.thursdayWeekO,
+              thursdayWeek2N: $scope.timeSheet.thursdayWeek2N,
+              thursdayWeek2O: $scope.timeSheet.thursdayWeek2O,
+              thursdayBackN: $scope.timeSheet.thursdayBackN,
+              thursdayBackO: $scope.timeSheet.thursdayBackO,
+
+              fridayOutN: $scope.timeSheet.fridayOutN,
+              fridayOutO: $scope.timeSheet.fridayOutO,
+              fridayWeekN: $scope.timeSheet.fridayWeekN,
+              fridayWeekO: $scope.timeSheet.fridayWeekO,
+              fridayWeek2N: $scope.timeSheet.fridayWeek2N,
+              fridayWeek2O: $scope.timeSheet.fridayWeek2O,
+              fridayBackN: $scope.timeSheet.fridayBackN,
+              fridayBackO: $scope.timeSheet.fridayBackO,
+
+              saturdayOutN: $scope.timeSheet.saturdayOutN,
+              saturdayOutO: $scope.timeSheet.saturdayOutO,
+              saturdayWeekN: $scope.timeSheet.saturdayWeekN,
+              saturdayWeekO: $scope.timeSheet.saturdayWeekO,
+              saturdayOutO: $scope.timeSheet.saturdayOutO,
+              saturdayWeek2N: $scope.timeSheet.saturdayWeek2N,
+              saturdayWeek2O: $scope.timeSheet.saturdayWeek2O,
+              saturdayBackN: $scope.timeSheet.saturdayBackN,
+              saturdayBackO: $scope.timeSheet.saturdayBackO,
+
+              sundayOutN: $scope.timeSheet.sundayOutN,
+              sundayOutO: $scope.timeSheet.sundayOutO,
+              sundayWeekN: $scope.timeSheet.sundayWeekN,
+              sundayWeekO: $scope.timeSheet.sundayWeekO,
+              sundayWeek2N: $scope.timeSheet.sundayWeek2N,
+              sundayWeek2O: $scope.timeSheet.sundayWeek2O,
+              sundayBackN: $scope.timeSheet.sundayBackN,
+              sundayBackO: $scope.timeSheet.sundayBackO,
+
+              jobFinishedYes: $scope.timeSheet.jobFinishedYes,
+              jobFinishedNo: $scope.timeSheet.jobFinishedNo,
+              sparePartYes: $scope.timeSheet.sparePartYes,
+              sparePartNo: $scope.timeSheet.sparePartNo,
+              partYes: $scope.timeSheet.partYes,
+              partNo: $scope.timeSheet.partNo,
+              mechanicalYes: $scope.timeSheet.mechanicalYes,
+              mechanicalNo: $scope.timeSheet.mechanicalNo,
+              electricalYes: $scope.timeSheet.electricalYes,
+              electricalNo: $scope.timeSheet.electricalNo,
+              serviceYes: $scope.timeSheet.serviceYes,
+              serviceNo: $scope.timeSheet.serviceNo,
+              graphicYes: $scope.timeSheet.graphicYes,
+              graphicNo: $scope.timeSheet.graphicNo,
+              concerningYes: $scope.timeSheet.concerningYes,
+              concerningNo: $scope.timeSheet.concerningNo,
+              customerComment: $scope.timeSheet.customerComment,
+              nilpeterComment: $scope.timeSheet.nilpeterComment,
+              nilpeterDate: $scope.timeSheet.nilpeterDate,
+              customerDate: $scope.timeSheet.customerDate
             }
 
-            var timeSheetData = JSON.stringify($scope.timeSheet);
-            var nilSig = JSON.stringify(JSON.parse($('#nilpeterSignature').signature('toJSON')));
-            var cusSig = JSON.stringify(JSON.parse($('#customerSignature').signature('toJSON')));
+            var timeSheetData = JSON.stringify(timeSheet);
+            var nilSig = JSON.stringify(JSON.parse($('#redrawNilSignature').signature('toJSON')));
+            var cusSig = JSON.stringify(JSON.parse($('#redrawCusSignature').signature('toJSON')));
 
+            console.log(timeSheet);
             console.log(timeSheetData);
-            $http.post('/ioscalendar/create_timesheet', {
-              user_id: '<%= @current_user_id %>',
-              schedule_id: '<%= @schedule_id %>',
+            // console.log($scope.timeSheet);
+            $http.post('/ioscalendar/update_timesheet/', {
+              id : '<%= @timesheet_id %>',
               data : timeSheetData,
               nil_sig : nilSig,
               cus_sig : cusSig

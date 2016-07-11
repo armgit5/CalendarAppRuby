@@ -27,7 +27,7 @@ class IoscalendarController < ActionController::Base
     @schedule.update_attributes!(params[:timesheet_id])
 
     # flash[:notice] = "#{@timesheet.job_num} was successfully created."
-    redirect_to(:controller => "calendar", :action => "index")
+    redirect_to(:controller => "register", :action => "index")
   end
 
   def timesheet
@@ -67,9 +67,19 @@ class IoscalendarController < ActionController::Base
 
     # @timesheet = Timesheet.where(schedule_id: params[:id]).last
     @timesheet = Timesheet.find(params[:id])
+    @timesheet_id = params[:id]
     @timesheet_data = @timesheet.data
     @timesheet_nil_sig = JSON.parse(@timesheet.nil_sig)
     @timesheet_cus_sig = JSON.parse(@timesheet.cus_sig)
+  end
+
+  def update_timesheet
+    @timesheet = Timesheet.find(params[:id])
+    @timesheet.data = params[:data]
+    @timesheet.nil_sig = params[:nil_sig]
+    @timesheet.cus_sig = params[:cus_sig]
+    @timesheet.update_attributes!(params[:timesheet])
+    redirect_to(:controller => "register", :action => "index")
   end
 
 end
