@@ -107,6 +107,7 @@ class RegisterController < ApplicationController
 #
   def edit
     @schedule = Schedule.find(params[:id])
+    
     if current_user.id != @schedule.user_id and current_user.role_id != 3
       redirect_to(:controller => "calendar", :action => "index")
     end
