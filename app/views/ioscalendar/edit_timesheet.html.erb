@@ -106,6 +106,22 @@
   </head>
   <body ng-controller="TimesheetCtrl">
     <div class="container">
+      <div style="color:red">
+        <%= link_to image_tag("favicon.ico"), {action: 'index', controller: 'register'},
+         style: "display:inline-block;float:left",
+         height:"90%"%>
+        <div style="display:inline-block;float:left">
+          <br>
+          <b >nilpeter asia pacific</b>
+          <br>
+        <p >499/37 Moo 13, Rachathewa
+          <br>
+          Bangplee, Samutprakarn
+          <br>
+          10540 Thailand
+        </p></div>
+        <h1 style="display:inline-block;float:right;">TIME SHEET</h1>
+      </div>
       <span ng-show="loading">
         <div class="loader" style="display: inline-block;"></div>
         <div style="display: inline-block;">Loading timesheet ...</div>

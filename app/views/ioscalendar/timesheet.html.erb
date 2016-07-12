@@ -106,14 +106,29 @@
   </head>
   <body ng-controller="TimesheetCtrl">
     <div class="container">
+      <div style="color:red">
+        <%= link_to image_tag("favicon.ico"), {action: 'index', controller: 'calendar'},
+         style: "display:inline-block;float:left",
+         height:"90%"%>
+        <div style="display:inline-block;float:left">
+          <br>
+          <b >nilpeter asia pacific</b>
+          <br>
+        <p >499/37 Moo 13, Rachathewa
+          <br>
+          Bangplee, Samutprakarn
+          <br>
+          10540 Thailand
+        </p></div>
+        <h1 style="display:inline-block;float:right;">TIME SHEET</h1>
+      </div>
       <span ng-show="loading">
         <div class="loader" style="display: inline-block;"></div>
         <div style="display: inline-block;">Loading timesheet ...</div>
       </span>
-      <a href="/">back</a>
       <form ng-submit="submitTimeSheet()" id="sign-up-form" class="form-signin" name="signup">
         <table class="table table-bordered" style="margin:0">
-          <h1>TIME SHEET</h1>
+
           <tbody>
               <%= render 'order_date_partial' %>
               <%= render 'customer_partial' %>
@@ -261,7 +276,6 @@
 
           $scope.submitTimeSheet = function() {
 
-            // a = JSON.parse($('#nilpeterSignature').signature('toJSON')).lines;
             $scope.signupForm.loading = true;
 
             $scope.timeSheet = {
