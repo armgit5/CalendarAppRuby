@@ -92,7 +92,8 @@
 
     <!-- Signature -->
     <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/themes/south-street/jquery-ui.css" rel="stylesheet">
-    <%= stylesheet_link_tag "jquery.signature" %>
+    <!-- <%= stylesheet_link_tag "jquery.signature" %> -->
+
     <style>
     .kbw-signature { width: 400px; height: 200px; }
     </style>
@@ -101,7 +102,8 @@
     <![endif]-->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/jquery-ui.min.js"></script>
-    <%= javascript_include_tag "jquery.signature" %>
+    <!-- <%= javascript_include_tag "jquery.signature" %> -->
+    <%= javascript_include_tag "signature_pad" %>
 
   </head>
   <body ng-controller="TimesheetCtrl">
@@ -157,6 +159,41 @@
     <script>
         console.log('<%= @current_user_id %>');
         'use strict';
+
+        var wrapper = document.getElementById("signature-pad"),
+            clearButton = wrapper.querySelector("[data-action=clear]"),
+            saveButton = wrapper.querySelector("[data-action=save]"),
+            canvas = wrapper.querySelector("canvas"),
+            signaturePad;
+
+        var wrapper2 = document.getElementById("signature-pad2"),
+            clearButton2 = wrapper2.querySelector("[data-action=clear]"),
+            saveButton2 = wrapper2.querySelector("[data-action=save]"),
+            canvas2 = wrapper2.querySelector("canvas"),
+            signaturePad2;
+
+        // Adjust canvas coordinate space taking into account pixel ratio,
+        // to make it look crisp on mobile devices.
+        // This also causes canvas to be cleared.
+        function resizeCanvas() {
+            // When zoomed out to less than 100%, for some very strange reason,
+            // some browsers report devicePixelRatio as less than 1
+            // and only part of the canvas is cleared then.
+            var ratio =  Math.max(window.devicePixelRatio || 1, 1);
+            canvas.width = canvas.offsetWidth * ratio;
+            canvas.height = canvas.offsetHeight * ratio;
+            canvas.getContext("2d").scale(ratio, ratio);
+
+            canvas2.width = canvas.offsetWidth * ratio;
+            canvas2.height = canvas.offsetHeight * ratio;
+            canvas2.getContext("2d").scale(ratio, ratio);
+        }
+
+        window.onresize = resizeCanvas;
+        resizeCanvas();
+
+        signaturePad = new SignaturePad(canvas);
+        signaturePad2 = new SignaturePad(canvas2);
 
         var app = angular.module('Timesheet', [])
         app.controller('TimesheetCtrl', ['$scope', '$http', function($scope, $http) {
@@ -385,28 +422,30 @@
             }
 
             var timeSheetData = JSON.stringify($scope.timeSheet);
-            var nilSig = JSON.stringify(JSON.parse($('#nilpeterSignature').signature('toJSON')));
-            var cusSig = JSON.stringify(JSON.parse($('#customerSignature').signature('toJSON')));
+            var nilSig = signaturePad.toDataURL();
+            var cusSig = signaturePad2.toDataURL();
 
             console.log(timeSheetData);
-            $http.post('/ioscalendar/create_timesheet', {
-              user_id: '<%= @current_user_id %>',
-              schedule_id: '<%= @schedule_id %>',
-              data : timeSheetData,
-              nil_sig : nilSig,
-              cus_sig : cusSig
-            })
-            .then(function onSuccess (){
-              // Refresh the page now that we've been logged in.
-              window.location = '/register';
-            })
-            .catch(function onError(sailsResponse) {
-              console.log(sailsResponse);
-            }).
-            finally(function eitherWay() {
-              console.log("successfully created");
-              $scope.signupForm.loading = false;
-            });
+            console.log(nilSig);
+            console.log(cusSig);
+            // $http.post('/ioscalendar/create_timesheet', {
+            //   user_id: '<%= @current_user_id %>',
+            //   schedule_id: '<%= @schedule_id %>',
+            //   data : timeSheetData,
+            //   nil_sig : nilSig,
+            //   cus_sig : cusSig
+            // })
+            // .then(function onSuccess (){
+            //   // Refresh the page now that we've been logged in.
+            //   window.location = '/register';
+            // })
+            // .catch(function onError(sailsResponse) {
+            //   console.log(sailsResponse);
+            // }).
+            // finally(function eitherWay() {
+            //   console.log("successfully created");
+            //   $scope.signupForm.loading = false;
+            // });
           };
 
           $scope.deselect = function() {
@@ -429,16 +468,17 @@
 
     $( document ).ready(function() {
 
-    	$('#sig').signature();
-    	$('#clearNil').click(function() {
-    		$('#nilpeterSignature').signature('clear');
-    	});
-      $('#clearCus').click(function() {
-    		$('#customerSignature').signature('clear');
-    	});
+    	// $('#sig').signature();
+    	// $('#clearNil').click(function() {
+    	// 	$('#nilpeterSignature').signature('clear');
+    	// });
+      // $('#clearCus').click(function() {
+    	// 	$('#customerSignature').signature('clear');
+    	// });
+      //
+      // $('#nilpeterSignature').signature();
+      // $('#customerSignature').signature();
 
-      $('#nilpeterSignature').signature();
-      $('#customerSignature').signature();
 
     });
     </script>
