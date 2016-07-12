@@ -126,7 +126,6 @@
         <div class="loader" style="display: inline-block;"></div>
         <div style="display: inline-block;">Loading timesheet ...</div>
       </span>
-      <a href="/">back</a>
       <form ng-submit="updateTimeSheet()" id="sign-up-form" class="form-signin" name="signup">
         <table class="table table-bordered" style="margin:0">
           <h1>TIME SHEET</h1>
@@ -162,7 +161,6 @@
         console.log(<%= @timesheet_id %>);
 
         'use strict';
-
 
         var app = angular.module('Timesheet', [])
         app.controller('TimesheetCtrl', ['$scope', '$http', function($scope, $http) {
@@ -441,7 +439,6 @@
 
     $( document ).ready(function() {
 
-
       $('#clearNil').click(function() {
         $('#redrawNilSignature').signature('clear');
       });
@@ -454,7 +451,6 @@
 
       $('#redrawCusSignature').signature({disabled: false});
       $('#redrawCusSignature').signature('draw', '<%=(raw @timesheet_cus_sig.to_json)%>');
-
 
       setSize($('textarea')[0]);
       setSize($('textarea')[1]);
