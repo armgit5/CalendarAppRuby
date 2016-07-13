@@ -92,7 +92,6 @@
 
     <!-- Signature -->
     <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/themes/south-street/jquery-ui.css" rel="stylesheet">
-    <!-- <%= stylesheet_link_tag "jquery.signature" %> -->
 
     <style>
     .kbw-signature { width: 400px; height: 200px; }
@@ -102,7 +101,6 @@
     <![endif]-->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/jquery-ui.min.js"></script>
-    <!-- <%= javascript_include_tag "jquery.signature" %> -->
     <%= javascript_include_tag "signature_pad" %>
 
   </head>
@@ -161,14 +159,10 @@
         'use strict';
 
         var wrapper = document.getElementById("signature-pad"),
-            clearButton = wrapper.querySelector("[data-action=clear]"),
-            saveButton = wrapper.querySelector("[data-action=save]"),
             canvas = wrapper.querySelector("canvas"),
             signaturePad;
 
         var wrapper2 = document.getElementById("signature-pad2"),
-            clearButton2 = wrapper2.querySelector("[data-action=clear]"),
-            saveButton2 = wrapper2.querySelector("[data-action=save]"),
             canvas2 = wrapper2.querySelector("canvas"),
             signaturePad2;
 
@@ -194,6 +188,15 @@
 
         signaturePad = new SignaturePad(canvas);
         signaturePad2 = new SignaturePad(canvas2);
+
+        $("#clearNil").click(function() {
+          signaturePad.clear();
+        });
+
+        $("#clearCus").click(function() {
+          signaturePad2.clear();
+        });
+
 
         var app = angular.module('Timesheet', [])
         app.controller('TimesheetCtrl', ['$scope', '$http', function($scope, $http) {
@@ -428,24 +431,24 @@
             console.log(timeSheetData);
             console.log(nilSig);
             console.log(cusSig);
-            // $http.post('/ioscalendar/create_timesheet', {
-            //   user_id: '<%= @current_user_id %>',
-            //   schedule_id: '<%= @schedule_id %>',
-            //   data : timeSheetData,
-            //   nil_sig : nilSig,
-            //   cus_sig : cusSig
-            // })
-            // .then(function onSuccess (){
-            //   // Refresh the page now that we've been logged in.
-            //   window.location = '/register';
-            // })
-            // .catch(function onError(sailsResponse) {
-            //   console.log(sailsResponse);
-            // }).
-            // finally(function eitherWay() {
-            //   console.log("successfully created");
-            //   $scope.signupForm.loading = false;
-            // });
+            $http.post('/ioscalendar/create_timesheet', {
+              user_id: '<%= @current_user_id %>',
+              schedule_id: '<%= @schedule_id %>',
+              data : timeSheetData,
+              nil_sig : nilSig,
+              cus_sig : cusSig
+            })
+            .then(function onSuccess (){
+              // Refresh the page now that we've been logged in.
+              window.location = '/register';
+            })
+            .catch(function onError(sailsResponse) {
+              console.log(sailsResponse);
+            }).
+            finally(function eitherWay() {
+              console.log("successfully created");
+              $scope.signupForm.loading = false;
+            });
           };
 
           $scope.deselect = function() {
@@ -460,27 +463,12 @@
     <!-- Signature -->
     <script>
 
-    function autoSize(ele) {
-       ele.style.height = 'auto';
-       var newHeight = (ele.scrollHeight > 32 ? ele.scrollHeight : 32);
-       ele.style.height = newHeight.toString() + 'px';
-    }
+      function autoSize(ele) {
+         ele.style.height = 'auto';
+         var newHeight = (ele.scrollHeight > 32 ? ele.scrollHeight : 32);
+         ele.style.height = newHeight.toString() + 'px';
+      }
 
-    $( document ).ready(function() {
-
-    	// $('#sig').signature();
-    	// $('#clearNil').click(function() {
-    	// 	$('#nilpeterSignature').signature('clear');
-    	// });
-      // $('#clearCus').click(function() {
-    	// 	$('#customerSignature').signature('clear');
-    	// });
-      //
-      // $('#nilpeterSignature').signature();
-      // $('#customerSignature').signature();
-
-
-    });
     </script>
 
 

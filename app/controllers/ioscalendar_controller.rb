@@ -64,13 +64,10 @@ class IoscalendarController < ActionController::Base
     @timesheet = Timesheet.find(params[:id])
     @timesheet_id = params[:id]
     @timesheet_data = @timesheet.data
-    @timesheet_nil_sig = JSON.parse(@timesheet.nil_sig)
-    @timesheet_cus_sig = JSON.parse(@timesheet.cus_sig)
   end
 
   def update_timesheet
 
-    @schedule = Schedule.find(id)
     @timesheet = Timesheet.find(params[:id])
     @timesheet.data = params[:data]
     @timesheet.nil_sig = params[:nil_sig]

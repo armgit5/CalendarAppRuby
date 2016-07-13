@@ -92,7 +92,7 @@
 
     <!-- Signature -->
     <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/themes/south-street/jquery-ui.css" rel="stylesheet">
-    <%= stylesheet_link_tag "jquery.signature" %>
+    <!-- <%= stylesheet_link_tag "jquery.signature" %> -->
     <style>
     .kbw-signature { width: 400px; height: 200px; }
     </style>
@@ -101,7 +101,8 @@
     <![endif]-->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/jquery-ui.min.js"></script>
-    <%= javascript_include_tag "jquery.signature" %>
+    <!-- <%= javascript_include_tag "jquery.signature" %> -->
+    <%= javascript_include_tag "signature_pad" %>
 
   </head>
   <body ng-controller="TimesheetCtrl">
@@ -160,6 +161,48 @@
         console.log(<%= @timesheet_id %>);
 
         'use strict';
+
+        var wrapper = document.getElementById("signature-pad"),
+            canvas = wrapper.querySelector("canvas"),
+            signaturePad;
+
+        var wrapper2 = document.getElementById("signature-pad2"),
+            canvas2 = wrapper2.querySelector("canvas"),
+            signaturePad2;
+
+        // Adjust canvas coordinate space taking into account pixel ratio,
+        // to make it look crisp on mobile devices.
+        // This also causes canvas to be cleared.
+        function resizeCanvas() {
+            // When zoomed out to less than 100%, for some very strange reason,
+            // some browsers report devicePixelRatio as less than 1
+            // and only part of the canvas is cleared then.
+            var ratio =  Math.max(window.devicePixelRatio || 1, 1);
+            canvas.width = canvas.offsetWidth * ratio;
+            canvas.height = canvas.offsetHeight * ratio;
+            canvas.getContext("2d").scale(ratio, ratio);
+
+            canvas2.width = canvas.offsetWidth * ratio;
+            canvas2.height = canvas.offsetHeight * ratio;
+            canvas2.getContext("2d").scale(ratio, ratio);
+        }
+
+        window.onresize = resizeCanvas;
+        resizeCanvas();
+
+        signaturePad = new SignaturePad(canvas);
+        signaturePad2 = new SignaturePad(canvas2);
+
+        signaturePad.fromDataURL('<%= @timesheet.nil_sig %>');
+        signaturePad2.fromDataURL('<%= @timesheet.cus_sig %>');
+
+        $("#clearNil").click(function() {
+          signaturePad.clear();
+        });
+
+        $("#clearCus").click(function() {
+          signaturePad2.clear();
+        });
 
         var app = angular.module('Timesheet', [])
         app.controller('TimesheetCtrl', ['$scope', '$http', function($scope, $http) {
@@ -387,8 +430,8 @@
             }
 
             var timeSheetData = JSON.stringify(timeSheet);
-            var nilSig = JSON.stringify(JSON.parse($('#redrawNilSignature').signature('toJSON')));
-            var cusSig = JSON.stringify(JSON.parse($('#redrawCusSignature').signature('toJSON')));
+            var nilSig = signaturePad.toDataURL();
+            var cusSig = signaturePad2.toDataURL();
 
             console.log(timeSheet);
             console.log(timeSheetData);
@@ -437,20 +480,6 @@
     }
 
     $( document ).ready(function() {
-
-      $('#clearNil').click(function() {
-        $('#redrawNilSignature').signature('clear');
-      });
-      $('#clearCus').click(function() {
-        $('#redrawCusSignature').signature('clear');
-      });
-
-  		$('#redrawNilSignature').signature({disabled: false});
-      $('#redrawNilSignature').signature('draw', '<%=(raw @timesheet_nil_sig.to_json)%>');
-
-      $('#redrawCusSignature').signature({disabled: false});
-      $('#redrawCusSignature').signature('draw', '<%=(raw @timesheet_cus_sig.to_json)%>');
-
       setSize($('textarea')[0]);
       setSize($('textarea')[1]);
     });
