@@ -66,6 +66,22 @@ class IoscalendarController < ActionController::Base
     @timesheet_data = @timesheet.data
   end
 
+  def print_timesheet
+
+    @schedule = Schedule.where(timesheet_id: params[:id])[0]
+
+    @timesheet = Timesheet.find(params[:id])
+    @timesheet_id = params[:id]
+    @timesheet_data = @timesheet.data
+
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "file_name"   # Excluding ".pdf" extension.
+      end
+    end
+  end
+
   def update_timesheet
 
     @timesheet = Timesheet.find(params[:id])

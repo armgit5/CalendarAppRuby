@@ -7,10 +7,10 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <!-- Bootstrap CSS -->
-    <script src="https://www.atlasestateagents.co.uk/javascript/tether.min.js"></script><!-- Tether for Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
-    <style>
+    <%= wicked_pdf_stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css",
+    "http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/themes/south-street/jquery-ui.css", "signature_pad"-%>
 
+    <style>
     .container {
       min-width:992px;
       width: auto !important;
@@ -84,25 +84,12 @@
         100% { transform: rotate(360deg); }
       }
 
+      .kbw-signature { width: 400px; height: 200px; }
     </style>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
-
-    <!-- Signature -->
-    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/themes/south-street/jquery-ui.css" rel="stylesheet">
-
-    <style>
-    .kbw-signature { width: 400px; height: 200px; }
-    </style>
-    <!--[if IE]>
-    <script src="excanvas.js"></script>
-    <![endif]-->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/jquery-ui.min.js"></script>
-    <%= javascript_include_tag "signature_pad" %>
-
+    <%= wicked_pdf_javascript_include_tag "https://www.atlasestateagents.co.uk/javascript/tether.min.js",
+     "signature_pad", "http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js", "http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/jquery-ui.min.js",
+     "https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"%>
   </head>
   <body ng-controller="TimesheetCtrl">
     <div class="container">
