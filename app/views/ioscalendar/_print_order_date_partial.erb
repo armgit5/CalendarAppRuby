@@ -1,14 +1,14 @@
 <tr>
   <td style="width:50%;">
-   <div class="input-group">
+   <div class="input-group" style="border-right:1px solid #FF0000">
    <span class="input-group-addon">Job No.:</span>
-   <input id="jobNo" type="text" class="form-control" placeholder="" aria-describedby="basic-addon1">
+   <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" value='<%= @timesheet_json["jobNo"] %>'>
    </div>
  </td>
  <td style="width:50%">
    <div class="input-group">
    <span class="input-group-addon">Date of Visit:</span>
-   <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" ng-model="timeSheet.date">
+   <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" value='<%= @timesheet_json["date"] %>'>
    </div>
 </td>
 </tr>

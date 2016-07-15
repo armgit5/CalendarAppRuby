@@ -130,13 +130,13 @@
         <table class="table table-bordered" style="margin:0">
 
           <tbody>
-              <%= render 'order_date_partial' %>
-              <%= render 'customer_partial' %>
-              <%= render 'engineer_machine_partial' %>
-              <%= render 'departure_partial' %>
+              <%= render 'print_order_date_partial' %>
+              <%= render 'print_customer_partial' %>
+              <%= render 'print_engineer_machine_partial' %>
+              <%= render 'print_departure_partial' %>
               <%= render 'arrival_partial' %>
               <%= render 'kilometers_partial' %>
-              <%= render 'weekday_partial' %>
+              <%= render 'print_weekday_partial' %>
               <%= render 'sundries_partial' %>
               <%= render 'customer_comment_partial' %>
               <%= render 'nilpeter_comment_partial' %>
@@ -197,6 +197,7 @@
           signaturePad2.clear();
         });
 
+        $("#jobNo").val('<%= @schedule.job_num %>');
 
         var app = angular.module('Timesheet', [])
         app.controller('TimesheetCtrl', ['$scope', '$http', function($scope, $http) {

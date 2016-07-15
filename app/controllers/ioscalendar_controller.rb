@@ -35,9 +35,9 @@ class IoscalendarController < ActionController::Base
     @schedule_id = id
     @schedule = Schedule.find(id)
 
-    if current_user.id != @schedule.user_id and current_user.role_id != 3
-      redirect_to(:controller => "calendar", :action => "index")
-    end
+    # if current_user.id != @schedule.user_id and current_user.role_id != 3
+    #   redirect_to(:controller => "calendar", :action => "index")
+    # end
 
     @current_user_id = @schedule.user_id
     @engineers = ""
@@ -73,6 +73,7 @@ class IoscalendarController < ActionController::Base
     @timesheet = Timesheet.find(params[:id])
     @timesheet_id = params[:id]
     @timesheet_data = @timesheet.data
+    @timesheet_json = JSON.parse(@timesheet_data)
 
     respond_to do |format|
       format.html

@@ -1,0 +1,26 @@
+<tr>
+  <td style="width:50%;border-right:2px solid #FF0000">
+    <div class="input-group" style="border-bottom:1px solid #FF0000">
+      <span class="input-group-addon">Engineer:</span>
+      <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" value='<%= @timesheet_json["engineer"] %>'>
+    </div>
+  </td>
+  <td style="width:50%;padding:0px">
+    <table>
+      <tr>
+      <td style="width:50%;border:none;">
+        <div class="input-group">
+          <span class="input-group-addon">Machine Type:</span>
+          <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" value='<%= @timesheet_json["machineType"] %>'>
+        </div>
+      </td>
+      <td style="width:50%;border:none;">
+        <div class="input-group">
+          <span class="input-group-addon">Machine No.:</span>
+          <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" value='<%= @timesheet_json["machineNo"] %>'>
+        </div>
+      </td>
+    </tr>
+    </table>
+  </td>
+</tr>
