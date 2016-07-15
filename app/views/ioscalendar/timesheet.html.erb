@@ -3,7 +3,8 @@
   <head>
     <!-- Required meta tags always come first -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=0.25, user-scalable=yes" />
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=0.25, user-scalable=yes" /> -->
+    <meta name="viewport" content="initial-scale=0.25,maximum-scale=0.5,width=device-width,user-scalable=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <!-- Bootstrap CSS -->
@@ -144,7 +145,7 @@
           </tbody>
       </table>
 
-      <button class="btn btn-primary" type="submit" ng-disabled="signupForm.loading">
+      <button class="btn btn-primary" id="submitButton" type="submit" ng-disabled="signupForm.loading">
         <span ng-show="!signupForm.loading">Create Timesheet</span>
         <span class="overlord-loading-spinner fa fa-spinner fa-spin" ng-show="signupForm.loading" ></span>
         <span ng-show="signupForm.loading" ng-disabled="signupForm.loading">Creating timesheet ...</span>

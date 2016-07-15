@@ -35,9 +35,29 @@ class IoscalendarController < ActionController::Base
     @schedule_id = id
     @schedule = Schedule.find(id)
 
-    # if current_user.id != @schedule.user_id and current_user.role_id != 3
-    #   redirect_to(:controller => "calendar", :action => "index")
-    # end
+    if current_user.id != @schedule.user_id and current_user.role_id != 3
+      redirect_to(:controller => "calendar", :action => "index")
+    end
+
+    @current_user_id = @schedule.user_id
+    @engineers = ""
+    for user in @schedule.users.reverse
+      @engineers = user.email.split("@")[0].upcase + ", " + @engineers
+    end
+    @engineers = @engineers.chop.chop
+
+    @product_types = ""
+    for product in @schedule.products.reverse
+      @product_types = product.name.upcase + ", " + @product_types
+    end
+    @product_types = @product_types.chop.chop
+  end
+
+  def iostimesheet
+
+    id = params[:id]
+    @schedule_id = id
+    @schedule = Schedule.find(id)
 
     @current_user_id = @schedule.user_id
     @engineers = ""
@@ -60,6 +80,15 @@ class IoscalendarController < ActionController::Base
     if current_user.id != @schedule.user_id and current_user.role_id != 3
       redirect_to(:controller => "register", :action => "index")
     end
+
+    @timesheet = Timesheet.find(params[:id])
+    @timesheet_id = params[:id]
+    @timesheet_data = @timesheet.data
+  end
+
+  def edit_iostimesheet
+
+    @schedule = Schedule.where(timesheet_id: params[:id])[0]
 
     @timesheet = Timesheet.find(params[:id])
     @timesheet_id = params[:id]
