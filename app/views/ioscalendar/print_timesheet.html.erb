@@ -13,8 +13,6 @@
 
     .container {
       min-width:992px;
-      width: auto !important;
-      width:992px;
     }
 
       h1 {
@@ -49,9 +47,11 @@
         font-size: 9;
       }
 
+
       .table-bordered td, .table-bordered th{
           border-color: red;
           padding: none;
+          width: 75%;
       }
 
       .form-group {
@@ -138,8 +138,8 @@
               <%= render 'print_kilometers_partial' %>
               <%= render 'print_weekday_partial' %>
               <%= render 'print_sundries_partial' %>
-              <%= render 'customer_comment_partial' %>
-              <%= render 'nilpeter_comment_partial' %>
+              <%= render 'print_customer_comment_partial' %>
+              <%= render 'print_nilpeter_comment_partial' %>
               <%= render 'print_signature_partial' %>
           </tbody>
       </table>

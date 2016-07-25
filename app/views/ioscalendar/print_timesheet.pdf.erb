@@ -12,9 +12,9 @@
 
     <style>
     .container {
-      min-width:992px;
-      width: auto !important;
-      width:992px;
+      /*min-width:992px;*/
+      width: 100%;
+      height: 100%;
     }
 
       h1 {
@@ -91,6 +91,8 @@
         float:left;
         height:"90%";
       }
+
+
     </style>
 
     <%= wicked_pdf_javascript_include_tag "https://www.atlasestateagents.co.uk/javascript/tether.min.js",
@@ -132,8 +134,8 @@
               <%= render 'print_kilometers_partial' %>
               <%= render 'print_weekday_partial' %>
               <%= render 'print_sundries_partial' %>
-              <%= render 'customer_comment_partial' %>
-              <%= render 'nilpeter_comment_partial' %>
+              <%= render 'print_customer_comment_partial' %>
+              <%= render 'print_nilpeter_comment_partial' %>
               <%= render 'print_signature_partial' %>
           </tbody>
       </table>

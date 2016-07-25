@@ -107,7 +107,9 @@ class IoscalendarController < ActionController::Base
     respond_to do |format|
       format.html
       format.pdf do
-        render pdf: "file_name"   # Excluding ".pdf" extension.
+        render pdf: "file_name",
+        disable_smart_shrinking: true,
+        zoom: 1.5
       end
     end
   end
