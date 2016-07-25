@@ -85,6 +85,12 @@
       }
 
       .kbw-signature { width: 400px; height: 200px; }
+
+      img {
+        display:inline-block;
+        float:left;
+        height:"90%";
+      }
     </style>
 
     <%= wicked_pdf_javascript_include_tag "https://www.atlasestateagents.co.uk/javascript/tether.min.js",
@@ -94,9 +100,10 @@
   <body ng-controller="TimesheetCtrl">
     <div class="container">
       <div style="color:red">
-        <%= link_to image_tag("favicon.ico"), {action: 'index', controller: 'calendar'},
+        <!-- <%= link_to image_tag("favicon.ico"), {action: 'index', controller: 'calendar'},
          style: "display:inline-block;float:left",
-         height:"90%"%>
+         height:"90%"%> -->
+          <%= wicked_pdf_image_tag "nilpeter.png"%>
         <div style="display:inline-block;float:left">
           <br>
           <b >nilpeter asia pacific</b>
@@ -109,10 +116,10 @@
         </p></div>
         <h1 style="display:inline-block;float:right;">TIME SHEET</h1>
       </div>
-      <span ng-show="loading">
+      <!-- <span ng-show="loading">
         <div class="loader" style="display: inline-block;"></div>
         <div style="display: inline-block;">Loading timesheet ...</div>
-      </span>
+      </span> -->
       <form ng-submit="submitTimeSheet()" id="sign-up-form" class="form-signin" name="signup">
         <table class="table table-bordered" style="margin:0">
 
@@ -121,21 +128,21 @@
               <%= render 'print_customer_partial' %>
               <%= render 'print_engineer_machine_partial' %>
               <%= render 'print_departure_partial' %>
-              <%= render 'arrival_partial' %>
-              <%= render 'kilometers_partial' %>
+              <%= render 'print_arrival_partial' %>
+              <%= render 'print_kilometers_partial' %>
               <%= render 'print_weekday_partial' %>
-              <%= render 'sundries_partial' %>
+              <%= render 'print_sundries_partial' %>
               <%= render 'customer_comment_partial' %>
               <%= render 'nilpeter_comment_partial' %>
-              <%= render 'signature_partial' %>
+              <%= render 'print_signature_partial' %>
           </tbody>
       </table>
 
-      <button class="btn btn-primary" type="submit" ng-disabled="signupForm.loading">
+      <!-- <button class="btn btn-primary" type="submit" ng-disabled="signupForm.loading">
         <span ng-show="!signupForm.loading">Create Timesheet</span>
         <span class="overlord-loading-spinner fa fa-spinner fa-spin" ng-show="signupForm.loading" ></span>
         <span ng-show="signupForm.loading" ng-disabled="signupForm.loading">Creating timesheet ...</span>
-      </button>
+      </button> -->
     </form>
       <!-- <button ng-click="deselect()">test</button> -->
     </div>

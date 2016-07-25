@@ -3,7 +3,8 @@
   <head>
     <!-- Required meta tags always come first -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=0.25, user-scalable=yes" /> -->
+    <meta name="viewport" content="initial-scale=0.25,maximum-scale=0.5,width=device-width,user-scalable=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <!-- Bootstrap CSS -->
@@ -107,7 +108,7 @@
   <body ng-controller="TimesheetCtrl">
     <div class="container">
       <div style="color:red">
-        <%= link_to image_tag("favicon.jpg"), {action: 'index', controller: 'calendar'},
+        <%= link_to image_tag("favicon.ico"), {action: 'index', controller: 'calendar'},
          style: "display:inline-block;float:left",
          height:"90%"%>
         <div style="display:inline-block;float:left">
@@ -130,25 +131,25 @@
         <table class="table table-bordered" style="margin:0">
 
           <tbody>
-              <%= render 'print_order_date_partial' %>
-              <%= render 'print_customer_partial' %>
-              <%= render 'print_engineer_machine_partial' %>
-              <%= render 'print_departure_partial' %>
-              <%= render 'print_arrival_partial' %>
-              <%= render 'print_kilometers_partial' %>
-              <%= render 'print_weekday_partial' %>
-              <%= render 'print_sundries_partial' %>
+              <%= render 'order_date_partial' %>
+              <%= render 'customer_partial' %>
+              <%= render 'engineer_machine_partial' %>
+              <%= render 'departure_partial' %>
+              <%= render 'arrival_partial' %>
+              <%= render 'kilometers_partial' %>
+              <%= render 'weekday_partial' %>
+              <%= render 'sundries_partial' %>
               <%= render 'customer_comment_partial' %>
               <%= render 'nilpeter_comment_partial' %>
-              <%= render 'print_signature_partial' %>
+              <%= render 'signature_partial' %>
           </tbody>
       </table>
 
-      <!-- <button class="btn btn-primary" type="submit" ng-disabled="signupForm.loading">
+      <button class="btn btn-primary" id="submitButton" type="submit" ng-disabled="signupForm.loading">
         <span ng-show="!signupForm.loading">Create Timesheet</span>
         <span class="overlord-loading-spinner fa fa-spinner fa-spin" ng-show="signupForm.loading" ></span>
         <span ng-show="signupForm.loading" ng-disabled="signupForm.loading">Creating timesheet ...</span>
-      </button> -->
+      </button>
     </form>
       <!-- <button ng-click="deselect()">test</button> -->
     </div>
@@ -197,7 +198,6 @@
           signaturePad2.clear();
         });
 
-        $("#jobNo").val('<%= @schedule.job_num %>');
 
         var app = angular.module('Timesheet', [])
         app.controller('TimesheetCtrl', ['$scope', '$http', function($scope, $http) {

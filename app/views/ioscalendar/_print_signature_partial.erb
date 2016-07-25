@@ -1,0 +1,54 @@
+<table class="table table-bordered">
+<tr>
+  <td style="width:50%;padding:0px">
+    <table style="padding:0px;border:none">
+      <tr style="width:65%;border:none">
+          <div class="input-group" style="text-align:center">
+
+          <!-- <input type="text" class="form-control test" placeholder="" aria-describedby="basic-addon1" ng-model="timeSheet.arrivalIn" title="Please enter your name"> -->
+          <!-- <%= text_field(:timesheet, :customer, :class => 'form-control', :placeholder => "", :value => @schedule.company_name) %> -->
+          <!-- <div id="nilpeterSignature" style="height:100px;"></div> -->
+          <div id="signature-pad" class="m-signature-pad" style="border:black">
+            <div class="m-signature-pad--body">
+              <canvas style="border:1px solid grey;width:90%"></canvas>
+            </div>
+          </div>
+
+
+          </div>
+      </tr>
+      <tr style="width:35%;border:none">
+          <div class="input-group">
+          <span class="input-group-addon">Date:</span>
+          <input type="text" style="margin-left:3%;width:87%" class="form-control" placeholder="" aria-describedby="basic-addon1" ng-model="timeSheet.nilpeterDate">
+          </div>
+      </tr>
+
+    </table>
+  </td>
+  <td style="width:50%;padding:0px">
+    <table style="padding:0px;border:none">
+      <!-- <tr><span class="input-group-addon" style="text-align:left">Sign Customer: <button type="button" class="btn btn-info" id="clearCus">Clear Signature</button></span></tr> -->
+      <tr style="width:65%;border:none">
+          <div class="input-group" style="text-align:center">
+
+          <!-- <input type="text" class="form-control test" placeholder="" aria-describedby="basic-addon1" ng-model="timeSheet.arrivalIn" title="Please enter your name"> -->
+          <!-- <%= text_field(:timesheet, :customer, :class => 'form-control', :placeholder => "", :value => @schedule.company_name) %> -->
+          <!-- <div id="customerSignature" style="height:100px;"></div> -->
+          <div id="signature-pad2" class="m-signature-pad" style="border:black">
+            <div class="m-signature-pad--body">
+              <canvas style="border:1px solid grey;width:90%"></canvas>
+            </div>
+          </div>
+          </div>
+      </tr>
+      <tr style="width:35%;border:none">
+          <div class="input-group">
+          <span class="input-group-addon">Date:</span>
+          <input type="text" style="margin-left:3%;width:87%" class="form-control" placeholder="" aria-describedby="basic-addon1" ng-model="timeSheet.customerDate">
+          </div>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
