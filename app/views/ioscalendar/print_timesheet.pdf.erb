@@ -195,6 +195,9 @@
 
         $("#jobNo").val('<%= @schedule.job_num %>');
 
+        signaturePad.fromDataURL('<%= @timesheet.nil_sig %>');
+        signaturePad2.fromDataURL('<%= @timesheet.cus_sig %>');
+
         var app = angular.module('Timesheet', [])
         app.controller('TimesheetCtrl', ['$scope', '$http', function($scope, $http) {
 
@@ -206,247 +209,111 @@
 
           // initializing params
           $scope.timeSheet = {};
-          $scope.timeSheet.jobNo = '<%= @schedule.job_num %>';
-          $scope.timeSheet.date = '<%= @schedule.date.strftime("%d/%m/%Y") %>';
-          $scope.timeSheet.customer = '<%= @schedule.company_name %>';
-          $scope.timeSheet.country = 'Thailand';
-          $scope.timeSheet.engineer = '<%= @engineers %>';
-          $scope.timeSheet.machineType = '<%= @product_types %>';
-          $scope.timeSheet.machineNo = '<%= @schedule.machine_number %>';
-          $scope.timeSheet.departure = '<%= @schedule.date.strftime("%d/%m/%Y %H:%M") %>'
-          $scope.timeSheet.departureFrom = 'Nilpeter';
-          $scope.timeSheet.from = '';
-          $scope.timeSheet.fromAt = '<%= @schedule.company_name %>';
-          $scope.timeSheet.arrival = '';
-          $scope.timeSheet.arrivalIn = '<%= @schedule.company_name %>';
-          $scope.timeSheet.in = '';
-          $scope.timeSheet.inAt = 'Nilpeter';
-          $scope.timeSheet.kilometers = '';
-          $scope.timeSheet.car = '';
-          $scope.timeSheet.ownCar = 'X';
+          $scope.timeSheet.jobNo = '<%= @timesheet_json["jobNo"] %>';
+          $scope.timeSheet.date = '<%= @timesheet_json["date"] %>';
+          $scope.timeSheet.customer = '<%= @timesheet_json["customer"] %>';
+          $scope.timeSheet.country = '<%= @timesheet_json["country"] %>';
+          $scope.timeSheet.engineer = '<%= @timesheet_json["engineer"] %>';
+          $scope.timeSheet.machineType = '<%= @timesheet_json["machineType"] %>';
+          $scope.timeSheet.machineNo = '<%= @timesheet_json["machineNo"] %>';
+          $scope.timeSheet.departure = '<%= @timesheet_json["departure"] %>';
+          $scope.timeSheet.departureFrom = '<%= @timesheet_json["departureFrom"] %>';
+          $scope.timeSheet.from = '<%= @timesheet_json["from"] %>';
+          $scope.timeSheet.fromAt = '<%= @timesheet_json["fromAt"] %>';
+          $scope.timeSheet.arrival = '<%= @timesheet_json["arrival"] %>';
+          $scope.timeSheet.arrivalIn = '<%= @timesheet_json["arrivalIn"] %>';
+          $scope.timeSheet.in = '<%= @timesheet_json["in"] %>';
+          $scope.timeSheet.inAt = '<%= @timesheet_json["inAt"] %>';
+          $scope.timeSheet.kilometers = '<%= @timesheet_json["kilometers"] %>';
+          $scope.timeSheet.car = '<%= @timesheet_json["car"] %>';
+          $scope.timeSheet.ownCar = '<%= @timesheet_json["ownCar"] %>';
 
-          $scope.timeSheet.mondayOutN = '';
-          $scope.timeSheet.mondayOutO = '';
-          $scope.timeSheet.mondayWeekN = '';
-          $scope.timeSheet.mondayWeekO = '';
-          $scope.timeSheet.mondayWeek2N = '';
-          $scope.timeSheet.mondayWeek2O = '';
-          $scope.timeSheet.mondayBackN = '';
-          $scope.timeSheet.mondayBackO = '';
+          $scope.timeSheet.mondayOutN = '<%= @timesheet_json["mondayOutN"] %>';
+          $scope.timeSheet.mondayOutO = '<%= @timesheet_json["mondayOutO"] %>';
+          $scope.timeSheet.mondayWeekN = '<%= @timesheet_json["mondayWeekN"] %>';
+          $scope.timeSheet.mondayWeekO = '<%= @timesheet_json["mondayWeekO"] %>';
+          $scope.timeSheet.mondayWeek2N = '<%= @timesheet_json["mondayWeek2N"] %>';
+          $scope.timeSheet.mondayWeek2O = '<%= @timesheet_json["mondayWeek2O"] %>';
+          $scope.timeSheet.mondayBackN = '<%= @timesheet_json["mondayBackN"] %>';
+          $scope.timeSheet.mondayBackO = '<%= @timesheet_json["mondayBackO"] %>';
 
-          $scope.timeSheet.tuesdayOutN = '';
-          $scope.timeSheet.tuesdayOutO = '';
-          $scope.timeSheet.tuesdayWeekN = '';
-          $scope.timeSheet.tuesdayWeekO = '';
-          $scope.timeSheet.tuesdayWeek2N = '';
-          $scope.timeSheet.tuesdayWeek2O = '';
-          $scope.timeSheet.tuesdayBackN = '';
-          $scope.timeSheet.tuesdayBackO = '';
+          $scope.timeSheet.tuesdayOutN = '<%= @timesheet_json["tuesdayOutN"] %>';
+          $scope.timeSheet.tuesdayOutO = '<%= @timesheet_json["tuesdayOutO"] %>';
+          $scope.timeSheet.tuesdayWeekN = '<%= @timesheet_json["tuesdayWeekN"] %>';
+          $scope.timeSheet.tuesdayWeekO = '<%= @timesheet_json["tuesdayWeekO"] %>';
+          $scope.timeSheet.tuesdayWeek2N = '<%= @timesheet_json["tuesdayWeek2N"] %>';
+          $scope.timeSheet.tuesdayWeek2O = '<%= @timesheet_json["tuesdayWeek2O"] %>';
+          $scope.timeSheet.tuesdayBackN = '<%= @timesheet_json["tuesdayBackN"] %>';
+          $scope.timeSheet.tuesdayBackO = '<%= @timesheet_json["tuesdayBackO"] %>';
 
-          $scope.timeSheet.wednesdayOutN = '';
-          $scope.timeSheet.wednesdayOutO = '';
-          $scope.timeSheet.wednesdayWeekN = '';
-          $scope.timeSheet.wednesdayWeekO = '';
-          $scope.timeSheet.wednesdayWeek2N = '';
-          $scope.timeSheet.wednesdayWeek2O = '';
-          $scope.timeSheet.wednesdayBackN = '';
-          $scope.timeSheet.wednesdayBackO = '';
+          $scope.timeSheet.wednesdayOutN = '<%= @timesheet_json["wednesdayOutN"] %>';
+          $scope.timeSheet.wednesdayOutO = '<%= @timesheet_json["wednesdayOutO"] %>';
+          $scope.timeSheet.wednesdayWeekN = '<%= @timesheet_json["wednesdayWeekN"] %>';
+          $scope.timeSheet.wednesdayWeekO = '<%= @timesheet_json["wednesdayWeekO"] %>';
+          $scope.timeSheet.wednesdayWeek2N = '<%= @timesheet_json["wednesdayWeek2N"] %>';
+          $scope.timeSheet.wednesdayWeek2O = '<%= @timesheet_json["wednesdayWeek2O"] %>';
+          $scope.timeSheet.wednesdayBackN = '<%= @timesheet_json["wednesdayBackN"] %>';
+          $scope.timeSheet.wednesdayBackO = '<%= @timesheet_json["wednesdayBackO"] %>';
 
-          $scope.timeSheet.thursdayOutN = '';
-          $scope.timeSheet.thursdayOutO = '';
-          $scope.timeSheet.thursdayWeekN = '';
-          $scope.timeSheet.thursdayWeekO = '';
-          $scope.timeSheet.thursdayWeek2N = '';
-          $scope.timeSheet.thursdayWeek2O = '';
-          $scope.timeSheet.thursdayBackN = '';
-          $scope.timeSheet.thursdayBackO = '';
+          $scope.timeSheet.thursdayOutN = '<%= @timesheet_json["thursdayOutN"] %>';
+          $scope.timeSheet.thursdayOutO = '<%= @timesheet_json["thursdayOutO"] %>';
+          $scope.timeSheet.thursdayWeekN = '<%= @timesheet_json["thursdayWeekN"] %>';
+          $scope.timeSheet.thursdayWeekO = '<%= @timesheet_json["thursdayWeekO"] %>';
+          $scope.timeSheet.thursdayWeek2N = '<%= @timesheet_json["thursdayWeek2N"] %>';
+          $scope.timeSheet.thursdayWeek2O = '<%= @timesheet_json["thursdayWeek2O"] %>';
+          $scope.timeSheet.thursdayBackN = '<%= @timesheet_json["thursdayBackN"] %>';
+          $scope.timeSheet.thursdayBackO = '<%= @timesheet_json["thursdayBackO"] %>';
 
-          $scope.timeSheet.fridayOutN = '';
-          $scope.timeSheet.fridayOutO = '';
-          $scope.timeSheet.fridayWeekN = '';
-          $scope.timeSheet.fridayWeekO = '';
-          $scope.timeSheet.fridayWeek2N = '';
-          $scope.timeSheet.fridayWeek2O = '';
-          $scope.timeSheet.fridayBackN = '';
-          $scope.timeSheet.fridayBackO = '';
+          $scope.timeSheet.fridayOutN = '<%= @timesheet_json["fridayOutN"] %>';
+          $scope.timeSheet.fridayOutO = '<%= @timesheet_json["fridayOutO"] %>';
+          $scope.timeSheet.fridayWeekN = '<%= @timesheet_json["fridayWeekN"] %>';
+          $scope.timeSheet.fridayWeekO = '<%= @timesheet_json["fridayWeekO"] %>';
+          $scope.timeSheet.fridayWeek2N = '<%= @timesheet_json["fridayWeek2N"] %>';
+          $scope.timeSheet.fridayWeek2O = '<%= @timesheet_json["fridayWeek2O"] %>';
+          $scope.timeSheet.fridayBackN = '<%= @timesheet_json["fridayBackN"] %>';
+          $scope.timeSheet.fridayBackO = '<%= @timesheet_json["fridayBackO"] %>';
 
-          $scope.timeSheet.saturdayOutN = '';
-          $scope.timeSheet.saturdayOutO = '';
-          $scope.timeSheet.saturdayWeekN = '';
-          $scope.timeSheet.saturdayWeekO = '';
-          $scope.timeSheet.saturdayWeek2N = '';
-          $scope.timeSheet.saturdayWeek2O = '';
-          $scope.timeSheet.saturdayBackN = '';
-          $scope.timeSheet.saturdayBackO = '';
+          $scope.timeSheet.saturdayOutN = '<%= @timesheet_json["saturdayOutN"] %>';
+          $scope.timeSheet.saturdayOutO = '<%= @timesheet_json["saturdayOutO"] %>';
+          $scope.timeSheet.saturdayWeekN = '<%= @timesheet_json["saturdayWeekN"] %>';
+          $scope.timeSheet.saturdayWeekO = '<%= @timesheet_json["saturdayWeekO"] %>';
+          $scope.timeSheet.saturdayWeek2N = '<%= @timesheet_json["saturdayWeek2N"] %>';
+          $scope.timeSheet.saturdayWeek2O = '<%= @timesheet_json["saturdayWeek2O"] %>';
+          $scope.timeSheet.saturdayBackN = '<%= @timesheet_json["saturdayBackN"] %>';
+          $scope.timeSheet.saturdayBackO = '<%= @timesheet_json["saturdayBackO"] %>';
 
-          $scope.timeSheet.sundayOutN = '';
-          $scope.timeSheet.sundayOutO = '';
-          $scope.timeSheet.sundayWeekN = '';
-          $scope.timeSheet.sundayWeekO = '';
-          $scope.timeSheet.sundayWeek2N = '';
-          $scope.timeSheet.sundayWeek2O = '';
-          $scope.timeSheet.sundayBackN = '';
-          $scope.timeSheet.sundayBackO = '';
+          $scope.timeSheet.sundayOutN = '<%= @timesheet_json["sundayOutN"] %>';
+          $scope.timeSheet.sundayOutO = '<%= @timesheet_json["sundayOutO"] %>';
+          $scope.timeSheet.sundayWeekN = '<%= @timesheet_json["sundayWeekN"] %>';
+          $scope.timeSheet.sundayWeekO = '<%= @timesheet_json["sundayWeekO"] %>';
+          $scope.timeSheet.sundayWeek2N = '<%= @timesheet_json["sundayWeek2N"] %>';
+          $scope.timeSheet.sundayWeek2O = '<%= @timesheet_json["sundayWeek2O"] %>';
+          $scope.timeSheet.sundayBackN = '<%= @timesheet_json["sundayBackN"] %>';
+          $scope.timeSheet.sundayBackO = '<%= @timesheet_json["sundayBackO"] %>';
 
-          $scope.timeSheet.jobFinishedYes = false;
-          $scope.timeSheet.jobFinishedNo = false;
-          $scope.timeSheet.sparePartYes = false;
-          $scope.timeSheet.sparePartNo = false;
-          $scope.timeSheet.partYes = false;
-          $scope.timeSheet.partNo = false;
-          $scope.timeSheet.mechanicalYes = false;
-          $scope.timeSheet.mechanicalNo = false;
-          $scope.timeSheet.electricalYes = false;
-          $scope.timeSheet.electricalNo = false;
-          $scope.timeSheet.serviceYes = false;
-          $scope.timeSheet.serviceNo = false;
-          $scope.timeSheet.graphicYes = false;
-          $scope.timeSheet.graphicNo = false;
-          $scope.timeSheet.concerningYes = false;
-          $scope.timeSheet.concerningNo = false;
+          $scope.timeSheet.jobFinishedYes ='<%= @timesheet_json["jobFinishedYes"] %>' === "true";
+          $scope.timeSheet.jobFinishedNo = '<%= @timesheet_json["jobFinishedNo"] %>' === "true";
+          $scope.timeSheet.sparePartYes = '<%= @timesheet_json["sparePartYes"] %>' === "true";
+          $scope.timeSheet.sparePartNo = '<%= @timesheet_json["sparePartNo"] %>' === "true";
+          $scope.timeSheet.partYes = '<%= @timesheet_json["partYes"] %>' === "true";
+          $scope.timeSheet.partNo = '<%= @timesheet_json["partNo"] %>' === "true";
+          $scope.timeSheet.mechanicalYes = '<%= @timesheet_json["mechanicalYes"] %>' === "true";
+          $scope.timeSheet.mechanicalNo = '<%= @timesheet_json["mechanicalNo"] %>' === "true";
+          $scope.timeSheet.electricalYes = '<%= @timesheet_json["electricalYes"] %>' === "true";
+          $scope.timeSheet.electricalNo = '<%= @timesheet_json["electricalNo"] %>' === "true";
+          $scope.timeSheet.serviceYes = '<%= @timesheet_json["serviceYes"] %>' === "true";
+          $scope.timeSheet.serviceNo = '<%= @timesheet_json["serviceNo"] %>' === "true";
+          $scope.timeSheet.graphicYes = '<%= @timesheet_json["graphicYes"] %>' === "true";
+          $scope.timeSheet.graphicNo = '<%= @timesheet_json["graphicNo"] %>' === "true";
+          $scope.timeSheet.concerningYes = '<%= @timesheet_json["concerningYes"] %>' === "true";
+          $scope.timeSheet.concerningNo = '<%= @timesheet_json["concerningNo"] %>' === "true";
 
-          $scope.timeSheet.customerComment = '';
-          $scope.timeSheet.nilpeterComment = '';
+          $scope.timeSheet.customerComment = '<%= @timesheet_json["customerComment"].gsub(/\n/, '\n') %>';
+          $scope.timeSheet.nilpeterComment = '<%= @timesheet_json["nilpeterComment"].gsub(/\n/, '\n') %>';
 
-          $scope.timeSheet.nilpeterDate = '';
-          $scope.timeSheet.customerDate = '';
+          $scope.timeSheet.nilpeterDate = '<%= @timesheet_json["nilpeterDate"] %>';
+          $scope.timeSheet.customerDate = '<%= @timesheet_json["customerDate"] %>';
 
-          $scope.submitTimeSheet = function() {
-
-            $scope.signupForm.loading = true;
-
-            $scope.timeSheet = {
-              jobNo: $scope.timeSheet.jobNo,
-              date: $scope.timeSheet.date,
-              customer: $scope.timeSheet.customer,
-              country: $scope.timeSheet.country,
-              engineer: $scope.timeSheet.engineer,
-              machineType: $scope.timeSheet.machineType,
-              machineNo: $scope.timeSheet.machineNo,
-              departure: $scope.timeSheet.departure,
-              departureFrom: $scope.timeSheet.departureFrom,
-              from: $scope.timeSheet.from,
-              fromAt: $scope.timeSheet.fromAt,
-              arrival: $scope.timeSheet.arrival,
-              arrivalIn: $scope.timeSheet.arrivalIn,
-              in: $scope.timeSheet.in,
-              inAt: $scope.timeSheet.inAt,
-              kilometers: $scope.timeSheet.kilometers,
-              car: $scope.timeSheet.car,
-              ownCar: $scope.timeSheet.ownCar,
-
-              mondayOutN: $scope.timeSheet.mondayOutN,
-              mondayOutO: $scope.timeSheet.mondayOutO,
-              mondayWeekN: $scope.timeSheet.mondayWeekN,
-              mondayWeekO: $scope.timeSheet.mondayWeekO,
-              mondayWeek2N: $scope.timeSheet.mondayWeek2N,
-              mondayWeek2O: $scope.timeSheet.mondayWeek2O,
-              mondayBackN: $scope.timeSheet.mondayBackN,
-              mondayBackO: $scope.timeSheet.mondayBackO,
-
-              tuesdayOutN: $scope.timeSheet.tuesdayOutN,
-              tuesdayOutO: $scope.timeSheet.tuesdayOutO,
-              tuesdayWeekN: $scope.timeSheet.tuesdayWeekN,
-              tuesdayWeekO: $scope.timeSheet.tuesdayWeekO,
-              tuesdayWeek2N: $scope.timeSheet.tuesdayWeek2N,
-              tuesdayWeek2O: $scope.timeSheet.tuesdayWeek2O,
-              tuesdayBackN: $scope.timeSheet.tuesdayBackN,
-              tuesdayBackO: $scope.timeSheet.tuesdayBackO,
-
-              wednesdayOutN: $scope.timeSheet.wednesdayOutN,
-              wednesdayOutO: $scope.timeSheet.wednesdayOutO,
-              wednesdayWeekN: $scope.timeSheet.wednesdayWeekN,
-              wednesdayWeekO: $scope.timeSheet.wednesdayWeekO,
-              wednesdayWeek2N: $scope.timeSheet.wednesdayWeek2N,
-              wednesdayWeek2O: $scope.timeSheet.wednesdayWeek2O,
-              wednesdayBackN: $scope.timeSheet.wednesdayBackN,
-              wednesdayBackO: $scope.timeSheet.wednesdayBackO,
-
-              thursdayOutN: $scope.timeSheet.thursdayOutN,
-              thursdayOutO: $scope.timeSheet.thursdayOutO,
-              thursdayWeekN: $scope.timeSheet.thursdayWeekN,
-              thursdayWeekO: $scope.timeSheet.thursdayWeekO,
-              thursdayWeek2N: $scope.timeSheet.thursdayWeek2N,
-              thursdayWeek2O: $scope.timeSheet.thursdayWeek2O,
-              thursdayBackN: $scope.timeSheet.thursdayBackN,
-              thursdayBackO: $scope.timeSheet.thursdayBackO,
-
-              fridayOutN: $scope.timeSheet.fridayOutN,
-              fridayOutO: $scope.timeSheet.fridayOutO,
-              fridayWeekN: $scope.timeSheet.fridayWeekN,
-              fridayWeekO: $scope.timeSheet.fridayWeekO,
-              fridayWeek2N: $scope.timeSheet.fridayWeek2N,
-              fridayWeek2O: $scope.timeSheet.fridayWeek2O,
-              fridayBackN: $scope.timeSheet.fridayBackN,
-              fridayBackO: $scope.timeSheet.fridayBackO,
-
-              saturdayOutN: $scope.timeSheet.saturdayOutN,
-              saturdayOutO: $scope.timeSheet.saturdayOutO,
-              saturdayWeekN: $scope.timeSheet.saturdayWeekN,
-              saturdayWeekO: $scope.timeSheet.saturdayWeekO,
-              saturdayOutO: $scope.timeSheet.saturdayOutO,
-              saturdayWeek2N: $scope.timeSheet.saturdayWeek2N,
-              saturdayWeek2O: $scope.timeSheet.saturdayWeek2O,
-              saturdayBackN: $scope.timeSheet.saturdayBackN,
-              saturdayBackO: $scope.timeSheet.saturdayBackO,
-
-              sundayOutN: $scope.timeSheet.sundayOutN,
-              sundayOutO: $scope.timeSheet.sundayOutO,
-              sundayWeekN: $scope.timeSheet.sundayWeekN,
-              sundayWeekO: $scope.timeSheet.sundayWeekO,
-              sundayWeek2N: $scope.timeSheet.sundayWeek2N,
-              sundayWeek2O: $scope.timeSheet.sundayWeek2O,
-              sundayBackN: $scope.timeSheet.sundayBackN,
-              sundayBackO: $scope.timeSheet.sundayBackO,
-
-              jobFinishedYes: $scope.timeSheet.jobFinishedYes,
-              jobFinishedNo: $scope.timeSheet.jobFinishedNo,
-              sparePartYes: $scope.timeSheet.sparePartYes,
-              sparePartNo: $scope.timeSheet.sparePartNo,
-              partYes: $scope.timeSheet.partYes,
-              partNo: $scope.timeSheet.partNo,
-              mechanicalYes: $scope.timeSheet.mechanicalYes,
-              mechanicalNo: $scope.timeSheet.mechanicalNo,
-              electricalYes: $scope.timeSheet.electricalYes,
-              electricalNo: $scope.timeSheet.electricalNo,
-              serviceYes: $scope.timeSheet.serviceYes,
-              serviceNo: $scope.timeSheet.serviceNo,
-              graphicYes: $scope.timeSheet.graphicYes,
-              graphicNo: $scope.timeSheet.graphicNo,
-              concerningYes: $scope.timeSheet.concerningYes,
-              concerningNo: $scope.timeSheet.concerningNo,
-              customerComment: $scope.timeSheet.customerComment,
-              nilpeterComment: $scope.timeSheet.nilpeterComment,
-              nilpeterDate: $scope.timeSheet.nilpeterDate,
-              customerDate: $scope.timeSheet.customerDate
-            }
-
-            var timeSheetData = JSON.stringify($scope.timeSheet);
-            var nilSig = signaturePad.toDataURL();
-            var cusSig = signaturePad2.toDataURL();
-
-            console.log(timeSheetData);
-            console.log(nilSig);
-            console.log(cusSig);
-            $http.post('/ioscalendar/create_timesheet', {
-              user_id: '<%= @current_user_id %>',
-              schedule_id: '<%= @schedule_id %>',
-              data : timeSheetData,
-              nil_sig : nilSig,
-              cus_sig : cusSig
-            })
-            .then(function onSuccess (){
-              // Refresh the page now that we've been logged in.
-              window.location = '/register';
-            })
-            .catch(function onError(sailsResponse) {
-              console.log(sailsResponse);
-            }).
-            finally(function eitherWay() {
-              console.log("successfully created");
-              $scope.signupForm.loading = false;
-            });
-          };
 
           $scope.deselect = function() {
             var nilSig = $('#nilpeterSignature').signature('toJSON');
@@ -454,7 +321,9 @@
             console.log(nilSig.lines);
           }
         }]);
-    </script>
+
+
+      </script>
 
     <!-- Auto resize textarea -->
     <!-- Signature -->

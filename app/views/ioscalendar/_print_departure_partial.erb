@@ -4,13 +4,13 @@
     <td style="width:50%;border:none">
         <div class="input-group">
         <span class="input-group-addon">Departure:</span>
-        <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" ng-model="timeSheet.departure">
+        <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" value='<%= @timesheet_json["departure"] %>'>
         </div>
     </td>
     <td style="width:50%;border:none">
         <div class="input-group">
         <span class="input-group-addon">From:</span>
-        <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" ng-model="timeSheet.departureFrom">
+        <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" value='<%= @timesheet_json["departureFrom"] %>'>
         </div>
       </div>
     </td>
@@ -21,13 +21,13 @@
       <td style="width:50%;border:none">
           <div class="input-group">
           <span class="input-group-addon">From</span>
-          <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" ng-model="timeSheet.from">
+          <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" value='<%= @timesheet_json["from"] %>'>
           </div>
       </td>
       <td style="width:50%;border:none;width:100%">
           <div class="input-group">
           <span class="input-group-addon">at:</span>
-          <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" ng-model="timeSheet.fromAt" class="width:100%">
+          <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" value='<%= @timesheet_json["fromAt"] %>' class="width:100%">
           </div>
       </td>
     </table>
