@@ -202,6 +202,20 @@
         var app = angular.module('Timesheet', [])
         app.controller('TimesheetCtrl', ['$scope', '$http', function($scope, $http) {
 
+          Date.prototype.formattedDate = function (pattern) {
+              formattedDate = pattern.replace('yyyy', this.getFullYear().toString());
+              var mm = (this.getMonth() + 1).toString(); // getMonth() is zero-based
+              mm = mm.length > 1 ? mm : '0' + mm;
+              formattedDate = formattedDate.replace('mm', mm);
+              var dd = this.getDate().toString();
+              dd = dd.length > 1 ? dd : '0' + dd;
+              formattedDate = formattedDate.replace('dd', dd);
+              return formattedDate;
+          };
+
+          var d = new Date();
+          pattern = 'dd/mm/yyyy';
+
           $scope.signupForm = {
             loading: false
           };
@@ -219,11 +233,11 @@
           $scope.timeSheet.machineNo = '<%= @schedule.machine_number %>';
           $scope.timeSheet.departure = '<%= @schedule.date.strftime("%d/%m/%Y %H:%M") %>'
           $scope.timeSheet.departureFrom = 'Nilpeter';
-          $scope.timeSheet.from = '';
+          $scope.timeSheet.from = d.formattedDate(pattern);
           $scope.timeSheet.fromAt = '<%= @schedule.company_name %>';
-          $scope.timeSheet.arrival = '';
+          $scope.timeSheet.arrival = '<%= @schedule.date.strftime("%d/%m/%Y") %>';
           $scope.timeSheet.arrivalIn = '<%= @schedule.company_name %>';
-          $scope.timeSheet.in = '';
+          $scope.timeSheet.in = d.formattedDate(pattern);
           $scope.timeSheet.inAt = 'Nilpeter';
           $scope.timeSheet.kilometers = '';
           $scope.timeSheet.car = '';
@@ -310,10 +324,10 @@
           $scope.timeSheet.concerningNo = false;
 
           $scope.timeSheet.customerComment = '';
-          $scope.timeSheet.nilpeterComment = '';
+          $scope.timeSheet.nilpeterComment = '<%= @schedule.project %>';
 
-          $scope.timeSheet.nilpeterDate = '';
-          $scope.timeSheet.customerDate = '';
+          $scope.timeSheet.nilpeterDate = d.formattedDate(pattern);
+          $scope.timeSheet.customerDate = d.formattedDate(pattern);
 
           $scope.submitTimeSheet = function() {
 
