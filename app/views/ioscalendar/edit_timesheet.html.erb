@@ -121,7 +121,14 @@
           <br>
           10540 Thailand
         </p></div>
-        <h1 style="display:inline-block;float:right;">TIME SHEET</h1>
+        <div style="display:inline-block;float:right;">
+          <h1 >TIME SHEET
+          </h1>
+          <br>
+          <br>
+          <a style="display:inline-block;float:right;" href="/ioscalendar/print_timesheet/<%= @timesheet_id %>.pdf" target="_blank"><u>print</u></a>
+
+        </div>
       </div>
       <span ng-show="loading">
         <div class="loader" style="display: inline-block;"></div>
