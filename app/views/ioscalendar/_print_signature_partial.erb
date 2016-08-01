@@ -5,14 +5,6 @@
       <tr style="width:65%;border:none">
           <div class="input-group" style="text-align:center">
 
-          <!-- <input type="text" class="form-control test" placeholder="" aria-describedby="basic-addon1" ng-model="timeSheet.arrivalIn" title="Please enter your name"> -->
-          <!-- <%= text_field(:timesheet, :customer, :class => 'form-control', :placeholder => "", :value => @schedule.company_name) %> -->
-          <!-- <div id="nilpeterSignature" style="height:100px;"></div> -->
-          <!-- <div id="signature-pad" class="m-signature-pad" style="border:black">
-            <div class="m-signature-pad--body">
-              <canvas style="border:1px solid grey;width:50%; height:95px;"></canvas>
-            </div>
-          </div> -->
 
           <img style="height:100px;" src='<%= @timesheet.nil_sig %>'>
 
@@ -21,7 +13,7 @@
       <tr style="width:35%;border:none">
           <div class="input-group">
           <span class="input-group-addon">Date:</span>
-          <input type="text" style="margin-left:3%;width:87%" class="form-control" placeholder="" aria-describedby="basic-addon1" ng-model="timeSheet.nilpeterDate">
+          <input type="text" style="margin-left:3%;width:87%" class="form-control" placeholder="" aria-describedby="basic-addon1" value="<%= @timesheet_json["nilpeterDate"] %>">
           </div>
       </tr>
 
@@ -33,14 +25,7 @@
       <tr style="width:65%;border:none">
           <div class="input-group" style="text-align:center">
 
-          <!-- <input type="text" class="form-control test" placeholder="" aria-describedby="basic-addon1" ng-model="timeSheet.arrivalIn" title="Please enter your name"> -->
-          <!-- <%= text_field(:timesheet, :customer, :class => 'form-control', :placeholder => "", :value => @schedule.company_name) %> -->
-          <!-- <div id="customerSignature" style="height:100px;"></div> -->
-          <!-- <div id="signature-pad2" class="m-signature-pad" style="border:black">
-            <div class="m-signature-pad--body">
-              <canvas style="border:1px solid grey;width:50%; height: 95px"></canvas>
-            </div>
-          </div> -->
+
           <img style="height:100px;" src='<%= @timesheet.cus_sig %>'>
 
           </div>
@@ -48,7 +33,7 @@
       <tr style="width:35%;border:none">
           <div class="input-group">
           <span class="input-group-addon">Date:</span>
-          <input type="text" style="margin-left:3%;width:87%" class="form-control" placeholder="" aria-describedby="basic-addon1" ng-model="timeSheet.customerDate">
+          <input type="text" style="margin-left:3%;width:87%" class="form-control" placeholder="" aria-describedby="basic-addon1" value="<%= @timesheet_json["customerDate"] %>">
           </div>
       </tr>
     </table>

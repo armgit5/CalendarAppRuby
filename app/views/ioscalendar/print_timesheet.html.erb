@@ -64,6 +64,10 @@
         width:100%;
       }
 
+      .input-group input {
+        border: none;
+      }
+
       .loader {
         border: 10px solid #f3f3f3;
         border-radius: 50%;
@@ -107,7 +111,7 @@
   <body ng-controller="TimesheetCtrl">
     <div class="container">
       <div style="color:red">
-        <%= link_to image_tag("favicon.jpg"), {action: 'index', controller: 'calendar'},
+        <%= link_to image_tag("nilpeter.png"), {action: 'index', controller: 'calendar'},
          style: "display:inline-block;float:left",
          height:"90%"%>
         <div style="display:inline-block;float:left">
@@ -120,12 +124,21 @@
           <br>
           10540 Thailand
         </p></div>
-        <h1 style="display:inline-block;float:right;">TIME SHEET</h1>
-      </div>
+        <div style="display:inline-block;float:right;">
+          <h1 >TIME SHEET
+          </h1>
+          <br>
+          <br>
+          <a style="display:inline-block;float:right;" href="/ioscalendar/print_timesheet/<%= @timesheet_id %>.pdf" target="_blank"><u>print</u></a>
+
+        </div>
+
+        </div>
       <span ng-show="loading">
         <div class="loader" style="display: inline-block;"></div>
         <div style="display: inline-block;">Loading timesheet ...</div>
       </span>
+
       <form ng-submit="submitTimeSheet()" id="sign-up-form" class="form-signin" name="signup">
         <table class="table table-bordered" style="margin:0">
 
@@ -158,49 +171,22 @@
         console.log('<%= @current_user_id %>');
         'use strict';
 
-        // var wrapper = document.getElementById("signature-pad"),
-        //     canvas = wrapper.querySelector("canvas"),
-        //     signaturePad;
-        //
-        // var wrapper2 = document.getElementById("signature-pad2"),
-        //     canvas2 = wrapper2.querySelector("canvas"),
-        //     signaturePad2;
-        //
-        // // Adjust canvas coordinate space taking into account pixel ratio,
-        // // to make it look crisp on mobile devices.
-        // // This also causes canvas to be cleared.
-        // function resizeCanvas() {
-        //     // When zoomed out to less than 100%, for some very strange reason,
-        //     // some browsers report devicePixelRatio as less than 1
-        //     // and only part of the canvas is cleared then.
-        //     var ratio =  Math.max(window.devicePixelRatio || 1, 1);
-        //     canvas.width = canvas.offsetWidth * ratio;
-        //     canvas.height = canvas.offsetHeight * ratio;
-        //     canvas.getContext("2d").scale(ratio, ratio);
-        //
-        //     canvas2.width = canvas.offsetWidth * ratio;
-        //     canvas2.height = canvas.offsetHeight * ratio;
-        //     canvas2.getContext("2d").scale(ratio, ratio);
-        // }
-        //
-        // // window.onresize = resizeCanvas;
-        // resizeCanvas();
-        //
-        // signaturePad = new SignaturePad(canvas);
-        // signaturePad2 = new SignaturePad(canvas2);
-        //
-        // $("#clearNil").click(function() {
-        //   signaturePad.clear();
-        // });
-        //
-        // $("#clearCus").click(function() {
-        //   signaturePad2.clear();
-        // });
-        //
-        // $("#jobNo").val('<%= @schedule.job_num %>');
-        //
-        // signaturePad.fromDataURL('<%= @timesheet.nil_sig %>');
-        // signaturePad2.fromDataURL('<%= @timesheet.cus_sig %>');
+        $('#jfy').attr('checked','<%= @timesheet_json["jobFinishedYes"] %>' === "true");
+        $('#jfn').attr('checked','<%= @timesheet_json["jobFinishedNo"] %>' === "true");
+        $('#sparePartYes').attr('checked','<%= @timesheet_json["sparePartYes"] %>' === "true");
+        $('#sparePartNo').attr('checked','<%= @timesheet_json["sparePartNo"] %>' === "true");
+        $('#partYes').attr('checked','<%= @timesheet_json["partYes"] %>' === "true");
+        $('#partNo').attr('checked','<%= @timesheet_json["partNo"] %>' === "true");
+        $('#mechanicalYes').attr('checked','<%= @timesheet_json["mechanicalYes"] %>' === "true");
+        $('#mechanicalNo').attr('checked','<%= @timesheet_json["mechanicalNo"] %>' === "true");
+        $('#electricalYes').attr('checked','<%= @timesheet_json["electricalYes"] %>' === "true");
+        $('#electricalNo').attr('checked','<%= @timesheet_json["electricalNo"] %>' === "true");
+        $('#serviceYes').attr('checked','<%= @timesheet_json["serviceYes"] %>' === "true");
+        $('#serviceNo').attr('checked','<%= @timesheet_json["serviceNo"] %>' === "true");
+        $('#graphicYes').attr('checked','<%= @timesheet_json["graphicYes"] %>' === "true");
+        $('#graphicNo').attr('checked','<%= @timesheet_json["graphicNo"] %>' === "true");
+        $('#concerningYes').attr('checked','<%= @timesheet_json["concerningYes"] %>' === "true");
+        $('#concerningNo').attr('checked','<%= @timesheet_json["concerningNo"] %>' === "true");
 
 
         var app = angular.module('Timesheet', [])
@@ -212,113 +198,8 @@
 
           $scope.loading = false;
 
-          // initializing params
-          $scope.timeSheet = {};
-          $scope.timeSheet.jobNo = '<%= @timesheet_json["jobNo"] %>';
-          $scope.timeSheet.date = '<%= @timesheet_json["date"] %>';
-          $scope.timeSheet.customer = '<%= @timesheet_json["customer"] %>';
-          $scope.timeSheet.country = '<%= @timesheet_json["country"] %>';
-          $scope.timeSheet.engineer = '<%= @timesheet_json["engineer"] %>';
-          $scope.timeSheet.machineType = '<%= @timesheet_json["machineType"] %>';
-          $scope.timeSheet.machineNo = '<%= @timesheet_json["machineNo"] %>';
-          $scope.timeSheet.departure = '<%= @timesheet_json["departure"] %>';
-          $scope.timeSheet.departureFrom = '<%= @timesheet_json["departureFrom"] %>';
-          $scope.timeSheet.from = '<%= @timesheet_json["from"] %>';
-          $scope.timeSheet.fromAt = '<%= @timesheet_json["fromAt"] %>';
-          $scope.timeSheet.arrival = '<%= @timesheet_json["arrival"] %>';
-          $scope.timeSheet.arrivalIn = '<%= @timesheet_json["arrivalIn"] %>';
-          $scope.timeSheet.in = '<%= @timesheet_json["in"] %>';
-          $scope.timeSheet.inAt = '<%= @timesheet_json["inAt"] %>';
-          $scope.timeSheet.kilometers = '<%= @timesheet_json["kilometers"] %>';
-          $scope.timeSheet.car = '<%= @timesheet_json["car"] %>';
-          $scope.timeSheet.ownCar = '<%= @timesheet_json["ownCar"] %>';
-
-          $scope.timeSheet.mondayOutN = '<%= @timesheet_json["mondayOutN"] %>';
-          $scope.timeSheet.mondayOutO = '<%= @timesheet_json["mondayOutO"] %>';
-          $scope.timeSheet.mondayWeekN = '<%= @timesheet_json["mondayWeekN"] %>';
-          $scope.timeSheet.mondayWeekO = '<%= @timesheet_json["mondayWeekO"] %>';
-          $scope.timeSheet.mondayWeek2N = '<%= @timesheet_json["mondayWeek2N"] %>';
-          $scope.timeSheet.mondayWeek2O = '<%= @timesheet_json["mondayWeek2O"] %>';
-          $scope.timeSheet.mondayBackN = '<%= @timesheet_json["mondayBackN"] %>';
-          $scope.timeSheet.mondayBackO = '<%= @timesheet_json["mondayBackO"] %>';
-
-          $scope.timeSheet.tuesdayOutN = '<%= @timesheet_json["tuesdayOutN"] %>';
-          $scope.timeSheet.tuesdayOutO = '<%= @timesheet_json["tuesdayOutO"] %>';
-          $scope.timeSheet.tuesdayWeekN = '<%= @timesheet_json["tuesdayWeekN"] %>';
-          $scope.timeSheet.tuesdayWeekO = '<%= @timesheet_json["tuesdayWeekO"] %>';
-          $scope.timeSheet.tuesdayWeek2N = '<%= @timesheet_json["tuesdayWeek2N"] %>';
-          $scope.timeSheet.tuesdayWeek2O = '<%= @timesheet_json["tuesdayWeek2O"] %>';
-          $scope.timeSheet.tuesdayBackN = '<%= @timesheet_json["tuesdayBackN"] %>';
-          $scope.timeSheet.tuesdayBackO = '<%= @timesheet_json["tuesdayBackO"] %>';
-
-          $scope.timeSheet.wednesdayOutN = '<%= @timesheet_json["wednesdayOutN"] %>';
-          $scope.timeSheet.wednesdayOutO = '<%= @timesheet_json["wednesdayOutO"] %>';
-          $scope.timeSheet.wednesdayWeekN = '<%= @timesheet_json["wednesdayWeekN"] %>';
-          $scope.timeSheet.wednesdayWeekO = '<%= @timesheet_json["wednesdayWeekO"] %>';
-          $scope.timeSheet.wednesdayWeek2N = '<%= @timesheet_json["wednesdayWeek2N"] %>';
-          $scope.timeSheet.wednesdayWeek2O = '<%= @timesheet_json["wednesdayWeek2O"] %>';
-          $scope.timeSheet.wednesdayBackN = '<%= @timesheet_json["wednesdayBackN"] %>';
-          $scope.timeSheet.wednesdayBackO = '<%= @timesheet_json["wednesdayBackO"] %>';
-
-          $scope.timeSheet.thursdayOutN = '<%= @timesheet_json["thursdayOutN"] %>';
-          $scope.timeSheet.thursdayOutO = '<%= @timesheet_json["thursdayOutO"] %>';
-          $scope.timeSheet.thursdayWeekN = '<%= @timesheet_json["thursdayWeekN"] %>';
-          $scope.timeSheet.thursdayWeekO = '<%= @timesheet_json["thursdayWeekO"] %>';
-          $scope.timeSheet.thursdayWeek2N = '<%= @timesheet_json["thursdayWeek2N"] %>';
-          $scope.timeSheet.thursdayWeek2O = '<%= @timesheet_json["thursdayWeek2O"] %>';
-          $scope.timeSheet.thursdayBackN = '<%= @timesheet_json["thursdayBackN"] %>';
-          $scope.timeSheet.thursdayBackO = '<%= @timesheet_json["thursdayBackO"] %>';
-
-          $scope.timeSheet.fridayOutN = '<%= @timesheet_json["fridayOutN"] %>';
-          $scope.timeSheet.fridayOutO = '<%= @timesheet_json["fridayOutO"] %>';
-          $scope.timeSheet.fridayWeekN = '<%= @timesheet_json["fridayWeekN"] %>';
-          $scope.timeSheet.fridayWeekO = '<%= @timesheet_json["fridayWeekO"] %>';
-          $scope.timeSheet.fridayWeek2N = '<%= @timesheet_json["fridayWeek2N"] %>';
-          $scope.timeSheet.fridayWeek2O = '<%= @timesheet_json["fridayWeek2O"] %>';
-          $scope.timeSheet.fridayBackN = '<%= @timesheet_json["fridayBackN"] %>';
-          $scope.timeSheet.fridayBackO = '<%= @timesheet_json["fridayBackO"] %>';
-
-          $scope.timeSheet.saturdayOutN = '<%= @timesheet_json["saturdayOutN"] %>';
-          $scope.timeSheet.saturdayOutO = '<%= @timesheet_json["saturdayOutO"] %>';
-          $scope.timeSheet.saturdayWeekN = '<%= @timesheet_json["saturdayWeekN"] %>';
-          $scope.timeSheet.saturdayWeekO = '<%= @timesheet_json["saturdayWeekO"] %>';
-          $scope.timeSheet.saturdayWeek2N = '<%= @timesheet_json["saturdayWeek2N"] %>';
-          $scope.timeSheet.saturdayWeek2O = '<%= @timesheet_json["saturdayWeek2O"] %>';
-          $scope.timeSheet.saturdayBackN = '<%= @timesheet_json["saturdayBackN"] %>';
-          $scope.timeSheet.saturdayBackO = '<%= @timesheet_json["saturdayBackO"] %>';
-
-          $scope.timeSheet.sundayOutN = '<%= @timesheet_json["sundayOutN"] %>';
-          $scope.timeSheet.sundayOutO = '<%= @timesheet_json["sundayOutO"] %>';
-          $scope.timeSheet.sundayWeekN = '<%= @timesheet_json["sundayWeekN"] %>';
-          $scope.timeSheet.sundayWeekO = '<%= @timesheet_json["sundayWeekO"] %>';
-          $scope.timeSheet.sundayWeek2N = '<%= @timesheet_json["sundayWeek2N"] %>';
-          $scope.timeSheet.sundayWeek2O = '<%= @timesheet_json["sundayWeek2O"] %>';
-          $scope.timeSheet.sundayBackN = '<%= @timesheet_json["sundayBackN"] %>';
-          $scope.timeSheet.sundayBackO = '<%= @timesheet_json["sundayBackO"] %>';
-
-          $scope.timeSheet.jobFinishedYes ='<%= @timesheet_json["jobFinishedYes"] %>' === "true";
-          $scope.timeSheet.jobFinishedNo = '<%= @timesheet_json["jobFinishedNo"] %>' === "true";
-          $scope.timeSheet.sparePartYes = '<%= @timesheet_json["sparePartYes"] %>' === "true";
-          $scope.timeSheet.sparePartNo = '<%= @timesheet_json["sparePartNo"] %>' === "true";
-          $scope.timeSheet.partYes = '<%= @timesheet_json["partYes"] %>' === "true";
-          $scope.timeSheet.partNo = '<%= @timesheet_json["partNo"] %>' === "true";
-          $scope.timeSheet.mechanicalYes = '<%= @timesheet_json["mechanicalYes"] %>' === "true";
-          $scope.timeSheet.mechanicalNo = '<%= @timesheet_json["mechanicalNo"] %>' === "true";
-          $scope.timeSheet.electricalYes = '<%= @timesheet_json["electricalYes"] %>' === "true";
-          $scope.timeSheet.electricalNo = '<%= @timesheet_json["electricalNo"] %>' === "true";
-          $scope.timeSheet.serviceYes = '<%= @timesheet_json["serviceYes"] %>' === "true";
-          $scope.timeSheet.serviceNo = '<%= @timesheet_json["serviceNo"] %>' === "true";
-          $scope.timeSheet.graphicYes = '<%= @timesheet_json["graphicYes"] %>' === "true";
-          $scope.timeSheet.graphicNo = '<%= @timesheet_json["graphicNo"] %>' === "true";
-          $scope.timeSheet.concerningYes = '<%= @timesheet_json["concerningYes"] %>' === "true";
-          $scope.timeSheet.concerningNo = '<%= @timesheet_json["concerningNo"] %>' === "true";
-
-          $scope.timeSheet.customerComment = '<%= @timesheet_json["customerComment"].gsub(/\n/, '\n') %>';
-          $scope.timeSheet.nilpeterComment = '<%= @timesheet_json["nilpeterComment"].gsub(/\n/, '\n') %>';
-
-          $scope.timeSheet.nilpeterDate = '<%= @timesheet_json["nilpeterDate"] %>';
-          $scope.timeSheet.customerDate = '<%= @timesheet_json["customerDate"] %>';
-
+          // $scope.timeSheet.customerComment = '<%= @timesheet_json["customerComment"].gsub(/\n/, '\n') %>';
+          // $scope.timeSheet.nilpeterComment = '<%= @timesheet_json["nilpeterComment"].gsub(/\n/, '\n') %>';
 
           $scope.deselect = function() {
             var nilSig = $('#nilpeterSignature').signature('toJSON');
