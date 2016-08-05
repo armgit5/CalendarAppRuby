@@ -3,7 +3,6 @@
   <head>
     <!-- Required meta tags always come first -->
     <meta charset="utf-8">
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=0.25, user-scalable=yes" /> -->
     <meta name="viewport" content="initial-scale=0.25,maximum-scale=0.5,width=device-width,user-scalable=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
@@ -93,7 +92,7 @@
 
     <!-- Signature -->
     <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/themes/south-street/jquery-ui.css" rel="stylesheet">
-
+    <!-- <%= stylesheet_link_tag "jquery.signature" %> -->
     <style>
     .kbw-signature { width: 400px; height: 200px; }
     </style>
@@ -102,15 +101,16 @@
     <![endif]-->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/jquery-ui.min.js"></script>
+    <!-- <%= javascript_include_tag "jquery.signature" %> -->
     <%= javascript_include_tag "signature_pad" %>
-
     <script src="https://npmcdn.com/angular-toastr/dist/angular-toastr.tpls.js"></script>
-<link rel="stylesheet" href="https://npmcdn.com/angular-toastr/dist/angular-toastr.css" />
+    <link rel="stylesheet" href="https://npmcdn.com/angular-toastr/dist/angular-toastr.css" />
+
   </head>
   <body ng-controller="TimesheetCtrl">
     <div class="container">
       <div style="color:red">
-        <%= link_to image_tag("favicon.ico"), {action: 'index', controller: 'calendar'},
+        <%= link_to image_tag("favicon.ico"), {action: 'index', controller: 'register'},
          style: "display:inline-block;float:left",
          height:"90%"%>
         <div style="display:inline-block;float:left">
@@ -123,15 +123,21 @@
           <br>
           10540 Thailand
         </p></div>
-        <h1 style="display:inline-block;float:right;">TIME SHEET</h1>
+        <div style="display:inline-block;float:right;">
+          <h1 >TIME SHEET
+          </h1>
+          <br>
+          <br>
+          <!-- <a style="display:inline-block;float:right;" href="/ioscalendar/print_timesheet/<%= @timesheet_id %>.pdf" target="_blank"><u>print</u></a> -->
+
+        </div>
       </div>
       <span ng-show="loading">
         <div class="loader" style="display: inline-block;"></div>
         <div style="display: inline-block;">Loading timesheet ...</div>
       </span>
-      <form ng-submit="submitTimeSheet()" id="sign-up-form" class="form-signin" name="signup">
+      <form ng-submit="updateTimeSheet()" id="sign-up-form" class="form-signin" name="signup">
         <table class="table table-bordered" style="margin:0">
-
           <tbody>
               <%= render 'order_date_partial' %>
               <%= render 'customer_partial' %>
@@ -143,14 +149,15 @@
               <%= render 'sundries_partial' %>
               <%= render 'customer_comment_partial' %>
               <%= render 'nilpeter_comment_partial' %>
-              <%= render 'signature_partial' %>
+              <%= render 'edit_signature_partial' %>
+
           </tbody>
       </table>
 
-      <button class="btn btn-primary" id="submitButton" type="submit" ng-disabled="signupForm.loading" hidden>
-        <span ng-show="!signupForm.loading">Create IOS Timesheet</span>
+      <button class="btn btn-primary" id="submitButton" type="submit" ng-disabled="signupForm.loading">
+        <span ng-show="!signupForm.loading">Edit Timesheet</span>
         <span class="overlord-loading-spinner fa fa-spinner fa-spin" ng-show="signupForm.loading" ></span>
-        <span ng-show="signupForm.loading" ng-disabled="signupForm.loading">Creating timesheet ...</span>
+        <span ng-show="signupForm.loading">Updating timesheet...</span>
       </button>
     </form>
       <!-- <button ng-click="deselect()">test</button> -->
@@ -158,7 +165,10 @@
 
     <!-- jQuery first, then Bootstrap JS. -->
     <script>
-        console.log('<%= @current_user_id %>');
+        // console.log('<%=(raw @timesheet_nil_sig)%>');
+        var a = (JSON.parse(<%=raw @timesheet_data.to_json %>));
+        console.log(<%= @timesheet_id %>);
+
         'use strict';
 
         var wrapper = document.getElementById("signature-pad"),
@@ -192,6 +202,9 @@
         signaturePad = new SignaturePad(canvas);
         signaturePad2 = new SignaturePad(canvas2);
 
+        signaturePad.fromDataURL('<%= @timesheet.nil_sig %>');
+        signaturePad2.fromDataURL('<%= @timesheet.cus_sig %>');
+
         $("#clearNil").click(function() {
           signaturePad.clear();
         });
@@ -200,23 +213,9 @@
           signaturePad2.clear();
         });
 
-
         var app = angular.module('Timesheet', ['toastr'])
         app.controller('TimesheetCtrl', ['$scope', '$http', 'toastr', function($scope, $http, $toastr) {
-
-          Date.prototype.formattedDate = function (pattern) {
-              formattedDate = pattern.replace('yyyy', this.getFullYear().toString());
-              var mm = (this.getMonth() + 1).toString(); // getMonth() is zero-based
-              mm = mm.length > 1 ? mm : '0' + mm;
-              formattedDate = formattedDate.replace('mm', mm);
-              var dd = this.getDate().toString();
-              dd = dd.length > 1 ? dd : '0' + dd;
-              formattedDate = formattedDate.replace('dd', dd);
-              return formattedDate;
-          };
-
-          var d = new Date();
-          pattern = 'dd/mm/yyyy';
+          var timesheet = JSON.parse(<%=raw @timesheet_data.to_json %>);
 
           $scope.signupForm = {
             loading: false
@@ -224,118 +223,116 @@
 
           $scope.loading = false;
 
-          // initializing params
           $scope.timeSheet = {};
-          $scope.timeSheet.jobNo = '<%= @schedule.job_num %>';
-          $scope.timeSheet.date = '<%= @schedule.date.strftime("%d/%m/%Y") %>';
-          $scope.timeSheet.customer = '<%= @schedule.company_name %>';
-          $scope.timeSheet.country = 'Thailand';
-          $scope.timeSheet.engineer = '<%= @engineers %>';
-          $scope.timeSheet.machineType = '<%= @product_types %>';
-          $scope.timeSheet.machineNo = '<%= @schedule.machine_number %>';
-          $scope.timeSheet.departure = '<%= @schedule.date.strftime("%d/%m/%Y %H:%M") %>'
-          $scope.timeSheet.departureFrom = 'Nilpeter';
-          $scope.timeSheet.from = d.formattedDate(pattern);
-          $scope.timeSheet.fromAt = '<%= @schedule.company_name %>';
-          $scope.timeSheet.arrival = '<%= @schedule.date.strftime("%d/%m/%Y") %>';
-          $scope.timeSheet.arrivalIn = '<%= @schedule.company_name %>';
-          $scope.timeSheet.in = d.formattedDate(pattern);
-          $scope.timeSheet.inAt = 'Nilpeter';
-          $scope.timeSheet.kilometers = '';
-          $scope.timeSheet.car = '';
-          $scope.timeSheet.ownCar = 'X';
+          $scope.timeSheet.jobNo = timesheet.jobNo;
+          $scope.timeSheet.date = timesheet.date;
+          $scope.timeSheet.customer = timesheet.customer;
+          $scope.timeSheet.country = timesheet.country;
+          $scope.timeSheet.engineer = timesheet.engineer;
+          $scope.timeSheet.machineType = timesheet.machineType;
+          $scope.timeSheet.machineNo = timesheet.machineNo;
+          $scope.timeSheet.departure = timesheet.departure;
+          $scope.timeSheet.departureFrom = timesheet.departureFrom;
+          $scope.timeSheet.from = timesheet.from;
+          $scope.timeSheet.fromAt = timesheet.fromAt;
+          $scope.timeSheet.arrival = timesheet.arrival;
+          $scope.timeSheet.arrivalIn = timesheet.arrivalIn;
+          $scope.timeSheet.in = timesheet.in;
+          $scope.timeSheet.inAt = timesheet.inAt;
+          $scope.timeSheet.kilometers = timesheet.kilometers;
+          $scope.timeSheet.car = timesheet.car;
+          $scope.timeSheet.ownCar = timesheet.ownCar;
 
-          $scope.timeSheet.mondayOutN = '';
-          $scope.timeSheet.mondayOutO = '';
-          $scope.timeSheet.mondayWeekN = '';
-          $scope.timeSheet.mondayWeekO = '';
-          $scope.timeSheet.mondayWeek2N = '';
-          $scope.timeSheet.mondayWeek2O = '';
-          $scope.timeSheet.mondayBackN = '';
-          $scope.timeSheet.mondayBackO = '';
+          $scope.timeSheet.mondayOutN = timesheet.mondayOutN;
+          $scope.timeSheet.mondayOutO = timesheet.mondayOutO;
+          $scope.timeSheet.mondayWeekN = timesheet.mondayWeekN;
+          $scope.timeSheet.mondayWeekO = timesheet.mondayWeekO;
+          $scope.timeSheet.mondayWeek2N = timesheet.mondayWeek2N;
+          $scope.timeSheet.mondayWeek2O = timesheet.mondayWeek2O;
+          $scope.timeSheet.mondayBackN = timesheet.mondayBackN;
+          $scope.timeSheet.mondayBackO = timesheet.mondayBackO;
 
-          $scope.timeSheet.tuesdayOutN = '';
-          $scope.timeSheet.tuesdayOutO = '';
-          $scope.timeSheet.tuesdayWeekN = '';
-          $scope.timeSheet.tuesdayWeekO = '';
-          $scope.timeSheet.tuesdayWeek2N = '';
-          $scope.timeSheet.tuesdayWeek2O = '';
-          $scope.timeSheet.tuesdayBackN = '';
-          $scope.timeSheet.tuesdayBackO = '';
+          $scope.timeSheet.tuesdayOutN = timesheet.tuesdayOutN;
+          $scope.timeSheet.tuesdayOutO = timesheet.tuesdayOutO;
+          $scope.timeSheet.tuesdayWeekN = timesheet.tuesdayWeekN;
+          $scope.timeSheet.tuesdayWeekO = timesheet.tuesdayWeekO;
+          $scope.timeSheet.tuesdayWeek2N = timesheet.tuesdayWeek2N;
+          $scope.timeSheet.tuesdayWeek2O = timesheet.tuesdayWeek2O;
+          $scope.timeSheet.tuesdayBackN = timesheet.tuesdayBackN;
+          $scope.timeSheet.tuesdayBackO = timesheet.tuesdayBackO;
 
-          $scope.timeSheet.wednesdayOutN = '';
-          $scope.timeSheet.wednesdayOutO = '';
-          $scope.timeSheet.wednesdayWeekN = '';
-          $scope.timeSheet.wednesdayWeekO = '';
-          $scope.timeSheet.wednesdayWeek2N = '';
-          $scope.timeSheet.wednesdayWeek2O = '';
-          $scope.timeSheet.wednesdayBackN = '';
-          $scope.timeSheet.wednesdayBackO = '';
+          $scope.timeSheet.wednesdayOutN = timesheet.wednesdayOutN;
+          $scope.timeSheet.wednesdayOutO = timesheet.wednesdayOutO;
+          $scope.timeSheet.wednesdayWeekN = timesheet.wednesdayWeekN;
+          $scope.timeSheet.wednesdayWeekO = timesheet.wednesdayWeekO;
+          $scope.timeSheet.wednesdayWeek2N = timesheet.wednesdayWeek2N;
+          $scope.timeSheet.wednesdayWeek2O = timesheet.wednesdayWeek2O;
+          $scope.timeSheet.wednesdayBackN = timesheet.wednesdayBackN;
+          $scope.timeSheet.wednesdayBackO = timesheet.wednesdayBackO;
 
-          $scope.timeSheet.thursdayOutN = '';
-          $scope.timeSheet.thursdayOutO = '';
-          $scope.timeSheet.thursdayWeekN = '';
-          $scope.timeSheet.thursdayWeekO = '';
-          $scope.timeSheet.thursdayWeek2N = '';
-          $scope.timeSheet.thursdayWeek2O = '';
-          $scope.timeSheet.thursdayBackN = '';
-          $scope.timeSheet.thursdayBackO = '';
+          $scope.timeSheet.thursdayOutN = timesheet.thursdayOutN;
+          $scope.timeSheet.thursdayOutO = timesheet.thursdayOutO;
+          $scope.timeSheet.thursdayWeekN = timesheet.thursdayWeekN;
+          $scope.timeSheet.thursdayWeekO = timesheet.thursdayWeekO;
+          $scope.timeSheet.thursdayWeek2N = timesheet.thursdayWeek2N;
+          $scope.timeSheet.thursdayWeek2O = timesheet.thursdayWeek2O;
+          $scope.timeSheet.thursdayBackN = timesheet.thursdayBackN;
+          $scope.timeSheet.thursdayBackO = timesheet.thursdayBackO;
 
-          $scope.timeSheet.fridayOutN = '';
-          $scope.timeSheet.fridayOutO = '';
-          $scope.timeSheet.fridayWeekN = '';
-          $scope.timeSheet.fridayWeekO = '';
-          $scope.timeSheet.fridayWeek2N = '';
-          $scope.timeSheet.fridayWeek2O = '';
-          $scope.timeSheet.fridayBackN = '';
-          $scope.timeSheet.fridayBackO = '';
+          $scope.timeSheet.fridayOutN = timesheet.fridayOutN;
+          $scope.timeSheet.fridayOutO = timesheet.fridayOutO;
+          $scope.timeSheet.fridayWeekN = timesheet.fridayWeekN;
+          $scope.timeSheet.fridayWeekO = timesheet.fridayWeekO;
+          $scope.timeSheet.fridayWeek2N = timesheet.fridayWeek2N;
+          $scope.timeSheet.fridayWeek2O = timesheet.fridayWeek2O;
+          $scope.timeSheet.fridayBackN = timesheet.fridayBackN;
+          $scope.timeSheet.fridayBackO = timesheet.fridayBackO;
 
-          $scope.timeSheet.saturdayOutN = '';
-          $scope.timeSheet.saturdayOutO = '';
-          $scope.timeSheet.saturdayWeekN = '';
-          $scope.timeSheet.saturdayWeekO = '';
-          $scope.timeSheet.saturdayWeek2N = '';
-          $scope.timeSheet.saturdayWeek2O = '';
-          $scope.timeSheet.saturdayBackN = '';
-          $scope.timeSheet.saturdayBackO = '';
+          $scope.timeSheet.saturdayOutN = timesheet.saturdayOutN;
+          $scope.timeSheet.saturdayOutO = timesheet.saturdayOutO;
+          $scope.timeSheet.saturdayWeekN = timesheet.saturdayWeekN;
+          $scope.timeSheet.saturdayWeekO = timesheet.saturdayWeekO;
+          $scope.timeSheet.saturdayWeek2N = timesheet.saturdayWeek2N;
+          $scope.timeSheet.saturdayWeek2O = timesheet.saturdayWeek2O;
+          $scope.timeSheet.saturdayBackN = timesheet.saturdayBackN;
+          $scope.timeSheet.saturdayBackO = timesheet.saturdayBackO;
 
-          $scope.timeSheet.sundayOutN = '';
-          $scope.timeSheet.sundayOutO = '';
-          $scope.timeSheet.sundayWeekN = '';
-          $scope.timeSheet.sundayWeekO = '';
-          $scope.timeSheet.sundayWeek2N = '';
-          $scope.timeSheet.sundayWeek2O = '';
-          $scope.timeSheet.sundayBackN = '';
-          $scope.timeSheet.sundayBackO = '';
+          $scope.timeSheet.sundayOutN = timesheet.sundayOutN;
+          $scope.timeSheet.sundayOutO = timesheet.sundayOutO;
+          $scope.timeSheet.sundayWeekN = timesheet.sundayWeekN;
+          $scope.timeSheet.sundayWeekO = timesheet.sundayWeekO;
+          $scope.timeSheet.sundayWeek2N = timesheet.sundayWeek2N;
+          $scope.timeSheet.sundayWeek2O = timesheet.sundayWeek2O;
+          $scope.timeSheet.sundayBackN = timesheet.sundayBackN;
+          $scope.timeSheet.sundayBackO = timesheet.sundayBackO;
 
-          $scope.timeSheet.jobFinishedYes = false;
-          $scope.timeSheet.jobFinishedNo = false;
-          $scope.timeSheet.sparePartYes = false;
-          $scope.timeSheet.sparePartNo = false;
-          $scope.timeSheet.partYes = false;
-          $scope.timeSheet.partNo = false;
-          $scope.timeSheet.mechanicalYes = false;
-          $scope.timeSheet.mechanicalNo = false;
-          $scope.timeSheet.electricalYes = false;
-          $scope.timeSheet.electricalNo = false;
-          $scope.timeSheet.serviceYes = false;
-          $scope.timeSheet.serviceNo = false;
-          $scope.timeSheet.graphicYes = false;
-          $scope.timeSheet.graphicNo = false;
-          $scope.timeSheet.concerningYes = false;
-          $scope.timeSheet.concerningNo = false;
+          $scope.timeSheet.jobFinishedYes = timesheet.jobFinishedYes;
+          $scope.timeSheet.jobFinishedNo = timesheet.jobFinishedNo;
+          $scope.timeSheet.sparePartYes = timesheet.sparePartYes;
+          $scope.timeSheet.sparePartNo = timesheet.sparePartNo;
+          $scope.timeSheet.partYes = timesheet.partYes;
+          $scope.timeSheet.partNo = timesheet.partNo;
+          $scope.timeSheet.mechanicalYes = timesheet.mechanicalYes;
+          $scope.timeSheet.mechanicalNo = timesheet.mechanicalNo;
+          $scope.timeSheet.electricalYes = timesheet.electricalYes;
+          $scope.timeSheet.electricalNo = timesheet.electricalNo;
+          $scope.timeSheet.serviceYes = timesheet.serviceYes;
+          $scope.timeSheet.serviceNo = timesheet.serviceNo;
+          $scope.timeSheet.graphicYes = timesheet.graphicYes;
+          $scope.timeSheet.graphicNo = timesheet.graphicNo;
+          $scope.timeSheet.concerningYes = timesheet.concerningYes;
+          $scope.timeSheet.concerningNo = timesheet.concerningNo;
+          $scope.timeSheet.customerComment = timesheet.customerComment;
+          $scope.timeSheet.nilpeterComment = timesheet.nilpeterComment;
+          $scope.timeSheet.nilpeterDate = timesheet.nilpeterDate;
+          $scope.timeSheet.customerDate = timesheet.customerDate;
 
-          $scope.timeSheet.customerComment = '';
-          $scope.timeSheet.nilpeterComment = '<%= @schedule.project %>';
-
-          $scope.timeSheet.nilpeterDate = d.formattedDate(pattern);
-          $scope.timeSheet.customerDate = d.formattedDate(pattern);
-
-          $scope.submitTimeSheet = function() {
+          $scope.updateTimeSheet = function() {
+            console.log("updateing timesheet");
 
             $scope.signupForm.loading = true;
 
-            $scope.timeSheet = {
+            var timeSheet = {
               jobNo: $scope.timeSheet.jobNo,
               date: $scope.timeSheet.date,
               customer: $scope.timeSheet.customer,
@@ -441,16 +438,15 @@
               customerDate: $scope.timeSheet.customerDate
             }
 
-            var timeSheetData = JSON.stringify($scope.timeSheet);
+            var timeSheetData = JSON.stringify(timeSheet);
             var nilSig = signaturePad.toDataURL();
             var cusSig = signaturePad2.toDataURL();
 
+            console.log(timeSheet);
             console.log(timeSheetData);
-            console.log(nilSig);
-            console.log(cusSig);
-            $http.post('/ioscalendar/create_timesheet', {
-              user_id: '<%= @current_user_id %>',
-              schedule_id: '<%= @schedule_id %>',
+            // console.log($scope.timeSheet);
+            $http.post('/ioscalendar/update_timesheet/', {
+              id : '<%= @timesheet_id %>',
               data : timeSheetData,
               nil_sig : nilSig,
               cus_sig : cusSig
@@ -461,11 +457,11 @@
             })
             .catch(function onError(sailsResponse) {
               console.log(sailsResponse);
-            }).
-            finally(function eitherWay() {
-              console.log("post to ios timeSheet");
-              $toastr.success('Successfully created');
+            })
+            .finally(function eitherWay() {
+              console.log("successfully edited on ios");
               $scope.signupForm.loading = false;
+              $toastr.success("Successfully edited");
             });
           };
 
@@ -481,12 +477,22 @@
     <!-- Signature -->
     <script>
 
-      function autoSize(ele) {
-         ele.style.height = 'auto';
-         var newHeight = (ele.scrollHeight > 32 ? ele.scrollHeight : 32);
-         ele.style.height = newHeight.toString() + 'px';
-      }
+    function autoSize(ele) {
+       ele.style.height = 'auto';
+       var newHeight = (ele.scrollHeight > 32 ? ele.scrollHeight : 32);
+       ele.style.height = newHeight.toString() + 'px';
+    }
 
+    function setSize(ele) {
+       ele.style.height = 'auto';
+       var newHeight = (ele.scrollHeight > 32 ? ele.scrollHeight : 32);
+       ele.style.height = newHeight.toString() + 'px';
+    }
+
+    $( document ).ready(function() {
+      setSize($('textarea')[0]);
+      setSize($('textarea')[1]);
+    });
     </script>
 
 

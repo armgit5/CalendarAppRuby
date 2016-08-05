@@ -29,6 +29,26 @@ class IoscalendarController < ActionController::Base
     redirect_to(:controller => "register", :action => "index")
   end
 
+  # def create_ios_timesheet
+  #
+  #   Rails.logger.info "timesheet data controller value #{params[:timesheet_nil_sig]}"
+  #   @timesheet = Timesheet.new
+  #   @timesheet.user_id = params[:user_id]
+  #   @timesheet.schedule_id = params[:schedule_id]
+  #   @timesheet.data = params[:data]
+  #   @timesheet.nil_sig = params[:nil_sig]
+  #   @timesheet.cus_sig = params[:cus_sig]
+  #   @timesheet.save!
+  #
+  #   @schedule = Schedule.find(params[:schedule_id])
+  #   @schedule.timesheet_id = @timesheet.id
+  #   @schedule.update_attributes!(params[:timesheet_id])
+  #
+  #   render :json =>  {
+  #     :status => "success"
+  #   }
+  # end
+
   def timesheet
 
     id = params[:id]
