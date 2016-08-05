@@ -448,6 +448,9 @@
             console.log(timeSheetData);
             console.log(nilSig);
             console.log(cusSig);
+
+            $toastr.info("creating please wait...");
+
             $http.post('/ioscalendar/create_timesheet', {
               user_id: '<%= @current_user_id %>',
               schedule_id: '<%= @schedule_id %>',

@@ -329,7 +329,7 @@
 
           $scope.updateTimeSheet = function() {
             console.log("updateing timesheet");
-
+            $toastr.info("updating please wait...");
             $scope.signupForm.loading = true;
 
             var timeSheet = {
