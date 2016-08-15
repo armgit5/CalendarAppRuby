@@ -5,7 +5,8 @@ class Api::SchedulesController < Api::ApiController
         # end_month = begin_month.end_of_month
         # schedules = Schedule.where('date >= ? AND date <= ?',begin_month,end_month).order("date desc")
         # render json: schedules
-        schedule = Schedule.where('user_id = ?', params[:id]).order("id desc").limit(25)
+        # schedule = Schedule.where('user_id = ?', params[:id]).order("id desc").limit(25)
+        schedule = Schedule.joins(:engineers).where('engineers.user_id = ?', params[:id]).order("id desc").limit(25)
         render json: schedule
       end
 
