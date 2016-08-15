@@ -149,7 +149,7 @@
               <%= render 'sundries_partial' %>
               <%= render 'customer_comment_partial' %>
               <%= render 'nilpeter_comment_partial' %>
-              <%= render 'edit_signature_partial' %>
+              <%= render 'edit_iossignature_partial' %>
 
           </tbody>
       </table>
@@ -200,7 +200,9 @@
         resizeCanvas();
 
         signaturePad = new SignaturePad(canvas);
+        signaturePad.off()
         signaturePad2 = new SignaturePad(canvas2);
+        signaturePad2.off()
 
         signaturePad.fromDataURL('<%= @timesheet.nil_sig %>');
         signaturePad2.fromDataURL('<%= @timesheet.cus_sig %>');
