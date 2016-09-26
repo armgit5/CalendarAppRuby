@@ -94,6 +94,11 @@
         height:"90%";
       }
 
+      table, tr, td, th, tbody, thead, tfoot {
+          page-break-inside: avoid;
+      }
+
+
 
     </style>
 
@@ -104,9 +109,6 @@
   <body ng-controller="TimesheetCtrl">
     <div class="container">
       <div style="color:red">
-        <!-- <%= link_to image_tag("favicon.ico"), {action: 'index', controller: 'calendar'},
-         style: "display:inline-block;float:left",
-         height:"90%"%> -->
           <%= wicked_pdf_image_tag "nilpeter.png"%>
         <div style="display:inline-block;float:left">
           <br>
@@ -120,11 +122,7 @@
         </p></div>
         <h1 style="display:inline-block;float:right;">TIME SHEET</h1>
       </div>
-      <!-- <span ng-show="loading">
-        <div class="loader" style="display: inline-block;"></div>
-        <div style="display: inline-block;">Loading timesheet ...</div>
-      </span> -->
-      <form ng-submit="submitTimeSheet()" id="sign-up-form" class="form-signin" name="signup">
+
         <table class="table table-bordered" style="margin:0">
 
           <tbody>
@@ -142,18 +140,13 @@
           </tbody>
       </table>
 
-      <!-- <button class="btn btn-primary" type="submit" ng-disabled="signupForm.loading">
-        <span ng-show="!signupForm.loading">Create Timesheet</span>
-        <span class="overlord-loading-spinner fa fa-spinner fa-spin" ng-show="signupForm.loading" ></span>
-        <span ng-show="signupForm.loading" ng-disabled="signupForm.loading">Creating timesheet ...</span>
-      </button> -->
-    </form>
-      <!-- <button ng-click="deselect()">test</button> -->
+
     </div>
 
-    <!-- jQuery first, then Bootstrap JS. -->
+    <!-- Auto resize textarea -->
+    <!-- Signature -->
     <script>
-        // console.log('<%= @current_user_id %>');
+        console.log('<%= @current_user_id %>');
         'use strict';
 
         $('#jfy').attr('checked','<%= @timesheet_json["jobFinishedYes"] %>' === "true");
@@ -173,6 +166,7 @@
         $('#concerningYes').attr('checked','<%= @timesheet_json["concerningYes"] %>' === "true");
         $('#concerningNo').attr('checked','<%= @timesheet_json["concerningNo"] %>' === "true");
 
+
         var app = angular.module('Timesheet', [])
         app.controller('TimesheetCtrl', ['$scope', '$http', function($scope, $http) {
 
@@ -182,6 +176,9 @@
 
           $scope.loading = false;
 
+          // $scope.timeSheet.customerComment = '<%= @timesheet_json["customerComment"].gsub(/\n/, '\n') %>';
+          // $scope.timeSheet.nilpeterComment = '<%= @timesheet_json["nilpeterComment"].gsub(/\n/, '\n') %>';
+
           $scope.deselect = function() {
             var nilSig = $('#nilpeterSignature').signature('toJSON');
             console.log(nilSig);
@@ -189,18 +186,23 @@
           }
         }]);
 
-
-      </script>
+        // $("textarea").css("height", "500px");
+    </script>
 
     <!-- Auto resize textarea -->
     <!-- Signature -->
     <script>
 
-      function autoSize(ele) {
-         ele.style.height = 'auto';
-         var newHeight = (ele.scrollHeight > 32 ? ele.scrollHeight : 32);
-         ele.style.height = newHeight.toString() + 'px';
-      }
+    function setSize(ele) {
+       ele.style.height = 'auto';
+       var newHeight = (ele.scrollHeight > 32 ? ele.scrollHeight : 32);
+       ele.style.height = newHeight.toString() + 'px';
+       console.log(ele.style.height);
+
+    }
+
+    setSize($('textarea')[0]);
+    setSize($('textarea')[1]);
 
     </script>
 

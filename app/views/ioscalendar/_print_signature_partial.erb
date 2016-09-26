@@ -5,12 +5,11 @@
       <tr style="width:65%;border:none">
           <div class="input-group" style="text-align:center">
 
-
-          <img style="height:100px;" src='<%= @timesheet.nil_sig %>'>
+          <img style="width:90%" src='<%= @timesheet.nil_sig %>'>
 
           </div>
       </tr>
-      <tr style="width:35%;border:none">
+      <tr >
           <div class="input-group">
           <span class="input-group-addon">Date:</span>
           <input type="text" style="margin-left:3%;width:87%" class="form-control" placeholder="" aria-describedby="basic-addon1" value="<%= @timesheet_json["nilpeterDate"] %>">
@@ -19,18 +18,18 @@
 
     </table>
   </td>
-  <td style="width:50%;padding:0px">
+  <td >
     <table style="padding:0px;border:none">
       <!-- <tr><span class="input-group-addon" style="text-align:left">Sign Customer: <button type="button" class="btn btn-info" id="clearCus">Clear Signature</button></span></tr> -->
-      <tr style="width:65%;border:none">
+      <tr >
           <div class="input-group" style="text-align:center">
 
 
-          <img style="height:100px;" src='<%= @timesheet.cus_sig %>'>
+          <img style="width:90%" src='<%= @timesheet.cus_sig %>'>
 
           </div>
       </tr>
-      <tr style="width:35%;border:none">
+      <tr >
           <div class="input-group">
           <span class="input-group-addon">Date:</span>
           <input type="text" style="margin-left:3%;width:87%" class="form-control" placeholder="" aria-describedby="basic-addon1" value="<%= @timesheet_json["customerDate"] %>">

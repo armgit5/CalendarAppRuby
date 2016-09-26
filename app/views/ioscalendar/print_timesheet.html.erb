@@ -213,11 +213,20 @@
     <!-- Signature -->
     <script>
 
-      function autoSize(ele) {
+      function setSize(ele) {
          ele.style.height = 'auto';
          var newHeight = (ele.scrollHeight > 32 ? ele.scrollHeight : 32);
          ele.style.height = newHeight.toString() + 'px';
+         console.log(ele.style.height);
+
       }
+
+      $( document ).ready(function() {
+        setSize($('textarea')[0]);
+        setSize($('textarea')[1]);
+
+      });
+
 
     </script>
 
