@@ -106,7 +106,8 @@
      "signature_pad", "http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js", "http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/jquery-ui.min.js",
      "https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"%>
   </head>
-  <body ng-controller="TimesheetCtrl">
+  <body ng-controller="TimesheetCtrl" onload="number_pages()">
+    
     <div class="container">
       <div style="color:red">
           <%= wicked_pdf_image_tag "nilpeter.png"%>
@@ -200,6 +201,7 @@
        console.log(ele.style.height);
 
     }
+
 
     setSize($('textarea')[0]);
     setSize($('textarea')[1]);
