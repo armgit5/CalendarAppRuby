@@ -81,7 +81,7 @@
 </div>
 
 <div class="content">
-  
+
   <div class="container">
     <% if current_user %>
       <div class="user_name">
@@ -253,8 +253,9 @@
     var userInit = '<%= current_user.email %>';
     var lastJobNum = '<%= @last_job_num %>';
     lastJobNum = parseInt(lastJobNum.slice(-2)) + 1;
+    console.log(lastJobNum);
 
-    var dtString =  userInit.substring(0,1).toUpperCase() + year.toString() + month.toString() + ("0" + lastJobNum.toString()).slice(-2);
+    var dtString =  userInit.substring(0,2).toUpperCase() + year.toString() + month.toString() + ("0" + lastJobNum.toString()).slice(-2);
 
     console.log(lastJobNum);
     $("#schedule_job_num").val(dtString);
