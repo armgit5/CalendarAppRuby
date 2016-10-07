@@ -1,11 +1,10 @@
 create schedule
 
 curl \
--u ome@nilpeter.com:ome123 \
 -H "Accept: application/json" \
 -H "Content-type: application/json" \
 -X POST \
--d '{"end_date": "15-01-2016 13:58","company_name":"com","date":"14-01-2016 11:57","project":"test api","user_id":"2","job_num": "job","engineer_ids": "["1", "2"]"}' \
+-d '{"end_date": "04-10-2016 13:58","company_name":"com","date":"06-10-2016 11:57","project":"test api","job_num": "job"}' \
 http://localhost:3000/api/schedules
 
 test creating date

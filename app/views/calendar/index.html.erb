@@ -68,6 +68,12 @@
 
   <% end %>
 
+  <% flash.each do |key, value| %>
+    <div style="color:red;"><%= value %></div>
+  <% end %>
+  <%= yield %>
+
+
 
    <table id="header-fixed" class="table table-bordered"></table>
 

@@ -56,6 +56,7 @@ class IoscalendarController < ActionController::Base
     @schedule = Schedule.find(id)
 
     if current_user.id != @schedule.user_id and current_user.role_id != 3
+      flash[:notice] = "you don't have a permission to create the timesheet, please contact admin..."
       redirect_to(:controller => "calendar", :action => "index")
     end
 
@@ -98,6 +99,7 @@ class IoscalendarController < ActionController::Base
     @schedule = Schedule.where(timesheet_id: params[:id])[0]
 
     if current_user.id != @schedule.user_id and current_user.role_id != 3
+      flash[:notice] = "you don't have a permission to edit the timesheet, please contact admin..."
       redirect_to(:controller => "register", :action => "index")
     end
 
