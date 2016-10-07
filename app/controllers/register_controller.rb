@@ -185,7 +185,7 @@ class RegisterController < ApplicationController
     Rails.logger.info "job number #{params[:schedule]["job_num"]}"
 
     if Schedule.exists?(job_num: "#{params[:schedule]["job_num"]}")
-      flash[:notice] = "Job Number already exists, please try another job number"
+      flash[:notice] = "#{params[:schedule]["job_num"]} already exists, please try another job number"
       redirect_to(:controller => "register", :action => "schedule")
     else
 
