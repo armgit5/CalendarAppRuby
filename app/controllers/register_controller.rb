@@ -181,20 +181,34 @@ class RegisterController < ApplicationController
 
   def create
     schedule = params[:schedule]
-    s = Schedule.create!(schedule)
-    s.product_ids = params[:products]
-    engineers = []
-    engineers = engineers + params[:engineers] unless params[:engineers].nil?
-    # Rails.logger.info "Month create = #{current_user.id}, #{current_user.email}, #{current_user.role_id}, #{params[:engineers]}"
-    if current_user.role_id != 3
-      # Rails.logger.info "create current user role id less than 3, #{params[:engineers]}"
-      s.user_ids = engineers.push(current_user.id)
+
+    Rails.logger.info "job number #{params[:schedule]["job_num"]}"
+
+    if Schedule.exists?(job_num: "#{params[:schedule]["job_num"]}")
+      flash[:notice] = "Job Number already exists, please try another job number"
+      redirect_to(:controller => "register", :action => "schedule")
     else
-      s.user_ids = engineers
+
+      s = Schedule.create!(schedule)
+      s.product_ids = params[:products]
+      engineers = []
+      engineers = engineers + params[:engineers] unless params[:engineers].nil?
+      # Rails.logger.info "Month create = #{current_user.id}, #{current_user.email}, #{current_user.role_id}, #{params[:engineers]}"
+      if current_user.role_id != 3
+        # Rails.logger.info "create current user role id less than 3, #{params[:engineers]}"
+        s.user_ids = engineers.push(current_user.id)
+      else
+        s.user_ids = engineers
+      end
+
+
+
+      flash[:notice] = "#{s.project} was successfully created."
+      redirect_to(:controller => "calendar", :action => "index")
+
     end
 
-    flash[:notice] = "#{s.project} was successfully created."
-    redirect_to(:controller => "calendar", :action => "index")
+
   end
 
   def calendar

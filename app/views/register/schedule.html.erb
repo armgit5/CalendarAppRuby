@@ -88,6 +88,11 @@
       WELCOME <%= current_user.email %>.
       </div>
     <% end %>
+    <% flash.each do |key, value| %>
+      <div style="color:red;"><%= value %></div>
+    <% end %>
+    <%= yield %>
+
     <div id="schedule-form">
     <p class="instruction">Please fill up your schedule information here</p>
     <%= form_tag({:action => 'create'}, :id => 'commentForm', :class => "cmxform schedule") do %>
