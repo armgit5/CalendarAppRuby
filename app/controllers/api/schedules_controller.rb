@@ -33,7 +33,7 @@ class Api::SchedulesController < Api::ApiController
           @last_job_num = Schedule.where('user_id = ? AND date >= ? AND date <= ?', params[:id], begin_month, end_month).last.job_num
         end
         user_email = User.find(params[:id])
-        first_char = user_email.email[0].upcase
+        first_char = user_email.email[0..1].upcase
         year = begin_month.year.to_s[-2,2]
         month = ("0"+begin_month.month.to_s)[-2,2]
         last_2_digits = @last_job_num[-2,2].to_i + 1
