@@ -4,7 +4,7 @@
     <!-- Required meta tags always come first -->
     <meta charset="utf-8">
     <!-- <meta name="viewport" content="width=device-width, initial-scale=0.25, user-scalable=yes" /> -->
-    <meta name="viewport" content="initial-scale=0.25,maximum-scale=0.5,width=device-width,user-scalable=1">
+    <meta name="viewport" content="initial-scale=0.75,maximum-scale=2,width=device-width,user-scalable=2">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <!-- Bootstrap CSS -->
@@ -158,6 +158,8 @@
     <script>
         console.log('<%= @current_user_id %>');
         'use strict';
+
+        console.log('<%= @project %>');
 
         var wrapper = document.getElementById("signature-pad"),
             canvas = wrapper.querySelector("canvas"),
@@ -323,8 +325,8 @@
           $scope.timeSheet.concerningYes = false;
           $scope.timeSheet.concerningNo = false;
 
-          $scope.timeSheet.customerComment = '';
-          $scope.timeSheet.nilpeterComment = '<%= @schedule.project %>';
+          $scope.timeSheet.customerComment = '<%= @project %>';
+          $scope.timeSheet.nilpeterComment = '';
 
           $scope.timeSheet.nilpeterDate = d.formattedDate(pattern);
           $scope.timeSheet.customerDate = d.formattedDate(pattern);

@@ -23,6 +23,7 @@ class IoscalendarController < ActionController::Base
     @timesheet.save!
 
     @schedule = Schedule.find(params[:schedule_id])
+
     @schedule.timesheet_id = @timesheet.id
     @schedule.update_attributes!(params[:timesheet_id])
 
@@ -54,6 +55,7 @@ class IoscalendarController < ActionController::Base
     id = params[:id]
     @schedule_id = id
     @schedule = Schedule.find(id)
+    @project = Schedule.find(id).project.gsub(/\r\n/, "\\r\\n")
 
     if current_user.id != @schedule.user_id and current_user.role_id != 3
       flash[:notice] = "you don't have a permission to create the timesheet, please contact admin..."
@@ -79,7 +81,7 @@ class IoscalendarController < ActionController::Base
     id = params[:id]
     @schedule_id = id
     @schedule = Schedule.find(id)
-
+    @project = Schedule.find(id).project.gsub(/\r\n/, "\\r\\n")
     @current_user_id = @schedule.user_id
     @engineers = ""
     for user in @schedule.users.reverse
