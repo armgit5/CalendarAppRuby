@@ -25,10 +25,11 @@ http://localhost:3000/api/schedules/320
 
 curl \
 -i \
+-u arm@nilpeter.com:enter123 \
 -H "Accept: application/json" \
 -H "Content-type: application/json" \
 -X POST \
--d '{"date":"27-09-2015 11:57","product_ids":["3","7"]}' \
+-d '{"date":"27-10-2016 11:57","product_ids":["3","7"]}' \
 http://localhost:3000/api/schedules
 
 {"date": "2016-03-11T14:23:00Z" , "end_date": "2016-03-11T14:23:00Z" , "company_name": "test com" , "job_num": "k91238" , "machine_number": "k8182d" , product_ids: ["2", "7"], "user_ids": ["2", "3"] , "project": "test" , "user_id": "2" }
