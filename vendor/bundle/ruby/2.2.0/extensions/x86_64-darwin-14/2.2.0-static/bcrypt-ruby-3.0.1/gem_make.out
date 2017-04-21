@@ -1,0 +1,25 @@
+/Users/arm/.rvm/rubies/ruby-2.2.2/bin/ruby -r ./siteconf20170421-57891-chsng4.rb extconf.rb
+creating Makefile
+
+make "DESTDIR=" clean
+
+make "DESTDIR="
+compiling bcrypt_ext.c
+bcrypt_ext.c:27:19: warning: implicit declaration of function 'ruby_bcrypt' is invalid in C99 [-Wimplicit-function-declaration]
+    return (VALUE)ruby_bcrypt(args->output, args->key, args->salt);
+                  ^
+1 warning generated.
+compiling crypt.c
+compiling crypt_blowfish.c
+compiling crypt_gensalt.c
+compiling wrapper.c
+In file included from wrapper.c:27:
+/Users/arm/.rvm/rubies/ruby-2.2.2/include/ruby-2.2.0/ruby/backward/util.h:2:2: warning: use "ruby/util.h" instead of bare "util.h" [-W#warnings]
+#warning use "ruby/util.h" instead of bare "util.h"
+ ^
+1 warning generated.
+linking shared-object bcrypt_ext.bundle
+ld: warning: directory not found for option '-L/Users/haven/.sm/pkg/active/lib'
+
+make "DESTDIR=" install
+/usr/bin/install -m 0755 bcrypt_ext.bundle ./.gem.20170421-57891-sbnuwb
