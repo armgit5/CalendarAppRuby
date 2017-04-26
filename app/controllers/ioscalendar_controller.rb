@@ -134,7 +134,7 @@ class IoscalendarController < ActionController::Base
         render pdf: "file_name",
         header: { right: '[page] of [topage]' },
         disable_smart_shrinking: false,
-        zoom: 1
+        zoom: 0.9
       end
     end
   end
