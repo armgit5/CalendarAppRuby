@@ -47,6 +47,7 @@ class Api::SchedulesController < Api::ApiController
       end
 
       def create
+        Rails.logger.info "schedule value 2 = #{params[:schedule]}"
         schedule = Schedule.new(params[:schedule])
         schedule.product_ids = params[:product_ids]
         schedule.user_ids = params[:engineer_ids]
@@ -55,6 +56,7 @@ class Api::SchedulesController < Api::ApiController
         # else
         #   schedule.user_ids = params[:engineer_ids] + params[:user_id]
         # end
+
         if schedule.save
           render status: 200, json: {
     	      message: "Successfully created product",
