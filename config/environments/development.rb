@@ -27,12 +27,28 @@ NilpeterWeb::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
-  
+
 #  config.serve_static_assets = true
 #  config.assets.prefix = "/dev-assets"
   config.action_mailer.default_url_options = { :host => "localhost:3000" }
-  
+
   # Raise exception on mass assignment protection for Active Record models
   config.active_record.mass_assignment_sanitizer = :strict
+
+  config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.default_url_options = { host:'localhost', port: '3000' }
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default :charset => "utf-8"
+  # SMTP settings for gmail
+  config.action_mailer.smtp_settings = {
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :domain               => "gmail.com",
+    :user_name            => "ysuwansiri@gmail.com",
+    :password             => "thuj8hu1S",
+    :authentication       => "plain",
+    :enable_starttls_auto => true
+  }
 
 end

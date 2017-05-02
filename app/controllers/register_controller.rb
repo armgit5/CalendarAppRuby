@@ -167,15 +167,16 @@ class RegisterController < ApplicationController
   end
 
   def destroy
-    @schedule = Schedule.find(params[:id])
-    if current_user.id != @schedule.user_id and current_user.role_id != 3
-      flash[:notice] = "you don't have a permission to delete, please contact admin..."
-      redirect_to(:controller => "calendar", :action => "index")
-    else
-      @schedule.destroy
-      flash[:notice] = "#{@schedule.project} was successfully deleted."
-      redirect_to(:controller => "calendar", :action => "index")
-    end
+    UserMailer.registration_confirmation().deliver
+    # @schedule = Schedule.find(params[:id])
+    # if current_user.id != @schedule.user_id and current_user.role_id != 3
+    #   flash[:notice] = "you don't have a permission to delete, please contact admin..."
+    #   redirect_to(:controller => "calendar", :action => "index")
+    # else
+    #   @schedule.destroy
+    #   flash[:notice] = "#{@schedule.project} was successfully deleted."
+      redirect_to(:controller => "register", :action => "index")
+    # end
 
   end
 
