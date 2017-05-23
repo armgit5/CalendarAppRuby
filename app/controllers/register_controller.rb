@@ -138,10 +138,7 @@ class RegisterController < ApplicationController
     # @schedule.update_attributes!(params[:schedule])
     @schedule.product_ids = params[:products]
 
-    if !params[:id].include? "chargable"
-      @schedule.chargable = 0
-      Rails.logger.info "not chargable"
-    end
+    Rails.logger.info "chargable params 6 #{params[:schedule]}"
 
     engineers = []
     engineers = engineers + params[:engineers] unless params[:engineers].nil?
@@ -152,7 +149,20 @@ class RegisterController < ApplicationController
     else
       @schedule.user_ids = engineers
     end
+
+
     @schedule.update_attributes!(params[:schedule])
+
+    if !params[:schedule].include? "chargable"
+      @schedule.chargable = 0
+      Rails.logger.info "not chargable"
+    else
+      @schedule.chargable = 1
+      Rails.logger.info "chargable"
+    end
+
+    @schedule.save
+
     flash[:notice] = "#{@schedule.project} was successfully updated."
 #    redirect_to(:action => "show", :id => @schedule.id)
     redirect_to(:controller => "calendar", :action => "index")
@@ -167,23 +177,23 @@ class RegisterController < ApplicationController
   end
 
   def destroy
-    UserMailer.registration_confirmation().deliver
-    # @schedule = Schedule.find(params[:id])
-    # if current_user.id != @schedule.user_id and current_user.role_id != 3
-    #   flash[:notice] = "you don't have a permission to delete, please contact admin..."
-    #   redirect_to(:controller => "calendar", :action => "index")
-    # else
-    #   @schedule.destroy
-    #   flash[:notice] = "#{@schedule.project} was successfully deleted."
+    # UserMailer.registration_confirmation().deliver
+    @schedule = Schedule.find(params[:id])
+    if current_user.id != @schedule.user_id and current_user.role_id != 3
+      flash[:notice] = "you don't have a permission to delete, please contact admin..."
+      redirect_to(:controller => "calendar", :action => "index")
+    else
+      @schedule.destroy
+      flash[:notice] = "#{@schedule.project} was successfully deleted."
       redirect_to(:controller => "register", :action => "index")
-    # end
+    end
 
   end
 
   def create
     schedule = params[:schedule]
 
-    Rails.logger.info "job number #{params[:schedule]["job_num"]}"
+    Rails.logger.info "chargable params 3 #{params[:schedule]["chargable"][0]}"
 
     if Schedule.exists?(job_num: "#{params[:schedule]["job_num"]}")
       flash[:notice] = "#{params[:schedule]["job_num"]} already exists, please try another job number"
@@ -192,6 +202,7 @@ class RegisterController < ApplicationController
 
       s = Schedule.create!(schedule)
       s.product_ids = params[:products]
+      s.chargable = params[:schedule]["chargable"][0]
       engineers = []
       engineers = engineers + params[:engineers] unless params[:engineers].nil?
       # Rails.logger.info "Month create = #{current_user.id}, #{current_user.email}, #{current_user.role_id}, #{params[:engineers]}"
@@ -202,7 +213,7 @@ class RegisterController < ApplicationController
         s.user_ids = engineers
       end
 
-
+      s.save
 
       flash[:notice] = "#{s.project} was successfully created."
       redirect_to(:controller => "calendar", :action => "index")
