@@ -193,8 +193,6 @@ class RegisterController < ApplicationController
   def create
     schedule = params[:schedule]
 
-    Rails.logger.info "chargable params 3 #{params[:schedule]["chargable"][0]}"
-
     if Schedule.exists?(job_num: "#{params[:schedule]["job_num"]}")
       flash[:notice] = "#{params[:schedule]["job_num"]} already exists, please try another job number"
       redirect_to(:controller => "register", :action => "schedule")
@@ -202,7 +200,7 @@ class RegisterController < ApplicationController
 
       s = Schedule.create!(schedule)
       s.product_ids = params[:products]
-      s.chargable = params[:schedule]["chargable"][0]
+      s.chargable = params[:schedule]["chargable"][0] unless params[:schedule]["chargable"].nil?
       engineers = []
       engineers = engineers + params[:engineers] unless params[:engineers].nil?
       # Rails.logger.info "Month create = #{current_user.id}, #{current_user.email}, #{current_user.role_id}, #{params[:engineers]}"
