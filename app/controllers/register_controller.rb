@@ -66,21 +66,11 @@ class RegisterController < ApplicationController
     begin_month = DateTime.now.at_beginning_of_month
     end_month = begin_month.end_of_month
     Rails.logger.info "None Month = #{params[:pick_month]}"
-    if params[:pick_month] == "1"
-      begin_month = DateTime.now.at_beginning_of_month << 1
-      end_month = begin_month.end_of_month
-      Rails.logger.info "picked"
-    end
-    if params[:pick_month] == "2"
-      begin_month = DateTime.now.at_beginning_of_month << 2
-      end_month = begin_month.end_of_month
-      Rails.logger.info "picked"
-    end
-    if params[:pick_month] == "6"
-      begin_month = DateTime.now.at_beginning_of_month << 6
-      end_month = begin_month.end_of_month
-      Rails.logger.info "picked"
-    end
+
+    begin_month = DateTime.now.at_beginning_of_month << Integer(params[:pick_month])
+    end_month = begin_month.end_of_month
+    Rails.logger.info "picked"
+
 
     schedules = Schedule.where('date >= ? AND date <= ?',begin_month,end_month).order("date desc")
 
