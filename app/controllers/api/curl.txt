@@ -45,7 +45,7 @@ http://localhost:3000/api/schedules/353
 
 curl \
 -i \
--u pla@nilpeter.com:pla123 \
+-u arm:enter123 \
 http://localhost:3000/api/user
 
 curl \

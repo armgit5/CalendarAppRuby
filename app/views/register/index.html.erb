@@ -38,7 +38,8 @@
   <ul class="dropdown-menu">
     <%= link_to("Current Month", {:action => 'export_csv'}) %> <br>
     <%= link_to("Last Month", {:action => 'export_csv', :pick_month => 1}) %> <br>
-    <%= link_to("Last 2 Months", {:action => 'export_csv', :pick_month => 2}) %>
+    <%= link_to("Last 2 Months", {:action => 'export_csv', :pick_month => 2}) %> <br>
+    <%= link_to("Last 6 Months", {:action => 'export_csv', :pick_month => 6}) %>
   </ul>
 </div>
   <%= form_tag '/register', :method => 'get', :id => "sales_search", :class => "navbar-form navbar-right" do %>

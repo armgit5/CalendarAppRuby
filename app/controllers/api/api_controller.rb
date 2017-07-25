@@ -2,7 +2,12 @@ module Api
   class ApiController < ApplicationController
     skip_before_filter :verify_authenticity_token
     protect_from_forgery with: :null_session
-    before_filter :authenticate
+    before_filter :authenticate, :set_access_control_headers
+
+    def set_access_control_headers
+     headers['Access-Control-Allow-Origin'] = "*"
+     headers['Access-Control-Request-Method'] = %w{GET POST OPTIONS}.join(",")
+   end
 
     def current_user
       @current_user

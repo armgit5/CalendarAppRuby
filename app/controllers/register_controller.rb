@@ -76,6 +76,12 @@ class RegisterController < ApplicationController
       end_month = begin_month.end_of_month
       Rails.logger.info "picked"
     end
+    if params[:pick_month] == "6"
+      begin_month = DateTime.now.at_beginning_of_month << 6
+      end_month = begin_month.end_of_month
+      Rails.logger.info "picked"
+    end
+
     schedules = Schedule.where('date >= ? AND date <= ?',begin_month,end_month).order("date desc")
 
     csvdata = CSV.generate do |csv|
