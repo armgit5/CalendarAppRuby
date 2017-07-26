@@ -25,6 +25,7 @@ NilpeterWeb::Application.routes.draw do
   resources :users
   resources :password_resets
   resources :calendar
+  resources :api
 
   match ':controller(/:action(/:id(.:format)))'
 

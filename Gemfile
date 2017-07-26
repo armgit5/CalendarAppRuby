@@ -45,3 +45,5 @@ gem 'carrierwave_direct'
 
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
+
+gem 'rack-cors', :require => 'rack/cors'

@@ -35,10 +35,10 @@
 		var e = [<% @schedule.each do |s| %> {
 				title:			<% engineers = ""  %>
 										<% if s.user.nil? == false and s.user.email != "admin@nilpeter.com" %>
-										<% engineers = engineers + s.user.email.split("@")[0].upcase  + ", " %>
+										<% engineers = engineers + s.user.email.split("@")[0].upcase  + ", " unless s.user.nil? %>
 										<% end   %>
 										<% s.users.each do |i| %>
-										<% if i.email != s.user.email %>
+										<% if i.email != s.user.email%>
 									  	<% engineers = engineers + i.email.split("@")[0].upcase  + ", " %>
 										<% end %>
 				 						<% end %>
