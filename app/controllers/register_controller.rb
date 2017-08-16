@@ -188,6 +188,7 @@ class RegisterController < ApplicationController
 
   def create
     schedule = params[:schedule]
+    "schedule params #{schedule}"
 
     if Schedule.exists?(job_num: "#{params[:schedule]["job_num"]}")
       flash[:notice] = "#{params[:schedule]["job_num"]} already exists, please try another job number"
