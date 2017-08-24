@@ -7,7 +7,7 @@ development:
   database: serviceapp
   pool: 5
   username: postgres
-  password: enter123
+  password: postgres
   host: localhost
 
 test:

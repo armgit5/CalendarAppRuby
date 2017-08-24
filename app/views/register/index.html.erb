@@ -36,7 +36,7 @@
     Download <span class="caret"></span>
   </button>
   <ul class="dropdown-menu">
-    <%= link_to("Current Month", {:action => 'export_csv'}) %> <br>
+    <%= link_to("Current Month", {:action => 'export_csv', :pick_month => 0}) %> <br>
     <%= link_to("Last Month", {:action => 'export_csv', :pick_month => 1}) %> <br>
     <%= link_to("Last 2 Months", {:action => 'export_csv', :pick_month => 2}) %> <br>
     <%= link_to("Last 3 Months", {:action => 'export_csv', :pick_month => 3}) %> <br>
