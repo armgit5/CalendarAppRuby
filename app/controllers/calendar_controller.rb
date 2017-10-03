@@ -8,7 +8,7 @@ class CalendarController < ApplicationController
       params[:month] = Time.now.month
     end
     Rails.logger.info "Month test = #{params[:month]}"
-    month_up = Integer(params[:month]) + 1
+    month_up = Integer(params[:month])
     if month_up > 12
       month_up = 1
     end
