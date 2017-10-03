@@ -1,9 +1,11 @@
 Sales Calendar Application
 
-This app works to schedule the engineering team on their daily customer visits. 
-The calendar runs on fullcalendar.io library. 
+This app works to schedule the engineering team on their daily customer visits.
+The calendar runs on fullcalendar.io library.
 This calendar make an ajax get request to update the calendar every 10 seconds.
 The app has REST api that a mobile phones can comminucate to via apps. You can also download an iOS app that works with this Ruby app from this git repository (https://github.com/armgit5/salesAppIOS).
+
+To restore postgres db from dump file - use pg_restore --verbose --clean --no-acl --no-owner -h localhost -U postgres -d serviceapp 3917b083-192f-4aee-837e-c26f3ef5f054 
 
 The demo website link is http://arm-calendar.herokuapp.com
 Username is arm and password arm123
