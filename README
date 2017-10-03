@@ -1,9 +1,0 @@
-Sales Calendar Application
-
-This app works to schedule the company-sales team on the app calendar. 
-The calendar runs on fullcalendar.io library. 
-This calendar make an ajax get request to update the calendar every 10 seconds.
-The app has REST api that a mobile phones can comminucate to via apps. You can also download an iOS app that works with this Ruby app from this git repository (https://github.com/armgit5/salesAppIOS).
-
-The demo website link is http://arm-calendar-apitest.herokuapp.com
-Username is arm@nilpeter.com and password test123
