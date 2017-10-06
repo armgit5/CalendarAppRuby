@@ -54,20 +54,26 @@ var e = [<% @schedule.each do |s| %> {
          },
     <% end %>];
 
-// var moment = $('#calendar').fullCalendar('getDate');
-// console.log(moment.getMonth()+1);
-
 var height =  $(window).scrollTop();
-console.log("current height " + height);
-
+// console.log("current height " + height);
 $('#calendar').fullCalendar('removeEvents');
 $('#calendar').fullCalendar('addEventSource', e);
 $('#calendar').fullCalendar('addEventSource', holiday);
 $('#calendar').fullCalendar('refetchEvents');
-$('#calendar').fullCalendar('today');
+
+var dateChanged = $('.fc-today').data('date') != new Date().toISOString().substring(0, 10);
+
+// console.log(dateChanged);
+if (dateChanged) {
+  $('.fc-today').addClass('fc-past current');
+  $('.fc-today').next('.fc-day').addClass('fc-today fc-state-highlight');
+  $('.fc-today').next('.fc-day').removeClass('fc-future');
+  $('.current').removeClass('fc-today fc-state-highlight');
+}
+
 
 window.scrollTo(0,height);
-console.log("scroll to " + height);
+// console.log("scroll to " + height);
 
 $(".preload").fadeOut(1000, function() {
 });
