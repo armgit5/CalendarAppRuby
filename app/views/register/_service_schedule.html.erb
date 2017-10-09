@@ -1,0 +1,112 @@
+<div id="schedule-form">
+<p class="instruction">*ADD Service Schedule</p>
+<%= form_tag({:action => 'create'}, :id => 'commentForm', :class => "cmxform schedule", :style => "background-color:#f7a4a4;") do %>
+ <fieldset>
+  <!-- <label>
+   <div>Job Number</div><br>
+   <%= text_field(:schedule, :job_num, :required => true, :class => 'job-num', :placeholder => "please enter job number...") %>
+  </label> -->
+
+  <!-- <div class="checkbox-inline">
+     <div class="field"> <%= check_box_tag('schedule[chargable][]', 1) %> Chargable <br></div>
+  </div> -->
+
+  <label for="cdate">
+    <div>Date & Time</div><br>
+    <%= text_field(:schedule, :date, {:class => "datetimepicker valid", :id => 'cdate', :required => true, :placeholder => "start date"}) %>
+    <%= text_field(:schedule, :end_date, {:class => "datetimepicker valid", :id => 'cdate', :required => true, :placeholder => "end date"}) %>
+  </label>
+
+  <label>
+   <div>Company Name</div><br>
+   <%= text_field(:schedule, :company_name, :required => true, :class => 'job-num', :placeholder => "please enter company name...") %>
+  </label>
+
+  <label class="blink">
+
+
+  <label id="location">
+    <div>Customer Location</div><br>
+      <%= grouped_collection_select :schedule, :location_id, Company.order(:name), :locations, :name, :id, :name, {:prompt=>"Please Select Company"}, {:class=>'e9',
+        :style=>"width:350px"} %>
+  </label>
+
+  <%= hidden_field(:schedule, :sale_id, :value => User.find(current_user.id).sale_id) %>
+   <%= hidden_field(:schedule, :user_id, :value => User.find(current_user.id).id) %>
+   <%= hidden_field(:schedule, :service_schedule, :value => 1)%>
+
+   <div class="checkbox-inline">
+     <div><b>Engineers</b></div>
+
+       <div class="field">
+       <% @engineer1.each do |category| %>
+         <%= check_box_tag('engineers[]', category.id) %>
+         <%= category.email.split("@")[0].upcase %><br/>
+       <% end %>
+       </div>
+   </div>
+
+   <div class="checkbox-inline">
+     <br>
+       <div class="field">
+       <% @engineer2.each do |category| %>
+         <%= check_box_tag('engineers[]', category.id) %>
+         <%= category.email.split("@")[0].upcase %><br/>
+       <% end %>
+       </div>
+   </div>
+
+   <div class="checkbox-inline">
+     <br>
+       <div class="field">
+       <% @engineer3.each do |category| %>
+         <%= check_box_tag('engineers[]', category.id) %>
+         <%= category.email.split("@")[0].upcase %><br/>
+       <% end %>
+       </div>
+   </div>
+
+  <!-- <div class="checkbox-inline">
+    <div><b>Nilpeter Products</b></div>
+
+      <div class="field">
+      <% @nilpeter_products.each do |category| %>
+        <%= check_box_tag('products[]', category.id) %>
+        <%= category.name %><br/>
+      <% end %>
+      </div>
+      <div><%= text_field(:schedule, :machine_number, :required => true, :class => "machine-num", :placeholder => "please enter machine number...") %></div>
+
+  </div> -->
+  <label id="location">
+    <div>Machine Number</div><br>
+    <div><%= text_field(:schedule, :machine_number, :required => true, :class => "machine-num", :placeholder => "please enter machine number...") %></div>
+  </label>
+<!-- <div class="checkbox-inline">
+<div><b>OEM Products</b></div>
+  <div class="field">
+  <% @oem1.each do |category| %>
+    <%= check_box_tag('products[]', category.id) %>
+    <%= category.name %><br>
+  <% end %>
+  </div>
+</div>
+<div class="checkbox-inline">
+  </br>
+  <div class="field">
+  <% @oem2.each do |category| %>
+    <%= check_box_tag('products[]', category.id) %>
+    <%= category.name %><br>
+  <% end %>
+  </div>
+</div> -->
+
+<label class="blink">
+<div>Project Description</div><br>
+  <%= text_area(:schedule, :project, :required => true, :class => 'project-des', :placeholder => "please fill in description...") %>
+</label>
+
+  <%= submit_tag('CREATE SCHEDULE', class: "btn btn-large btn-primary") %>
+ </fieldset>
+<% end %>
+</div>

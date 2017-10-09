@@ -10,6 +10,9 @@ class RegisterController < ApplicationController
   before_filter :authorize
 
   def schedule
+    Rails.logger.info "Service Schedule = #{params[:service_schedule]}"
+    @service_schedule = params[:service_schedule]
+
     @sale = Sale.all
     @companies = Company.order("name asc")
     @locations = Location.order("name asc")
@@ -38,28 +41,16 @@ class RegisterController < ApplicationController
   def index
     params[:sort] ||= "date"
     params[:direction] ||= "desc"
-#    user_id = current_user.id
-#    if current_user.role_id != 3
-#      @schedule = Schedule.where(sale_id: User.find(current_user.id).sale_id)
-#      .order(params[:sort] + " " + params[:direction]).search(params[:search])
-#      .paginate(:per_page => 25, :page => params[:page])
-#    else
+    
     @schedule = Schedule.search(params[:search])
     .order(params[:sort] + " " + params[:direction])
     .paginate(:per_page => 25, :page => params[:page])
-#    end
+
     @nilpeter_products = Product.where(:type_id => 1)
     @meech_products = Product.where(:type_id => 2)
     @have_timesheet = false
     @timesheet_id = 0
-
-    # if Timesheet.where(schedule_id: @schedule.id).length > 0
-    #   @have_timesheet = true
-    #   @timesheet_id = Timesheet.where(schedule_id: @schedule.id).last
-    # end
-
     @test =  current_user
-
   end
 
   def export_csv
@@ -188,30 +179,31 @@ class RegisterController < ApplicationController
 
   def create
     schedule = params[:schedule]
-    "schedule params #{schedule}"
+    service_schedule = params[:schedule]["service_schedule"]
+    Rails.logger.debug { "service val #{service_schedule == '1'}" }
 
-    if Schedule.exists?(job_num: "#{params[:schedule]["job_num"]}")
+    if Schedule.exists?(job_num: "#{params[:schedule]["job_num"]}") and service_schedule != '1'
       flash[:notice] = "#{params[:schedule]["job_num"]} already exists, please try another job number"
       redirect_to(:controller => "register", :action => "schedule")
     else
 
-      s = Schedule.create!(schedule)
-      s.product_ids = params[:products]
-      s.chargable = params[:schedule]["chargable"][0] unless params[:schedule]["chargable"].nil?
-      engineers = []
-      engineers = engineers + params[:engineers] unless params[:engineers].nil?
-      # Rails.logger.info "Month create = #{current_user.id}, #{current_user.email}, #{current_user.role_id}, #{params[:engineers]}"
-      if current_user.role_id != 3
-        # Rails.logger.info "create current user role id less than 3, #{params[:engineers]}"
-        s.user_ids = engineers.push(current_user.id)
-      else
-        s.user_ids = engineers
-      end
+    s = Schedule.create!(schedule)
+    s.product_ids = params[:products]
+    s.chargable = params[:schedule]["chargable"][0] unless params[:schedule]["chargable"].nil?
+    engineers = []
+    engineers = engineers + params[:engineers] unless params[:engineers].nil?
+    # Rails.logger.info "Month create = #{current_user.id}, #{current_user.email}, #{current_user.role_id}, #{params[:engineers]}"
+    if current_user.role_id != 3
+      # Rails.logger.info "create current user role id less than 3, #{params[:engineers]}"
+      s.user_ids = engineers.push(current_user.id)
+    else
+      s.user_ids = engineers
+    end
 
-      s.save
+    s.save
 
-      flash[:notice] = "#{s.project} was successfully created."
-      redirect_to(:controller => "calendar", :action => "index")
+    flash[:notice] = "#{s.project} was successfully created."
+    redirect_to(:controller => "calendar", :action => "index")
 
     end
 

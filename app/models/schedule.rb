@@ -12,7 +12,7 @@ class Schedule < ActiveRecord::Base
   has_many :users, through: :engineers
 
   attr_accessible :sale_id, :company_id, :location_id, :project, :date, :name, :product_id, :user_id, :all_day, :email,
-                   :job_num, :machine_number, :company_name, :end_date, :chargable
+                   :job_num, :machine_number, :company_name, :end_date, :chargable, :service_schedule
 
 #  search all
 #  def self.search(search)

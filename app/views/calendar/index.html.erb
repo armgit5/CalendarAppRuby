@@ -99,34 +99,9 @@
 
      $(document).ready(function() {
 
-                 <%#*$.ionSound({%>
-                   <%#*sounds: [%>
-                       <%#*"calendar"%>
-                   <%#*],%>
-                   <%#*path: "http://k007.kiwi6.com/hotlink/jerymfm7jb/",%>
-                   <%#*multiPlay: true,%>
-                   <%#*volume: "1.0"%>
-               <%#*});%>
-               <%#*$.ionSound.play("calendar");%>
-
-               <%#*var searchVal = "";%>
-
-               <%#*var search = function() {%>
-                <%#*$('#sales_search input').keyup(function () {%>
-                  <%#*$.get($('#sales_search').attr('action'), $('#sales_search').serialize(), null, 'script');%>
-                   <%#*console.log($(this).text('#sales_search').val());%>
-                   <%#*searchVal = $(this).text('#sales_search').val();%>
-                   <%#*$('#calendar').fullCalendar(  'refetchEvents');%>
-                <%#*});%>
-              <%#*};%>
-
-              <%#*search();%>
-
               $('html,body').animate({
                   scrollTop: 425
               }, 0)
-
-              <!-- $("html").scrollTop(scroll); -->
 
               var tableOffset = $(".fc-border-separate").offset().top;
 
@@ -153,5 +128,3 @@
 
 	});
 <% end %>
-
-        <%#*http://www.mikesmithdev.com/demo-fullcalendar-with-event-filtering/%>

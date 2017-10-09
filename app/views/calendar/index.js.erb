@@ -1,7 +1,14 @@
 console.log("test");
 
-var e = [<% @schedule.each do |s| %> {
-    title:			<% engineers = ""  %>
+var e = <% global_s = [] %>
+        <% if @service_schedule_param != "1" %>
+          <% global_s = @schedule %>
+        <% else %>
+          <% global_s = @service_schedule %>
+        <% end %>
+
+          [<% global_s.each do |s| %> {
+                title:			<% engineers = ""  %>
                 <% if s.user.nil? == false and s.user.email != "admin@nilpeter.com" %>
                 <% engineers = engineers + s.user.email.split("@")[0].upcase  + ", " %>
                 <% end   %>

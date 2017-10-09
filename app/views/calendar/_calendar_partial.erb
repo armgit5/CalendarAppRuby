@@ -32,8 +32,16 @@
 				style: { classes: 'myCustomClass' }
     }).qtip('api');
 
-		var e = [<% @schedule.each do |s| %> {
-				title:			<% engineers = ""  %>
+		<%= @service_schedule_param %>
+		var e = <% global_s = [] %>
+						<% if @service_schedule_param != "1" %>
+							<% global_s = @schedule %>
+						<% else %>
+							<% global_s = @service_schedule %>
+						<% end %>
+
+							[<% global_s.each do |s| %> {
+										title: <% engineers = ""  %>
 										<% if s.user.nil? == false and s.user.email != "admin@nilpeter.com" %>
 										<% engineers = engineers + s.user.email.split("@")[0].upcase  + ", " unless s.user.nil? %>
 										<% end   %>
@@ -63,7 +71,8 @@
 											     '<%= 'red' %>'
 													 <% else %>
 													 '<%= 'blue' %>'
-													 <% end %>,
+													 <% end %>
+													 ,
 											end:  <% if !(s.end_date.nil?) %>
 											      new Date(<%= s.end_date.strftime("%Y, %m-1, %d, %H, %M") unless s.end_date.nil? %>)
 													 <% else %>
@@ -77,6 +86,7 @@
 
 				},
 		<% end %>];
+
 
 		<!-- console.log(e); -->
 
@@ -216,7 +226,11 @@
 
     if (searchVal == "" || searchVal == null) {
         console.log("update");
-        $.getScript('/calendar.js?month='+m);
+				<% if @service_schedule_param != "1" %>
+				$.getScript('/calendar.js?month='+m);
+				<% else %>
+				$.getScript('/calendar.js?month='+m+'&service_schedule=1');
+				<% end %>
         timeouts.push(setTimeout(updateComments, 10000));
     }
   };
