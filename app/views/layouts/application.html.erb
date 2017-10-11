@@ -289,7 +289,7 @@ a.header-link {
 
       <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <%= content_tag(:li, link_to("CALENDAR", :controller => "calendar", :action => 'index'), :class => ("active" if current_page? "/calendar/index" or current_page? "/") ) %>
+        <%= content_tag(:li, link_to("CALENDAR", :controller => "calendar", :action => 'index'), :class => ("active" if (current_page? "/calendar/index" or current_page? "/") and !current_page? "/calendar/index?service_schedule=1") ) %>
         <%= content_tag(:li, link_to("SCHEDULE", :controller => "register", :action => 'schedule'), :class => ("active" if current_page? "/register/schedule") ) %>
         <%= content_tag(:li, link_to("EDIT", :controller => "register", :action => 'index'), :class => ("active" if current_page? controller: 'register'or
               current_page?(controller: 'register', action: 'edit') or current_page?(controller: 'register', action: 'delete') ) ) %>
