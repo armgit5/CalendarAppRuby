@@ -67,7 +67,9 @@
 	                    products: '<%= x.to_s %>',
 											start: new Date(<%= s.date.strftime("%Y, %m-1, %d, %H, %M") unless s.date.nil? %>),
                       allDay: <%= if s.all_day == 1 then true else false end %>,
-											color: <% if s.chargable == 1 %>
+											color: <% if s.service_schedule %> 
+											     '<%= 'green' %>'
+											     <% elsif s.chargable == 1 %>
 											     '<%= 'red' %>'
 													 <% else %>
 													 '<%= 'blue' %>'
@@ -79,6 +81,7 @@
 													 '<%= '' %>'
 													 <% end %>,
 										  id: <%= s.id %>,
+											service: <%= if s.service_schedule.nil? then 0 else 1 end %>,
 											no_timesheet: <%= s.timesheet_id.nil? %>,
 											no_user_id: <%= s.user_id.nil? %>,
 											timesheet_id: <%= !s.timesheet_id.nil? ? s.timesheet_id : false %>
@@ -138,7 +141,7 @@
 	              '<p><b>Products:</b> '+data.products+'<br />' +
 	              '<p><b>Project:</b> '+data.project+'<br />' +
 					(data.end && '<p><b>End:</b> '+data.end+'</p>' || '') +
-						'<a href="/register/edit/'+data.id+'">Edit Schedule</a>' + ' ' +
+						'<a href="/register/edit/'+data.id+'?service_schedule='+data.service+'">Edit Schedule</a>' + ' ' +
 						 '<a href="/register/destroy/'+data.id+'" onclick="return confirm(' + "'Are you sure?'" + ')">Delete Schedule</a>' + ' ' +
 						 '<a href="/ioscalendar/timesheet/'+data.id+'">Timesheet</a>';
 			} else {
@@ -150,9 +153,9 @@
 	              '<p><b>Products:</b> '+data.products+'<br />' +
 	              '<p><b>Project:</b> '+data.project+'<br />' +
 					(data.end && '<p><b>End:</b> '+data.end+'</p>' || '') +
-						'<a href="/register/edit/'+data.id+'">Edit Schedule</a>' + ' ' +
-						 '<a href="/register/destroy/'+data.id+'" onclick="return confirm(' + "'Are you sure?'" + ')">Delete Schedule</a>' + ' ' +
-						 '<a href="/ioscalendar/edit_timesheet/'+data.timesheet_id+'">Edit Timesheet</a>';
+						'<a href="/register/edit/'+data.id+'?service_schedule='+data.service+'">Edit Schedule</a>' + ' ' +
+						'<a href="/register/destroy/'+data.id+'" onclick="return confirm(' + "'Are you sure?'" + ')">Delete Schedule</a>' + ' ' +
+						'<a href="/ioscalendar/edit_timesheet/'+data.timesheet_id+'">Edit Timesheet</a>';
 			}
 
 
