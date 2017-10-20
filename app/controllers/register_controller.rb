@@ -93,6 +93,7 @@ class RegisterController < ApplicationController
   end
 #
   def edit
+    @service_schedule = params[:service_schedule]
     @schedule = Schedule.find(params[:id])
 
     if current_user.id != @schedule.user_id and current_user.role_id != 3
@@ -120,18 +121,16 @@ class RegisterController < ApplicationController
 
   def update
     @schedule = Schedule.find(params[:id])
-
-    # Rails.logger.info "scheduleParamsNil = #{params[:schedule]}"
-    # @schedule.update_attributes!(params[:schedule])
     @schedule.product_ids = params[:products]
+
+    service_schedule = params[:schedule]["service_schedule"]
 
     Rails.logger.info "chargable params 6 #{params[:schedule]}"
 
     engineers = []
     engineers = engineers + params[:engineers] unless params[:engineers].nil?
-    # Rails.logger.info "Month update = #{current_user.id}, #{current_user.email}, #{current_user.role_id}"
+  
     if current_user.role_id != 3
-      # Rails.logger.info "update current user role id less than 3, #{params[:engineers]}"
       @schedule.user_ids = engineers.push(current_user.id)
     else
       @schedule.user_ids = engineers
@@ -151,8 +150,12 @@ class RegisterController < ApplicationController
     @schedule.save
 
     flash[:notice] = "#{@schedule.project} was successfully updated."
-#    redirect_to(:action => "show", :id => @schedule.id)
-    redirect_to(:controller => "calendar", :action => "index")
+
+    if service_schedule == '1'
+      redirect_to(:controller => "calendar", :action => "index", :service_schedule => 1)
+    else 
+      redirect_to(:controller => "calendar", :action => "index")
+    end
   end
 
   def delete
@@ -184,43 +187,39 @@ class RegisterController < ApplicationController
 
     if Schedule.exists?(job_num: "#{params[:schedule]["job_num"]}") and service_schedule != '1'
       flash[:notice] = "#{params[:schedule]["job_num"]} already exists, please try another job number"
-      redirect_to(:controller => "register", :action => "schedule")
+      if service_schedule == '1'
+        redirect_to(:controller => "register", :action => "schedule", :service_schedule => 1)
+      else 
+        redirect_to(:controller => "register", :action => "schedule")
+      end
     else
+      s = Schedule.create!(schedule)
+      s.product_ids = params[:products]
+      s.chargable = params[:schedule]["chargable"][0] unless params[:schedule]["chargable"].nil?
+      engineers = []
+      engineers = engineers + params[:engineers] unless params[:engineers].nil?
+      # Rails.logger.info "Month create = #{current_user.id}, #{current_user.email}, #{current_user.role_id}, #{params[:engineers]}"
+      if current_user.role_id != 3
+        # Rails.logger.info "create current user role id less than 3, #{params[:engineers]}"
+        s.user_ids = engineers.push(current_user.id)
+      else
+        s.user_ids = engineers
+      end
 
-    s = Schedule.create!(schedule)
-    s.product_ids = params[:products]
-    s.chargable = params[:schedule]["chargable"][0] unless params[:schedule]["chargable"].nil?
-    engineers = []
-    engineers = engineers + params[:engineers] unless params[:engineers].nil?
-    # Rails.logger.info "Month create = #{current_user.id}, #{current_user.email}, #{current_user.role_id}, #{params[:engineers]}"
-    if current_user.role_id != 3
-      # Rails.logger.info "create current user role id less than 3, #{params[:engineers]}"
-      s.user_ids = engineers.push(current_user.id)
-    else
-      s.user_ids = engineers
+      s.save
+
+      flash[:notice] = "#{s.project} was successfully created."
+
+      if service_schedule == '1'
+        redirect_to(:controller => "calendar", :action => "index", :service_schedule => 1)
+      else 
+        redirect_to(:controller => "calendar", :action => "index")
+      end
     end
-
-    s.save
-
-    flash[:notice] = "#{s.project} was successfully created."
-    redirect_to(:controller => "calendar", :action => "index")
-
-    end
-
-
   end
 
   def calendar
     @schedule = Schedule.search(params[:search])
-#    old_number = Schedule.count
-
-#    while true do
-#      sleep 3
-#      num_data = Schedule.count
-#      if num_data != old_number
-#        redirect_to(:action => "calendar")
-#      end
-#    end
   end
 
   def create_new
