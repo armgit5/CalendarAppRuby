@@ -142,7 +142,7 @@
 	              '<p><b>Project:</b> '+data.project+'<br />' +
 					(data.end && '<p><b>End:</b> '+data.end+'</p>' || '') +
 						'<a href="/register/edit/'+data.id+'?service_schedule='+data.service+'">Edit Schedule</a>' + ' ' +
-						 '<a href="/register/destroy/'+data.id+'" onclick="return confirm(' + "'Are you sure?'" + ')">Delete Schedule</a>' + ' ' +
+						 '<a href="/register/destroy/'+data.id+'?service_schedule='+data.service+'" onclick="return confirm(' + "'Are you sure?'" + ')">Delete Schedule</a>' + ' ' +
 						 '<a href="/ioscalendar/timesheet/'+data.id+'">Timesheet</a>';
 			} else {
 				var content = '<h3> '+data.company+'</h3>' +
@@ -154,7 +154,7 @@
 	              '<p><b>Project:</b> '+data.project+'<br />' +
 					(data.end && '<p><b>End:</b> '+data.end+'</p>' || '') +
 						'<a href="/register/edit/'+data.id+'?service_schedule='+data.service+'">Edit Schedule</a>' + ' ' +
-						'<a href="/register/destroy/'+data.id+'" onclick="return confirm(' + "'Are you sure?'" + ')">Delete Schedule</a>' + ' ' +
+						'<a href="/register/destroy/'+data.id+'?service_schedule='+data.service+'" onclick="return confirm(' + "'Are you sure?'" + ')">Delete Schedule</a>' + ' ' +
 						'<a href="/ioscalendar/edit_timesheet/'+data.timesheet_id+'">Edit Timesheet</a>';
 			}
 

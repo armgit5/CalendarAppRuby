@@ -167,6 +167,8 @@ class RegisterController < ApplicationController
   end
 
   def destroy
+    # service_schedule = 0
+    service_schedule = params[:service_schedule] unless params[:service_schedule].nil?
     # UserMailer.registration_confirmation().deliver
     @schedule = Schedule.find(params[:id])
     if current_user.id != @schedule.user_id and current_user.role_id != 3
@@ -175,7 +177,11 @@ class RegisterController < ApplicationController
     else
       @schedule.destroy
       flash[:notice] = "#{@schedule.project} was successfully deleted."
-      redirect_to(:controller => "register", :action => "index")
+      if service_schedule == '1'
+        redirect_to(:controller => "calendar", :action => "index", :service_schedule => 1)
+      else 
+        redirect_to(:controller => "calendar", :action => "index")
+      end
     end
 
   end
