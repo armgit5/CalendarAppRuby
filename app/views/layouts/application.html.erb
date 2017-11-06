@@ -289,7 +289,7 @@ a.header-link {
 
       <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <%= content_tag(:li, link_to("CALENDAR", :controller => "calendar", :action => 'index'), :class => ("active" if (current_page? "/calendar/index" or current_page? "/") and !current_page? "/calendar/index?service_schedule=1") ) %>
+        <%= content_tag(:li, link_to("CALENDAR", :controller => "calendar", :action => 'index'), :class => ("active" if (current_page? "/calendar/index" or current_page? "/") and !current_page? "/calendar/index?service_schedule=1" and !current_page? "/calendar/index?service_schedule=1&swap=1") ) %>
         <%= content_tag(:li, link_to("SCHEDULE", :controller => "register", :action => 'schedule'), :class => ("active" if current_page? "/register/schedule") ) %>
         <%= content_tag(:li, link_to("EDIT", :controller => "register", :action => 'index'), :class => ("active" if current_page? controller: 'register'or
               current_page?(controller: 'register', action: 'edit') or current_page?(controller: 'register', action: 'delete') ) ) %>
@@ -298,7 +298,7 @@ a.header-link {
         <%#= content_tag(:li, link_to("VISITOR", :controller => "visitors", :action => 'index'), :class => ("active" if current_page? "/visitors/index") ) %>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-          <%= content_tag(:li, link_to("SERVICE", :controller => "calendar", :action => 'index', :service_schedule => 1), :class => ("active" if current_page? "/calendar/index?service_schedule=1") ) %>
+          <%= content_tag(:li, link_to("SERVICE", :controller => "calendar", :action => 'index', :service_schedule => 1), :class => ("active" if current_page? "/calendar/index?service_schedule=1" or current_page? "/calendar/index?service_schedule=1&swap=1") ) %>
          <%= content_tag(:li, link_to("ADMIN", :controller => 'admin', :action => 'index'), :class => ("active" if current_page? "/admin" or
              current_page? "/admin/users" or current_page? "/pending" or current_page? "/signup") )  %>
          <% if current_user %>
