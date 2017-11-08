@@ -42,7 +42,8 @@
     <%= link_to("Last 3 Months", {:action => 'export_csv', :pick_month => 3}) %> <br>
     <%= link_to("Last 4 Months", {:action => 'export_csv', :pick_month => 4}) %> <br>
     <%= link_to("Last 5 Months", {:action => 'export_csv', :pick_month => 5}) %> <br>
-    <%= link_to("Last 6 Months", {:action => 'export_csv', :pick_month => 6}) %>
+    <%= link_to("Last 6 Months", {:action => 'export_csv', :pick_month => 6}) %> <br>
+    <%= link_to("Excel", {:action => 'export_xls'}) %>
   </ul>
 </div>
   <%= form_tag '/register', :method => 'get', :id => "sales_search", :class => "navbar-form navbar-right" do %>

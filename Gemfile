@@ -47,3 +47,6 @@ gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 
 gem 'rack-cors', :require => 'rack/cors'
+
+gem 'axlsx'
+gem 'activeadmin-axlsx'
