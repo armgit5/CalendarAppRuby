@@ -90,6 +90,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
 
+    <script src="https://npmcdn.com/angular-toastr/dist/angular-toastr.tpls.js"></script>
+    <link rel="stylesheet" href="https://npmcdn.com/angular-toastr/dist/angular-toastr.css" />
+
     <!-- Signature -->
     <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/themes/south-street/jquery-ui.css" rel="stylesheet">
     <!-- <%= stylesheet_link_tag "jquery.signature" %> -->
@@ -211,8 +214,8 @@
           signaturePad2.clear();
         });
 
-        var app = angular.module('Timesheet', [])
-        app.controller('TimesheetCtrl', ['$scope', '$http', function($scope, $http) {
+        var app = angular.module('Timesheet', ['toastr'])
+        app.controller('TimesheetCtrl', ['$scope', '$http', 'toastr', function($scope, $http, $toastr) {
           var timesheet = JSON.parse(<%=raw @timesheet_data.to_json %>);
 
           $scope.signupForm = {
@@ -451,7 +454,8 @@
             })
             .then(function onSuccess (){
               // Refresh the page now that we've been logged in.
-              window.location = '/register';
+              window.location = '/ioscalendar/edit_timesheet/<%= @timesheet_id %>';
+              $toastr.info("successfully saved");
             })
             .catch(function onError(sailsResponse) {
               console.log(sailsResponse);
